@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PoolType : byte { Enemy };
+
 public class PoolManager : MonoBehaviour
 {
-    public enum EPoolType : byte { ENEMY };
     public GameObject[] prefabs;
     List<GameObject>[] poolList;
 
@@ -18,7 +19,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public GameObject Get(EPoolType type)
+    public GameObject Get(PoolType type)
     {
         byte index = (byte)type;
         GameObject select = null;

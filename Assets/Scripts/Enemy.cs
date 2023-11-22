@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     void OnEnable()
     {
         isLive = true;
+        health = maxHealth;
     }
 
     void Update()
@@ -45,5 +46,23 @@ public class Enemy : MonoBehaviour
 
         Vector2 dirVec = target.position - transform.position;
         rigid.MovePosition(rigid.position + dirVec.normalized * speed * Time.fixedDeltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bullet"))
+        {
+            Hit(collision.GetComponent<Bullet>());
+        }
+    }
+
+    private void Hit(Bullet bullet)
+    {
+        health -= bullet.damage;
+
+        if (health <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

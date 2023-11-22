@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
         // Test Code. Spawn Enemy
         if (Input.GetButton("Jump"))
         {
-            var item = poolManager.Get(PoolManager.EPoolType.ENEMY);
+            var item = poolManager.Get(PoolType.Enemy);
             var enemy = item.GetComponent<Enemy>();
             enemy.target = player.transform;
             enemy.transform.position = Vector3.zero;
