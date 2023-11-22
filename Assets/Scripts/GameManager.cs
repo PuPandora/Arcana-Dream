@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Test Code. Spawn Enemy
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             var item = poolManager.Get(PoolType.Enemy);
             var enemy = item.GetComponent<Enemy>();
