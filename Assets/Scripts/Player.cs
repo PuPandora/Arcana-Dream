@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigid.MovePosition(rigid.position + moveInput * speed * Time.fixedDeltaTime);
+        rigid.MovePosition(rigid.position + moveInput.normalized * speed * Time.fixedDeltaTime);
     }
 
     private void OnMove(InputValue value)

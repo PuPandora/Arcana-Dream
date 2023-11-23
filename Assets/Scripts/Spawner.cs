@@ -34,7 +34,12 @@ public class Spawner : MonoBehaviour
             var enemy = item.GetComponent<Enemy>();
 
             enemy.target = GameManager.instance.player.transform;
-            enemy.transform.position = spawnPoints[Random.Range(1, spawnPoints.Length)].position;
+            enemy.transform.position = GetRandomSpawnPoint();
         }
+    }
+
+    public Vector3 GetRandomSpawnPoint()
+    {
+        return spawnPoints[Random.Range(1, spawnPoints.Length)].position;
     }
 }

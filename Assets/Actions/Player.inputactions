@@ -1,5 +1,5 @@
 {
-    "name": "Arcana Dungeon",
+    "name": "Player",
     "maps": [
         {
             "name": "Player",
@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "dd59d12f-3bb9-46b1-9312-6625b740fd45",
                     "expectedControlType": "Vector2",
-                    "processors": "NormalizeVector2",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },

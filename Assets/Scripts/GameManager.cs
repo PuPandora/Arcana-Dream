@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public PoolManager poolManager;
     public Player player;
+    public Spawner spawner;
     public BoxCollider2D viewArea;
 
     void Awake()
