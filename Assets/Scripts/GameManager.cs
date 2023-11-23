@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,12 +20,16 @@ public class GameManager : MonoBehaviour
 
     [Title("# UI")]
     public Toggle spawnToggle;
+    [SerializeField] private Slider expSlider;
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI killCountText;
 
     [Title("# Stage Info")]
     public int killCount;
     public int curExp;
     public int[] nextExp = { 10, 20, 40, 60, 100, 150, 200, 300, 400, 500, 700, 1000 };
     public short level;
+    public float timer { get; private set; }
 
     void Awake()
     {
@@ -49,6 +54,8 @@ public class GameManager : MonoBehaviour
     {
         // 스폰 토글 디버그
         spawner.canSpawn = spawnToggle.isOn;
+
+        timer += Time.deltaTime;
     }
 
     public void GetExp(int value)
