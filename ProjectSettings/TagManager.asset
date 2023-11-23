@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - ViewArea
   - Floor
+  - Item
+  - Collector
   layers:
   - Default
   - TransparentFX

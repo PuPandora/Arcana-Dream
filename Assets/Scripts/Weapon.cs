@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     public enum WeaponType { Melee, Range }
+    [EnumToggleButtons]
     public WeaponType type;
+    [EnumPaging]
     public PoolType bulletType;
+
     public float speed;
     public sbyte penetrate;
 

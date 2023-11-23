@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public short health;
     public short maxHealth;
 
-    private bool isLive = true;
+    public bool isLive { get; private set; } = true;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
@@ -65,9 +65,21 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            coll.enabled = false;
-            gameObject.SetActive(false);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        isLive = false;
+
+        GameManager.instance.killCount++;
+
+        var item = GameManager.instance.poolManager.Get(PoolType.Item);
+        item.transform.position = transform.position;
+
+        coll.enabled = false;
+        gameObject.SetActive(false);
     }
 
     void OnTriggerExit2D(Collider2D collision)

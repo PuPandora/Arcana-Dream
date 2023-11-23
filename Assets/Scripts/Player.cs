@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public Scanner scanner;
 
     public Vector2 moveInput { get; private set; }
-    public GameObject weapons { get; private set; }
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;

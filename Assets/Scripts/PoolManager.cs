@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PoolType : byte { Enemy, MeleeBullet0, RangeBullet0 };
+public enum PoolType : byte { Enemy, MeleeBullet0, RangeBullet0, Item };
 
 public class PoolManager : MonoBehaviour
 {
