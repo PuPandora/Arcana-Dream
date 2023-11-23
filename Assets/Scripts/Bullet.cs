@@ -26,13 +26,12 @@ public class Bullet : MonoBehaviour
         // 무한 관통력
         if (penetrate <= -1) return;
 
-
         if (collision.CompareTag("Enemy"))
         {
             penetrate--;
         }
 
-        if (penetrate <= 0)
+        if (penetrate < 0)
         {
             ResetToDefault();
             gameObject.SetActive(false);
