@@ -14,18 +14,21 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
+    Collider2D coll;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        coll = GetComponent<Collider2D>();
     }
 
     void OnEnable()
     {
         isLive = true;
         health = maxHealth;
+        coll.enabled = true;
     }
 
     void Update()
@@ -62,7 +65,21 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            coll.enabled = false;
             gameObject.SetActive(false);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ViewArea"))
+        {
+            Player player = target.GetComponent<Player>();
+            Vector2 offset = player.moveInput * GameManager.instance.viewArea.size.x * 0.75f;
+            offset.x += Random.Range(-3f, 3f);
+            offset.y += Random.Range(-3f, 3f);
+
+            transform.position = (Vector2)player.transform.position + offset;
         }
     }
 }

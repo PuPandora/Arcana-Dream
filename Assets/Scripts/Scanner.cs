@@ -20,12 +20,13 @@ public class Scanner : MonoBehaviour
                                 0,
                                 targetLayer);
 
-        GetNearestTarget();
+        nearestTarget = GetNearestTarget();
     }
 
-    private void GetNearestTarget()
+    private Transform GetNearestTarget()
     {
         float diff = 100f;
+        Transform result = null;
         Vector2 myPos = transform.position;
 
         foreach (var target in targets)
@@ -36,8 +37,9 @@ public class Scanner : MonoBehaviour
             if (curDiff < diff)
             {
                 diff = curDiff;
-                nearestTarget = target.transform;
+                result = target.transform;
             }
         }
+        return result;
     }
 }

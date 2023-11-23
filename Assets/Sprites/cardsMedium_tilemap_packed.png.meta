@@ -1073,7 +1073,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_44
+      name: Joker_Red
       rect:
         serializedVersion: 2
         x: 448
@@ -1094,7 +1094,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_45
+      name: Spade_1
       rect:
         serializedVersion: 2
         x: 0
@@ -1115,7 +1115,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_46
+      name: Spade_2
       rect:
         serializedVersion: 2
         x: 32
@@ -1136,7 +1136,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_47
+      name: Spade_3
       rect:
         serializedVersion: 2
         x: 64
@@ -1157,7 +1157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_48
+      name: Spade_4
       rect:
         serializedVersion: 2
         x: 96
@@ -1178,7 +1178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_49
+      name: Spade_5
       rect:
         serializedVersion: 2
         x: 128
@@ -1199,7 +1199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_50
+      name: Spade_6
       rect:
         serializedVersion: 2
         x: 160
@@ -1220,7 +1220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_51
+      name: Spade_7
       rect:
         serializedVersion: 2
         x: 192
@@ -1241,7 +1241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_52
+      name: Spade_8
       rect:
         serializedVersion: 2
         x: 224
@@ -1262,7 +1262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_53
+      name: Spade_9
       rect:
         serializedVersion: 2
         x: 256
@@ -1283,7 +1283,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_54
+      name: Spade_10
       rect:
         serializedVersion: 2
         x: 288
@@ -1304,7 +1304,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_55
+      name: Spade_11
       rect:
         serializedVersion: 2
         x: 320
@@ -1325,7 +1325,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_56
+      name: Spade_12
       rect:
         serializedVersion: 2
         x: 352
@@ -1346,7 +1346,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_57
+      name: Spade_13
       rect:
         serializedVersion: 2
         x: 384
@@ -1367,7 +1367,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_58
+      name: Spade_0
       rect:
         serializedVersion: 2
         x: 416
@@ -1388,7 +1388,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_59
+      name: Joker_Black
       rect:
         serializedVersion: 2
         x: 448
@@ -3045,6 +3045,22 @@ TextureImporter:
       Heart_7: 1326544510
       Heart_8: 1595665571
       Heart_9: 2108249750
+      Joker_Black: -1028938920
+      Joker_Red: -425411339
+      Spade_0: -357197861
+      Spade_1: -229110522
+      Spade_10: 864264230
+      Spade_11: -336290676
+      Spade_12: 21618248
+      Spade_13: -471591458
+      Spade_2: -1056109920
+      Spade_3: -1625095256
+      Spade_4: 833107262
+      Spade_5: -1761729600
+      Spade_6: -1049583816
+      Spade_7: -1498592037
+      Spade_8: -40277959
+      Spade_9: 1409718856
       cardsMedium_tilemap_packed_100: 51354344
       cardsMedium_tilemap_packed_101: -907586921
       cardsMedium_tilemap_packed_102: 848492694
@@ -3095,22 +3111,6 @@ TextureImporter:
       cardsMedium_tilemap_packed_41: 747408551
       cardsMedium_tilemap_packed_42: -140805978
       cardsMedium_tilemap_packed_43: -731330865
-      cardsMedium_tilemap_packed_44: -425411339
-      cardsMedium_tilemap_packed_45: -229110522
-      cardsMedium_tilemap_packed_46: -1056109920
-      cardsMedium_tilemap_packed_47: -1625095256
-      cardsMedium_tilemap_packed_48: 833107262
-      cardsMedium_tilemap_packed_49: -1761729600
-      cardsMedium_tilemap_packed_50: -1049583816
-      cardsMedium_tilemap_packed_51: -1498592037
-      cardsMedium_tilemap_packed_52: -40277959
-      cardsMedium_tilemap_packed_53: 1409718856
-      cardsMedium_tilemap_packed_54: 864264230
-      cardsMedium_tilemap_packed_55: -336290676
-      cardsMedium_tilemap_packed_56: 21618248
-      cardsMedium_tilemap_packed_57: -471591458
-      cardsMedium_tilemap_packed_58: -357197861
-      cardsMedium_tilemap_packed_59: -1028938920
       cardsMedium_tilemap_packed_60: 1710906841
       cardsMedium_tilemap_packed_61: -654826745
       cardsMedium_tilemap_packed_62: -509548754
