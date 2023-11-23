@@ -5,8 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public enum BulletType { Melee, Range }
-    public int damage;
-    public int penetrate;
+    public short damage;
+    public sbyte penetrate;
     public float speed;
 
     Rigidbody2D rigid;

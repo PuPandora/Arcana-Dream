@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     public WeaponType type;
     public PoolType bulletType;
     public float speed;
-    public int penetrate;
+    public sbyte penetrate;
 
     public float timer;
     public float fireDelay;

@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
     public Transform target;
     public float speed;
-    public int health;
-    public int maxHealth;
+    public short health;
+    public short maxHealth;
 
     private bool isLive = true;
 
