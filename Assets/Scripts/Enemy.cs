@@ -72,14 +72,6 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("ViewArea"))
-        {
-            Player player = target.GetComponent<Player>();
-            Vector2 offset = player.moveInput * GameManager.instance.viewArea.size.x * 0.75f;
-            offset.x += Random.Range(-3f, 3f);
-            offset.y += Random.Range(-3f, 3f);
 
-            transform.position = (Vector2)player.transform.position + offset;
-        }
     }
 }
