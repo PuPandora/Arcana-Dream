@@ -29,12 +29,12 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             penetrate--;
-        }
 
-        if (penetrate < 0)
-        {
-            ResetToDefault();
-            gameObject.SetActive(false);
+            if (penetrate < 0)
+            {
+                ResetToDefault();
+                gameObject.SetActive(false);
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,22 +11,33 @@ public class GameManager : MonoBehaviour
     public Spawner spawner;
     public BoxCollider2D viewArea;
 
+    public GameObject[] weapons;
+
+    // UI
+    public Toggle spawnToggle;
+
     void Awake()
     {
         if (instance == null) { instance = this; }
         else Destroy(gameObject);
     }
 
+    public void ActiveWeapon(int index)
+    {
+        weapons[index].SetActive(true);
+    }
+
+    public void DeactiveAllWeapons()
+    {
+        foreach (var weapon in weapons)
+        {
+            weapon.SetActive(false);
+        }
+    }
+
     void Update()
     {
-        // Test Code. Spawn Enemy
-        if (Input.GetButtonDown("Jump"))
-        {
-            var item = poolManager.Get(PoolType.Enemy);
-            var enemy = item.GetComponent<Enemy>();
-            enemy.target = player.transform;
-            enemy.transform.position = Vector3.zero;
-            enemy.transform.rotation = Quaternion.identity;
-        }
+        // 스폰 토글 디버그
+        spawner.canSpawn = spawnToggle.isOn;
     }
 }
