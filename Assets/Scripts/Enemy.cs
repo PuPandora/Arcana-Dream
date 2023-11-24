@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
         expItemData = data.expItemData;
 
         anim.runtimeAnimatorController = data.animController;
+        data.collPreset.ApplyTo(coll);
     }
 
     void OnEnable()

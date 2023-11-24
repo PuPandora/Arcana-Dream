@@ -16,4 +16,5 @@ MonoBehaviour:
   health: 20
   maxHealth: 20
   expItemData: {fileID: 11400000, guid: d33d5b6b4351f4b49b9821b2084eb3cd, type: 2}
+  collPreset: {fileID: 2655988077585873504, guid: 12a8e29f499e16b468cdf7e997c2fc8a, type: 2}
   animController: {fileID: 22100000, guid: f86fbe8615f062640b280e2b1de05590, type: 2}
