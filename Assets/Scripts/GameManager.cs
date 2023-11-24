@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // 스폰 토글 디버그
-        spawner.canSpawn = spawnToggle.isOn;
+        spawner.isPlaying = spawnToggle.isOn;
 
         timer += Time.deltaTime;
     }

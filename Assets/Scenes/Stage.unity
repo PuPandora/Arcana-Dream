@@ -340,19 +340,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 978560583}
-        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
-        m_MethodName: ChangeSpawnAllow
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &45549755
 GameObject:
@@ -2181,7 +2169,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7.6666665
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3210,7 +3198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  bulletType: 2
+  bulletId: 1
   speed: 5
   penetrate: 1
   timer: 0
@@ -3276,7 +3264,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelay: 0.2
-  canSpawn: 0
+  isPlaying: 1
+  stageLevel: 0
+  enemyData:
+  - {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
+  - {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
 --- !u!4 &978560584
 Transform:
   m_ObjectHideFlags: 0
@@ -4228,7 +4220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  bulletType: 1
+  bulletId: 0
   speed: 150
   penetrate: -1
   timer: 0

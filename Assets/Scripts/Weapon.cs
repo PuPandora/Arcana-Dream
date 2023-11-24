@@ -8,9 +8,8 @@ public class Weapon : MonoBehaviour
     public enum WeaponType { Melee, Range }
     [EnumToggleButtons]
     public WeaponType type;
-    [EnumPaging]
-    public PoolType bulletType;
 
+    public byte bulletId;
     public float speed;
     public sbyte penetrate;
 
@@ -57,7 +56,7 @@ public class Weapon : MonoBehaviour
             Vector3 myPos = transform.position;
             Vector3 dirVec = (targetPos - myPos).normalized;
 
-            GameObject instanceBullet = GameManager.instance.poolManager.Get(bulletType);
+            GameObject instanceBullet = GameManager.instance.poolManager.Get(PoolType.RangeBullet);
             Rigidbody2D bulletRigid = instanceBullet.GetComponent<Rigidbody2D>();
             Bullet bulletScript = instanceBullet.GetComponent<Bullet>();
 

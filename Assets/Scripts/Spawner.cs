@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     Transform[] spawnPoints;
 
-    private float timer;
+    [ReadOnly]
+    [SerializeField]
+    private float spawnTimer;
+
     public float spawnDelay = 0.1f;
-    public bool canSpawn = true;
+    public bool isPlaying = true;
+
+    public byte stageLevel;
+    public EnemyData[] enemyData;
 
     void Awake()
     {
@@ -17,22 +24,31 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (canSpawn)
+        if (isPlaying)
         {
-            timer += Time.deltaTime;
+            spawnTimer += Time.deltaTime;
+            // 임시 스테이지 레벨 코드
+            stageLevel = (byte)(GameManager.instance.timer / 10f);
+            if (stageLevel > enemyData.Length - 1)
+            {
+                stageLevel = (byte)(enemyData.Length - 1);
+                isPlaying = false;
+                return;
+            }
             Spawn();
         }
     }
 
     public void Spawn()
     {
-        if (timer > spawnDelay)
+        if (spawnTimer > spawnDelay)
         {
-            timer = 0f;
+            spawnTimer = 0f;
 
             var item = GameManager.instance.poolManager.Get(PoolType.Enemy);
             var enemy = item.GetComponent<Enemy>();
 
+            enemy.Initalize(enemyData[stageLevel]);
             enemy.target = GameManager.instance.player.transform;
             enemy.transform.position = GetRandomSpawnPoint();
         }

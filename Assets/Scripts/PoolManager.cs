@@ -2,20 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PoolType : byte { Enemy, MeleeBullet0, RangeBullet0, Item };
+public enum PoolType : byte { Enemy, MeleeBullet, RangeBullet, ExpItem, DropItem };
 
 public class PoolManager : MonoBehaviour
 {
-    public GameObject[] prefabs;
-    List<GameObject>[] poolList;
+    [SerializeField]
+    private GameObject[] prefabs;
+    private List<GameObject>[] poolList;
 
-    void Start()
+    void Awake()
     {
         // 풀 리스트 초기화
-        poolList = new List<GameObject>[prefabs.Length];
-        for (int i = 0;  i < prefabs.Length; i++)
+        InitializePool(out poolList, prefabs);
+    }
+
+    private void InitializePool(out List<GameObject>[] pool, GameObject[] prefabs)
+    {
+        pool = new List<GameObject>[prefabs.Length];
+        for (int i = 0; i < pool.Length; i++)
         {
-            poolList[i] = new List<GameObject>();
+            pool[i] = new List<GameObject>();
         }
     }
 
@@ -24,8 +30,10 @@ public class PoolManager : MonoBehaviour
         byte index = (byte)type;
         GameObject select = null;
 
+        // 사용 가능한 오브젝트 탐색
         foreach (var item in poolList[index])
         {
+            // 있다면 반환
             if (!item.activeSelf)
             {
                 item.SetActive(true);
@@ -34,7 +42,8 @@ public class PoolManager : MonoBehaviour
             }
         }
 
-        if (select == null)
+        // 없다면 새로 만든다
+        if (!select)
         {
             var item = Instantiate(prefabs[index], transform);
             poolList[index].Add(item);

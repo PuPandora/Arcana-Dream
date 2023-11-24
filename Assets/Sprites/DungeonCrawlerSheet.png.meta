@@ -1010,7 +1010,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_41
+      name: SlimeIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -1031,7 +1031,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_42
+      name: SlimeIdle_1
       rect:
         serializedVersion: 2
         x: 16
@@ -1052,7 +1052,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_43
+      name: SlimeIdle_2
       rect:
         serializedVersion: 2
         x: 32
@@ -1073,7 +1073,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_44
+      name: SlimeIdle_3
       rect:
         serializedVersion: 2
         x: 48
@@ -1094,7 +1094,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_45
+      name: SlimeIdle_4
       rect:
         serializedVersion: 2
         x: 64
@@ -1115,7 +1115,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_46
+      name: SlimeIdle_5
       rect:
         serializedVersion: 2
         x: 80
@@ -1325,7 +1325,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_56
+      name: SlimeMove_0
       rect:
         serializedVersion: 2
         x: 0
@@ -1346,7 +1346,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_57
+      name: SlimeMove_1
       rect:
         serializedVersion: 2
         x: 16
@@ -1367,7 +1367,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_58
+      name: SlimeMove_2
       rect:
         serializedVersion: 2
         x: 32
@@ -1388,7 +1388,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_59
+      name: SlimeMove_3
       rect:
         serializedVersion: 2
         x: 48
@@ -1409,7 +1409,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_60
+      name: SlimeMove_4
       rect:
         serializedVersion: 2
         x: 64
@@ -1430,7 +1430,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_61
+      name: SlimeMove_5
       rect:
         serializedVersion: 2
         x: 80
@@ -1661,7 +1661,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_72
+      name: KnightIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -1682,7 +1682,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_73
+      name: KnightIdle_1
       rect:
         serializedVersion: 2
         x: 16
@@ -1703,7 +1703,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_74
+      name: KnightIdle_2
       rect:
         serializedVersion: 2
         x: 32
@@ -1724,7 +1724,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_75
+      name: KnightIdle_3
       rect:
         serializedVersion: 2
         x: 48
@@ -1745,7 +1745,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_76
+      name: KnightIdle_4
       rect:
         serializedVersion: 2
         x: 64
@@ -1766,7 +1766,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_77
+      name: KnightIdle_5
       rect:
         serializedVersion: 2
         x: 80
@@ -1808,7 +1808,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_96
+      name: KnightWalk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -1829,7 +1829,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_97
+      name: KnightWalk_1
       rect:
         serializedVersion: 2
         x: 16
@@ -1850,7 +1850,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_98
+      name: KnightWalk_2
       rect:
         serializedVersion: 2
         x: 32
@@ -1871,7 +1871,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_99
+      name: KnightWalk_3
       rect:
         serializedVersion: 2
         x: 48
@@ -1892,7 +1892,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_100
+      name: KnightWalk_4
       rect:
         serializedVersion: 2
         x: 64
@@ -1913,7 +1913,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_101
+      name: KnightWalk_5
       rect:
         serializedVersion: 2
         x: 80
@@ -2409,8 +2409,6 @@ TextureImporter:
       DungeonCrawlerSheet_0: 353374234
       DungeonCrawlerSheet_1: -911534466
       DungeonCrawlerSheet_10: 112169687
-      DungeonCrawlerSheet_100: 2130718903
-      DungeonCrawlerSheet_101: -1108305331
       DungeonCrawlerSheet_102: -365662258
       DungeonCrawlerSheet_103: 74635385
       DungeonCrawlerSheet_104: -1783326728
@@ -2499,12 +2497,6 @@ TextureImporter:
       DungeonCrawlerSheet_39: 1069100822
       DungeonCrawlerSheet_4: 2008458375
       DungeonCrawlerSheet_40: -858923250
-      DungeonCrawlerSheet_41: 1155857795
-      DungeonCrawlerSheet_42: -934534348
-      DungeonCrawlerSheet_43: 1040237443
-      DungeonCrawlerSheet_44: -240518201
-      DungeonCrawlerSheet_45: 712327364
-      DungeonCrawlerSheet_46: -538818433
       DungeonCrawlerSheet_47: -1676999247
       DungeonCrawlerSheet_48: -1556977910
       DungeonCrawlerSheet_49: 354897213
@@ -2515,13 +2507,7 @@ TextureImporter:
       DungeonCrawlerSheet_53: -1412523088
       DungeonCrawlerSheet_54: 785609515
       DungeonCrawlerSheet_55: 560442286
-      DungeonCrawlerSheet_56: 2018052836
-      DungeonCrawlerSheet_57: 1373234461
-      DungeonCrawlerSheet_58: 356875617
-      DungeonCrawlerSheet_59: 2002339023
       DungeonCrawlerSheet_6: 130504954
-      DungeonCrawlerSheet_60: -1554302820
-      DungeonCrawlerSheet_61: -111085742
       DungeonCrawlerSheet_62: 56344676
       DungeonCrawlerSheet_63: 1833060818
       DungeonCrawlerSheet_64: -112442136
@@ -2533,12 +2519,6 @@ TextureImporter:
       DungeonCrawlerSheet_7: -476831123
       DungeonCrawlerSheet_70: 1984125966
       DungeonCrawlerSheet_71: 350331545
-      DungeonCrawlerSheet_72: 382366206
-      DungeonCrawlerSheet_73: -1501162886
-      DungeonCrawlerSheet_74: -684014416
-      DungeonCrawlerSheet_75: -2079962944
-      DungeonCrawlerSheet_76: -663069448
-      DungeonCrawlerSheet_77: -532273336
       DungeonCrawlerSheet_78: 1237104815
       DungeonCrawlerSheet_79: -805542605
       DungeonCrawlerSheet_8: -2068776179
@@ -2559,10 +2539,6 @@ TextureImporter:
       DungeonCrawlerSheet_93: -25284727
       DungeonCrawlerSheet_94: 105422357
       DungeonCrawlerSheet_95: 1068919920
-      DungeonCrawlerSheet_96: -752906890
-      DungeonCrawlerSheet_97: 566531982
-      DungeonCrawlerSheet_98: 978094959
-      DungeonCrawlerSheet_99: -234534831
       Explosion_0: -1687096545
       Explosion_1: -171747639
       Explosion_2: -1158338547
@@ -2582,6 +2558,30 @@ TextureImporter:
       GoblineWalk_3: 1889391415
       GoblineWalk_4: -532706421
       GoblineWalk_5: -1090343280
+      KnightIdle_0: 382366206
+      KnightIdle_1: -1501162886
+      KnightIdle_2: -684014416
+      KnightIdle_3: -2079962944
+      KnightIdle_4: -663069448
+      KnightIdle_5: -532273336
+      KnightWalk_0: -752906890
+      KnightWalk_1: 566531982
+      KnightWalk_2: 978094959
+      KnightWalk_3: -234534831
+      KnightWalk_4: 2130718903
+      KnightWalk_5: -1108305331
+      SlimeIdle_0: 1155857795
+      SlimeIdle_1: -934534348
+      SlimeIdle_2: 1040237443
+      SlimeIdle_3: -240518201
+      SlimeIdle_4: 712327364
+      SlimeIdle_5: -538818433
+      SlimeMove_0: 2018052836
+      SlimeMove_1: 1373234461
+      SlimeMove_2: 356875617
+      SlimeMove_3: 2002339023
+      SlimeMove_4: -1554302820
+      SlimeMove_5: -111085742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

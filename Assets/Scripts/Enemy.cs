@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public short health;
     public short maxHealth;
+    public ExpItemData expItemData;
 
     public bool isLive { get; private set; } = true;
 
@@ -24,6 +25,16 @@ public class Enemy : MonoBehaviour
         coll = GetComponent<Collider2D>();
     }
 
+    public void Initalize(EnemyData data)
+    {
+        speed = data.speed;
+        health = data.health;
+        maxHealth = data.maxHealth;
+        expItemData = data.expItemData;
+
+        anim.runtimeAnimatorController = data.animController;
+    }
+
     void OnEnable()
     {
         isLive = true;
@@ -34,7 +45,9 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (!isLive) return;
+        anim.SetBool("IsChase", target);
 
+        if (!target) return;
         spriter.flipX = target.position.x < transform.position.x;
     }
 
@@ -45,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     private void ChaseTarget()
     {
-        if (!isLive || target == null) return;
+        if (!isLive || !target) return;
 
         Vector2 dirVec = target.position - transform.position;
         rigid.MovePosition(rigid.position + dirVec.normalized * speed * Time.fixedDeltaTime);
@@ -75,8 +88,11 @@ public class Enemy : MonoBehaviour
 
         GameManager.instance.killCount++;
 
-        var item = GameManager.instance.poolManager.Get(PoolType.Item);
+        var item = GameManager.instance.poolManager.Get(PoolType.ExpItem);
         item.transform.position = transform.position;
+
+        ExpItem expItem = item.GetComponent<ExpItem>();
+        expItem.Initalize(expItemData);
 
         coll.enabled = false;
         gameObject.SetActive(false);

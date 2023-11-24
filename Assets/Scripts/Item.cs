@@ -9,5 +9,12 @@ public class Item : MonoBehaviour
 {
     [EnumToggleButtons]
     public ItemType type;
-    public int value;
+    public short value;
+
+    protected SpriteRenderer spriter;
+
+    void Awake()
+    {
+        spriter = GetComponent<SpriteRenderer>();
+    }
 }
