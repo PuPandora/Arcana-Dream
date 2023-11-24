@@ -16,6 +16,11 @@ public class PoolManager : MonoBehaviour
         InitializePool(out poolList, prefabs);
     }
 
+    void Start()
+    {
+        GameManager.instance.poolManager = this;
+    }
+
     private void InitializePool(out List<GameObject>[] pool, GameObject[] prefabs)
     {
         pool = new List<GameObject>[prefabs.Length];

@@ -10,6 +10,7 @@ TagManager:
   - Floor
   - Item
   - Collector
+  - Portal
   layers:
   - Default
   - TransparentFX

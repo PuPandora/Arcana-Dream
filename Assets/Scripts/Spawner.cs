@@ -24,6 +24,8 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.gameState != GameState.Stage) return;
+
         if (isPlaying)
         {
             spawnTimer += Time.deltaTime;
@@ -50,6 +52,7 @@ public class Spawner : MonoBehaviour
 
             enemy.Initalize(enemyData[stageLevel]);
             enemy.target = GameManager.instance.player.transform;
+
             enemy.transform.position = GetRandomSpawnPoint();
         }
     }
