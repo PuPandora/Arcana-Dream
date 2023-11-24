@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
+    public Inventory inventory;
     public float radius;
 
     CircleCollider2D coll;
@@ -26,18 +27,20 @@ public class ItemCollector : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Item"))
+        if (collision.CompareTag("Exp"))
+        {
+            var item = collision.GetComponent<ExpItem>();
+            GameManager.instance.GetExp(item.expVaule);
+            collision.gameObject.SetActive(false);
+        }
+        else if (collision.CompareTag("Item"))
         {
             var item = collision.GetComponent<Item>();
+            bool isGet;
 
-            switch (item.type)
-            {
-                case ItemType.Exp:
-                    GameManager.instance.GetExp(item.value);
-                    break;
-                case ItemType.Item:
-                    break;
-            }
+            isGet = inventory.AddItem(item);
+
+            if (!isGet) return;
 
             collision.gameObject.SetActive(false);
         }

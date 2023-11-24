@@ -2669,7 +2669,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_120
+      name: DiceA_1
       rect:
         serializedVersion: 2
         x: 0
@@ -2690,7 +2690,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_121
+      name: DiceA_2
       rect:
         serializedVersion: 2
         x: 32
@@ -2711,7 +2711,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_122
+      name: DiceA_3
       rect:
         serializedVersion: 2
         x: 64
@@ -2732,7 +2732,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_123
+      name: DiceA_0
       rect:
         serializedVersion: 2
         x: 96
@@ -2753,7 +2753,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_124
+      name: DiceB_1
       rect:
         serializedVersion: 2
         x: 128
@@ -2774,7 +2774,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_125
+      name: DiceB_2
       rect:
         serializedVersion: 2
         x: 160
@@ -2795,7 +2795,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_126
+      name: DiceB_3
       rect:
         serializedVersion: 2
         x: 192
@@ -2816,7 +2816,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_127
+      name: DiceB_0
       rect:
         serializedVersion: 2
         x: 224
@@ -2837,7 +2837,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_128
+      name: DiceA_4
       rect:
         serializedVersion: 2
         x: 256
@@ -2858,7 +2858,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_129
+      name: DiceA_5
       rect:
         serializedVersion: 2
         x: 288
@@ -2879,7 +2879,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_130
+      name: DiceA_6
       rect:
         serializedVersion: 2
         x: 320
@@ -2900,7 +2900,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_131
+      name: DiceA_7
       rect:
         serializedVersion: 2
         x: 352
@@ -2921,7 +2921,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_132
+      name: DiceB_4
       rect:
         serializedVersion: 2
         x: 384
@@ -2942,7 +2942,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_133
+      name: DiceB_5
       rect:
         serializedVersion: 2
         x: 416
@@ -2963,7 +2963,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_134
+      name: DiceB_6
       rect:
         serializedVersion: 2
         x: 448
@@ -2984,7 +2984,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardsMedium_tilemap_packed_135
+      name: DiceB_7
       rect:
         serializedVersion: 2
         x: 0
@@ -3030,6 +3030,22 @@ TextureImporter:
       Diamond_7: 1737873595
       Diamond_8: -69267750
       Diamond_9: 1980400733
+      DiceA_0: -1836929812
+      DiceA_1: 1905031506
+      DiceA_2: 730583493
+      DiceA_3: 1110948774
+      DiceA_4: 1730643230
+      DiceA_5: -1626737144
+      DiceA_6: -1529185455
+      DiceA_7: 600402604
+      DiceB_0: -879665047
+      DiceB_1: 2034888184
+      DiceB_2: 995249861
+      DiceB_3: -1268935840
+      DiceB_4: 1758008663
+      DiceB_5: -383753215
+      DiceB_6: -510893255
+      DiceB_7: 1485667617
       EmptyCard: 1635598947
       Heart: 2120507341
       Heart_: -1871005533
@@ -3081,22 +3097,6 @@ TextureImporter:
       cardsMedium_tilemap_packed_117: 639219398
       cardsMedium_tilemap_packed_118: 370749731
       cardsMedium_tilemap_packed_119: -344299603
-      cardsMedium_tilemap_packed_120: 1905031506
-      cardsMedium_tilemap_packed_121: 730583493
-      cardsMedium_tilemap_packed_122: 1110948774
-      cardsMedium_tilemap_packed_123: -1836929812
-      cardsMedium_tilemap_packed_124: 2034888184
-      cardsMedium_tilemap_packed_125: 995249861
-      cardsMedium_tilemap_packed_126: -1268935840
-      cardsMedium_tilemap_packed_127: -879665047
-      cardsMedium_tilemap_packed_128: 1730643230
-      cardsMedium_tilemap_packed_129: -1626737144
-      cardsMedium_tilemap_packed_130: -1529185455
-      cardsMedium_tilemap_packed_131: 600402604
-      cardsMedium_tilemap_packed_132: 1758008663
-      cardsMedium_tilemap_packed_133: -383753215
-      cardsMedium_tilemap_packed_134: -510893255
-      cardsMedium_tilemap_packed_135: 1485667617
       cardsMedium_tilemap_packed_30: -737885095
       cardsMedium_tilemap_packed_31: -20738559
       cardsMedium_tilemap_packed_32: 1049818593

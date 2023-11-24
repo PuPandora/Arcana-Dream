@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5231134501429890427}
   - component: {fileID: 6004140276041823718}
   - component: {fileID: 7095600155629159059}
-  - component: {fileID: -1580070341009739488}
+  - component: {fileID: 4652025499621583594}
   m_Layer: 0
-  m_Name: ExpItem
-  m_TagString: Exp
+  m_Name: Item
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!114 &-1580070341009739488
+--- !u!114 &4652025499621583594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4503035894559462019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5db6deb9232a8247a5aa613b59fe8c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7019bc11885be2147927ac81106d2475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expVaule: 0
+  selfData: {fileID: 0}
+  name: 
+  description: 
+  value: 0
+  stack: 0
+  maxStack: 0
+  id: 0
