@@ -9,12 +9,16 @@ public class Weapon : MonoBehaviour
     [EnumToggleButtons]
     public WeaponType type;
 
-    public byte bulletId;
+    // Weapon Object Property
+    public byte prefabId;
+    [ReadOnly]
+    public float timer;
+    public byte count;
+
+    // Bullet Property
+    public float damage;
     public float speed;
     public sbyte penetrate;
-
-    public float timer;
-    public float fireDelay;
 
     Player player;
 
@@ -27,6 +31,12 @@ public class Weapon : MonoBehaviour
     {
         Rotate();
         Fire();
+
+        // Test Code
+        if (Input.GetButtonDown("Jump"))
+        {
+            AddMeleeWeapon();
+        }
     }
 
     private void Rotate()
@@ -41,12 +51,45 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private void AddMeleeWeapon()
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Transform bulletTransform;
+
+            // 이미 있는 것을 활용
+            if (i < transform.childCount)
+            {
+                bulletTransform = transform.GetChild(i);
+            }
+            // 부족하다면 생성
+            else
+            {
+                bulletTransform = GameManager.instance.poolManager.Get(PoolType.MeleeBullet).transform;
+            }
+
+            // 초기화
+            bulletTransform.parent = transform;
+            bulletTransform.position = transform.position;
+            bulletTransform.rotation = Quaternion.identity;
+
+            // 개수에 맞는 원형 회전 값 구하기
+            Vector3 rotVec = Vector3.forward * 360 * i / count;
+
+            // 위치 재조정
+            bulletTransform.Rotate(rotVec);
+            bulletTransform.Translate(Vector3.up * 1.5f);
+        }
+
+        count++;
+    }
+
     private void Fire()
     {
         if (type != WeaponType.Range) return;
 
         timer += Time.deltaTime;
-        bool canFire = (player.scanner.nearestTarget != null) && (timer >= fireDelay);
+        bool canFire = (player.scanner.nearestTarget != null) && (timer >= speed);
 
         if (canFire)
         {
@@ -57,8 +100,8 @@ public class Weapon : MonoBehaviour
             Vector3 dirVec = (targetPos - myPos).normalized;
 
             GameObject instanceBullet = GameManager.instance.poolManager.Get(PoolType.RangeBullet);
-            Rigidbody2D bulletRigid = instanceBullet.GetComponent<Rigidbody2D>();
             Bullet bulletScript = instanceBullet.GetComponent<Bullet>();
+            Rigidbody2D bulletRigid = bulletScript.rigid;
 
             instanceBullet.transform.position = transform.position;
             instanceBullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, dirVec);

@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     public sbyte penetrate;
     public float speed;
 
-    Rigidbody2D rigid;
+    public Rigidbody2D rigid { get; private set; }
 
     void Awake()
     {
