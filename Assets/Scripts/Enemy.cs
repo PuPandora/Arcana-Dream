@@ -75,12 +75,23 @@ public class Enemy : MonoBehaviour
 
     private void Hit(Bullet bullet)
     {
+        DisplayDamageText(bullet.damage);
         health -= bullet.damage;
 
         if (health <= 0)
         {
             Die();
         }
+    }
+
+    private void DisplayDamageText(int value)
+    {
+        GameObject tmp = GameManager.instance.poolManager.Get(PoolType.DamageText);
+        // 너무 많은 GetComponent 호출, 리팩토링 필요
+        var damageText = tmp.GetComponent<DamageText>();
+
+        damageText.gameObject.transform.position = transform.position + Vector3.up;
+        damageText.SetText(value);
     }
 
     private void Die()
