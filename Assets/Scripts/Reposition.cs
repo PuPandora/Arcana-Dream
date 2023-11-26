@@ -14,7 +14,6 @@ public class Reposition : MonoBehaviour
 
         float diffX = Mathf.Abs(playerPos.x - myPos.x);
         float diffY = Mathf.Abs(playerPos.y - myPos.y);
-        Debug.Log($"Name : {gameObject.name}\ndiffX : {diffX}\ndiffY : {diffY}diffX > diffY ? : {diffX > diffY}", gameObject);
 
         switch (gameObject.tag)
         {
