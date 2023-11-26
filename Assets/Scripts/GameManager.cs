@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,6 +36,11 @@ public class GameManager : MonoBehaviour
     public int[] nextExp = { 10, 20, 40, 60, 100, 150, 200, 300, 400, 500, 700, 1000 };
     public short level;
     public float timer { get; private set; }
+
+    // Events
+    public Action OnKillCountChanged;
+    public Action OnExpChanged;
+    public Action OnLevelChanged;
 
     void Awake()
     {
@@ -81,6 +88,14 @@ public class GameManager : MonoBehaviour
         {
             LevelUp();
         }
+
+        OnExpChanged?.Invoke();
+    }
+
+    public void AddKillCount()
+    {
+        killCount++;
+        OnKillCountChanged?.Invoke();
     }
 
     private void LevelUp()
@@ -90,6 +105,8 @@ public class GameManager : MonoBehaviour
         level++;
         curExp = 0;
         curExp += temp;
+
+        OnLevelChanged?.Invoke();
     }
 
     public void EnterStage(string sceneName)
@@ -112,6 +129,7 @@ public class GameManager : MonoBehaviour
         {
             gameState = GameState.Stage;
             Debug.Log("스테이지 진입");
+            DOTween.SetTweensCapacity(tweenersCapacity: 1500, sequencesCapacity: 200);
         }
         else if (scene.name.Equals("Lobby"))
         {

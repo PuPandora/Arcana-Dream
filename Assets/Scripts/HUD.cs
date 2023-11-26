@@ -7,44 +7,81 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum HUDType : byte { Exp, Timer, KillCount, Level }
-    [EnumToggleButtons]
-    public HUDType type;
+    private GameManager gameManager;
 
-    private TextMeshProUGUI m_Text;
-    private Slider m_Slider;
+    private Slider expSlider;
+    private TextMeshProUGUI timerText;
+    private TextMeshProUGUI killCountText;
+    private TextMeshProUGUI levelText;
 
     void Awake()
     {
-        m_Text = GetComponent<TextMeshProUGUI>();
-        m_Slider = GetComponent<Slider>();
+        gameManager = GameManager.instance;
+        expSlider = GetComponentInChildren<Slider>();
+        var hudTexts = GetComponentsInChildren<TextMeshProUGUI>();
+
+        timerText = hudTexts[0];
+        killCountText = hudTexts[1];
+        levelText = hudTexts[2];
     }
 
-    void LateUpdate()
+    void Start()
     {
         UpdateHUD();
+
+        gameManager.OnExpChanged += UpdateExp;
+        gameManager.OnKillCountChanged += UpdateKillCount;
+        gameManager.OnLevelChanged += UpdateLevel;
+        StartCoroutine(UpdateTimerRoutine());
     }
 
     private void UpdateHUD()
     {
-        switch (type)
+        UpdateExp();
+        UpdateKillCount();
+        UpdateLevel();
+        UpdateTimer();
+    }
+
+    public void UpdateExp()
+    {
+        float curExp = gameManager.curExp;
+        float maxExp = gameManager.nextExp[gameManager.level];
+        expSlider.value = curExp / maxExp;
+    }
+
+    public void UpdateTimer()
+    {
+        int min = Mathf.FloorToInt(gameManager.timer / 60);
+        int sec = Mathf.FloorToInt(gameManager.timer % 60);
+        timerText.text = $"{min:D2}:{sec:D2}";
+    }
+
+    private IEnumerator UpdateTimerRoutine()
+    {
+        WaitForSeconds interval = new WaitForSeconds(0.1f);
+
+        while (true)
         {
-            case HUDType.Exp:
-                float curExp = GameManager.instance.curExp;
-                float maxExp = GameManager.instance.nextExp[GameManager.instance.level];
-                m_Slider.value = curExp / maxExp;
-                break;
-            case HUDType.Timer:
-                int min = Mathf.FloorToInt(GameManager.instance.timer / 60);
-                int sec = Mathf.FloorToInt(GameManager.instance.timer % 60);
-                m_Text.text = $"{min:D2}:{sec:D2}";
-                break;
-            case HUDType.KillCount:
-                m_Text.text = $"Kill:{GameManager.instance.killCount}";
-                break;
-            case HUDType.Level:
-                m_Text.text = $"Lv.{GameManager.instance.level}";
-                break;
+            yield return interval;
+            UpdateTimer();
         }
+    }
+
+    public void UpdateKillCount()
+    {
+        killCountText.text = $"Kill:{gameManager.killCount}";
+    }
+
+    public void UpdateLevel()
+    {
+        levelText.text = $"Lv.{gameManager.level}";
+    }
+
+    void OnDestroy()
+    {
+        gameManager.OnExpChanged -= UpdateExp;
+        gameManager.OnKillCountChanged -= UpdateKillCount;
+        gameManager.OnLevelChanged -= UpdateLevel;
     }
 }

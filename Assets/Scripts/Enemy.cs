@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -98,7 +99,7 @@ public class Enemy : MonoBehaviour
     {
         isLive = false;
 
-        GameManager.instance.killCount++;
+        GameManager.instance.AddKillCount();
 
         var item = GameManager.instance.poolManager.Get(PoolType.ExpItem);
         item.transform.position = transform.position;
