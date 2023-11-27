@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +8,7 @@ public class Player : MonoBehaviour
     public float speed;
     [HideInInspector]
     public Scanner scanner;
-    public Weapon[] weapons;
+    public List<Weapon> weapons;
 
     public Vector2 moveInput { get; private set; }
 
@@ -27,7 +26,6 @@ public class Player : MonoBehaviour
         scanner = GetComponent<Scanner>();
         viewArea = GetComponentInChildren<BoxCollider2D>();
         spawner = GetComponentInChildren<Spawner>();
-        weapons = GetComponentsInChildren<Weapon>(true);
     }
 
     void Start()

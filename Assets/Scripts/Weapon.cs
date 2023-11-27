@@ -14,11 +14,21 @@ public class Weapon : MonoBehaviour
     [ReadOnly]
     public float timer;
     public byte count;
+    public byte level;
 
     // Bullet Property
     public float damage;
     public float speed;
     public sbyte penetrate;
+
+    // Level Up Property
+    // (Value * increase * more)
+    public float increaseDamage { get; set; } = 1;
+    public float increaseSpeed { get; set; } = 1;
+    public float increaseFireDelay { get; set; } = 1;
+    public float moreDamage { get; set; } = 1;
+    public float moreSpeed { get; set; } = 1;
+    public float moreFireDelay { get; set; } = 1;
 
     // Range Weapon Property
     public float fireDelay;
@@ -32,6 +42,10 @@ public class Weapon : MonoBehaviour
 
     public void Initialize(WeaponData data)
     {
+        transform.parent = GameManager.instance.player.transform;
+        transform.localPosition = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+
         type = data.type;
 
         sbyte? result = GameManager.instance.poolManager.FindPrefabIndex(data.bulletPrefab);
@@ -40,16 +54,16 @@ public class Weapon : MonoBehaviour
             prefabId = (byte)result;
         }
 
-        count = data.count;
-        fireDelay = data.fireDelay;
+        count = data.baseCount;
+        fireDelay = data.baseFireDelay;
 
-        damage = data.damage;
-        speed = data.speed;
-        penetrate = data.penetrate;
+        damage = data.baseDamage;
+        speed = data.baseSpeed;
+        penetrate = data.basepenetrate;
 
         if (type == WeaponType.Melee)
         {
-            AddMeleeWeapon();
+            AddMeleeWeapon(count);
         }
     }
 
@@ -60,7 +74,7 @@ public class Weapon : MonoBehaviour
         // Test Code
         if (Input.GetButtonDown("Jump") && type == WeaponType.Melee)
         {
-            AddMeleeWeapon();
+            AddMeleeWeapon(++count);
         }
     }
 
@@ -82,7 +96,16 @@ public class Weapon : MonoBehaviour
         transform.Rotate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    private void AddMeleeWeapon()
+    public void LevelUp()
+    {
+        var items = GetComponentsInChildren<Bullet>();
+        foreach (var item in items)
+        {
+            item.damage = GetDamage();
+        }
+    }
+
+    public void AddMeleeWeapon(int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -110,9 +133,11 @@ public class Weapon : MonoBehaviour
             // 위치 재조정
             bulletTransform.Rotate(rotVec);
             bulletTransform.Translate(Vector3.up * 1.5f);
+
+            bulletTransform.GetComponent<Bullet>().Initialize(GetDamage(), penetrate, speed);
         }
 
-        count++;
+        this.count = (byte)count;
     }
 
     private void Fire()
@@ -135,5 +160,10 @@ public class Weapon : MonoBehaviour
             bullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, dirVec);
             bulletScript.Initialize(damage, penetrate, speed, dirVec);
         }
+    }
+
+    private float GetDamage()
+    {
+        return damage * increaseDamage * moreDamage;
     }
 }

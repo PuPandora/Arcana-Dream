@@ -14,14 +14,28 @@ public class WeaponData : ScriptableObject
     public string weaponName;
     [TextArea] public string desc;
     [PreviewField] public Sprite icon;
+    public byte id;
 
-    public byte count;
-    public float fireDelay;
+    public byte baseCount;
+    public float baseFireDelay;
 
     [Title("Bullet Property")]
     // Bullet Property
+    public float baseDamage;
+    public float baseSpeed;
+    public sbyte basepenetrate;
+    public GameObject bulletPrefab;
+
+    [Title("Level")]
+    public levelState[] levelState;
+}
+
+[System.Serializable]
+public struct levelState
+{
     public float damage;
     public float speed;
-    public sbyte penetrate;
-    public GameObject bulletPrefab;
+    public byte count;
+    public float fireDelay;
+    public float penetrate;
 }

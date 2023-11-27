@@ -1,31 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class LobbyPortal : MonoBehaviour
 {
     public string stageSceneName = "Stage";
     public KeyCode enterKey = KeyCode.E;
+    private bool isPlayerInPortal;
+    public GameObject stageNoticeUI;
+    private RectTransform noticeUiRect;
 
-    public UnityEvent OnPlayerEnter = new UnityEvent();
-    public UnityEvent OnPlayerExit = new UnityEvent();
+    void Awake()
+    {
+        noticeUiRect = stageNoticeUI.GetComponent<RectTransform>();
+    }
+
+    void Update()
+    {
+        if (isPlayerInPortal && Input.GetKeyDown(enterKey))
+        {
+            GameManager.instance.EnterStage("Stage");
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            OnPlayerEnter.Invoke();
-        }
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player")) return;
-
-        if (Input.GetKey(enterKey))
-        {
-            GameManager.instance.EnterStage(stageSceneName);
+            isPlayerInPortal = true;
+            noticeUiRect.localPosition = Vector3.zero;
         }
     }
 
@@ -33,7 +36,8 @@ public class LobbyPortal : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            OnPlayerExit.Invoke();
+            isPlayerInPortal = false;
+            noticeUiRect.localPosition = Vector3.up * 1000;
         }
     }
 }

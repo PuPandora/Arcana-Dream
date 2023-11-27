@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour
     [EnumToggleButtons]
     public GameState gameState;
 
-    [Title("# Components")]
+    [Title("# Game Objects")]
     public PoolManager poolManager;
     public Player player;
     public Spawner spawner;
     public BoxCollider2D viewArea;
+    public GameObject levelUpUi;
 
     [Title("# Weapons")]
     public Weapon[] weapons;
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         curExp += value;
 
-        if (curExp >= nextExp[level])
+        if (curExp >= nextExp[Mathf.Min(level, nextExp.Length - 1)])
         {
             LevelUp();
         }
@@ -88,13 +89,25 @@ public class GameManager : MonoBehaviour
 
     private void LevelUp()
     {
-        int temp = nextExp[level] - curExp;
+        int temp = nextExp[Mathf.Min(level, nextExp.Length - 1)] - curExp;
 
         level++;
         curExp = 0;
         curExp += temp;
 
         OnLevelChanged?.Invoke();
+
+        Stop();
+    }
+
+    public void Stop()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
     }
 
     public void EnterStage(string sceneName)

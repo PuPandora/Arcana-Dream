@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     public sbyte penetrate;
     public float speed;
 
-    public Rigidbody2D rigid { get; private set; }
+    Rigidbody2D rigid;
 
     void Awake()
     {
@@ -22,6 +22,13 @@ public class Bullet : MonoBehaviour
         this.penetrate = penetrate;
         this.speed = speed;
         rigid.velocity = dirVec * speed;
+    }
+
+    public void Initialize(float damage, sbyte penetrate, float speed)
+    {
+        this.damage = damage;
+        this.penetrate = penetrate;
+        this.speed = speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
