@@ -15,6 +15,9 @@ MonoBehaviour:
   speed: 2
   health: 10
   maxHealth: 10
-  expItemData: {fileID: 11400000, guid: 2bc2d306ee232244fac44c3e2b9cf613, type: 2}
   collPreset: {fileID: 2655988077585873504, guid: a9402776eb369fe4ba557d5bd8bea51f, type: 2}
   animController: {fileID: 9100000, guid: d4e9b1307eb14f641a552bf17a0866fc, type: 2}
+  expItemData: {fileID: 11400000, guid: 2bc2d306ee232244fac44c3e2b9cf613, type: 2}
+  itemDropTable:
+  - itemData: {fileID: 11400000, guid: dbaa0c516f1d6f249896c863d5210247, type: 2}
+    itemDropRate: 0.1

@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public float maxHealth;
     public ExpItemData expItemData;
+    public DropItem dropItem;
 
     public bool isLive { get; private set; } = true;
     private Vector2 dirVec;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
+        dropItem = GetComponent<DropItem>();
     }
 
     void Start()
@@ -40,6 +42,8 @@ public class Enemy : MonoBehaviour
 
         anim.runtimeAnimatorController = data.animController;
         data.collPreset.ApplyTo(coll);
+
+        dropItem.itemDropTable = data.itemDropTable;
     }
 
     void OnEnable()
@@ -104,14 +108,39 @@ public class Enemy : MonoBehaviour
 
         GameManager.instance.AddKillCount();
 
-        var item = GameManager.instance.poolManager.Get(PoolType.ExpItem);
-        item.transform.position = transform.position;
-
-        ExpItem expItem = item.GetComponent<ExpItem>();
-        expItem.Initalize(expItemData);
+        DropExpItem();
+        DropItem();
 
         coll.enabled = false;
         gameObject.SetActive(false);
+    }
+
+    private void DropExpItem()
+    {
+        var item = GameManager.instance.poolManager.Get(PoolType.ExpItem);
+        item.transform.position = transform.position;
+        item.transform.rotation = Quaternion.identity;
+        ExpItem expItem = item.GetComponent<ExpItem>();
+        expItem.Initalize(expItemData);
+    }
+
+    private void DropItem()
+    {
+        for (int i = 0; i < dropItem.itemDropTable.Length; i++)
+        {
+            float randNum = Random.Range(0f, 1f);
+            if (dropItem.itemDropTable[i].itemDropRate > randNum)
+            {
+                Debug.Log($"아이템이 나오지 않음 : {randNum}");
+                return;
+            }
+            var item = GameManager.instance.poolManager.Get(PoolType.DropItem);
+            item.transform.position = transform.position;
+            item.transform.rotation = Quaternion.identity;
+            Item instantItem = item.GetComponent<Item>();
+            instantItem.Initialize(dropItem.itemDropTable[i].itemData);
+            Debug.Log($"아이템이 드랍됨 : {randNum}");
+        }
     }
 
     private IEnumerator CalculateDirectionRoutine()
