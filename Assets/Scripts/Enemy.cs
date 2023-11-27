@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
     public ExpItemData expItemData;
 
     public bool isLive { get; private set; } = true;
+    private Vector2 dirVec;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
@@ -24,6 +26,11 @@ public class Enemy : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
+    }
+
+    void Start()
+    {
+        StartCoroutine(CalculateDirectionRoutine());
     }
 
     public void Initalize(EnemyData data)
@@ -42,6 +49,7 @@ public class Enemy : MonoBehaviour
         isLive = true;
         health = maxHealth;
         coll.enabled = true;
+        StartCoroutine(CalculateDirectionRoutine());
     }
 
     void Update()
@@ -60,9 +68,6 @@ public class Enemy : MonoBehaviour
 
     private void ChaseTarget()
     {
-        if (!isLive || !target) return;
-
-        Vector2 dirVec = target.position - transform.position;
         rigid.MovePosition(rigid.position + dirVec.normalized * speed * Time.fixedDeltaTime);
     }
 
@@ -111,8 +116,12 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    private IEnumerator CalculateDirectionRoutine()
     {
-
+        while (isLive && target)
+        {
+            dirVec = target.position - transform.position;
+            yield return Utils.delay0_25;
+        }
     }
 }

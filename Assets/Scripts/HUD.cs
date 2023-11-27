@@ -59,11 +59,9 @@ public class HUD : MonoBehaviour
 
     private IEnumerator UpdateTimerRoutine()
     {
-        WaitForSeconds interval = new WaitForSeconds(0.1f);
-
         while (true)
         {
-            yield return interval;
+            yield return Utils.delay0_1;
             UpdateTimer();
         }
     }

@@ -28,7 +28,7 @@ public class DamageText : MonoBehaviour
 
     private void StartEffect()
     {
-        Vector2 dirVec = GetRandomVector(-0.5f, 0.5f, 0f, 1f);
+        Vector2 dirVec = Utils.GetRandomVector(-0.5f, 0.5f, 0f, 1f);
 
         Sequence moveSeq = DOTween.Sequence();
         moveSeq.Append(rect.DOMove(dirVec, 0.75f)
@@ -54,15 +54,5 @@ public class DamageText : MonoBehaviour
         text.color = Color.white;
         rect.localScale = Vector3.one;
         gameObject.SetActive(false);
-    }
-
-    private Vector2 GetRandomVector(float min, float max)
-    {
-        return new Vector2(Random.Range(min, max), Random.Range(min, max));
-    }
-
-    private Vector2 GetRandomVector(float minX, float maxX, float minY, float maxY)
-    {
-        return new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 }
