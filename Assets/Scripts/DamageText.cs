@@ -20,9 +20,10 @@ public class DamageText : MonoBehaviour
         StartEffect();
     }
 
-    public void SetText(int value)
+    public void SetText(float value)
     {
-        text.text = value.ToString();
+        int damage = Mathf.FloorToInt(value);
+        text.text = damage.ToString();
     }
 
     private void StartEffect()

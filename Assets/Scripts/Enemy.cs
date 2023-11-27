@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
 {
     public Transform target;
     public float speed;
-    public short health;
-    public short maxHealth;
+    public float health;
+    public float maxHealth;
     public ExpItemData expItemData;
 
     public bool isLive { get; private set; } = true;
@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void DisplayDamageText(int value)
+    private void DisplayDamageText(float value)
     {
         GameObject tmp = GameManager.instance.poolManager.Get(PoolType.DamageText);
         // 너무 많은 GetComponent 호출, 리팩토링 필요

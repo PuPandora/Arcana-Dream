@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public enum BulletType { Melee, Range }
-    public short damage;
+    public float damage;
     public sbyte penetrate;
     public float speed;
 
@@ -16,9 +16,12 @@ public class Bullet : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    public void Initialize()
+    public void Initialize(float damage, sbyte penetrate, float speed, Vector3 dirVec)
     {
-
+        this.damage = damage;
+        this.penetrate = penetrate;
+        this.speed = speed;
+        rigid.velocity = dirVec * speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

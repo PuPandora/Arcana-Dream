@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95ad52eca66e2849b7d8cfae4ce546f, type: 3}
+  m_Name: RotateCard
+  m_EditorClassIdentifier: 
+  type: 0
+  weaponName: "\uB2E4\uC774\uC544\uBAAC\uB4DC A"
+  desc: 
+  icon: {fileID: -972738411, guid: 4d8229e8f406fa04a867ce56f18e0bde, type: 3}
+  count: 1
+  fireDelay: 0
+  damage: 5
+  speed: 150
+  penetrate: -1
+  bulletPrefab: {fileID: 1700107870325155535, guid: 729cc7adb66808e439c33ef0d8e10657, type: 3}

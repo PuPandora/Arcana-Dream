@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public BoxCollider2D viewArea;
 
     [Title("# Weapons")]
-    public GameObject[] weapons;
+    public Weapon[] weapons;
 
     [Title("# UI")]
     //[HideInInspector]
@@ -55,19 +55,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += CheckScene;
-    }
-
-    public void ActiveWeapon(int index)
-    {
-        weapons[index].SetActive(true);
-    }
-
-    public void DeactiveAllWeapons()
-    {
-        foreach (var weapon in weapons)
-        {
-            weapon.SetActive(false);
-        }
+        weapons = new Weapon[16];
     }
 
     void Update()

@@ -20,35 +20,66 @@ public class Weapon : MonoBehaviour
     public float speed;
     public sbyte penetrate;
 
+    // Range Weapon Property
+    public float fireDelay;
+
     Player player;
 
     void Awake()
     {
-        player = GetComponentInParent<Player>();
+        player = GameManager.instance.player;
     }
 
-    void Update()
+    public void Initialize(WeaponData data)
     {
-        Rotate();
-        Fire();
+        type = data.type;
 
-        // Test Code
-        if (Input.GetButtonDown("Jump"))
+        sbyte? result = GameManager.instance.poolManager.FindPrefabIndex(data.bulletPrefab);
+        if (result != null)
+        {
+            prefabId = (byte)result;
+        }
+
+        count = data.count;
+        fireDelay = data.fireDelay;
+
+        damage = data.damage;
+        speed = data.speed;
+        penetrate = data.penetrate;
+
+        if (type == WeaponType.Melee)
         {
             AddMeleeWeapon();
         }
     }
 
-    private void Rotate()
+    void Update()
+    {
+        Using();
+
+        // Test Code
+        if (Input.GetButtonDown("Jump") && type == WeaponType.Melee)
+        {
+            AddMeleeWeapon();
+        }
+    }
+
+    private void Using()
     {
         switch (type)
         {
             case WeaponType.Melee:
-                transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+                RotateWeapon();
                 break;
             case WeaponType.Range:
+                Fire();
                 break;
         }
+    }
+
+    private void RotateWeapon()
+    {
+        transform.Rotate(Vector3.forward * speed * Time.deltaTime);
     }
 
     private void AddMeleeWeapon()
@@ -86,10 +117,8 @@ public class Weapon : MonoBehaviour
 
     private void Fire()
     {
-        if (type != WeaponType.Range) return;
-
         timer += Time.deltaTime;
-        bool canFire = (player.scanner.nearestTarget != null) && (timer >= speed);
+        bool canFire = (player.scanner.nearestTarget != null) && (timer >= fireDelay);
 
         if (canFire)
         {
@@ -99,14 +128,12 @@ public class Weapon : MonoBehaviour
             Vector3 myPos = transform.position;
             Vector3 dirVec = (targetPos - myPos).normalized;
 
-            GameObject instanceBullet = GameManager.instance.poolManager.Get(PoolType.RangeBullet);
-            Bullet bulletScript = instanceBullet.GetComponent<Bullet>();
-            Rigidbody2D bulletRigid = bulletScript.rigid;
+            GameObject bullet = GameManager.instance.poolManager.Get(PoolType.RangeBullet);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
 
-            instanceBullet.transform.position = transform.position;
-            instanceBullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, dirVec);
-            bulletRigid.velocity = dirVec * bulletScript.speed;
-            bulletScript.penetrate = penetrate;
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, dirVec);
+            bulletScript.Initialize(damage, penetrate, speed, dirVec);
         }
     }
 }

@@ -35,11 +35,6 @@ public class Player : MonoBehaviour
         GameManager.instance.player = this;
         GameManager.instance.viewArea = viewArea;
         GameManager.instance.spawner = spawner;
-        GameManager.instance.weapons = new GameObject[weapons.Length];
-        for (int i = 0; i < weapons.Length; i++)
-        {
-            GameManager.instance.weapons[i] = weapons[i].gameObject;
-        }
     }
 
     void Update()
