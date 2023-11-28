@@ -66,10 +66,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (gameState == GameState.Stage)
+        if (gameState == GameState.Stage && spawner.isPlaying)
         {
-            // 스폰 토글 디버그 (임시 코드)
-            spawner.isPlaying = spawnToggle.isOn;
             timer += Time.deltaTime;
         }
     }
