@@ -13,6 +13,10 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         inventory = new ItemInfo[30];
+        for (byte i = 0; i < inventory.Length; i++)
+        {
+            inventory[i] = new ItemInfo();
+        }
     }
 
     public bool AddItem(Item item, byte amount = 1)
