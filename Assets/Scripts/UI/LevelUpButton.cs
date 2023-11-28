@@ -55,11 +55,9 @@ public class LevelUpButton : MonoBehaviour
 
         if (level <= 0)
         {
-            Debug.Log("아이템 레벨 0 이하");
             itemDescription.text = weaponData.desc;
             return;
         }
-        Debug.Log("아이템 레벨 1 이상");
         // 임시 코드
         // 전략패턴 필요 요망
         switch (weaponData.id)
