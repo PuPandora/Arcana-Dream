@@ -80,6 +80,11 @@ public class LevelUpButton : MonoBehaviour
 
     public void OnClick()
     {
+        if (weaponController != null)
+        {
+            level = weaponController.weapon.property.level;
+        }
+
         // 레벨 0
         if (level == 0)
         {
@@ -95,8 +100,6 @@ public class LevelUpButton : MonoBehaviour
                     InstantiateWeapon<HeartQueen>();
                     break;
             }
-
-            level = weaponController.weapon.property.level;
         }
         // 레벨 1~
         else
