@@ -22,13 +22,15 @@ public class GameManager : MonoBehaviour
     public BoxCollider2D viewArea;
     public GameObject levelUpUi;
 
+    [Title("# Player Info")]
+    public float health;
+    public float maxHealth = 100f;
+
     [Title("# Weapons")]
     public Weapon[] weapons;
 
     [Title("# UI")]
-    //[HideInInspector]
     public Toggle spawnToggle;
-    //[HideInInspector]
     public Button[] debugWeaponBtns = new Button[3];
 
     [Title("# Stage Info")]
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     public Action OnKillCountChanged;
     public Action OnExpChanged;
     public Action OnLevelChanged;
+    public Action OnHealthChanged;
 
     void Awake()
     {
@@ -57,6 +60,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += CheckScene;
         weapons = new Weapon[16];
+
+        health = maxHealth;
     }
 
     void Update()
@@ -98,6 +103,30 @@ public class GameManager : MonoBehaviour
         OnLevelChanged?.Invoke();
 
         Stop();
+    }
+
+    public void GetDamaged(float value)
+    {
+        health -= value;
+
+        if (health <= 0)
+        {
+            health = 0;
+        }
+
+        OnHealthChanged?.Invoke();
+    }
+
+    public void Heal(float value)
+    {
+        health += value;
+
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        OnHealthChanged?.Invoke();
     }
 
     public void Stop()

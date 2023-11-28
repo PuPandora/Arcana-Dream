@@ -53,4 +53,13 @@ public class Player : MonoBehaviour
         moveInput = value.Get<Vector2>();
         anim.SetFloat("Speed", moveInput.magnitude);
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // 임시 대미지 피격 코드
+            GameManager.instance.GetDamaged(5 * Time.deltaTime);
+        }
+    }
 }

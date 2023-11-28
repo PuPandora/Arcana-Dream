@@ -762,6 +762,8 @@ MonoBehaviour:
   spawner: {fileID: 0}
   viewArea: {fileID: 0}
   levelUpUi: {fileID: 0}
+  health: 100
+  maxHealth: 100
   weapons:
   - {fileID: 1924106111}
   - {fileID: 126009139}
