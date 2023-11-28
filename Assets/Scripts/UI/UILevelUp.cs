@@ -21,7 +21,7 @@ public class UILevelUp : MonoBehaviour
 
     void Start()
     {
-        GameManager.instance.OnLevelChanged += ShowUI;
+        StageManager.instance.OnLevelChanged += ShowUI;
         InitializeButtons();
     }
 

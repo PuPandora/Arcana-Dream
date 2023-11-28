@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    private GameManager gameManager;
+    private StageManager stageManager;
 
     [SerializeField] private Slider expSlider;
     [SerializeField] private Slider healthSlider;
@@ -17,8 +17,6 @@ public class HUD : MonoBehaviour
 
     void Awake()
     {
-        gameManager = GameManager.instance;
-
         AssignUIObjects();
     }
 
@@ -59,12 +57,13 @@ public class HUD : MonoBehaviour
 
     void Start()
     {
+        stageManager = StageManager.instance;
         UpdateHUD();
 
-        gameManager.OnExpChanged += UpdateExpSlider;
-        gameManager.OnKillCountChanged += UpdateKillCountText;
-        gameManager.OnLevelChanged += UpdateLevelText;
-        gameManager.OnHealthChanged += UpdateHealthSlider;
+        stageManager.OnExpChanged += UpdateExpSlider;
+        stageManager.OnKillCountChanged += UpdateKillCountText;
+        stageManager.OnLevelChanged += UpdateLevelText;
+        stageManager.OnHealthChanged += UpdateHealthSlider;
         StartCoroutine(UpdateTimerRoutine());
     }
 
@@ -79,15 +78,15 @@ public class HUD : MonoBehaviour
 
     public void UpdateExpSlider()
     {
-        float curExp = gameManager.curExp;
-        float maxExp = gameManager.nextExp[Mathf.Min(gameManager.level, gameManager.nextExp.Length - 1)];
+        float curExp = stageManager.curExp;
+        float maxExp = stageManager.nextExp[Mathf.Min(stageManager.level, stageManager.nextExp.Length - 1)];
         expSlider.value = curExp / maxExp;
     }
 
     public void UpdateTimerText()
     {
-        int min = Mathf.FloorToInt(gameManager.timer / 60);
-        int sec = Mathf.FloorToInt(gameManager.timer % 60);
+        int min = Mathf.FloorToInt(stageManager.timer / 60);
+        int sec = Mathf.FloorToInt(stageManager.timer % 60);
         timerText.text = $"{min:D2}:{sec:D2}";
     }
 
@@ -102,25 +101,25 @@ public class HUD : MonoBehaviour
 
     public void UpdateKillCountText()
     {
-        killCountText.text = $"Kill:{gameManager.killCount}";
+        killCountText.text = $"Kill:{stageManager.killCount}";
     }
 
     public void UpdateLevelText()
     {
-        levelText.text = $"Lv.{gameManager.level}";
+        levelText.text = $"Lv.{stageManager.level}";
     }
 
     public void UpdateHealthSlider()
     {
-        float curHealth = GameManager.instance.health;
-        float curMaxHealth = GameManager.instance.maxHealth;
+        float curHealth = stageManager.health;
+        float curMaxHealth = stageManager.maxHealth;
         healthSlider.value = curHealth / curMaxHealth;
     }
 
     void OnDestroy()
     {
-        gameManager.OnExpChanged -= UpdateExpSlider;
-        gameManager.OnKillCountChanged -= UpdateKillCountText;
-        gameManager.OnLevelChanged -= UpdateLevelText;
+        stageManager.OnExpChanged -= UpdateExpSlider;
+        stageManager.OnKillCountChanged -= UpdateKillCountText;
+        stageManager.OnLevelChanged -= UpdateLevelText;
     }
 }

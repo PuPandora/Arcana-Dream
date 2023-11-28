@@ -30,12 +30,12 @@ public class Spawner : MonoBehaviour
         {
             spawnTimer += Time.deltaTime;
             // 임시 스테이지 레벨 코드
-            stageLevel = (byte)(GameManager.instance.timer / 20f);
+            stageLevel = (byte)(StageManager.instance.timer / 20f);
             if (stageLevel > enemyData.Length - 1)
             {
                 stageLevel = (byte)(enemyData.Length - 1);
-                isPlaying = false;
-                return;
+                //isPlaying = false;
+                //return;
             }
             Spawn();
         }

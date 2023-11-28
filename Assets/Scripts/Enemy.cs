@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
     {
         isLive = false;
 
-        GameManager.instance.AddKillCount();
+        StageManager.instance.AddKillCount();
 
         DropExpItem();
         DropItem();

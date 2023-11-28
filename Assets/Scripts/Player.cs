@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // 임시 대미지 피격 코드
-            GameManager.instance.GetDamaged(5 * Time.deltaTime);
+            StageManager.instance.GetDamaged(5 * Time.deltaTime);
         }
     }
 }

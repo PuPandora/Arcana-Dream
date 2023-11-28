@@ -30,7 +30,7 @@ public class ItemCollector : MonoBehaviour
         if (collision.CompareTag("Exp"))
         {
             var item = collision.GetComponent<ExpItem>();
-            GameManager.instance.GetExp(item.expVaule);
+            StageManager.instance.GetExp(item.expVaule);
             collision.gameObject.SetActive(false);
         }
         else if (collision.CompareTag("Item"))

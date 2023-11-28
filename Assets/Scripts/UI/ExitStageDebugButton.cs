@@ -9,6 +9,10 @@ public class ExitStageDebugButton : MonoBehaviour
     void Awake()
     {
         exitButton = GetComponent<UnityEngine.UI.Button>();
+    }
+
+    void Start()
+    {
         exitButton.onClick.AddListener(GameManager.instance.ExitStage);
     }
 }
