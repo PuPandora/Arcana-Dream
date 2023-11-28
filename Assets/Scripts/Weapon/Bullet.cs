@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public enum BulletType { Melee, Range }
+    public BulletType type;
     public float damage;
     public sbyte penetrate;
     public float speed;
@@ -52,6 +53,8 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("ViewArea"))
         {
+            if (penetrate <= -1) return;
+
             ResetToDefault();
             gameObject.SetActive(false);
         }

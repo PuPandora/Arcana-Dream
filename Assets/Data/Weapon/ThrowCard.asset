@@ -24,34 +24,34 @@ MonoBehaviour:
   baseSpeed: 10
   basepenetrate: 0
   bulletPrefab: {fileID: 5375941487052705674, guid: a11810f1b99df5348ad8947dd8ae8193, type: 3}
-  levelState:
-  - damage: 1.1
-    speed: 1.1
+  levelUpStates:
+  - damage: 0.1
+    speed: 0.1
     count: 0
-    fireDelay: 1.05
+    fireDelay: 0
     penetrate: 0
-  - damage: 1.1
-    speed: 0
+  - damage: 0
+    speed: 0.1
     count: 0
-    fireDelay: 1.05
+    fireDelay: 0.1
     penetrate: 0
-  - damage: 1.1
-    speed: 1.1
+  - damage: 0.1
+    speed: 0.1
     count: 0
-    fireDelay: 1.1
+    fireDelay: 0
     penetrate: 0
-  - damage: 1.1
-    speed: 1.1
-    count: 0
-    fireDelay: 1.1
+  - damage: 0.15
+    speed: 0.1
+    count: 1
+    fireDelay: 0
     penetrate: 0
-  - damage: 1.15
-    speed: 0
+  - damage: 0
+    speed: 0.1
     count: 0
-    fireDelay: 1.1
+    fireDelay: 0.15
     penetrate: 0
-  - damage: 1.2
-    speed: 1.1
+  - damage: 0.15
+    speed: 0.1
     count: 0
-    fireDelay: 1.15
+    fireDelay: 0.15
     penetrate: 0

@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public float maxHealth = 100f;
 
     [Title("# Weapons")]
-    public Weapon[] weapons;
+    public PlayerWeaponController[] weapons;
 
     [Title("# UI")]
     public Toggle spawnToggle;
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += CheckScene;
-        weapons = new Weapon[16];
+        weapons = new PlayerWeaponController[16];
 
         health = maxHealth;
     }

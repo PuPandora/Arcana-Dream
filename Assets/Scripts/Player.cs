@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public float speed;
     [HideInInspector]
     public Scanner scanner;
-    public List<Weapon> weapons;
+    public List<PlayerWeapon> weapons;
 
     public Vector2 moveInput { get; private set; }
 

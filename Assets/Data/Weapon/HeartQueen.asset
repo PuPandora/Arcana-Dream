@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   weaponName: "\uD558\uD2B8 \uD038"
-  desc: "\uBAA8\uB4E0 \uC544\uC774\uD15C\uC758 \uACF5\uACA9\uB825\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  desc: "\uC804\uCCB4 \uACF5\uACA9\uB825\uC744 \uC99D\uD3ED\uC2DC\uD0B5\uB2C8\uB2E4."
   icon: {fileID: -1315046849, guid: 4d8229e8f406fa04a867ce56f18e0bde, type: 3}
   id: 2
   baseCount: 0
@@ -23,33 +23,33 @@ MonoBehaviour:
   baseSpeed: 0
   basepenetrate: 0
   bulletPrefab: {fileID: 0}
-  levelState:
-  - damage: 1.1
+  levelUpStates:
+  - damage: 0.05
     speed: 0
     count: 0
     fireDelay: 0
     penetrate: 0
-  - damage: 1.1
+  - damage: 0.05
     speed: 0
     count: 0
     fireDelay: 0
     penetrate: 0
-  - damage: 1.1
+  - damage: 0.05
     speed: 0
     count: 0
     fireDelay: 0
     penetrate: 0
-  - damage: 1.15
+  - damage: 0.05
     speed: 0
     count: 0
     fireDelay: 0
     penetrate: 0
-  - damage: 1.15
+  - damage: 0.1
     speed: 0
     count: 0
     fireDelay: 0
     penetrate: 0
-  - damage: 1.2
+  - damage: 0.1
     speed: 0
     count: 0
     fireDelay: 0

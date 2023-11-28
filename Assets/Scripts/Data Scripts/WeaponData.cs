@@ -7,7 +7,7 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     [EnumToggleButtons]
-    public Weapon.WeaponType type;
+    public WeaponProperty.WeaponType type;
 
     [Title("Weapon Property")]
     // Weapon Object Property
@@ -27,11 +27,11 @@ public class WeaponData : ScriptableObject
     public GameObject bulletPrefab;
 
     [Title("Level")]
-    public levelState[] levelState;
+    public LevelUpState[] levelUpStates = new LevelUpState[6];
 }
 
 [System.Serializable]
-public struct levelState
+public struct LevelUpState
 {
     public float damage;
     public float speed;
