@@ -129,13 +129,12 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < dropItem.itemDropTable.Length; i++)
         {
             float randNum = Random.Range(0f, 1f);
-            if (dropItem.itemDropTable[i].itemDropRate < randNum)
-            {
-                return;
-            }
+            if (dropItem.itemDropTable[i].itemDropRate < randNum) continue;
+
             var item = GameManager.instance.poolManager.Get(PoolType.DropItem);
             item.transform.position = transform.position;
             item.transform.rotation = Quaternion.identity;
+
             Item instantItem = item.GetComponent<Item>();
             instantItem.Initialize(dropItem.itemDropTable[i].itemData);
         }
@@ -147,6 +146,8 @@ public class Enemy : MonoBehaviour
         {
             dirVec = target.position - transform.position;
             yield return Utils.delay0_25;
+        }
+    }
         }
     }
 }
