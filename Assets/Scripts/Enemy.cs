@@ -129,9 +129,8 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < dropItem.itemDropTable.Length; i++)
         {
             float randNum = Random.Range(0f, 1f);
-            if (dropItem.itemDropTable[i].itemDropRate > randNum)
+            if (dropItem.itemDropTable[i].itemDropRate < randNum)
             {
-                Debug.Log($"아이템이 나오지 않음 : {randNum}");
                 return;
             }
             var item = GameManager.instance.poolManager.Get(PoolType.DropItem);
@@ -139,7 +138,6 @@ public class Enemy : MonoBehaviour
             item.transform.rotation = Quaternion.identity;
             Item instantItem = item.GetComponent<Item>();
             instantItem.Initialize(dropItem.itemDropTable[i].itemData);
-            Debug.Log($"아이템이 드랍됨 : {randNum}");
         }
     }
 

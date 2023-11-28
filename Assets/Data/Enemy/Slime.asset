@@ -20,6 +20,6 @@ MonoBehaviour:
   expItemData: {fileID: 11400000, guid: d33d5b6b4351f4b49b9821b2084eb3cd, type: 2}
   itemDropTable:
   - itemData: {fileID: 11400000, guid: e14180e0c6ab3c849a5bab45e5dbad8b, type: 2}
-    itemDropRate: 0.1
+    itemDropRate: 0.05
   - itemData: {fileID: 11400000, guid: 83b7876a5727d3045b5783d1087db4e7, type: 2}
-    itemDropRate: 0.1
+    itemDropRate: 0.05
