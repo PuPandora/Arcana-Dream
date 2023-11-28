@@ -148,6 +148,14 @@ public class Enemy : MonoBehaviour
             yield return Utils.delay0_25;
         }
     }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // 임시 대미지 피격 코드
+            Debug.Log(collision.gameObject.name);
+            StageManager.instance.GetDamaged(5f * Time.deltaTime);
         }
     }
 }
