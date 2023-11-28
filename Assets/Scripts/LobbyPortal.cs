@@ -37,7 +37,10 @@ public class LobbyPortal : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerInPortal = false;
-            noticeUiRect.localPosition = Vector3.up * 1000;
+            if (noticeUiRect != null)
+            {
+                noticeUiRect.localPosition = Vector3.up * 1000;
+            }
         }
     }
 }
