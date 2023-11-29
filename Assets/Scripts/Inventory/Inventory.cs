@@ -12,11 +12,7 @@ public class Inventory : MonoBehaviour
 
     void Awake()
     {
-        inventory = new ItemInfo[30];
-        for (byte i = 0; i < inventory.Length; i++)
-        {
-            inventory[i] = new ItemInfo();
-        }
+        ClearInventory();
     }
 
     public bool AddItem(Item item, byte amount = 1)
@@ -84,5 +80,14 @@ public class Inventory : MonoBehaviour
         }
 
         return -1;
+    }
+
+    public void ClearInventory()
+    {
+        inventory = new ItemInfo[30];
+        for (byte i = 0; i < inventory.Length; i++)
+        {
+            inventory[i] = new ItemInfo();
+        }
     }
 }

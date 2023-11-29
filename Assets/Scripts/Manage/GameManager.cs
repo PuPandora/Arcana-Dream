@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [EnumToggleButtons]
     public GameState gameState;
+    public bool isAllowDevMenu;
 
     [Title("# Managers")]
     public PoolManager poolManager;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     public BoxCollider2D viewArea;
     public GameObject levelUpUi;
     public Inventory inventory;
+    public DeveloperMenu devMenu;
+    public GameObject devMenuGroup;
 
     [Title("# Weapons")]
     public PlayerWeaponController[] weapons;
@@ -47,14 +50,22 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += CheckScene;
         weapons = new PlayerWeaponController[16];
-        dataManager.LoadGame();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isAllowDevMenu)
         {
-            SceneManager.LoadScene("Lobby");
+            devMenuGroup.SetActive(!devMenuGroup.activeSelf);
+
+            if (devMenuGroup.activeSelf)
+            {
+                devMenu.ShowUI();
+            }
+            else
+            {
+                devMenu.HideUI();
+            }
         }
     }
 
@@ -99,5 +110,21 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("알 수 없는 씬 진입");
         }
+    }
+
+    public void SaveGame()
+    {
+        dataManager.SaveGame();
+    }
+
+    public void LoadGame()
+    {
+        dataManager.LoadGame();
+    }
+
+    public void ClearInventory()
+    {
+        inventory.ClearInventory();
+        dataManager.SaveGame();
     }
 }
