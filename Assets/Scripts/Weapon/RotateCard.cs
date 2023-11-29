@@ -75,7 +75,7 @@ public class RotateCard : PlayerWeapon
         // 속성 초기화
         foreach (var bullet in bullets)
         {
-            bullet.Initialize(property.damage, property.penetrate, property.speed);
+            bullet.Initialize(this, property.damage, property.penetrate, property.speed);
         }
     }
 

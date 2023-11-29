@@ -85,6 +85,7 @@ public class Enemy : MonoBehaviour
     {
         DisplayDamageText(bullet.damage);
         health -= bullet.damage;
+        bullet.Attack();
 
         if (health <= 0)
         {
@@ -154,7 +155,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // 임시 대미지 피격 코드
-            Debug.Log(collision.gameObject.name);
             StageManager.instance.GetDamaged(5f * Time.deltaTime);
         }
     }

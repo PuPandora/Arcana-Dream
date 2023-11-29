@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public float damage;
     public sbyte penetrate;
     public float speed;
+    private PlayerWeapon weapon;
 
     Rigidbody2D rigid;
 
@@ -17,19 +18,26 @@ public class Bullet : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    public void Initialize(float damage, sbyte penetrate, float speed, Vector3 dirVec)
+    public void Initialize(PlayerWeapon weapon, float damage, sbyte penetrate, float speed, Vector3 dirVec)
     {
+        this.weapon = weapon;
         this.damage = damage;
         this.penetrate = penetrate;
         this.speed = speed;
         rigid.velocity = dirVec * speed;
     }
 
-    public void Initialize(float damage, sbyte penetrate, float speed)
+    public void Initialize(PlayerWeapon weapon, float damage, sbyte penetrate, float speed)
     {
+        this.weapon = weapon;
         this.damage = damage;
         this.penetrate = penetrate;
         this.speed = speed;
+    }
+
+    public void Attack()
+    {
+        weapon.property.totalDamage += damage;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

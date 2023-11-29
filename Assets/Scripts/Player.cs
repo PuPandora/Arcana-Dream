@@ -32,7 +32,11 @@ public class Player : MonoBehaviour
     {
         GameManager.instance.player = this;
         GameManager.instance.viewArea = viewArea;
-        GameManager.instance.spawner = spawner;
+        if (StageManager.instance != null)
+        {
+            StageManager.instance.player = this;
+            StageManager.instance.spawner = spawner;
+        }
     }
 
     void Update()

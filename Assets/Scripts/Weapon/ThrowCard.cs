@@ -47,7 +47,7 @@ public class ThrowCard : PlayerWeapon
 
             bullet.transform.position = transform.position;
             bullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, dirVec);
-            bulletScript.Initialize(property.damage, property.penetrate, property.speed, dirVec);
+            bulletScript.Initialize(this, property.damage, property.penetrate, property.speed, dirVec);
         }
     }
 }

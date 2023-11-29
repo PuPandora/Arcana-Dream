@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.gameState != GameState.Stage) return;
+        if (!StageManager.instance.isLive) return;
 
         if (isPlaying)
         {

@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public PoolManager poolManager;
     public StageManager stageManager;
     public Player player;
-    public Spawner spawner;
     public BoxCollider2D viewArea;
     public GameObject levelUpUi;
 
@@ -44,6 +43,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += CheckScene;
         weapons = new PlayerWeaponController[16];
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Lobby");
+        }
     }
 
     public void Stop()

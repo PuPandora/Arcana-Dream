@@ -52,6 +52,9 @@ public class WeaponProperty
     public float moreSpeed { get; set; } = 1;
     [field: SerializeField]
     public float moreFireDelay { get; set; } = 1;
+
+    // Total Damage
+    public double totalDamage;
 }
 
 public abstract class PlayerWeapon : MonoBehaviour
