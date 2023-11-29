@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Inventory inventory;
     public DeveloperMenu devMenu;
     public GameObject devMenuGroup;
+    public GameObject inventoryUiGroup;
 
     [Title("# Weapons")]
     public PlayerWeaponController[] weapons;
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     [Title("# Data")]
     [field: SerializeField]
     public ItemData[] itemDataBase { get; private set; }
+
+    [Title("# Key")]
+    [SerializeField] KeyCode debugMenuKey = KeyCode.Escape;
+    [SerializeField] KeyCode inventoryKey = KeyCode.I;
 
     void Awake()
     {
@@ -58,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && isAllowDevMenu)
+        if (Input.GetKeyDown(debugMenuKey) && isAllowDevMenu)
         {
             devMenuGroup.SetActive(!devMenuGroup.activeSelf);
 
@@ -70,6 +75,11 @@ public class GameManager : MonoBehaviour
             {
                 devMenu.HideUI();
             }
+        }
+
+        if (Input.GetKeyDown(inventoryKey))
+        {
+            inventoryUiGroup.SetActive(!inventoryUiGroup.activeSelf);
         }
     }
 
