@@ -1,14 +1,37 @@
-using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using Sirenix.OdinInspector;
 using UnityEngine;
+
+[Serializable]
+public class InventorySlot
+{
+    public ItemData itemData;
+    public short id;
+    public byte stack = 0;
+    public bool isEmpty = true;
+
+    public void AddStack(byte amount)
+    {
+        // MaxStack 체크
+
+        stack += amount;
+    }
+
+    public void RemoveStack(byte amount)
+    {
+        // MaxStack 체크
+
+        stack -= amount;
+    }
+}
 
 public class Inventory : MonoBehaviour
 {
     [Title("Inventory")]
     [TableList]
-    public ItemInfo[] inventory = new ItemInfo[30];
+    public InventorySlot[] inventory = new InventorySlot[30];
 
     void Awake()
     {
@@ -29,15 +52,19 @@ public class Inventory : MonoBehaviour
         index = CheckEmptySlot();
         if (index == -1) return false;
 
-        inventory[index] = item.Clone();
+        inventory[index].itemData = item.selfData;
+        inventory[index].id = item.selfData.id;
         inventory[index].isEmpty = false;
 
         return true;
     }
 
-    public void RemoveItem(ItemInfo item)
+    public void RemoveItem(byte index, byte count = 1)
     {
-
+        if (inventory[index].stack >= count)
+        {
+            inventory[index].stack -= count;
+        }
     }
 
     /// <summary>
@@ -50,7 +77,6 @@ public class Inventory : MonoBehaviour
         {
             if (inventory[i].isEmpty)
             {
-                Debug.Log($"인벤토리 빈 슬롯 : {i}");
                 return i;
             }
         }
@@ -71,10 +97,10 @@ public class Inventory : MonoBehaviour
             if (inventory[i].isEmpty) continue;
 
             // id 체크
-            if (inventory[i].id != item.id) continue;
+            if (inventory[i].itemData.id != item.id) continue;
 
             // MaxStack 체크
-            if (inventory[i].stack >= inventory[i].maxStack) continue;
+            if (inventory[i].stack >= inventory[i].itemData.maxStack) continue;
 
             return i;
         }
@@ -82,12 +108,23 @@ public class Inventory : MonoBehaviour
         return -1;
     }
 
+    [ContextMenu("Refresh Data")]
+    public void RefreshData()
+    {
+        foreach (var item in inventory)
+        {
+            if (item.isEmpty) continue;
+
+            item.itemData = Utils.GetItemDataWithId(item.id);
+        }
+    }
+
     public void ClearInventory()
     {
-        inventory = new ItemInfo[30];
+        inventory = new InventorySlot[30];
         for (byte i = 0; i < inventory.Length; i++)
         {
-            inventory[i] = new ItemInfo();
+            inventory[i] = new InventorySlot();
         }
     }
 }

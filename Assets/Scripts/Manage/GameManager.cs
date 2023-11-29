@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     public Toggle spawnToggle;
     public Button[] debugWeaponBtns = new Button[3];
 
+    [Title("# Data")]
+    [field: SerializeField]
+    public ItemData[] itemDataBase { get; private set; }
+
     void Awake()
     {
         if (instance == null)

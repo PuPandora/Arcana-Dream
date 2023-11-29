@@ -1,363 +1,213 @@
 {
     "inventory": [
         {
-            "sprite": {
-                "instanceID": 31490
+            "itemData": {
+                "instanceID": 30796
             },
-            "name": "주사위",
-            "description": "적색 계열의 6면 주사위이다. ",
-            "value": 30,
-            "stack": 2,
-            "maxStack": 5,
-            "id": 2,
+            "stack": 5,
             "isEmpty": false
         },
         {
-            "sprite": {
-                "instanceID": 31488
+            "itemData": {
+                "instanceID": 30860
             },
-            "name": "조커 카드",
-            "description": "검은색의 조커 카드. 가운데에 광대 문양과 카드 대각선 끝에는 'J'가 적혀있다.",
-            "value": 100,
-            "stack": 2,
-            "maxStack": 5,
-            "id": 0,
+            "stack": 3,
             "isEmpty": false
         },
         {
-            "sprite": {
-                "instanceID": 31492
+            "itemData": {
+                "instanceID": 30852
             },
-            "name": "백지 카드",
-            "description": "아무 것도 없이 테두리만 그려진 백지의 카드",
-            "value": 10,
-            "stack": 2,
-            "maxStack": 5,
-            "id": 1,
+            "stack": 3,
             "isEmpty": false
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         },
         {
-            "sprite": {
+            "itemData": {
                 "instanceID": 0
             },
-            "name": "",
-            "description": "",
-            "value": 0,
             "stack": 0,
-            "maxStack": 0,
-            "id": 0,
             "isEmpty": true
         }
     ]

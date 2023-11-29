@@ -17,5 +17,5 @@ MonoBehaviour:
   description: "\uC801\uC0C9 \uACC4\uC5F4\uC758 6\uBA74 \uC8FC\uC0AC\uC704\uC774\uB2E4. "
   value: 30
   stack: 0
-  maxStack: 5
-  id: 2
+  maxStack: 10
+  id: 9003

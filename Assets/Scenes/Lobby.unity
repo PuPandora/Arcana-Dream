@@ -919,6 +919,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  <itemDataBase>k__BackingField:
+  - {fileID: 11400000, guid: dbaa0c516f1d6f249896c863d5210247, type: 2}
+  - {fileID: 11400000, guid: 83b7876a5727d3045b5783d1087db4e7, type: 2}
+  - {fileID: 11400000, guid: e14180e0c6ab3c849a5bab45e5dbad8b, type: 2}
 --- !u!4 &190451556
 Transform:
   m_ObjectHideFlags: 0
@@ -5359,245 +5363,155 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory:
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
-  - sprite: {fileID: 0}
-    name: 
-    description: 
-    value: 0
+  - itemData: {fileID: 0}
+    id: 0
     stack: 0
     maxStack: 0
-    id: 0
     isEmpty: 0
 --- !u!4 &2046478596
 Transform:

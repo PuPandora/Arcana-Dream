@@ -19,5 +19,5 @@ MonoBehaviour:
     'J'\uAC00 \uC801\uD600\uC788\uB2E4."
   value: 100
   stack: 0
-  maxStack: 5
-  id: 0
+  maxStack: 10
+  id: 9002
