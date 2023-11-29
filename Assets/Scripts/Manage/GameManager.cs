@@ -15,12 +15,16 @@ public class GameManager : MonoBehaviour
     [EnumToggleButtons]
     public GameState gameState;
 
-    [Title("# Game Objects")]
+    [Title("# Managers")]
     public PoolManager poolManager;
     public StageManager stageManager;
+    public DataManager dataManager;
+
+    [Title("# Game Objects")]
     public Player player;
     public BoxCollider2D viewArea;
     public GameObject levelUpUi;
+    public Inventory inventory;
 
     [Title("# Weapons")]
     public PlayerWeaponController[] weapons;
@@ -34,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
     }
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += CheckScene;
         weapons = new PlayerWeaponController[16];
+        dataManager.LoadGame();
     }
 
     void Update()

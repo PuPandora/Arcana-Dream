@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [TableList]
     public ItemInfo[] inventory = new ItemInfo[30];
 
-    void Start()
+    void Awake()
     {
         inventory = new ItemInfo[30];
         for (byte i = 0; i < inventory.Length; i++)
@@ -33,8 +33,7 @@ public class Inventory : MonoBehaviour
         index = CheckEmptySlot();
         if (index == -1) return false;
 
-        ItemInfo instantItemInfo = item.Clone();
-        inventory[index] = instantItemInfo;
+        inventory[index] = item.Clone();
         inventory[index].isEmpty = false;
 
         return true;
