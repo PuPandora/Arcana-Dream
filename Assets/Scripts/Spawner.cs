@@ -56,17 +56,22 @@ public class Spawner : MonoBehaviour
 
     private int CalculateSpawnRate(StageEnemyTable table)
     {
+        if (table.enemyData.Length != table.spawnRates.Length)
+        {
+            Debug.LogWarning($"스폰 테이블의 적 데이터 개수와 스폰 확률 개수가 같지 않습니다.");
+        }
+
         int result = 0;
         
         float totalRate = 0f;
-        foreach (var a in table.spawnRate)
+        foreach (var rate in table.spawnRates)
         {
-            totalRate += a;
+            totalRate += rate;
         }
         float randNum = Random.Range(0f, totalRate);
 
         // 오름차순 정렬 (선택 정렬)
-        float[] rateArr = table.spawnRate;
+        float[] rateArr = table.spawnRates;
         for (int i = 0; i < rateArr.Length; i++)
         {
             float least = rateArr[i];
@@ -94,7 +99,7 @@ public class Spawner : MonoBehaviour
                 return result;
             }
 
-            randNum -= table.spawnRate[i];
+            randNum -= table.spawnRates[i];
         }
 
         return result;

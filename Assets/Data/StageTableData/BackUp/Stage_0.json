@@ -1,6 +1,11 @@
 {
     "enemyTables": [
         {
+            "enemyData": [
+                {
+                    "instanceID": 30940
+                }
+            ],
             "enemyIds": [
                 0
             ],
@@ -11,6 +16,14 @@
             "nextTableTime": 30.0
         },
         {
+            "enemyData": [
+                {
+                    "instanceID": 30940
+                },
+                {
+                    "instanceID": 30894
+                }
+            ],
             "enemyIds": [
                 0,
                 1
@@ -23,6 +36,14 @@
             "nextTableTime": 60.0
         },
         {
+            "enemyData": [
+                {
+                    "instanceID": 30940
+                },
+                {
+                    "instanceID": 30894
+                }
+            ],
             "enemyIds": [
                 0,
                 1
@@ -35,6 +56,17 @@
             "nextTableTime": 90.0
         },
         {
+            "enemyData": [
+                {
+                    "instanceID": 30940
+                },
+                {
+                    "instanceID": 30894
+                },
+                {
+                    "instanceID": 30970
+                }
+            ],
             "enemyIds": [
                 0,
                 1,
@@ -49,6 +81,17 @@
             "nextTableTime": 120.0
         },
         {
+            "enemyData": [
+                {
+                    "instanceID": 30940
+                },
+                {
+                    "instanceID": 30894
+                },
+                {
+                    "instanceID": 30970
+                }
+            ],
             "enemyIds": [
                 0,
                 1,
