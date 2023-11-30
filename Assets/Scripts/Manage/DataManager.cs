@@ -4,11 +4,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class InventoryData
+{
+    // Inventory
+    public byte count = Utils.inventorySlotCount;
+    public short[] itemIds = new short[Utils.inventorySlotCount];
+    public byte[] stacks = new byte[Utils.inventorySlotCount];
+    public bool[] isEmpty = new bool[Utils.inventorySlotCount];
+
+    // 생성자 : 배열 초기화
+    public InventoryData()
+    {
+        for (int i = 0; i < itemIds.Length; i++)
+        {
+            itemIds[i] = 0;
+        }
+
+        for (int i = 0; i < stacks.Length; i++)
+        {
+            stacks[i] = 0;
+        }
+
+        for (int i = 0; i < isEmpty.Length; i++)
+        {
+            isEmpty[i] = true;
+        }
+    }
+
+    public void PrintData()
+    {
+        for (int i = 0; i < Utils.inventorySlotCount; i++)
+        {
+            Debug.Log($"Item ID : {itemIds[i]}\nStack : {stacks[i]}");
+        }
+    }
+}
+
+[System.Serializable]
 public class SaveData
 {
     public int testInt;
     public float testFloat;
-    public Inventory inventory;
+    public InventoryData inventoryData;
 }
 
 public class DataManager : MonoBehaviour
@@ -22,7 +59,7 @@ public class DataManager : MonoBehaviour
     string inventoryPath;
 
     GameManager gameManager;
-    SaveData saveData;
+    [SerializeField] private SaveData saveData;
 
     void Awake()
     {
@@ -50,6 +87,7 @@ public class DataManager : MonoBehaviour
     [ContextMenu("Save Game")]
     public void SaveGame()
     {
+        Debug.Log("데이터 저장");
         Debug.Log("Save Game");
         saveData = new SaveData();
 
@@ -64,6 +102,7 @@ public class DataManager : MonoBehaviour
     [ContextMenu("Load Game")]
     public void LoadGame()
     {
+        Debug.Log("데이터 불러오기");
         Debug.Log("Load Game");
 
         if (!File.Exists(mainPath))
@@ -75,15 +114,15 @@ public class DataManager : MonoBehaviour
         string loadJson = File.ReadAllText(mainPath);
         saveData = JsonUtility.FromJson<SaveData>(loadJson);
 
-        gameManager.inventory = saveData.inventory;
         LoadInventoryData();
         PrintTestVar();
     }
 
     private void SaveInventoryData()
     {
-        saveData.inventory = gameManager.inventory;
-        string json = JsonUtility.ToJson(saveData.inventory, true);
+        saveData.inventoryData = gameManager.inventory.GetInventoryData();
+        string json = JsonUtility.ToJson(saveData.inventoryData, true);
+
         File.WriteAllText(inventoryPath, json);
     }
 
@@ -96,7 +135,9 @@ public class DataManager : MonoBehaviour
         }
 
         string inventoryJson = File.ReadAllText(inventoryPath);
-        JsonUtility.FromJsonOverwrite(inventoryJson, gameManager.inventory);
+        JsonUtility.FromJsonOverwrite(inventoryJson, saveData.inventoryData);
+
+        gameManager.inventory.ApplyData(saveData.inventoryData);
     }
 
     private void PrintTestVar()

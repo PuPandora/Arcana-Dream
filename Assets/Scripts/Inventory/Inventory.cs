@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
 {
     [Title("Inventory")]
     [TableList]
-    public InventorySlot[] inventory = new InventorySlot[30];
+    public InventorySlot[] inventory = new InventorySlot[Utils.inventorySlotCount];
 
     void Awake()
     {
@@ -53,9 +53,10 @@ public class Inventory : MonoBehaviour
         index = CheckEmptySlot();
         if (index == -1) return false;
 
-        inventory[index].itemData = item.selfData;
-        inventory[index].id = item.selfData.id;
+        inventory[index].itemData = item.itemData;
+        inventory[index].id = item.itemData.id;
         inventory[index].isEmpty = false;
+        inventory[index].AddStack(amount);
 
         return true;
     }
@@ -109,6 +110,9 @@ public class Inventory : MonoBehaviour
         return -1;
     }
 
+    /// <summary>
+    /// 인벤토리의 ItemData를 새로고침합니다.
+    /// </summary>
     [ContextMenu("Refresh Data")]
     public void RefreshData()
     {
@@ -128,5 +132,43 @@ public class Inventory : MonoBehaviour
         {
             inventory[i] = new InventorySlot();
         }
+    }
+
+    /// <summary>
+    /// 현재 인벤토리 정보를 저장 데이터로 내보내는 메소드
+    /// </summary>
+    /// <returns></returns>
+    public InventoryData GetInventoryData()
+    {
+        var result = new InventoryData();
+
+        for (int i = 0; i < result.count; i++)
+        {
+            if (inventory[i].isEmpty) continue;
+
+            result.isEmpty[i] = false;
+            result.itemIds[i] = inventory[i].itemData.id;
+            result.stacks[i] = inventory[i].stack;
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// 저장된 인벤토리 데이터를 불러와 적용시키는 메소드
+    /// </summary>
+    /// <param name="data"></param>
+    public void ApplyData(InventoryData data)
+    {
+        for (int i = 0; i < data.count; i++)
+        {
+            if (data.isEmpty[i]) continue;
+
+            inventory[i].isEmpty = false;
+            inventory[i].id = data.itemIds[i];
+            inventory[i].stack = data.stacks[i];
+        }
+
+        RefreshData();
     }
 }

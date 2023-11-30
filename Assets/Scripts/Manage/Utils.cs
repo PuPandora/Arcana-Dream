@@ -8,6 +8,8 @@ public sealed class Utils : MonoBehaviour
     public static WaitForSeconds delay0_1 = new WaitForSeconds(0.1f);
     public static WaitForSeconds delay0_25 = new WaitForSeconds(0.25f);
 
+    public const byte inventorySlotCount = 30;
+
     public static Vector2 GetRandomVector(float min, float max)
     {
         return new Vector2(Random.Range(min, max), Random.Range(min, max));
@@ -41,7 +43,7 @@ public sealed class Utils : MonoBehaviour
             return i;
         }
 
-        Debug.LogWarning("아이템 데이터에서 인덱스 검색 실패");
+        Debug.LogWarning($"아이템 데이터에서 인덱스 검색 실패\nID : {id}");
         return -1;
     }
 }

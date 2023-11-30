@@ -97,16 +97,19 @@ public class GameManager : MonoBehaviour
 
     public void EnterStage(string sceneName)
     {
+        gameState = GameState.Stage;
         SceneManager.LoadScene(sceneName);
     }
 
     public void ExitStage()
     {
+        gameState = GameState.Lobby;
         SceneManager.LoadScene("Lobby");
     }
 
     public void EnterLobby()
     {
+        gameState = GameState.Lobby;
         SceneManager.LoadScene("Lobby");
     }
 

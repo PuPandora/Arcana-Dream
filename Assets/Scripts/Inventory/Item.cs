@@ -6,44 +6,31 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     SpriteRenderer spriter;
-    public ItemData selfData;
-
-    [Title("Info")]
-    public new string name;
-    public string description;
-    public int value;
-    [Title("Stack")]
+    public ItemData itemData;
     public byte stack;
-    public byte maxStack;
-    [Title("Advance Info")]
     public short id;
+
+    // 로비 아이템 테스트용
+    public bool isTestItem;
 
     void Awake()
     {
         spriter = GetComponent<SpriteRenderer>();
-    }
 
-    void Start()
-    {
-        if (selfData)
+        if (isTestItem)
         {
-            Initialize(selfData);
+            Initialize(itemData);
         }
     }
 
-    public void Initialize(ItemData data)
+    public void Initialize(ItemData data, byte amount = 1)
     {
+        itemData = data;
         spriter.sprite = data.sprite;
-
-        name = data.name;
-        description = data.description;
-        value = data.value;
-
-        //stack = data.stack;
-        // Test Temp Code
-        stack = 1;
-        maxStack = data.maxStack;
-
         id = data.id;
+
+        // 추후 2 이상 스택 드랍도 가능하도록 기능 추가 예정
+        stack = amount;
+
     }
 }

@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Player Awake");
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
