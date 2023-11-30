@@ -452,9 +452,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+  playerState: 0
   isAllowDevMenu: 1
   poolManager: {fileID: 0}
-  stageManager: {fileID: 0}
   dataManager: {fileID: 0}
   player: {fileID: 0}
   viewArea: {fileID: 0}
@@ -462,21 +462,22 @@ MonoBehaviour:
   inventory: {fileID: 0}
   devMenu: {fileID: 0}
   devMenuGroup: {fileID: 0}
-  inventoryUiGroup: {fileID: 0}
+  inventoryUI: {fileID: 0}
   weapons:
   - {fileID: 0}
   - {fileID: 0}
-  spawnToggle: {fileID: 0}
-  debugWeaponBtns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   <itemDataBase>k__BackingField:
-  - {fileID: 11400000, guid: dbaa0c516f1d6f249896c863d5210247, type: 2}
   - {fileID: 11400000, guid: 83b7876a5727d3045b5783d1087db4e7, type: 2}
+  - {fileID: 11400000, guid: dbaa0c516f1d6f249896c863d5210247, type: 2}
   - {fileID: 11400000, guid: e14180e0c6ab3c849a5bab45e5dbad8b, type: 2}
+  enemyDataBase:
+  - {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
+  - {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
+  - {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
+  m_gold: 0
   debugMenuKey: 27
   inventoryKey: 105
+  interactKey: 101
 --- !u!4 &164832694
 Transform:
   m_ObjectHideFlags: 0
@@ -1502,6 +1503,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5611ff291d5c36488f1212d207e0577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveData:
+    testInt: 0
+    testFloat: 0
+    inventoryData:
+      count: 30
+      itemIds: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      stacks: 000000000000000000000000000000000000000000000000000000000000
+      isEmpty: 010101010101010101010101010101010101010101010101010101010101
 --- !u!4 &1648585611
 Transform:
   m_ObjectHideFlags: 0

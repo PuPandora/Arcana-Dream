@@ -46,4 +46,15 @@ public sealed class Utils : MonoBehaviour
         Debug.LogWarning($"아이템 데이터에서 인덱스 검색 실패\nID : {id}");
         return -1;
     }
+
+    /// <summary>
+    /// Data의 id를 비교하여 오름차순으로 정렬합니다.
+    /// </summary>
+    /// <param name="data1"></param>
+    /// <param name="data2"></param>
+    /// <returns></returns>
+    public static int CompareDataId(GameObjectData data1, GameObjectData data2)
+    {
+        return data1.id.CompareTo(data2.id);
+    }
 }

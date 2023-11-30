@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemName", menuName = "Scriptable Object/Item Data")]
-public class ItemData : ScriptableObject
+public class ItemData : GameObjectData
 {
     [Title("Info")]
     [PreviewField(50, ObjectFieldAlignment.Center)]
@@ -15,6 +15,4 @@ public class ItemData : ScriptableObject
     [Title("Stack")]
     public byte stack;
     public byte maxStack = 99;
-    [Title("Advance Info")]
-    public short id;
 }

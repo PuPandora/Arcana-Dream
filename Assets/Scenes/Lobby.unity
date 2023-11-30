@@ -1469,8 +1469,9 @@ MonoBehaviour:
   - {fileID: 0}
   <itemDataBase>k__BackingField:
   - {fileID: 11400000, guid: dbaa0c516f1d6f249896c863d5210247, type: 2}
-  - {fileID: 11400000, guid: 83b7876a5727d3045b5783d1087db4e7, type: 2}
   - {fileID: 11400000, guid: e14180e0c6ab3c849a5bab45e5dbad8b, type: 2}
+  - {fileID: 11400000, guid: 83b7876a5727d3045b5783d1087db4e7, type: 2}
+  enemyDataBase: []
   m_gold: 0
   debugMenuKey: 27
   inventoryKey: 105

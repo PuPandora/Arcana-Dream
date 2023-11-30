@@ -5,12 +5,11 @@ using UnityEditor.Presets;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyName", menuName = "Scriptable Object/Enemy Data")]
-public class EnemyData : ScriptableObject
+public class EnemyData : GameObjectData
 {
     [Title("Basic Property")]
     public float speed;
     public short maxHealth;
-    public short id;
     public Preset collPreset;
     public RuntimeAnimatorController animController;
 

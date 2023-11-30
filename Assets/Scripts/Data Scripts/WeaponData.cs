@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponName", menuName = "Scriptable Object/Weapon Data")]
-public class WeaponData : ScriptableObject
+public class WeaponData : GameObjectData
 {
     [EnumToggleButtons]
     public WeaponProperty.WeaponType type;
@@ -14,7 +14,6 @@ public class WeaponData : ScriptableObject
     public string weaponName;
     [TextArea] public string desc;
     [PreviewField] public Sprite icon;
-    public byte id;
 
     public byte baseCount;
     public float baseFireDelay;

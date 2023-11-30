@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     [Title("# Data")]
     [field: SerializeField]
     public ItemData[] itemDataBase { get; private set; }
+    public EnemyData[] enemyDataBase;
     public int gold
     {
         get
@@ -76,6 +77,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += CheckScene;
         weapons = new PlayerWeaponController[16];
+
+        // Sort Item Data Base
+        Array.Sort(itemDataBase, Utils.CompareDataId);
+        Array.Sort(enemyDataBase, Utils.CompareDataId);
 
         // Test
         OnGoldChanged += PrintGoldAmount;
