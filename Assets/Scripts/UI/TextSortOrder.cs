@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TextSortOrder : MonoBehaviour
 {
-    public enum TextType { None, DamageText}
+    public enum TextType { None, DamageText, StaticText }
     [EnumToggleButtons]
     public TextType type;
 
@@ -22,12 +22,15 @@ public class TextSortOrder : MonoBehaviour
         {
             case TextType.None:
                 Debug.LogWarning($"텍스트 타입이 지정되지 않은 오브젝트 : {gameObject.name}", gameObject);
-                m_renderer.sortingLayerName = "Midground";
-                m_renderer.sortingOrder = 0;
+
                 break;
             case TextType.DamageText:
                 m_renderer.sortingLayerName = "Foreground";
                 m_renderer.sortingOrder = 3;
+                break;
+            case TextType.StaticText:
+                m_renderer.sortingLayerName = "Midground";
+                m_renderer.sortingOrder = 0;
                 break;
         }
     }

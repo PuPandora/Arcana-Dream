@@ -9,21 +9,31 @@ public class InventorySlot
 {
     public ItemData itemData;
     public short id;
-    public byte stack = 0;
+    public byte stack
+    {
+        get
+        {
+            return m_stack;
+        }
+        set
+        {
+            m_stack = value;
+
+            if (m_stack <= 0)
+            {
+                Clear();
+            }
+        }
+    }
+    [SerializeField] private byte m_stack;
     public bool isEmpty = true;
 
-    public void AddStack(byte amount)
+    private void Clear()
     {
-        // MaxStack 체크
-
-        stack += amount;
-    }
-
-    public void RemoveStack(byte amount)
-    {
-        // MaxStack 체크
-
-        stack -= amount;
+        itemData = null;
+        id = 0;
+        m_stack = 0;
+        isEmpty = true;
     }
 }
 
@@ -46,7 +56,7 @@ public class Inventory : MonoBehaviour
 
         if (index != -1)
         {
-            inventory[index].AddStack(amount);
+            inventory[index].stack += amount;
             return true;
         }
 
@@ -56,7 +66,7 @@ public class Inventory : MonoBehaviour
         inventory[index].itemData = item.itemData;
         inventory[index].id = item.itemData.id;
         inventory[index].isEmpty = false;
-        inventory[index].AddStack(amount);
+        inventory[index].stack += amount;
 
         return true;
     }
@@ -170,5 +180,21 @@ public class Inventory : MonoBehaviour
         }
 
         RefreshData();
+    }
+
+    public void SellItem(byte index)
+    {
+        if (inventory[index].isEmpty)
+        {
+            GameManager.instance.inventoryUI.UpdateInventory(index);
+            return;
+        }
+
+        GameManager.instance.gold += inventory[index].itemData.value;
+        Debug.Log($"{inventory[index].itemData.name} 아이템 판매.\n" +
+            $"얻은 골드 : {inventory[index].itemData.value}");
+        RemoveItem(index);
+
+        GameManager.instance.inventoryUI.UpdateInventory(index);
     }
 }

@@ -8,12 +8,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameState { Lobby, Stage, Pause }
+public enum PlayerState { None, Shop }
 
 public class GameManager : MonoBehaviour
 {
+    [Title("# State")]
     public static GameManager instance { get; private set; }
     [EnumToggleButtons]
     public GameState gameState;
+    [ReadOnly]
+    public PlayerState playerState;
     public bool isAllowDevMenu;
 
     [Title("# Managers")]
@@ -35,10 +39,28 @@ public class GameManager : MonoBehaviour
     [Title("# Data")]
     [field: SerializeField]
     public ItemData[] itemDataBase { get; private set; }
+    public int gold
+    {
+        get
+        {
+            return m_gold;
+        }
+        set
+        {
+            m_gold = value;
+            OnGoldChanged?.Invoke();
+        }
+    }
+    [field: SerializeField]
+    private int m_gold = 0;
 
     [Title("# Key")]
     [SerializeField] KeyCode debugMenuKey = KeyCode.Escape;
     [SerializeField] KeyCode inventoryKey = KeyCode.I;
+    public KeyCode interactKey = KeyCode.E;
+
+    // Event
+    public event Action OnGoldChanged;
 
     void Awake()
     {
@@ -54,6 +76,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += CheckScene;
         weapons = new PlayerWeaponController[16];
+
+        // Test
+        OnGoldChanged += PrintGoldAmount;
+    }
+
+    private void PrintGoldAmount()
+    {
+        Debug.Log(gold);
     }
 
     void Update()

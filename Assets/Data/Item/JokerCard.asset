@@ -17,7 +17,7 @@ MonoBehaviour:
   description: "\uAC80\uC740\uC0C9\uC758 \uC870\uCEE4 \uCE74\uB4DC. \uAC00\uC6B4\uB370\uC5D0
     \uAD11\uB300 \uBB38\uC591\uACFC \uCE74\uB4DC \uB300\uAC01\uC120 \uB05D\uC5D0\uB294
     'J'\uAC00 \uC801\uD600\uC788\uB2E4."
-  value: 100
+  value: 1000
   stack: 0
   maxStack: 10
   id: 9002

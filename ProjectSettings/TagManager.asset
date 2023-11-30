@@ -12,6 +12,7 @@ TagManager:
   - Collector
   - Portal
   - Exp
+  - Zone
   layers:
   - Default
   - TransparentFX
