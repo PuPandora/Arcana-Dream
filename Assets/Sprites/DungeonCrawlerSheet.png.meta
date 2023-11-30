@@ -149,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_0
+      name: FlyingEyeMove_0
       rect:
         serializedVersion: 2
         x: 0
@@ -170,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_1
+      name: FlyingEyeMove_1
       rect:
         serializedVersion: 2
         x: 16
@@ -191,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_2
+      name: FlyingEyeMove_2
       rect:
         serializedVersion: 2
         x: 32
@@ -212,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DungeonCrawlerSheet_3
+      name: FlyingEyeMove_3
       rect:
         serializedVersion: 2
         x: 48
@@ -2406,8 +2406,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DungeonCrawlerSheet_0: 353374234
-      DungeonCrawlerSheet_1: -911534466
       DungeonCrawlerSheet_10: 112169687
       DungeonCrawlerSheet_102: -365662258
       DungeonCrawlerSheet_103: 74635385
@@ -2479,7 +2477,6 @@ TextureImporter:
       DungeonCrawlerSheet_173: 602157266
       DungeonCrawlerSheet_174: 937505260
       DungeonCrawlerSheet_175: -1856209900
-      DungeonCrawlerSheet_2: -680290695
       DungeonCrawlerSheet_20: -1539933261
       DungeonCrawlerSheet_21: 1917071042
       DungeonCrawlerSheet_22: 770326687
@@ -2489,7 +2486,6 @@ TextureImporter:
       DungeonCrawlerSheet_26: 408848714
       DungeonCrawlerSheet_27: 1921704586
       DungeonCrawlerSheet_28: -1798400833
-      DungeonCrawlerSheet_3: -406785758
       DungeonCrawlerSheet_35: 283478395
       DungeonCrawlerSheet_36: 68947485
       DungeonCrawlerSheet_37: 725348721
@@ -2546,6 +2542,10 @@ TextureImporter:
       Explosion_4: 2026559975
       Explosion_5: -925528449
       Explosion_6: -1583378329
+      FlyingEyeMove_0: 353374234
+      FlyingEyeMove_1: -911534466
+      FlyingEyeMove_2: -680290695
+      FlyingEyeMove_3: -406785758
       GoblineIdle_0: -1295312586
       GoblineIdle_1: -1656799633
       GoblineIdle_2: 2051566507

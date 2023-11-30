@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d5049b797b38144a815d6c6fcb08c14, type: 3}
-  m_Name: Goblin
+  m_Name: FlyingEye
   m_EditorClassIdentifier: 
-  speed: 2
-  health: 20
-  maxHealth: 20
-  collPreset: {fileID: 2655988077585873504, guid: a9402776eb369fe4ba557d5bd8bea51f, type: 2}
-  animController: {fileID: 9100000, guid: d4e9b1307eb14f641a552bf17a0866fc, type: 2}
+  speed: 4.5
+  maxHealth: 10
+  id: 2
+  collPreset: {fileID: 2655988077585873504, guid: f4d4ec1e710a3284d9cdc050cdd601bd, type: 2}
+  animController: {fileID: 22100000, guid: a69218b59557acd49a1659182559fb8c, type: 2}
   expItemData: {fileID: 11400000, guid: 2bc2d306ee232244fac44c3e2b9cf613, type: 2}
-  itemDropTable:
-  - itemData: {fileID: 11400000, guid: dbaa0c516f1d6f249896c863d5210247, type: 2}
-    itemDropRate: 0.1
+  itemDropTable: []

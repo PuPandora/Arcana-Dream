@@ -6,6 +6,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     Transform[] spawnPoints;
+    public StageData stageData;
 
     [ReadOnly]
     [SerializeField]
@@ -15,33 +16,91 @@ public class Spawner : MonoBehaviour
     public bool isPlaying = true;
 
     public byte stageLevel;
-    public EnemyData[] enemyData;
 
     void Awake()
     {
         spawnPoints = GetComponentsInChildren<Transform>();
+        stageLevel = 0;
+    }
+
+    void Start()
+    {
+        StageManager.instance.OnGameClear += Stop;
     }
 
     void Update()
     {
-        if (!StageManager.instance.isLive) return;
+        if (!isPlaying) return;
 
-        if (isPlaying)
+        spawnTimer += Time.deltaTime;
+
+        // 테이블을 읽어 스폰 조건이 충족한다면
+        if (stageData.enemyTables[stageLevel].spawnDelay < spawnTimer)
         {
-            spawnTimer += Time.deltaTime;
-            // 임시 스테이지 레벨 코드
-            stageLevel = (byte)(StageManager.instance.timer / 20f);
-            if (stageLevel > enemyData.Length - 1)
+            var table = stageData.enemyTables[stageLevel];
+            var enemyData = stageData.enemyTables[stageLevel].enemyData;
+            var index = CalculateSpawnRate(table);
+
+            Spawn(enemyData[index]);
+        }
+            
+        if (stageData.enemyTables[stageLevel].nextTableTime < StageManager.instance.timer)
+        {
+            stageLevel++;
+            if (stageLevel >= stageData.enemyTables.Length)
             {
-                stageLevel = (byte)(enemyData.Length - 1);
-                //isPlaying = false;
-                //return;
+                StageManager.instance.GameClear();
             }
-            Spawn();
         }
     }
 
-    public void Spawn()
+    private int CalculateSpawnRate(StageEnemyTable table)
+    {
+        int result = 0;
+        
+        float totalRate = 0f;
+        foreach (var a in table.spawnRate)
+        {
+            totalRate += a;
+        }
+        float randNum = Random.Range(0f, totalRate);
+
+        // 오름차순 정렬 (선택 정렬)
+        float[] rateArr = table.spawnRate;
+        for (int i = 0; i < rateArr.Length; i++)
+        {
+            float least = rateArr[i];
+            float tmp;
+
+            for (int j = i + 1; j < rateArr.Length; j++)
+            {
+                if (least < rateArr[j])
+                {
+                    least = rateArr[j];
+                }
+
+                tmp = rateArr[i];
+                rateArr[i] = rateArr[j];
+                rateArr[j] = tmp;
+            }
+        }
+
+        // 확률 탐색
+        for (int i = 0; i < rateArr.Length; i++)
+        {
+            if (randNum < rateArr[i])
+            {
+                result = i;
+                return result;
+            }
+
+            randNum -= table.spawnRate[i];
+        }
+
+        return result;
+    }
+
+    private void Spawn(EnemyData data)
     {
         if (spawnTimer > spawnDelay)
         {
@@ -50,7 +109,7 @@ public class Spawner : MonoBehaviour
             var item = GameManager.instance.poolManager.Get(PoolType.Enemy);
             var enemy = item.GetComponent<Enemy>();
 
-            enemy.Initalize(enemyData[stageLevel]);
+            enemy.Initalize(data);
             enemy.target = GameManager.instance.player.transform;
 
             enemy.transform.position = GetRandomSpawnPoint();
@@ -60,5 +119,10 @@ public class Spawner : MonoBehaviour
     public Vector3 GetRandomSpawnPoint()
     {
         return spawnPoints[Random.Range(1, spawnPoints.Length)].position;
+    }
+
+    public void Stop()
+    {
+        isPlaying = false;
     }
 }

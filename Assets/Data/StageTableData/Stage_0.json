@@ -1,0 +1,88 @@
+{
+    "a": [
+        {
+            "enemyData": [
+                {
+                    "instanceID": 30798
+                }
+            ],
+            "spawnDelay": 1.0,
+            "spawnRate": [
+                1.0
+            ],
+            "nextTableTime": 30.0
+        },
+        {
+            "enemyData": [
+                {
+                    "instanceID": 30798
+                },
+                {
+                    "instanceID": 30878
+                }
+            ],
+            "spawnDelay": 1.2000000476837159,
+            "spawnRate": [
+                0.800000011920929,
+                0.20000000298023225
+            ],
+            "nextTableTime": 60.0
+        },
+        {
+            "enemyData": [
+                {
+                    "instanceID": 30798
+                },
+                {
+                    "instanceID": 30878
+                }
+            ],
+            "spawnDelay": 1.0,
+            "spawnRate": [
+                0.5,
+                0.5
+            ],
+            "nextTableTime": 90.0
+        },
+        {
+            "enemyData": [
+                {
+                    "instanceID": 30798
+                },
+                {
+                    "instanceID": 30878
+                },
+                {
+                    "instanceID": -142872
+                }
+            ],
+            "spawnDelay": 0.800000011920929,
+            "spawnRate": [
+                0.4000000059604645,
+                0.4000000059604645,
+                0.20000000298023225
+            ],
+            "nextTableTime": 120.0
+        },
+        {
+            "enemyData": [
+                {
+                    "instanceID": 30798
+                },
+                {
+                    "instanceID": 30878
+                },
+                {
+                    "instanceID": -142872
+                }
+            ],
+            "spawnDelay": 0.6000000238418579,
+            "spawnRate": [
+                2.0,
+                7.0,
+                1.0
+            ],
+            "nextTableTime": 180.0
+        }
+    ]
+}

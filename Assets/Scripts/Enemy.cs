@@ -36,7 +36,6 @@ public class Enemy : MonoBehaviour
     public void Initalize(EnemyData data)
     {
         speed = data.speed;
-        health = data.health;
         maxHealth = data.maxHealth;
         expItemData = data.expItemData;
 

@@ -9,8 +9,8 @@ public class EnemyData : ScriptableObject
 {
     [Title("Basic Property")]
     public float speed;
-    public short health;
     public short maxHealth;
+    public short id;
     public Preset collPreset;
     public RuntimeAnimatorController animController;
 

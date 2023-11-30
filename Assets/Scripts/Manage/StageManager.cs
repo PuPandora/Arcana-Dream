@@ -1,19 +1,37 @@
 using System;
-using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
+
+[Serializable]
+public class StageEnemyTable
+{
+    public EnemyData[] enemyData;
+    public float spawnDelay;
+    public float[] spawnRate;
+    public float nextTableTime;
+}
+
+[Serializable]
+public class StageData
+{
+    public StageEnemyTable[] enemyTables;
+}
 
 public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
 
     [Title("# Stage Info")]
+    public byte stageId;
     public int killCount;
     public int curExp;
     public int[] nextExp = { 10, 20, 40, 60, 100, 150, 200, 300, 400, 500, 700, 1000 };
     public short level;
     public float timer { get; private set; }
+    public StageEnemyTable[] enemyTable;
+    public StageData stageData;
 
     [Title("# Player Info")]
     public Player player;
@@ -24,12 +42,12 @@ public class StageManager : MonoBehaviour
     [Title("# Game Objects")]
     public Spawner spawner;
 
-    public Action OnKillCountChanged;
-    public Action OnExpChanged;
-    public Action OnLevelChanged;
-    public Action OnHealthChanged;
-    public Action OnGameOver;
-    public Action OnGameClear;
+    public event Action OnKillCountChanged;
+    public event Action OnExpChanged;
+    public event Action OnLevelChanged;
+    public event Action OnHealthChanged;
+    public event Action OnGameOver;
+    public event Action OnGameClear;
 
     void Awake()
     {
@@ -45,6 +63,9 @@ public class StageManager : MonoBehaviour
     {
         isLive = true;
         health = maxHealth;
+
+        stageData.enemyTables = enemyTable;
+        spawner.stageData = stageData; 
     }
 
     void Update()
@@ -121,8 +142,12 @@ public class StageManager : MonoBehaviour
     }
 
     [ContextMenu("Game Clear")]
-    private void GameClear()
+    public void GameClear()
     {
+        isLive = false;
+        spawner.isPlaying = false;
+        GameManager.instance.Stop();
+        
         OnGameClear?.Invoke();
     }
 }
