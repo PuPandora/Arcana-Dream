@@ -13,7 +13,6 @@ public class DeveloperMenu : MonoBehaviour
     {
         devMenuGroupRect = GetComponentsInParent<RectTransform>()[1];
         debugButtons = GetComponentsInChildren<Button>();
-
         HideUI();
     }
 
@@ -23,7 +22,6 @@ public class DeveloperMenu : MonoBehaviour
         GameManager.instance.devMenuGroup = devMenuGroupRect.gameObject;
 
         InitializeButtons();
-
         devMenuGroupRect.gameObject.SetActive(false);
     }
 
@@ -34,32 +32,26 @@ public class DeveloperMenu : MonoBehaviour
             button.interactable = false;
         }
 
+        var gameManager = GameManager.instance;
         var inventoryClearBtn = debugButtons[0];
         var saveGameBtn = debugButtons[1];
         var loadGameBtn = debugButtons[2];
         var lobbyBtn = debugButtons[3];
 
-        inventoryClearBtn.onClick.AddListener(GameManager.instance.ClearInventory);
-        inventoryClearBtn.GetComponentInChildren<TextMeshProUGUI>().text = "인벤토리 초가화";
-        inventoryClearBtn.interactable = true;
-
-        saveGameBtn.onClick.AddListener(GameManager.instance.SaveGame);
-        saveGameBtn.GetComponentInChildren<TextMeshProUGUI>().text = "게임 저장";
-        saveGameBtn.interactable = true;
-
-        loadGameBtn.onClick.AddListener(GameManager.instance.LoadGame);
-        loadGameBtn.GetComponentInChildren<TextMeshProUGUI>().text = "게임 불러오기";
-        loadGameBtn.interactable = true;
-
-        lobbyBtn.onClick.AddListener(GameManager.instance.ExitStage);
-        lobbyBtn.GetComponentInChildren<TextMeshProUGUI>().text = "로비로 이동";
-        lobbyBtn.interactable = true;
+        InitializeButton(inventoryClearBtn, gameManager.ClearInventory, "인벤토리 초기화");
+        InitializeButton(saveGameBtn, gameManager.SaveGame, "게임 저장");
+        InitializeButton(loadGameBtn, gameManager.LoadGame, "게임 불러오기");
+        InitializeButton(lobbyBtn, gameManager.EnterLobby, "로비로 이동");
 
         var closeButton = debugButtons[debugButtons.Length - 1];
-        Debug.Log(closeButton.name, closeButton.gameObject);
-        closeButton.onClick.AddListener(() => devMenuGroupRect.gameObject.SetActive(false));
-        closeButton.GetComponentInChildren<TextMeshProUGUI>().text = "X";
-        closeButton.interactable = true;
+        InitializeButton(closeButton, () => devMenuGroupRect.gameObject.SetActive(false), "X");
+    }
+
+    private void InitializeButton(Button button, UnityEngine.Events.UnityAction call, string text)
+    {
+        button.onClick.AddListener(call);
+        button.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        button.interactable = true;
     }
 
     public void ShowUI()
