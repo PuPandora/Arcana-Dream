@@ -36,6 +36,7 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         ClearInventory();
+        GameManager.instance.inventory = this;
     }
 
     public bool AddItem(Item item, byte amount = 1)
@@ -121,6 +122,7 @@ public class Inventory : MonoBehaviour
 
     public void ClearInventory()
     {
+        Debug.Log("인벤토리 초기화", gameObject);
         inventory = new InventorySlot[30];
         for (byte i = 0; i < inventory.Length; i++)
         {

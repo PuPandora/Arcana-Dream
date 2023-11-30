@@ -20,18 +20,20 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("Player Awake");
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         scanner = GetComponent<Scanner>();
         viewArea = GetComponentInChildren<BoxCollider2D>();
         spawner = GetComponentInChildren<Spawner>();
+
+        GameManager.instance.player = this;
+        GameManager.instance.viewArea = viewArea;
     }
 
     void Start()
     {
-        GameManager.instance.player = this;
-        GameManager.instance.viewArea = viewArea;
         if (StageManager.instance != null)
         {
             StageManager.instance.player = this;

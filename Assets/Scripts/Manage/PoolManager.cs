@@ -14,10 +14,7 @@ public class PoolManager : MonoBehaviour
     {
         // 풀 리스트 초기화
         InitializePool(out poolList, prefabs);
-    }
 
-    void Start()
-    {
         GameManager.instance.poolManager = this;
     }
 

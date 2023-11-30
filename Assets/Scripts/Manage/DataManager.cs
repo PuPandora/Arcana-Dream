@@ -13,6 +13,10 @@ public class SaveData
 
 public class DataManager : MonoBehaviour
 {
+    // 항상, 하나만 존재하며
+    // GameManager 외 다른 클래스에서 접근을 막기 위한 싱글톤
+    private static DataManager instance;
+
     readonly string path = Application.dataPath + "/Data/SaveData/";
     string mainPath;
     string inventoryPath;
@@ -20,11 +24,21 @@ public class DataManager : MonoBehaviour
     GameManager gameManager;
     SaveData saveData;
 
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+    }
+
     void Start()
     {
         mainPath = Path.Combine(path, "MainData.json");
         inventoryPath = Path.Combine(path, "InventoryData.json");
-        Debug.Log($"path : {path}");
+        Debug.Log($"Save Data Path : {path}");
 
         saveData = new SaveData();
 

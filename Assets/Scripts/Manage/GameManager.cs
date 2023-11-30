@@ -11,14 +11,13 @@ public enum GameState { Lobby, Stage, Pause }
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager instance { get; private set; }
     [EnumToggleButtons]
     public GameState gameState;
     public bool isAllowDevMenu;
 
     [Title("# Managers")]
     public PoolManager poolManager;
-    public StageManager stageManager;
     public DataManager dataManager;
 
     [Title("# Game Objects")]
@@ -28,14 +27,10 @@ public class GameManager : MonoBehaviour
     public Inventory inventory;
     public DeveloperMenu devMenu;
     public GameObject devMenuGroup;
-    public GameObject inventoryUiGroup;
+    public InventoryUI inventoryUI;
 
     [Title("# Weapons")]
     public PlayerWeaponController[] weapons;
-
-    [Title("# UI")]
-    public Toggle spawnToggle;
-    public Button[] debugWeaponBtns = new Button[3];
 
     [Title("# Data")]
     [field: SerializeField]
@@ -79,7 +74,14 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(inventoryKey))
         {
-            inventoryUiGroup.SetActive(!inventoryUiGroup.activeSelf);
+            if (!inventoryUI.isUIOpen)
+            {
+                inventoryUI.ShowUI();
+            }
+            else
+            {
+                inventoryUI.HideUI();
+            }
         }
     }
 
@@ -99,6 +101,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void ExitStage()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
+    public void EnterLobby()
     {
         SceneManager.LoadScene("Lobby");
     }
@@ -140,5 +147,14 @@ public class GameManager : MonoBehaviour
     {
         inventory.ClearInventory();
         dataManager.SaveGame();
+    }
+
+    public void GameQuit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
