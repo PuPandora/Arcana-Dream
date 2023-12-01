@@ -11,7 +11,7 @@ public class ItemCollector : MonoBehaviour
 
     CircleCollider2D coll;
 
-    public event Action<string, Sprite> OnGetItem;
+    public event Action<ItemData> OnGetItem;
 
     void Awake()
     {
@@ -39,7 +39,7 @@ public class ItemCollector : MonoBehaviour
         if (collision.CompareTag("Exp"))
         {
             var item = collision.GetComponent<ExpItem>();
-            StageManager.instance.GetExp(item.expVaule);
+            StageManager.instance.GetExp(item.data.value);
             collision.gameObject.SetActive(false);
         }
         else if (collision.CompareTag("Item"))
@@ -55,7 +55,7 @@ public class ItemCollector : MonoBehaviour
             // 아이템을 인벤토리에 넣을 수 없는 경우
             if (!isGet) return;
 
-            OnGetItem?.Invoke(item.itemData.name, item.itemData.sprite);
+            OnGetItem?.Invoke(item.data);
             collision.gameObject.SetActive(false);
         }
     }

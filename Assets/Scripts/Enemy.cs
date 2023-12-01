@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [ReadOnly]
+    private EnemyData data;
     public Transform target;
-    public float speed;
-    public float health;
-    public float maxHealth;
-    public ExpItemData expItemData;
     public DropItem dropItem;
 
+    [ReadOnly]
+    private float health;
     public bool isLive { get; private set; } = true;
     private Vector2 dirVec;
 
@@ -40,21 +41,16 @@ public class Enemy : MonoBehaviour
 
     public void Initalize(EnemyData data)
     {
-        speed = data.speed;
-        maxHealth = data.maxHealth;
-        health = maxHealth;
-        expItemData = data.expItemData;
+        this.data = data;
+        health = data.maxHealth;
 
         anim.runtimeAnimatorController = data.animController;
         data.collPreset.ApplyTo(coll);
-
-        dropItem.itemDropTable = data.itemDropTable;
     }
 
     void OnEnable()
     {
         isLive = true;
-        health = maxHealth;
         coll.enabled = true;
         StartCoroutine(CalculateDirectionRoutine());
     }
@@ -76,7 +72,7 @@ public class Enemy : MonoBehaviour
 
     private void ChaseTarget()
     {
-        rigid.MovePosition(rigid.position + dirVec.normalized * speed * Time.fixedDeltaTime);
+        rigid.MovePosition(rigid.position + dirVec.normalized * data.speed * Time.fixedDeltaTime);
     }
 
     private void MoveAway()
@@ -156,22 +152,22 @@ public class Enemy : MonoBehaviour
         item.transform.position = transform.position;
         item.transform.rotation = Quaternion.identity;
         ExpItem expItem = item.GetComponent<ExpItem>();
-        expItem.Initalize(expItemData);
+        expItem.Initalize(data.expItemData);
     }
 
     private void DropItem()
     {
-        for (int i = 0; i < dropItem.itemDropTable.Length; i++)
+        for (int i = 0; i < data.itemDropTable.Length; i++)
         {
             float randNum = Random.Range(0f, 1f);
-            if (dropItem.itemDropTable[i].itemDropRate < randNum) continue;
+            if (data.itemDropTable[i].itemDropRate < randNum) continue;
 
             var item = GameManager.instance.poolManager.Get(PoolType.DropItem);
             item.transform.position = transform.position;
             item.transform.rotation = Quaternion.identity;
 
             Item instantItem = item.GetComponent<Item>();
-            instantItem.Initialize(dropItem.itemDropTable[i].itemData);
+            instantItem.Initialize(data.itemDropTable[i].itemData);
         }
     }
 
@@ -189,7 +185,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // 임시 대미지 피격 코드
-            StageManager.instance.GetDamaged(5f * Time.deltaTime);
+            StageManager.instance.GetDamaged(data.damage * Time.deltaTime);
         }
     }
 }

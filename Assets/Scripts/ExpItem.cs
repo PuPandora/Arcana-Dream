@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ExpItem : MonoBehaviour
 {
-    public short expVaule;
-
     SpriteRenderer spriter;
+    public ExpItemData data { get; private set; }
 
     void Awake()
     {
@@ -15,7 +14,7 @@ public class ExpItem : MonoBehaviour
 
     public void Initalize(ExpItemData data)
     {
+        this.data = data;
         spriter.sprite = data.sprite;
-        expVaule = data.value;
     }
 }

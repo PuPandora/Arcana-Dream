@@ -119,14 +119,14 @@ public class HUD : MonoBehaviour
         healthSlider.value = curHealth / curMaxHealth;
     }
 
-    public void ShowGetItemUI(string itemName, Sprite itemSprite)
+    public void ShowGetItemUI(ItemData data)
     {
         Debug.Log("Show Get Item UI");
         foreach (var item in StageManager.instance.getItemUis)
         {
             if (!item.gameObject.activeSelf)
             {
-                item.Play(itemName, itemSprite);
+                item.Play(data.name, data.sprite);
                 break;
             }
         }

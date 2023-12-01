@@ -9,6 +9,7 @@ public class EnemyData : GameObjectData
 {
     [Title("Basic Property")]
     public float speed;
+    public float damage;
     public short maxHealth;
     public Preset collPreset;
     public RuntimeAnimatorController animController;

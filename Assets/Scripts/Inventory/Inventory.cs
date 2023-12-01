@@ -63,8 +63,8 @@ public class Inventory : MonoBehaviour
         if (!index.HasValue) return false;
 
         // 인벤토리 배열[index]를 받은 아이템 데이터로 초기화
-        inventory[index.Value].itemData = item.itemData;
-        inventory[index.Value].id = item.itemData.id;
+        inventory[index.Value].itemData = item.data;
+        inventory[index.Value].id = item.data.id;
         inventory[index.Value].isEmpty = false;
         inventory[index.Value].stack += amount;
 
@@ -108,7 +108,7 @@ public class Inventory : MonoBehaviour
             if (inventory[i].isEmpty) continue;
 
             // id 체크
-            if (inventory[i].itemData.id != item.id) continue;
+            if (inventory[i].itemData.id != item.data.id) continue;
 
             // MaxStack 체크
             if (inventory[i].stack >= inventory[i].itemData.maxStack) continue;
