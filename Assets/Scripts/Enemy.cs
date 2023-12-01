@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     {
         speed = data.speed;
         maxHealth = data.maxHealth;
+        health = maxHealth;
         expItemData = data.expItemData;
 
         anim.runtimeAnimatorController = data.animController;

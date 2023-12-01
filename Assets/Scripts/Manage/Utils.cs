@@ -59,7 +59,7 @@ public sealed class Utils : MonoBehaviour
         return index != -1 ? GameManager.instance.enemyDataBase[index] : null;
     }
 
-    public static short GetEnemyDataIndex(short id)
+    private static short GetEnemyDataIndex(short id)
     {
         // 임시 선형 검색
         // 데이터가 많아지면 이진 검색
