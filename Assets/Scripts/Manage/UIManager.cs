@@ -15,11 +15,9 @@ public class UIManager : MonoBehaviour
 
     [Title("UI")]
     public DeveloperMenu devMenu;
-    public GameObject devMenuGroup;
     public InventoryUI inventoryUI;
-    public GameObject inventoryUIGroup;
-    public LobbyUI playerStateUI;
-    public LobbyUI questUI;
+    public PlayerStatesUI playerStateUI;
+    public QuestUI questUI;
 
     public LobbyUI curUI;
 

@@ -6,28 +6,27 @@ using UnityEngine.UI;
 
 public class DeveloperMenu : LobbyUI
 {
-    private RectTransform devMenuGroupRect;
     Button[] debugButtons;
 
-    void Awake()
+    protected override void Awake()
     {
-        devMenuGroupRect = GetComponentsInParent<RectTransform>()[1];
+        base.Awake();
+
+        rect = GetComponentsInParent<RectTransform>()[1];
         debugButtons = GetComponentsInChildren<Button>();
     }
 
     void Start()
     {
         UIManager.instance.devMenu = this;
-        UIManager.instance.devMenuGroup = devMenuGroupRect.gameObject;
 
         InitializeButtons();
-        devMenuGroupRect.gameObject.SetActive(false);
+        rect.gameObject.SetActive(false);
     }
 
     protected override void Initialize()
     {
         UIManager.instance.devMenu = this;
-        UIManager.instance.devMenuGroup = GetComponentsInParent<Transform>()[1].gameObject;
         HideUI();
     }
 
@@ -62,15 +61,16 @@ public class DeveloperMenu : LobbyUI
 
     public override void ShowUI()
     {
-        devMenuGroupRect.localScale = Vector3.one;
+        Debug.Log("개발자 메뉴 오픈");
+        rect.localScale = Vector3.one;
+        rect.gameObject.SetActive(true);
         isOpen = true;
-        devMenuGroupRect.gameObject.SetActive(true);
     }
 
     public override void HideUI()
     {
-        devMenuGroupRect.localScale = Vector3.zero;
+        rect.localScale = Vector3.zero;
+        rect.gameObject.SetActive(false);
         isOpen = false;
-        devMenuGroupRect.gameObject.SetActive(false);
     }
 }

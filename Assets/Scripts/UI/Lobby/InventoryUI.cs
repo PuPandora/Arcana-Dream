@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class InventoryUI : LobbyUI
 {
-    private RectTransform rect;
     private InventorySlotUI[] slots;
     private Inventory inventory;
     [SerializeField] private TextMeshProUGUI goldText;
 
-    void Awake()
+    protected override void Awake()
     {
-        rect = GetComponent<RectTransform>();
+        base.Awake();
+
         slots = GetComponentsInChildren<InventorySlotUI>();
         GameManager.instance.OnGoldChanged += UpdateGoldText;
 
@@ -33,7 +33,6 @@ public class InventoryUI : LobbyUI
     protected override void Initialize()
     {
         UIManager.instance.inventoryUI = this;
-        UIManager.instance.inventoryUIGroup = GetComponentsInParent<Transform>()[1].gameObject;
         HideUI();
     }
 
@@ -61,17 +60,10 @@ public class InventoryUI : LobbyUI
 
     public override void ShowUI()
     {
+        UpdateGoldText();
         UpdateInventory();
-        rect.localScale = Vector3.one;
-        isOpen = true;
-        gameObject.SetActive(true);
-    }
 
-    public override void HideUI()
-    {
-        rect.localScale = Vector3.zero;
-        isOpen = false;
-        gameObject.SetActive(false);
+        base.ShowUI();
     }
 
     private void UpdateGoldText()
