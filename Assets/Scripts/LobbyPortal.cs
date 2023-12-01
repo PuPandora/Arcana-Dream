@@ -5,7 +5,6 @@ using UnityEngine;
 public class LobbyPortal : MonoBehaviour
 {
     public string stageSceneName = "Stage";
-    public KeyCode enterKey = KeyCode.E;
     private bool isPlayerInPortal;
     public GameObject stageNoticeUI;
     private RectTransform noticeUiRect;
@@ -17,7 +16,7 @@ public class LobbyPortal : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerInPortal && Input.GetKeyDown(enterKey))
+        if (isPlayerInPortal && Input.GetKeyDown(GameManager.instance.interactKey))
         {
             GameManager.instance.EnterStage("Stage");
         }
