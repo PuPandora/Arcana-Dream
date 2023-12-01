@@ -182,7 +182,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.transform == target)
         {
             // 임시 대미지 피격 코드
             StageManager.instance.GetDamaged(data.damage * Time.deltaTime);
