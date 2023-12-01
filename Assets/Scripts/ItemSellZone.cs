@@ -13,12 +13,31 @@ public class ItemSellZone : MonoBehaviour
 
         if (Input.GetKeyDown(GameManager.instance.interactKey))
         {
-            // 상점 UI 오픈
-            Debug.Log("상점 UI 오픈");
-            GameManager.instance.inventoryUI.ShowUI();
-            isShopOpen = true;
-            GameManager.instance.playerState = PlayerState.Shop;
+            if (isShopOpen)
+            {
+                EnterShop();
+            }
+            else
+            {
+                ExitShop();
+            }
         }
+    }
+
+    private void EnterShop()
+    {
+        Debug.Log("플레이어 상점 입장");
+        GameManager.instance.inventoryUI.ShowUI();
+        isShopOpen = true;
+        GameManager.instance.playerState = PlayerState.Shop;
+    }
+
+    private void ExitShop()
+    {
+        Debug.Log("플레이어 상점 퇴장");
+        GameManager.instance.inventoryUI.HideUI();
+        isShopOpen = false;
+        GameManager.instance.playerState = PlayerState.None;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -36,8 +55,7 @@ public class ItemSellZone : MonoBehaviour
             isPlayerIn = false;
             if (isShopOpen)
             {
-                GameManager.instance.inventoryUI.HideUI();
-                isShopOpen = false;
+                ExitShop();
             }
         }
     }
