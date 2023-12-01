@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : LobbyUI
 {
     private RectTransform rect;
     private InventorySlotUI[] slots;
     private Inventory inventory;
     [SerializeField] private TextMeshProUGUI goldText;
-    public bool isUIOpen { get; private set; }
 
     void Awake()
     {
         rect = GetComponent<RectTransform>();
         slots = GetComponentsInChildren<InventorySlotUI>();
-        GameManager.instance.inventoryUI = this;
-        isUIOpen = false;
         GameManager.instance.OnGoldChanged += UpdateGoldText;
 
         for (byte i = 0; i < slots.Length; i++)
@@ -30,6 +27,14 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         inventory = GameManager.instance.inventory;
+        Initialize();
+    }
+
+    protected override void Initialize()
+    {
+        UIManager.instance.inventoryUI = this;
+        UIManager.instance.inventoryUIGroup = GetComponentsInParent<Transform>()[1].gameObject;
+        HideUI();
     }
 
     /// <summary>
@@ -54,17 +59,19 @@ public class InventoryUI : MonoBehaviour
         slots[index].ApplyInventoryData(inventory.inventory[index]);
     }
 
-    public void ShowUI()
+    public override void ShowUI()
     {
         UpdateInventory();
         rect.localScale = Vector3.one;
-        isUIOpen = true;
+        isOpen = true;
+        gameObject.SetActive(true);
     }
 
-    public void HideUI()
+    public override void HideUI()
     {
         rect.localScale = Vector3.zero;
-        isUIOpen = false;
+        isOpen = false;
+        gameObject.SetActive(false);
     }
 
     private void UpdateGoldText()

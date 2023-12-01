@@ -66,7 +66,12 @@ public class DataManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+
+            // 게임매니저 자식이 아니라면
+            if (!GetComponentInParent<GameManager>())
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
         else Destroy(gameObject);
     }

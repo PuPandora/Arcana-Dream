@@ -27,7 +27,7 @@ public class ItemSellZone : MonoBehaviour
     private void EnterShop()
     {
         Debug.Log("플레이어 상점 입장");
-        GameManager.instance.inventoryUI.ShowUI();
+        UIManager.instance.UIManage(UIManager.instance.inventoryUI);
         isShopOpen = true;
         GameManager.instance.playerState = PlayerState.Shop;
     }
@@ -35,7 +35,7 @@ public class ItemSellZone : MonoBehaviour
     private void ExitShop()
     {
         Debug.Log("플레이어 상점 퇴장");
-        GameManager.instance.inventoryUI.HideUI();
+        UIManager.instance.UIManage(UIManager.instance.inventoryUI);
         isShopOpen = false;
         GameManager.instance.playerState = PlayerState.None;
     }

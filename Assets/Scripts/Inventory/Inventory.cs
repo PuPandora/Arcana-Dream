@@ -192,7 +192,7 @@ public class Inventory : MonoBehaviour
     {
         if (inventory[index].isEmpty)
         {
-            GameManager.instance.inventoryUI.UpdateInventory(index);
+            UIManager.instance.inventoryUI.UpdateInventory(index);
             return;
         }
 
@@ -201,6 +201,6 @@ public class Inventory : MonoBehaviour
             $"얻은 골드 : {inventory[index].itemData.value}");
         RemoveItem(index);
 
-        GameManager.instance.inventoryUI.UpdateInventory(index);
+        UIManager.instance.inventoryUI.UpdateInventory(index);
     }
 }

@@ -29,9 +29,6 @@ public class GameManager : MonoBehaviour
     public BoxCollider2D viewArea;
     public GameObject levelUpUi;
     public Inventory inventory;
-    public DeveloperMenu devMenu;
-    public GameObject devMenuGroup;
-    public InventoryUI inventoryUI;
 
     [Title("# Weapons")]
     public PlayerWeaponController[] weapons;
@@ -56,8 +53,6 @@ public class GameManager : MonoBehaviour
     private int m_gold = 0;
 
     [Title("# Key")]
-    [SerializeField] KeyCode debugMenuKey = KeyCode.Escape;
-    [SerializeField] KeyCode inventoryKey = KeyCode.I;
     public KeyCode interactKey = KeyCode.E;
 
     // Event
@@ -89,35 +84,6 @@ public class GameManager : MonoBehaviour
     private void PrintGoldAmount()
     {
         Debug.Log(gold);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(debugMenuKey) && isAllowDevMenu)
-        {
-            devMenuGroup.SetActive(!devMenuGroup.activeSelf);
-
-            if (devMenuGroup.activeSelf)
-            {
-                devMenu.ShowUI();
-            }
-            else
-            {
-                devMenu.HideUI();
-            }
-        }
-
-        if (Input.GetKeyDown(inventoryKey))
-        {
-            if (!inventoryUI.isUIOpen)
-            {
-                inventoryUI.ShowUI();
-            }
-            else
-            {
-                inventoryUI.HideUI();
-            }
-        }
     }
 
     public void Stop()

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeveloperMenu : MonoBehaviour
+public class DeveloperMenu : LobbyUI
 {
     private RectTransform devMenuGroupRect;
     Button[] debugButtons;
@@ -13,16 +13,22 @@ public class DeveloperMenu : MonoBehaviour
     {
         devMenuGroupRect = GetComponentsInParent<RectTransform>()[1];
         debugButtons = GetComponentsInChildren<Button>();
-        HideUI();
     }
 
     void Start()
     {
-        GameManager.instance.devMenu = this;
-        GameManager.instance.devMenuGroup = devMenuGroupRect.gameObject;
+        UIManager.instance.devMenu = this;
+        UIManager.instance.devMenuGroup = devMenuGroupRect.gameObject;
 
         InitializeButtons();
         devMenuGroupRect.gameObject.SetActive(false);
+    }
+
+    protected override void Initialize()
+    {
+        UIManager.instance.devMenu = this;
+        UIManager.instance.devMenuGroup = GetComponentsInParent<Transform>()[1].gameObject;
+        HideUI();
     }
 
     private void InitializeButtons()
@@ -54,13 +60,17 @@ public class DeveloperMenu : MonoBehaviour
         button.interactable = true;
     }
 
-    public void ShowUI()
+    public override void ShowUI()
     {
         devMenuGroupRect.localScale = Vector3.one;
+        isOpen = true;
+        devMenuGroupRect.gameObject.SetActive(true);
     }
 
-    public void HideUI()
+    public override void HideUI()
     {
         devMenuGroupRect.localScale = Vector3.zero;
+        isOpen = false;
+        devMenuGroupRect.gameObject.SetActive(false);
     }
 }

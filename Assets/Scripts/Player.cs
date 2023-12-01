@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         // StageManager는 Stage 씬에만 존재
-        if (GameManager.instance.gameState != GameState.Stage)
+        if (GameManager.instance.gameState == GameState.Stage)
         {
             StageManager.instance.player = this;
             StageManager.instance.spawner = spawner;
