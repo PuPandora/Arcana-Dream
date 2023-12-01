@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class SpawnToggleDebugUI : MonoBehaviour
 {
-    Toggle m_toggle;
+    Toggle spawnToggle;
 
     void Awake()
     {
-        m_toggle = GetComponent<Toggle>();
-        m_toggle.onValueChanged.AddListener((t) => { A(); });
+        spawnToggle = GetComponent<Toggle>();
+        spawnToggle.onValueChanged.AddListener((value) => { ApplySpawnToggle(value); });
     }
 
     // 스폰 토글 디버그 (임시 코드)
-    public void A()
+    public void ApplySpawnToggle(bool value)
     {
-        StageManager.instance.spawner.isPlaying = m_toggle.isOn;
+        StageManager.instance.spawner.isPlaying = value;
     }
 }

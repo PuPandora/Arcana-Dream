@@ -5,10 +5,10 @@ using UnityEngine;
 public sealed class Utils : MonoBehaviour
 {
     //public static WaitForFixedUpdate waitForFixedUpdate;
-    public static WaitForSeconds delay0_1 = new WaitForSeconds(0.1f);
-    public static WaitForSeconds delay0_25 = new WaitForSeconds(0.25f);
+    readonly public static WaitForSeconds delay0_1 = new WaitForSeconds(0.1f);
+    readonly public static WaitForSeconds delay0_25 = new WaitForSeconds(0.25f);
 
-    public const byte inventorySlotCount = 30;
+    public const byte INVENTORY_SLOT_COUNT = 30;
 
     public static Vector2 GetRandomVector(float min, float max)
     {
@@ -21,11 +21,10 @@ public sealed class Utils : MonoBehaviour
     }
 
     /// <summary>
-    /// 아이템 데이터 베이스에서 id로 아이템이 있는지 탐색합니다. <br></br>
-    /// 만약 해당 id와 같은 아이템이 없다면 null을 반환합니다.
+    /// 아이템 데이터 베이스에서 id로 아이템이 있는지 탐색합니다.
     /// </summary>
     /// <param name="id">아이템의 id</param>
-    /// <returns></returns>
+    /// <returns>id와 같은 아이템이 없다면 null을 반환합니다.</returns>
     public static ItemData GetItemDataWithId(short id)
     {
         short index = GetItemDataIndex(id);
@@ -48,11 +47,10 @@ public sealed class Utils : MonoBehaviour
     }
 
     /// <summary>
-    /// 적 데이터 베이스에서 id로 아이템이 있는지 탐색합니다. <br></br>
-    /// 만약 해당 id와 같은 적 데이터가 없다면 null을 반환합니다.
+    /// 적 데이터 베이스에서 id로 아이템이 있는지 탐색합니다.
     /// </summary>
     /// <param name="id"></param>
-    /// <returns></returns>
+    /// <returns>id와 같은 적 데이터가 없다면 null을 반환합니다.</returns>
     public static EnemyData GetEnemyDataWithId(short id)
     {
         short index = GetEnemyDataIndex(id);
@@ -80,9 +78,6 @@ public sealed class Utils : MonoBehaviour
     /// <summary>
     /// Data의 id를 비교하여 오름차순으로 정렬합니다.
     /// </summary>
-    /// <param name="data1"></param>
-    /// <param name="data2"></param>
-    /// <returns></returns>
     public static int CompareDataId(GameObjectData data1, GameObjectData data2)
     {
         return data1.id.CompareTo(data2.id);

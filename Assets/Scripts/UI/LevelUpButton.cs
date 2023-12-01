@@ -58,6 +58,7 @@ public class LevelUpButton : MonoBehaviour
             itemDescription.text = weaponData.desc;
             return;
         }
+
         // 임시 코드
         // 전략패턴 필요 요망
         switch (weaponData.id)
@@ -86,6 +87,8 @@ public class LevelUpButton : MonoBehaviour
         }
 
         // 레벨 0
+        // 이 기능을 레벨업 버튼에서 분리하고
+        // 추가하는 무기 컴포넌트를 자동화 할 수 있을까?
         if (level == 0)
         {
             switch (weaponData.id)
@@ -104,11 +107,6 @@ public class LevelUpButton : MonoBehaviour
         // 레벨 1~
         else
         {
-            float damage = weaponData.levelUpStates[level].damage;
-            float speed = weaponData.levelUpStates[level].speed;
-            float fireDelay = weaponData.levelUpStates[level].fireDelay;
-            byte count = weaponData.levelUpStates[level].count;
-
             weaponController.weapon.LevelUp(weaponData.levelUpStates[level]);
             level = weaponController.weapon.property.level;
 

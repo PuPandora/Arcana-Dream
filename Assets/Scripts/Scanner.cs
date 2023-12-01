@@ -20,7 +20,12 @@ public class Scanner : MonoBehaviour
                                 0,
                                 targetLayer);
 
+        // 필요할 때만 주변 적을 감지하도록 수정 예정
+        // + Weapon이 가까운 적을 필요 할 때 탐색
         nearestTarget = GetNearestTarget();
+
+        // 만약 멀티샷 무기라면, n번째로 가까운 적의 위치도 반환할 메소드
+        // ㄴ 거리에 따라 정렬 필요
     }
 
     private Transform GetNearestTarget()

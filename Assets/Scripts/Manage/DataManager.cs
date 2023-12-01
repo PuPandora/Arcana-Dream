@@ -7,10 +7,10 @@ using UnityEngine;
 public class InventoryData
 {
     // Inventory
-    public byte count = Utils.inventorySlotCount;
-    public short[] itemIds = new short[Utils.inventorySlotCount];
-    public byte[] stacks = new byte[Utils.inventorySlotCount];
-    public bool[] isEmpty = new bool[Utils.inventorySlotCount];
+    public byte count = Utils.INVENTORY_SLOT_COUNT;
+    public short[] itemIds = new short[Utils.INVENTORY_SLOT_COUNT];
+    public byte[] stacks = new byte[Utils.INVENTORY_SLOT_COUNT];
+    public bool[] isEmpty = new bool[Utils.INVENTORY_SLOT_COUNT];
 
     // 생성자 : 배열 초기화
     public InventoryData()
@@ -33,7 +33,7 @@ public class InventoryData
 
     public void PrintData()
     {
-        for (int i = 0; i < Utils.inventorySlotCount; i++)
+        for (int i = 0; i < Utils.INVENTORY_SLOT_COUNT; i++)
         {
             Debug.Log($"Item ID : {itemIds[i]}\nStack : {stacks[i]}");
         }

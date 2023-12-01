@@ -26,6 +26,6 @@ public class HeartQueen : PlayerWeapon
 
     public override void Using()
     {
-
+        // 플레이어를 따라다니는 하트 퀸 오브젝트 (파티클 & 쉐이더로 이펙트)
     }
 }

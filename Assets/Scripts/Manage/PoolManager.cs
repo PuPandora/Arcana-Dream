@@ -57,13 +57,11 @@ public class PoolManager : MonoBehaviour
 
     /// <summary>
     /// PoolManager의 프리팹 배열에서 동일한 프리팹이 있는지 확인합니다.<br></br>
-    /// 동일한 것이 있다면 해당 인덱스를 반환하며 없다면 null을 반환합니다.
     /// </summary>
-    /// <param name="prefab"></param>
-    /// <returns></returns>
-    public sbyte? FindPrefabIndex(GameObject prefab)
+    /// <returns>동일한 프리팹이 있다면 해당 인덱스를 반환하며 없다면 null을 반환합니다.</returns>
+    public byte? FindPrefabIndex(GameObject prefab)
     {
-        for (sbyte i = 0; i < prefabs.Length; i++)
+        for (byte i = 0; i < prefabs.Length; i++)
         {
             if (prefabs[i] == prefab)
             {

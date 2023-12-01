@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
 {
     [Title("Inventory")]
     [TableList]
-    public InventorySlot[] inventory = new InventorySlot[Utils.inventorySlotCount];
+    public InventorySlot[] inventory = new InventorySlot[Utils.INVENTORY_SLOT_COUNT];
 
     void Awake()
     {
@@ -49,24 +49,30 @@ public class Inventory : MonoBehaviour
         GameManager.instance.inventory = this;
     }
 
+    /// <summary>
+    /// 인벤토리에 아이템을 추가합니다.
+    /// </summary>
+    /// <returns>추가됐다면 true, 추가하지 못했다면 false를 반환합니다.</returns>
     public bool AddItem(Item item, byte amount = 1)
     {
-        sbyte index = 0;
-        index = CheckAlreadyHaveItem(item);
+        byte? index = CheckAlreadyHaveItem(item);
 
-        if (index != -1)
+        // 이미 동일한 아이템이 있을 경우
+        if (index.HasValue)
         {
-            inventory[index].stack += amount;
+            inventory[index.Value].stack += amount;
             return true;
         }
 
+        // 들어갈 수 있는 공간이 있는지
         index = CheckEmptySlot();
-        if (index == -1) return false;
+        if (!index.HasValue) return false;
 
-        inventory[index].itemData = item.itemData;
-        inventory[index].id = item.itemData.id;
-        inventory[index].isEmpty = false;
-        inventory[index].stack += amount;
+        // 인벤토리 배열[index]를 받은 아이템 데이터로 초기화
+        inventory[index.Value].itemData = item.itemData;
+        inventory[index.Value].id = item.itemData.id;
+        inventory[index.Value].isEmpty = false;
+        inventory[index.Value].stack += amount;
 
         return true;
     }
@@ -82,10 +88,10 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// 인벤토리의 빈 슬롯 인덱스를 반환합니다.
     /// </summary>
-    /// <returns>빈 슬롯이 있다면 해당 위치 인덱스를 반환. <br></br> 없다면 -1을 반환합니다.</returns>
-    private sbyte CheckEmptySlot()
+    /// <returns>빈 슬롯이 있다면 해당 위치 인덱스를 반환. <br></br> 없다면 null을 반환합니다.</returns>
+    private byte? CheckEmptySlot()
     {
-        for (sbyte i = 0; i < inventory.Length; i++)
+        for (byte i = 0; i < inventory.Length; i++)
         {
             if (inventory[i].isEmpty)
             {
@@ -94,17 +100,16 @@ public class Inventory : MonoBehaviour
         }
 
         Debug.Log("인벤토리에 빈 슬롯이 없습니다.");
-        return -1;
+        return null;
     }
 
     /// <summary>
     /// 인벤토리에 이미 해당 아이템이 있는지 검사합니다
     /// </summary>
-    /// <param name="item"></param>
-    /// <returns>동일한 아이템이 있다면 해당 위치 인덱스를 반환. <br></br> 없다면 -1을 반환합니다.</returns>
-    private sbyte CheckAlreadyHaveItem(Item item)
+    /// <returns>동일한 아이템이 있다면 해당 위치 인덱스를 반환. <br></br> 없다면 null을 반환합니다.</returns>
+    private byte? CheckAlreadyHaveItem(Item item)
     {
-        for (sbyte i = 0; i < inventory.Length; i++)
+        for (byte i = 0; i < inventory.Length; i++)
         {
             if (inventory[i].isEmpty) continue;
 
@@ -117,7 +122,7 @@ public class Inventory : MonoBehaviour
             return i;
         }
 
-        return -1;
+        return null;
     }
 
     /// <summary>
@@ -138,7 +143,8 @@ public class Inventory : MonoBehaviour
     {
         Debug.Log("인벤토리 초기화", gameObject);
         inventory = new InventorySlot[30];
-        for (byte i = 0; i < inventory.Length; i++)
+
+        for (int i = 0; i < inventory.Length; i++)
         {
             inventory[i] = new InventorySlot();
         }

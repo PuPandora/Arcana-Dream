@@ -39,7 +39,7 @@ public class InventoryUI : MonoBehaviour
     public void UpdateInventory()
     {
         Debug.Log("Udate Inventory", gameObject);
-        for (int i = 0; i < slots.Length; i++)
+        for (byte i = 0; i < slots.Length; i++)
         {
             slots[i].ApplyInventoryData(inventory.inventory[i]);
         }

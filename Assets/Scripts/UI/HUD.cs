@@ -20,7 +20,7 @@ public class HUD : MonoBehaviour
         AssignUIObjects();
     }
 
-    // 할당되지 않은 UI 할당 메소드
+    // 예외 처리 : 할당되지 않은 UI 할당 메소드
     private void AssignUIObjects()
     {
         // Slider 중 하나라도 참조가 안되어 있다면

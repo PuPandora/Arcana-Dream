@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExitStageDebugButton : MonoBehaviour
 {
-    private UnityEngine.UI.Button exitButton;
+    private Button exitButton;
 
     void Awake()
     {
-        exitButton = GetComponent<UnityEngine.UI.Button>();
+        exitButton = GetComponent<Button>();
     }
 
     void Start()

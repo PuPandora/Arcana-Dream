@@ -33,7 +33,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        if (StageManager.instance != null)
+        // StageManager는 Stage 씬에만 존재
+        if (GameManager.instance.gameState != GameState.Stage)
         {
             StageManager.instance.player = this;
             StageManager.instance.spawner = spawner;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // 플레이어가 최근 이동항 방향을 바라봄
         if (moveInput.x != 0)
         {
             spriter.flipX = moveInput.x <= -0.05f;

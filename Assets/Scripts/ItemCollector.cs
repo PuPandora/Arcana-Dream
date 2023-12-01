@@ -38,8 +38,12 @@ public class ItemCollector : MonoBehaviour
             var item = collision.GetComponent<Item>();
             bool isGet;
 
+            // 만약 아이템 스택이 여러개 일 경우?
+            // 인벤토리에 넣을 수 있는 스택만큼의 공간이 없다면?
+
             isGet = inventory.AddItem(item);
 
+            // 아이템을 인벤토리에 넣을 수 없는 경우
             if (!isGet) return;
 
             collision.gameObject.SetActive(false);

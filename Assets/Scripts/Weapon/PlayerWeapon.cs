@@ -74,10 +74,16 @@ public abstract class PlayerWeapon : MonoBehaviour
         // Prefab ID Init
         if (data.bulletPrefab)
         {
-            sbyte? result = GameManager.instance.poolManager.FindPrefabIndex(data.bulletPrefab);
-            if (result != null)
+            byte? result = GameManager.instance.poolManager.FindPrefabIndex(data.bulletPrefab);
+            if (result.HasValue)
             {
                 property.prefabId = (byte)result;
+            }
+            else
+            {
+                Debug.LogError($"무기 데이터의 프리팹을 PoolManager에서 찾을 수 없습니다.\n" +
+                    $"프리팹 : {(data.bulletPrefab ? data.id : "Null")}",
+                    gameObject);
             }
         }
 

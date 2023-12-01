@@ -40,9 +40,9 @@ public class UILevelUp : MonoBehaviour
     {
         var btns = GetComponentsInChildren<Button>();
         
-        for (int i = 0; i < btns.Length; i++)
+        for (byte i = 0; i < btns.Length; i++)
         {
-            int tmp = i;
+            byte tmp = i;
             btns[tmp].onClick.AddListener(GameManager.instance.Resume);
             btns[tmp].onClick.AddListener(HideUI);
         }

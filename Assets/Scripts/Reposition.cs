@@ -17,6 +17,10 @@ public class Reposition : MonoBehaviour
 
         switch (gameObject.tag)
         {
+            // 플레이어 이동 방향으로 타일 이동
+            // 나중에 기기에 따라 ViewArea 크기가 다르고
+            // 바닥의 크기 만큼 이동하도록 수정
+            // + 플레이어 moveInput 없이 밀려나는 경우에 대한 예외 필요
             case "Floor":
                 float dirX = player.moveInput.x < 0 ? -1 : 1;
                 float dirY = player.moveInput.y < 0 ? -1 : 1;
@@ -32,6 +36,7 @@ public class Reposition : MonoBehaviour
                 break;
 
             case "Enemy":
+                // 여기도 ViewArea 크기에 따라 자동 할당 필요
                 Vector2 offset = player.moveInput * 13f;
                 offset.x += Random.Range(-3f, 3f);
                 offset.y += Random.Range(-3f, 3f);

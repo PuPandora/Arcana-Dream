@@ -63,6 +63,7 @@ public class GameResult : MonoBehaviour
     {
         foreach (var playerWeapon in StageManager.instance.player.weapons)
         {
+            // 장비 결과 텍스트는 당장 제외. 나중에 기여한 수치를 표시할 수도?
             if (playerWeapon.property.type == WeaponProperty.WeaponType.Gear) continue;
             
             MakeWeaponResultText(playerWeapon);
