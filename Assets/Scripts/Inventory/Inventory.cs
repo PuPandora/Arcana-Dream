@@ -43,12 +43,6 @@ public class Inventory : MonoBehaviour
     [TableList]
     public InventorySlot[] inventory = new InventorySlot[Utils.INVENTORY_SLOT_COUNT];
 
-    void Awake()
-    {
-        ClearInventory();
-        GameManager.instance.inventory = this;
-    }
-
     /// <summary>
     /// 인벤토리에 아이템을 추가합니다.
     /// </summary>

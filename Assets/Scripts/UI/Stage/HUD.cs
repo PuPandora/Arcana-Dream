@@ -58,6 +58,7 @@ public class HUD : MonoBehaviour
     void Start()
     {
         stageManager = StageManager.instance;
+        stageManager.hud = this;
         UpdateHUD();
 
         stageManager.OnExpChanged += UpdateExpSlider;
@@ -65,6 +66,8 @@ public class HUD : MonoBehaviour
         stageManager.OnLevelChanged += UpdateLevelText;
         stageManager.OnHealthChanged += UpdateHealthSlider;
         StartCoroutine(UpdateTimerRoutine());
+
+        stageManager.itemCollector.OnGetItem += ShowGetItemUI;
     }
 
     private void UpdateHUD()
@@ -116,10 +119,25 @@ public class HUD : MonoBehaviour
         healthSlider.value = curHealth / curMaxHealth;
     }
 
+    public void ShowGetItemUI(string itemName, Sprite itemSprite)
+    {
+        Debug.Log("Show Get Item UI");
+        foreach (var item in StageManager.instance.getItemUis)
+        {
+            if (!item.gameObject.activeSelf)
+            {
+                item.Play(itemName, itemSprite);
+                break;
+            }
+        }
+    }
+
     void OnDestroy()
     {
         stageManager.OnExpChanged -= UpdateExpSlider;
         stageManager.OnKillCountChanged -= UpdateKillCountText;
         stageManager.OnLevelChanged -= UpdateLevelText;
+
+        stageManager.itemCollector.OnGetItem -= ShowGetItemUI;
     }
 }

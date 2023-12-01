@@ -43,6 +43,9 @@ public class StageManager : MonoBehaviour
 
     [Title("# Game Objects")]
     public Spawner spawner;
+    public ItemCollector itemCollector;
+    public HUD hud;
+    public GetItemUI[] getItemUis;
 
     public event Action OnKillCountChanged;
     public event Action OnExpChanged;

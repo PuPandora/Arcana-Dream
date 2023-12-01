@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour
         {
             stageLevel++;
             // 테이블이 남아있다면 읽기
-            if (stageLevel <= stageData.enemyTables.Length)
+            if (stageLevel < stageData.enemyTables.Length)
             {
                 ReadStageData(stageLevel);
                 
@@ -56,6 +56,7 @@ public class Spawner : MonoBehaviour
             // 끝이라면 게임 클리어
             else
             {
+                StageManager.instance.hud.UpdateTimerText();
                 StageManager.instance.GameClear();
             }
         }

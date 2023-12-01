@@ -49,7 +49,7 @@ public class DeveloperMenu : LobbyUI
         InitializeButton(lobbyBtn, gameManager.EnterLobby, "로비로 이동");
 
         var closeButton = debugButtons[debugButtons.Length - 1];
-        InitializeButton(closeButton, () => devMenuGroupRect.gameObject.SetActive(false), "X");
+        InitializeButton(closeButton, () => rect.gameObject.SetActive(false), "X");
     }
 
     private void InitializeButton(Button button, UnityEngine.Events.UnityAction call, string text)
@@ -61,7 +61,6 @@ public class DeveloperMenu : LobbyUI
 
     public override void ShowUI()
     {
-        Debug.Log("개발자 메뉴 오픈");
         rect.localScale = Vector3.one;
         rect.gameObject.SetActive(true);
         isOpen = true;

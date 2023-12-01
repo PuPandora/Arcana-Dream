@@ -432,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 164832694}
   - component: {fileID: 164832693}
+  - component: {fileID: 164832695}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -460,9 +461,6 @@ MonoBehaviour:
   viewArea: {fileID: 0}
   levelUpUi: {fileID: 0}
   inventory: {fileID: 0}
-  devMenu: {fileID: 0}
-  devMenuGroup: {fileID: 0}
-  inventoryUI: {fileID: 0}
   weapons:
   - {fileID: 0}
   - {fileID: 0}
@@ -475,8 +473,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
   - {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
   m_gold: 0
-  debugMenuKey: 27
-  inventoryKey: 105
   interactKey: 101
 --- !u!4 &164832694
 Transform:
@@ -494,6 +490,139 @@ Transform:
   - {fileID: 1648585611}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164832695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164832692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce12494b464d814e80249fa0842f2fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
+  - itemData: {fileID: 0}
+    id: 0
+    m_stack: 0
+    isEmpty: 1
 --- !u!1 &386786905
 GameObject:
   m_ObjectHideFlags: 0

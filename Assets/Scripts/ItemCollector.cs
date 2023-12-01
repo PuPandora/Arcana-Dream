@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
@@ -9,14 +11,21 @@ public class ItemCollector : MonoBehaviour
 
     CircleCollider2D coll;
 
+    public event Action<string, Sprite> OnGetItem;
+
     void Awake()
     {
         coll = GetComponent<CircleCollider2D>();
+        inventory = GameManager.instance.inventory;
     }
 
     void Start()
     {
         coll.radius = radius;
+        if (GameManager.instance.gameState == GameState.Stage)
+        {
+            StageManager.instance.itemCollector = this;
+        }
     }
 
     public void ChangeRadius(float value)
@@ -46,6 +55,7 @@ public class ItemCollector : MonoBehaviour
             // 아이템을 인벤토리에 넣을 수 없는 경우
             if (!isGet) return;
 
+            OnGetItem?.Invoke(item.itemData.name, item.itemData.sprite);
             collision.gameObject.SetActive(false);
         }
     }

@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public BoxCollider2D viewArea;
     public GameObject levelUpUi;
-    public Inventory inventory;
+    [HideInInspector] public Inventory inventory;
 
     [Title("# Weapons")]
     public PlayerWeaponController[] weapons;
@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += CheckScene;
         weapons = new PlayerWeaponController[16];
+
+        inventory = GetComponent<Inventory>();
 
         // Sort Item Data Base
         Array.Sort(itemDataBase, Utils.CompareDataId);
