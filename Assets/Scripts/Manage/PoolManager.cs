@@ -55,6 +55,13 @@ public class PoolManager : MonoBehaviour
         return select;
     }
 
+    // Enemy를 한 번에 GetComponent 하는 경우가 있어
+    // Enemy 컴포넌트를 가진 리스트 만들기 + 반환 메소드 구현
+    public List<GameObject> GetPool(PoolType type)
+    {
+        return poolList[(byte)type];
+    }
+
     /// <summary>
     /// PoolManager의 프리팹 배열에서 동일한 프리팹이 있는지 확인합니다.<br></br>
     /// </summary>

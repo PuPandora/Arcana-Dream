@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     Animator anim;
     Collider2D coll;
 
+    Coroutine directionRoutine;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -26,11 +28,14 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
         dropItem = GetComponent<DropItem>();
+
+        anim.SetBool("IsChase", true);
     }
 
     void Start()
     {
-        StartCoroutine(CalculateDirectionRoutine());
+        directionRoutine = StartCoroutine(CalculateDirectionRoutine());
+        StageManager.instance.OnGameOver += MoveAway;
     }
 
     public void Initalize(EnemyData data)
@@ -56,11 +61,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (!isLive) return;
-        anim.SetBool("IsChase", target);
+        //if (!isLive) return;
+        //anim.SetBool("IsChase", target);
 
-        if (!target) return;
-        spriter.flipX = target.position.x < transform.position.x;
+        if (dirVec.x == 0) return;
+
+        spriter.flipX = dirVec.normalized.x < 0 ? true : false;
     }
 
     void FixedUpdate()
@@ -71,6 +77,15 @@ public class Enemy : MonoBehaviour
     private void ChaseTarget()
     {
         rigid.MovePosition(rigid.position + dirVec.normalized * speed * Time.fixedDeltaTime);
+    }
+
+    private void MoveAway()
+    {
+        StopCoroutine(directionRoutine);
+        dirVec = (transform.position - target.position).normalized;
+        GetComponent<Reposition>().enabled = false;
+
+        Destroy(gameObject, 10f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -93,6 +108,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void Hit(float value)
+    {
+        DisplayDamageText(value);
+
+        health -= value;
+        if (health <= 0)
+        {
+            Die(false, false, false);
+        }
+    }
+
     private void DisplayDamageText(float value)
     {
         GameObject tmp = GameManager.instance.poolManager.Get(PoolType.DamageText);
@@ -103,14 +129,22 @@ public class Enemy : MonoBehaviour
         damageText.SetText(value);
     }
 
-    private void Die()
+    private void Die(bool addKillCount = true, bool dropExp = true, bool dropItem = true)
     {
         isLive = false;
 
-        StageManager.instance.AddKillCount();
-
-        DropExpItem();
-        DropItem();
+        if (addKillCount)
+        {
+            StageManager.instance.AddKillCount();
+        }
+        if (dropExp)
+        {
+            DropExpItem();
+        }
+        if (dropItem)
+        {
+            DropItem();
+        }
 
         coll.enabled = false;
         gameObject.SetActive(false);

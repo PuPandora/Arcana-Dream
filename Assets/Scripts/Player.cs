@@ -13,19 +13,25 @@ public class Player : MonoBehaviour
     public Vector2 moveInput { get; private set; }
 
     Rigidbody2D rigid;
+    Collider2D coll;
     SpriteRenderer spriter;
     Animator anim;
     BoxCollider2D viewArea;
     Spawner spawner;
 
+    private bool isLive = true;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        coll = GetComponent<Collider2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         scanner = GetComponent<Scanner>();
         viewArea = GetComponentInChildren<BoxCollider2D>();
         spawner = GetComponentInChildren<Spawner>();
+
+        isLive = true;
 
         GameManager.instance.player = this;
         GameManager.instance.viewArea = viewArea;
@@ -38,11 +44,15 @@ public class Player : MonoBehaviour
         {
             StageManager.instance.player = this;
             StageManager.instance.spawner = spawner;
+            StageManager.instance.OnGameClear += Win;
+            StageManager.instance.OnGameOver += Die;
         }
     }
 
     void Update()
     {
+        if (!isLive) return;
+
         // 플레이어가 최근 이동항 방향을 바라봄
         if (moveInput.x != 0)
         {
@@ -52,6 +62,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isLive) return;
+
         rigid.MovePosition(rigid.position + moveInput.normalized * speed * Time.fixedDeltaTime);
     }
 
@@ -59,5 +71,24 @@ public class Player : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
         anim.SetFloat("Speed", moveInput.magnitude);
+    }
+
+    public void Win()
+    {
+        anim.SetTrigger("Win");
+    }
+
+    public void Die()
+    {
+        anim.SetTrigger("Die");
+        
+        isLive = false;
+        coll.enabled = false;
+
+        // 무기 해제
+        foreach (var weapon in weapons)
+        {
+            weapon.GetComponent<PlayerWeaponController>().weapon = null;
+        }
     }
 }

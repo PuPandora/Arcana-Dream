@@ -128,6 +128,8 @@ public class StageManager : MonoBehaviour
 
     public void GetDamaged(float value)
     {
+        if (!isLive) return;
+
         health -= value;
 
         if (health <= 0)
@@ -156,7 +158,7 @@ public class StageManager : MonoBehaviour
     {
         isLive = false;
         spawner.isPlaying = false;
-        GameManager.instance.Stop();
+        //GameManager.instance.Stop();
 
         OnGameOver?.Invoke();
     }
@@ -166,7 +168,12 @@ public class StageManager : MonoBehaviour
     {
         isLive = false;
         spawner.isPlaying = false;
-        GameManager.instance.Stop();
+        var enemyPool = GameManager.instance.poolManager.GetPool(PoolType.Enemy);
+        foreach (var enemy in enemyPool)
+        {
+            enemy.GetComponent<Enemy>().Hit(999999999.0f);
+        }
+        //GameManager.instance.Stop();
         
         OnGameClear?.Invoke();
     }
