@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening.Core.Easing;
 
 [Serializable]
 public class InventoryData
@@ -74,17 +75,25 @@ public class DataManager : MonoBehaviour
         path = Path.Combine(path, $"SaveData_{saveSlotIndex}.json");
 
         gameManager = GameManager.instance;
-        gameManager.dataManager = this;
+        GameManager.instance.dataManager = this;
     }
 
     // 추후 비동기 방식으로 구현 예정
     [ContextMenu("Save Game")]
     public void SaveGame()
     {
-        saveData.inventoryData = GameManager.instance.inventory.GetInventoryData();
-        saveData.playerStateData = GameManager.instance.playerStates;
+        saveData.inventoryData = gameManager.inventory.GetInventoryData();
+        saveData.playerStateData = gameManager.playerStates;
 
-        string json = JsonUtility.ToJson(saveData, true);
+        saveData.gold = gameManager.gold;
+        saveData.position = gameManager.player.transform.position;
+        saveData.playerSpriteFlip = gameManager.player.spriter.flipX;
+
+        saveData.playerStateData.damageLevel = gameManager.playerStates.damageState.level;
+        saveData.playerStateData.healthLevel = gameManager.playerStates.healthState.level;
+        saveData.playerStateData.defenseLevel = gameManager.playerStates.defenseState.level;
+
+    string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(path, json);
 
         Debug.Log($"게임 데이터 저장 완료\n경로 : {path}");
@@ -101,8 +110,35 @@ public class DataManager : MonoBehaviour
 
         string loadJson = File.ReadAllText(path);
         JsonUtility.FromJsonOverwrite(loadJson, saveData);
+
         gameManager.inventory.ApplyData(saveData.inventoryData);
+        gameManager.SetGold(saveData.gold);
+        gameManager.player.transform.position = saveData.position;
+        gameManager.player.spriter.flipX = saveData.playerSpriteFlip;
+
+        LoadStatesData();
 
         Debug.Log("게임 데이터 불러오기 완료");
+    }
+
+    private void LoadStatesData()
+    {
+        // 레벨 적용
+        gameManager.playerStates.damageState.level = saveData.playerStateData.damageLevel;
+        gameManager.playerStates.healthState.level = saveData.playerStateData.healthLevel;
+        gameManager.playerStates.defenseState.level = saveData.playerStateData.defenseLevel;
+
+
+        StateUpgradeData[] statesData = new StateUpgradeData[] {
+            gameManager.playerStates.damageState,
+            gameManager.playerStates.healthState,
+            gameManager.playerStates.defenseState 
+        };
+
+        // 레벨에 맞춰 스탯 적용
+        foreach (var data in statesData)
+        {
+            data.ApplyState(data.level);
+        }
     }
 }

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 192bc9828ef07094a82ced2eb2c4f25f, type: 3}
   stateName: "\uACF5\uACA9\uB825"
-  level: 5
+  level: 3
   maxLevel: 10
-  totalIncreaseValue: 0
+  totalIncreaseValue: 30
   totalMoreValue: 0
   stateUpgradeTables:
   - increaseValue: 10

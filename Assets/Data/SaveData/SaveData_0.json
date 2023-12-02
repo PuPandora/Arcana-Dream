@@ -1,53 +1,24 @@
 {
     "playerStateData": {
         "damageState": {
-            "level": 0,
-            "increaseAmount": 1.0,
-            "moreAmount": 1.0
-        },
-        "SpeedState": {
-            "level": 0,
-            "increaseAmount": 1.0,
-            "moreAmount": 1.0
-        },
-        "speedState": {
-            "level": 0,
-            "increaseAmount": 1.0,
-            "moreAmount": 1.0
+            "instanceID": -17912
         },
         "healthState": {
-            "level": 0,
-            "increaseAmount": 1.0,
-            "moreAmount": 1.0
-        },
-        "healthRegenState": {
-            "level": 0,
-            "increaseAmount": 1.0,
-            "moreAmount": 1.0
+            "instanceID": 55984
         },
         "defenseState": {
-            "level": 0,
-            "increaseAmount": 1.0,
-            "moreAmount": 1.0
+            "instanceID": 71096
         },
-        "moveSpeedState": {
-            "level": 0,
-            "increaseAmount": 1.0,
-            "moreAmount": 1.0
-        },
-        "luckState": {
-            "level": 0,
-            "increaseAmount": 1.0,
-            "moreAmount": 1.0
-        },
-        "startLevel": 0
+        "damageLevel": 3,
+        "healthLevel": 6,
+        "defenseLevel": 0
     },
     "inventoryData": {
         "count": 30,
         "itemIds": [
-            9003,
-            9002,
-            9001,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -77,9 +48,9 @@
             0
         ],
         "stacks": [
-            4,
-            4,
-            4,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -108,5 +79,12 @@
             0,
             0
         ]
-    }
+    },
+    "gold": -3,
+    "position": {
+        "x": -6.169191837310791,
+        "y": 2.0369837284088136,
+        "z": 0.0
+    },
+    "playerSpriteFlip": false
 }

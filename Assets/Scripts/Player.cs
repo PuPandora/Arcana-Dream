@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rigid;
     Collider2D coll;
-    SpriteRenderer spriter;
+    public SpriteRenderer spriter { get; private set; }
     Animator anim;
     BoxCollider2D viewArea;
     Spawner spawner;

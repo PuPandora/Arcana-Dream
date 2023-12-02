@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: 1003
   speed: 4.5
-  damage: 0
+  damage: 5
   maxHealth: 10
   collPreset: {fileID: 2655988077585873504, guid: f4d4ec1e710a3284d9cdc050cdd601bd, type: 2}
   animController: {fileID: 22100000, guid: a69218b59557acd49a1659182559fb8c, type: 2}

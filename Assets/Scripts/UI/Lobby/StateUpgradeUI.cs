@@ -57,6 +57,10 @@ public class StateUpgradeUI : LobbyUI
         stateUpgradeButtonText.text = string.Empty;
 
         var level = selectStateData.level;
+        if (level >= selectStateData.maxLevel)
+        {
+            level = (byte)(selectStateData.maxLevel - 1);
+        }
         var table = selectStateData.stateUpgradeTables[level];
         var cost = selectStateData.stateUpgradeTables[level].cost;
 
@@ -70,10 +74,11 @@ public class StateUpgradeUI : LobbyUI
         }
 
         // 최대 레벨의 스탯의 경우
-        else if (selectStateData.level >= selectStateData.maxLevel)
+        else if (selectStateData.level >= selectStateData.maxLevel - 1)
         {
             UpdateDescription(table);
-            stateUpgradeButtonText.text = $"MAX LEVEL";
+            stateUpgradeButtonText.text = $"최대 레벨";
+            stateDescText.text = $"최대 레벨";
             stateUpgradeButton.enabled = false;
         }
 

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1658139208, guid: 66e6b3abd9bb0b14988332c2e8dfbc23, type: 3}
   stateName: "\uCCB4\uB825"
-  level: 0
+  level: 6
   maxLevel: 10
-  totalIncreaseValue: 0
-  totalMoreValue: 0
+  totalIncreaseValue: 60
+  totalMoreValue: 5
   stateUpgradeTables:
   - increaseValue: 10
     moreValue: 0

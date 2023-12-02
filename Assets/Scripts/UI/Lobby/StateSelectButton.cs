@@ -21,7 +21,7 @@ public class StateSelectButton : MonoBehaviour
             return;
         }
         nameText.text = data.stateName;
-        levelText.text = $"LV.{data.level}";
+        levelText.text = $"LV.{data.level + 1}";
         icon.sprite = data.icon;
     }
 

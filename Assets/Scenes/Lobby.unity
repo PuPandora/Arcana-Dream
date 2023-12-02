@@ -1713,48 +1713,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83b7876a5727d3045b5783d1087db4e7, type: 2}
   enemyDataBase: []
   playerStates:
-    playerStates: []
-    damageState:
-      upgradeData: {fileID: 0}
-      level: 0
-      increaseAmount: 1
-      moreAmount: 1
-    SpeedState:
-      upgradeData: {fileID: 0}
-      level: 0
-      increaseAmount: 1
-      moreAmount: 1
-    speedState:
-      upgradeData: {fileID: 0}
-      level: 0
-      increaseAmount: 1
-      moreAmount: 1
-    healthState:
-      upgradeData: {fileID: 0}
-      level: 0
-      increaseAmount: 1
-      moreAmount: 1
-    healthRegenState:
-      upgradeData: {fileID: 0}
-      level: 0
-      increaseAmount: 1
-      moreAmount: 1
-    defenseState:
-      upgradeData: {fileID: 0}
-      level: 0
-      increaseAmount: 1
-      moreAmount: 1
-    moveSpeedState:
-      upgradeData: {fileID: 0}
-      level: 0
-      increaseAmount: 1
-      moreAmount: 1
-    luckState:
-      upgradeData: {fileID: 0}
-      level: 0
-      increaseAmount: 1
-      moreAmount: 1
-    startLevel: 0
+    damageState: {fileID: 0}
+    healthState: {fileID: 0}
+    defenseState: {fileID: 0}
+    damageLevel: 0
+    healthLevel: 0
+    defenseLevel: 0
   interactKey: 101
 --- !u!4 &190451556
 Transform:
@@ -7105,12 +7069,12 @@ MonoBehaviour:
     baseSpeed: 0
     penetrate: 0
     baseFireDelay: 0
-    <increaseDamage>k__BackingField: 1
-    <increaseSpeed>k__BackingField: 1
-    <increaseFireDelay>k__BackingField: 1
-    <moreDamage>k__BackingField: 1
-    <moreSpeed>k__BackingField: 1
-    <moreFireDelay>k__BackingField: 1
+    increaseDamage: 1
+    increaseSpeed: 1
+    increaseFireDelay: 1
+    moreDamage: 1
+    moreSpeed: 1
+    moreFireDelay: 1
     totalDamage: 0
   data: {fileID: 11400000, guid: 65d61a7afbfa4da47ac7f85c37120eed, type: 2}
 --- !u!114 &1368891373
@@ -11156,7 +11120,7 @@ PrefabInstance:
     - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: c22fc7682b43aa040924fede1453959e, type: 2}
+      objectReference: {fileID: 11400000, guid: 693912ecd38c002448d53cc1479b76a6, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

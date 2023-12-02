@@ -11,6 +11,10 @@ public class PlayerStates
     public StateUpgradeData healthState;
     public StateUpgradeData defenseState;
 
+    public byte damageLevel;
+    public byte healthLevel;
+    public byte defenseLevel;
+
     private float baseHealth = 100f;
 
     public float defense
