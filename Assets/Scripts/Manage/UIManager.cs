@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public InventoryUI inventoryUI;
     public PlayerStatesUI playerStateUI;
     public QuestUI questUI;
+    public StateUpgradeUI stateUpgradeUI;
 
     public LobbyUI curUI;
 
@@ -69,6 +70,11 @@ public class UIManager : MonoBehaviour
 
     public void UIManage(LobbyUI ui)
     {
+        if (ui == null)
+        {
+            throw new System.NullReferenceException();
+        }
+
         if (ui.isOpen)
         {
             ui.HideUI();

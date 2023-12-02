@@ -8570,7 +8570,6 @@ GameObject:
   - component: {fileID: 1668484016}
   - component: {fileID: 1668484014}
   - component: {fileID: 1668484017}
-  - component: {fileID: 1668484018}
   m_Layer: 0
   m_Name: State Upgrade Zone
   m_TagString: Zone
@@ -8682,19 +8681,6 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1668484017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668484012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1a83e447800794eac3cded6ed7c3d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOpen: 0
---- !u!114 &1668484018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9445,6 +9431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1806829459}
+  - component: {fileID: 1806829460}
   m_Layer: 5
   m_Name: States Upgrade UI Group
   m_TagString: Untagged
@@ -9472,6 +9459,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1806829460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806829458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0ef1fcb6597804c8e3b61614172acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
 --- !u!1 &1863307054
 GameObject:
   m_ObjectHideFlags: 0

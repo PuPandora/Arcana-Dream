@@ -472,7 +472,42 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
   - {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
   - {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
-  m_gold: 0
+  playerStates:
+    damageState:
+      level: 0
+      increaseAmount: 0
+      moreAmount: 0
+    SpeedState:
+      level: 0
+      increaseAmount: 0
+      moreAmount: 0
+    speedState:
+      level: 0
+      increaseAmount: 0
+      moreAmount: 0
+    healthState:
+      level: 0
+      increaseAmount: 0
+      moreAmount: 0
+    healthRegenState:
+      level: 0
+      increaseAmount: 0
+      moreAmount: 0
+    defenseState:
+      level: 0
+      increaseAmount: 0
+      moreAmount: 0
+    moveSpeedState:
+      level: 0
+      increaseAmount: 0
+      moreAmount: 0
+    luckState:
+      level: 0
+      increaseAmount: 0
+      moreAmount: 0
+    startLevel: 0
+  gold: 0
+  position: {x: 0, y: 0, z: 0}
   interactKey: 101
 --- !u!4 &164832694
 Transform:
@@ -486,8 +521,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1648585611}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &164832695
@@ -1362,37 +1396,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1104858891
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1104858892}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1104858892
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104858891}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498038064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,13 +1637,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveData:
-    testInt: 0
-    testFloat: 0
+    playerStateData:
+      damageState:
+        level: 0
+        increaseAmount: 1
+        moreAmount: 1
+      SpeedState:
+        level: 0
+        increaseAmount: 1
+        moreAmount: 1
+      speedState:
+        level: 0
+        increaseAmount: 1
+        moreAmount: 1
+      healthState:
+        level: 0
+        increaseAmount: 1
+        moreAmount: 1
+      healthRegenState:
+        level: 0
+        increaseAmount: 1
+        moreAmount: 1
+      defenseState:
+        level: 0
+        increaseAmount: 1
+        moreAmount: 1
+      moveSpeedState:
+        level: 0
+        increaseAmount: 1
+        moreAmount: 1
+      luckState:
+        level: 0
+        increaseAmount: 1
+        moreAmount: 1
+      startLevel: 0
     inventoryData:
       count: 30
       itemIds: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
       stacks: 000000000000000000000000000000000000000000000000000000000000
-      isEmpty: 010101010101010101010101010101010101010101010101010101010101
 --- !u!4 &1648585611
 Transform:
   m_ObjectHideFlags: 0
@@ -1654,7 +1688,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 164832694}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1650849825
 GameObject:
@@ -2600,5 +2634,5 @@ SceneRoots:
   - {fileID: 2110573912}
   - {fileID: 432538021}
   - {fileID: 164832694}
-  - {fileID: 1104858892}
+  - {fileID: 1648585611}
   - {fileID: 28874446}
