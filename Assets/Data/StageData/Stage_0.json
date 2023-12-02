@@ -1,0 +1,111 @@
+{
+    "stageTable": [
+        {
+            "spawnTable": [
+                {
+                    "enemyData": {
+                        "instanceID": 30868
+                    },
+                    "enemyId": 1001,
+                    "spawnWeight": 1.0
+                }
+            ],
+            "spawnDelay": 1.0,
+            "nextTableTime": 30.0
+        },
+        {
+            "spawnTable": [
+                {
+                    "enemyData": {
+                        "instanceID": 30868
+                    },
+                    "enemyId": 1001,
+                    "spawnWeight": 8.0
+                },
+                {
+                    "enemyData": {
+                        "instanceID": 30850
+                    },
+                    "enemyId": 1002,
+                    "spawnWeight": 2.0
+                }
+            ],
+            "spawnDelay": 1.0,
+            "nextTableTime": 60.0
+        },
+        {
+            "spawnTable": [
+                {
+                    "enemyData": {
+                        "instanceID": 30868
+                    },
+                    "enemyId": 1001,
+                    "spawnWeight": 6.0
+                },
+                {
+                    "enemyData": {
+                        "instanceID": 30850
+                    },
+                    "enemyId": 1002,
+                    "spawnWeight": 4.0
+                }
+            ],
+            "spawnDelay": 0.800000011920929,
+            "nextTableTime": 90.0
+        },
+        {
+            "spawnTable": [
+                {
+                    "enemyData": {
+                        "instanceID": 30868
+                    },
+                    "enemyId": 1001,
+                    "spawnWeight": 4.0
+                },
+                {
+                    "enemyData": {
+                        "instanceID": 30850
+                    },
+                    "enemyId": 1002,
+                    "spawnWeight": 4.0
+                },
+                {
+                    "enemyData": {
+                        "instanceID": 30888
+                    },
+                    "enemyId": 1003,
+                    "spawnWeight": 2.0
+                }
+            ],
+            "spawnDelay": 0.0,
+            "nextTableTime": 120.0
+        },
+        {
+            "spawnTable": [
+                {
+                    "enemyData": {
+                        "instanceID": 30868
+                    },
+                    "enemyId": 1001,
+                    "spawnWeight": 2.0
+                },
+                {
+                    "enemyData": {
+                        "instanceID": 30850
+                    },
+                    "enemyId": 1002,
+                    "spawnWeight": 6.0
+                },
+                {
+                    "enemyData": {
+                        "instanceID": 30888
+                    },
+                    "enemyId": 1003,
+                    "spawnWeight": 2.0
+                }
+            ],
+            "spawnDelay": 0.0,
+            "nextTableTime": 180.0
+        }
+    ]
+}
