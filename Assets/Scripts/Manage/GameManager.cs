@@ -37,21 +37,9 @@ public class GameManager : MonoBehaviour
     [field: SerializeField]
     public ItemData[] itemDataBase { get; private set; }
     public EnemyData[] enemyDataBase;
-    public int gold
-    {
-        get
-        {
-            return m_gold;
-        }
-        set
-        {
-            m_gold = value;
-            OnGoldChanged?.Invoke();
-        }
-    }
-    [field: SerializeField]
-    private int m_gold = 0;
     public PlayerStates playerStates;
+
+    public long gold { get; private set; }
 
     [Title("# Key")]
     public KeyCode interactKey = KeyCode.E;
@@ -156,6 +144,12 @@ public class GameManager : MonoBehaviour
     {
         inventory.ClearInventory();
         dataManager.SaveGame();
+    }
+
+    public void SetGold(long value)
+    {
+        gold = value;
+        OnGoldChanged?.Invoke();
     }
 
     public void GameQuit()

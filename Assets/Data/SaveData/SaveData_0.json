@@ -45,9 +45,9 @@
     "inventoryData": {
         "count": 30,
         "itemIds": [
-            0,
-            0,
-            0,
+            9003,
+            9002,
+            9001,
             0,
             0,
             0,
@@ -77,9 +77,9 @@
             0
         ],
         "stacks": [
-            0,
-            0,
-            0,
+            4,
+            4,
+            4,
             0,
             0,
             0,
@@ -107,38 +107,6 @@
             0,
             0,
             0
-        ],
-        "isEmpty": [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
         ]
     }
 }

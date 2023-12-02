@@ -156,7 +156,6 @@ public class Inventory : MonoBehaviour
         {
             if (inventory[i].isEmpty) continue;
 
-            result.isEmpty[i] = false;
             result.itemIds[i] = inventory[i].itemData.id;
             result.stacks[i] = inventory[i].stack;
         }
@@ -172,7 +171,8 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < data.count; i++)
         {
-            if (data.isEmpty[i]) continue;
+            // 아이템이 없는 경우 넘어감
+            if (data.itemIds[i] == 0) continue;
 
             inventory[i].isEmpty = false;
             inventory[i].id = data.itemIds[i];
@@ -190,7 +190,7 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        GameManager.instance.gold += inventory[index].itemData.value;
+        GameManager.instance.SetGold(GameManager.instance.gold + inventory[index].itemData.value);
         Debug.Log($"{inventory[index].itemData.name} 아이템 판매.\n" +
             $"얻은 골드 : {inventory[index].itemData.value}");
         RemoveItem(index);

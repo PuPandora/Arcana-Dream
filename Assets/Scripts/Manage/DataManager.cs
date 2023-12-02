@@ -11,7 +11,6 @@ public class InventoryData
     [HideInInspector] public byte count = Utils.INVENTORY_SLOT_COUNT;
     public short[] itemIds = new short[Utils.INVENTORY_SLOT_COUNT];
     public byte[] stacks = new byte[Utils.INVENTORY_SLOT_COUNT];
-    public bool[] isEmpty = new bool[Utils.INVENTORY_SLOT_COUNT];
 
     // 생성자 : 배열 초기화
     public InventoryData()
@@ -24,11 +23,6 @@ public class InventoryData
         for (int i = 0; i < stacks.Length; i++)
         {
             stacks[i] = 0;
-        }
-
-        for (int i = 0; i < isEmpty.Length; i++)
-        {
-            isEmpty[i] = true;
         }
     }
 
@@ -46,6 +40,11 @@ public class SaveData
 {
     public PlayerStates playerStateData;
     public InventoryData inventoryData;
+
+    // Game Data
+    public long gold;
+    public Vector3 position;
+    public bool playerSpriteFlip;
 }
 
 public class DataManager : MonoBehaviour
@@ -101,7 +100,8 @@ public class DataManager : MonoBehaviour
         }
 
         string loadJson = File.ReadAllText(path);
-        saveData = JsonUtility.FromJson<SaveData>(loadJson);
+        JsonUtility.FromJsonOverwrite(loadJson, saveData);
+        gameManager.inventory.ApplyData(saveData.inventoryData);
 
         Debug.Log("게임 데이터 불러오기 완료");
     }
