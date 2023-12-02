@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03492949985a700408a5c01249d9f229, type: 3}
   m_Name: JokerCard
   m_EditorClassIdentifier: 
+  <id>k__BackingField: 9003
   sprite: {fileID: -1028938920, guid: 4d8229e8f406fa04a867ce56f18e0bde, type: 3}
   name: "\uC870\uCEE4 \uCE74\uB4DC"
   description: "\uAC80\uC740\uC0C9\uC758 \uC870\uCEE4 \uCE74\uB4DC. \uAC00\uC6B4\uB370\uC5D0
@@ -20,4 +21,3 @@ MonoBehaviour:
   value: 1000
   stack: 0
   maxStack: 10
-  id: 9002

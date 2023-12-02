@@ -5,6 +5,6 @@ using UnityEngine;
 
 public class GameObjectData : ScriptableObject
 {
-    [Title("Advance Info")]
-    public short id;
+    [field: SerializeField]
+    public short id { get; private set; }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using static StageTable;
 
 public class Spawner : MonoBehaviour
 {
@@ -11,8 +12,6 @@ public class Spawner : MonoBehaviour
     [ReadOnly]
     [SerializeField]
     private float spawnTimer;
-
-    public float spawnDelay = 0.1f;
     public bool isPlaying = true;
 
     public byte stageLevel;
@@ -23,9 +22,11 @@ public class Spawner : MonoBehaviour
         stageLevel = 0;
     }
 
-    void Start()
+    public void Initialize()
     {
         StageManager.instance.OnGameClear += Stop;
+
+        stageData = StageManager.instance.stageData;
     }
 
     void Update()
@@ -33,28 +34,25 @@ public class Spawner : MonoBehaviour
         if (!isPlaying) return;
 
         spawnTimer += Time.deltaTime;
+        float delay = stageData.stageTable[stageLevel].spawnDelay;
 
         // 스폰 테이블에 따라 적 스폰
-        if (spawnDelay < spawnTimer)
+        if (delay < spawnTimer)
         {
-            var table = stageData.enemyTables[stageLevel];
+            var table = stageData.stageTable[stageLevel].spawnTable;
             var enemyData = CalculateSpawnRate(table);
 
             Spawn(enemyData);
         }
             
+        float nextTableTime = stageData.stageTable[stageLevel].nextTableTime;
+
         // 다음 테이블로 넘어갈 시간이 되면
-        if (stageData.enemyTables[stageLevel].nextTableTime < StageManager.instance.timer)
+        if (nextTableTime < StageManager.instance.timer)
         {
             stageLevel++;
-            // 테이블이 남아있다면 읽기
-            if (stageLevel < stageData.enemyTables.Length)
-            {
-                ReadStageData(stageLevel);
-                
-            }
-            // 끝이라면 게임 클리어
-            else
+            // 읽을 다음 테이블이 없다면
+            if (stageLevel >= stageData.stageTable.Length)
             {
                 StageManager.instance.hud.UpdateTimerText();
                 StageManager.instance.GameClear();
@@ -62,28 +60,23 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private EnemyData CalculateSpawnRate(StageEnemyTable table)
+    private EnemyData CalculateSpawnRate(SpawnTable[] tables)
     {
-        if (table.enemyData.Length != table.spawnRates.Length)
-        {
-            Debug.LogWarning($"스폰 테이블의 적 데이터 개수와 스폰 확률 개수가 같지 않습니다.");
-        }
-
         EnemyData result = null;
         float totalRate = 0f;
-        
+
         // 확률 더하기
-        foreach (var rate in table.spawnRates)
+        foreach (var table in tables)
         {
-            totalRate += rate;
+            totalRate += table.spawnWeight;
         }
 
         // 확률 데이터 구조체 초기화
-        RateData[] rateData = new RateData[table.spawnRates.Length];
+        RateData[] rateData = new RateData[tables.Length];
         for (int i = 0; i < rateData.Length; i++)
         {
-            rateData[i].enemyData = table.enemyData[i];
-            rateData[i].spawnRate = table.spawnRates[i];
+            rateData[i].enemyData = tables[i].enemyData;
+            rateData[i].spawnRate = tables[i].spawnWeight;
         }
 
         // 오름차순 정렬 (선택 정렬)
@@ -116,7 +109,7 @@ public class Spawner : MonoBehaviour
                 break;
             }
 
-            randNum -= table.spawnRates[i];
+            randNum -= tables[i].spawnWeight;
         }
 
         return result;
@@ -156,10 +149,5 @@ public class Spawner : MonoBehaviour
     public void Stop()
     {
         isPlaying = false;
-    }
-
-    public void ReadStageData(byte index)
-    {
-        spawnDelay = stageData.enemyTables[index].spawnDelay;
     }
 }

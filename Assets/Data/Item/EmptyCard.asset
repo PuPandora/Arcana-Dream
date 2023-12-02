@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03492949985a700408a5c01249d9f229, type: 3}
   m_Name: EmptyCard
   m_EditorClassIdentifier: 
+  <id>k__BackingField: 9001
   sprite: {fileID: 1635598947, guid: 4d8229e8f406fa04a867ce56f18e0bde, type: 3}
   name: "\uBC31\uC9C0 \uCE74\uB4DC"
   description: "\uC544\uBB34 \uAC83\uB3C4 \uC5C6\uC774 \uD14C\uB450\uB9AC\uB9CC \uADF8\uB824\uC9C4
@@ -19,4 +20,3 @@ MonoBehaviour:
   value: 10
   stack: 0
   maxStack: 10
-  id: 9001

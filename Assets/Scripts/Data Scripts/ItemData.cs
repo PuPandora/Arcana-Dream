@@ -12,7 +12,5 @@ public class ItemData : GameObjectData
     public new string name;
     public string description;
     public int value;
-    [Title("Stack")]
-    public byte stack;
     public byte maxStack = 99;
 }

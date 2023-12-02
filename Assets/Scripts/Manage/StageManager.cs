@@ -5,22 +5,6 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[Serializable]
-public class StageEnemyTable
-{
-    public EnemyData[] enemyData;
-    public short[] enemyIds;
-    public float spawnDelay;
-    public float[] spawnRates;
-    public float nextTableTime;
-}
-
-[Serializable]
-public class StageData
-{
-    public StageEnemyTable[] enemyTables;
-}
-
 public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
@@ -32,8 +16,12 @@ public class StageManager : MonoBehaviour
     public int[] nextExp = { 10, 20, 40, 60, 100, 150, 200, 300, 400, 500, 700, 1000 };
     public short level;
     public float timer { get; private set; }
-    private StageEnemyTable[] enemyTables;
+    private StageTable[] enemyTables;
     public StageData stageData;
+#if UNITY_EDITOR
+    [Tooltip("불러올 StageData 파일 이름")]
+    [SerializeField] private TextAsset stageDataFile;
+#endif
 
     [Title("# Player Info")]
     public Player player;
@@ -63,7 +51,7 @@ public class StageManager : MonoBehaviour
         }
         else Destroy(gameObject);
 
-        LoadStageData();
+        //LoadStageData();
         InitEnemyTables();
     }
 
@@ -72,19 +60,18 @@ public class StageManager : MonoBehaviour
         isLive = true;
         health = maxHealth;
 
-        stageData.enemyTables = enemyTables;
-        spawner.stageData = stageData;
-        spawner.ReadStageData(spawner.stageLevel);
+        spawner.Initialize();
+        stageData.stageTable = enemyTables;
     }
 
     private void InitEnemyTables()
     {
-        enemyTables = new StageEnemyTable[stageData.enemyTables.Length];
+        enemyTables = new StageTable[stageData.stageTable.Length];
 
         // Enemy Table 초기화
         for (int i = 0; i < enemyTables.Length; i++)
         {
-            enemyTables[i] = stageData.enemyTables[i];
+            enemyTables[i] = stageData.stageTable[i];
         }
     }
 
@@ -178,54 +165,21 @@ public class StageManager : MonoBehaviour
         OnGameClear?.Invoke();
     }
 
-    // 에디터 상태에서 저장
-    [ContextMenu("Save Stage Table")]
+    [ContextMenu("Save Stage Data to Json")]
     private void SaveStageData()
     {
-        Debug.Log($"스테이지{stageId} 데이터 저장");
-
-        string path = Path.Combine(Application.dataPath + $"/Data/StageTableData/Stage_{stageId}.json");
-
-        for (int i = 0; i < this.stageData.enemyTables.Length; i++)
-        {
-            var enemyTable = this.stageData.enemyTables[i];
-            enemyTable.enemyIds = new short[enemyTable.enemyData.Length];
-
-            for (int j = 0; j < enemyTable.enemyIds.Length ; j++)
-            {
-                var enemyIds = enemyTable.enemyIds;
-                var enemyDataId = enemyTable.enemyData[j].id;
-
-                enemyIds[j] = enemyDataId;
-            }
-        }
-
-        string stageData = JsonUtility.ToJson(this.stageData, true);
-        File.WriteAllText(path, stageData);
+        Utils.SaveStageData(stageData);
     }
 
-    [ContextMenu("Load Stage Table")]
+    [ContextMenu("Load Stage Data from Json")]
     private void LoadStageData()
     {
-        Debug.Log($"스테이지{stageId} 데이터 불러오기");
-
-        string path = Path.Combine(Application.dataPath + $"/Data/StageTableData/Stage_{stageId}.json");
-
-        string stageData = File.ReadAllText(path);
-        JsonUtility.FromJsonOverwrite(stageData, this.stageData);
-
-        // 저장된 EnemyIds로 적 데이터를 가져와 할당
-        for (int i = 0; i < this.stageData.enemyTables.Length; i++)
+        if (stageDataFile == null)
         {
-            var enemyTable = this.stageData.enemyTables[i];
-
-            for (int j = 0; j < enemyTable.enemyIds.Length; j++)
-            {
-                var enemyData = enemyTable.enemyData;
-                var enemyId = enemyTable.enemyIds[j];
-
-                enemyData[j] = Utils.GetEnemyDataWithId(enemyId);
-            }
+            Debug.LogError("Stage Data File이 비어있습니다.");
+            return;
         }
+
+        Utils.LoadStageData(stageDataFile.ToString(), stageData);
     }
 }

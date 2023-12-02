@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95ad52eca66e2849b7d8cfae4ce546f, type: 3}
   m_Name: HeartQueen
   m_EditorClassIdentifier: 
+  <id>k__BackingField: 2
   type: 0
   weaponName: "\uD558\uD2B8 \uD038"
   desc: "\uC804\uCCB4 \uACF5\uACA9\uB825\uC744 \uC99D\uD3ED\uC2DC\uD0B5\uB2C8\uB2E4."
   icon: {fileID: -1315046849, guid: 4d8229e8f406fa04a867ce56f18e0bde, type: 3}
-  id: 2
   baseCount: 0
   baseFireDelay: 0
   baseDamage: 0

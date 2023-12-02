@@ -107,8 +107,8 @@ public class Enemy : MonoBehaviour
     public void Hit(float value)
     {
         DisplayDamageText(value);
-
         health -= value;
+
         if (health <= 0)
         {
             Die(false, false, false);
@@ -149,9 +149,10 @@ public class Enemy : MonoBehaviour
     private void DropExpItem()
     {
         var item = GameManager.instance.poolManager.Get(PoolType.ExpItem);
-        item.transform.position = transform.position;
-        item.transform.rotation = Quaternion.identity;
         ExpItem expItem = item.GetComponent<ExpItem>();
+
+        expItem.transform.position = transform.position;
+        expItem.transform.rotation = Quaternion.identity;
         expItem.Initalize(data.expItemData);
     }
 
@@ -163,11 +164,11 @@ public class Enemy : MonoBehaviour
             if (data.itemDropTable[i].itemDropRate < randNum) continue;
 
             var item = GameManager.instance.poolManager.Get(PoolType.DropItem);
-            item.transform.position = transform.position;
-            item.transform.rotation = Quaternion.identity;
+            Item dropItem = item.GetComponent<Item>();
 
-            Item instantItem = item.GetComponent<Item>();
-            instantItem.Initialize(data.itemDropTable[i].itemData);
+            dropItem.transform.position = transform.position;
+            dropItem.transform.rotation = Quaternion.identity;
+            dropItem.Initialize(data.itemDropTable[i].itemData);
         }
     }
 

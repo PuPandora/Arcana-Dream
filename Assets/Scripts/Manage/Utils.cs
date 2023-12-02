@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public sealed class Utils : MonoBehaviour
@@ -81,5 +82,60 @@ public sealed class Utils : MonoBehaviour
     public static int CompareDataId(GameObjectData data1, GameObjectData data2)
     {
         return data1.id.CompareTo(data2.id);
+    }
+
+    /// <summary>
+    /// StageData를 JSON 파일로 저장합니다
+    /// </summary>
+    public static void SaveStageData(StageData data)
+    {
+        // 경로 정하기
+        string path = Path.Combine(Application.dataPath + $"/Data/StageData/NewStageData.json");
+        short fileIndex = -1;
+        if (File.Exists(path))
+        {
+            do
+            {
+                path = Path.Combine(Application.dataPath + $"/Data/StageData/NewStageData_{++fileIndex}.json");
+            } while (File.Exists(path));
+        }
+
+        Debug.Log(data.name);
+        Debug.Log(data.stageTable.Length);
+        Debug.Log(data.stageTable[0].spawnDelay);
+        Debug.Log(data.stageTable[0].spawnTable.Length);
+
+        // StageTable의 모든 적 데이터 ID 초기화
+        for (byte i = 0; i < data.stageTable.Length; i++)
+        {
+            for (byte j = 0; j < data.stageTable[i].spawnTable.Length; j++)
+            {
+                data.stageTable[i].spawnTable[j].InitEnemyId();
+            }
+        }
+
+        string stageData = JsonUtility.ToJson(data, true);
+        File.WriteAllText(path, stageData);
+
+        Debug.Log($"StageData가 저장되었습니다.\n경로 : {path}");
+    }
+
+    /// <summary>
+    /// JSON 파일을 StageData를 적용시킵니다.
+    /// </summary>
+    public static void LoadStageData(string jsonData, StageData stageData)
+    {
+        JsonUtility.FromJsonOverwrite(jsonData, stageData);
+
+        // StageTable의 모든 적 데이터 초기화
+        for (int i = 0; i < stageData.stageTable.Length; i++)
+        {
+            var spawnTable = stageData.stageTable[i].spawnTable;
+
+            for (int j = 0; j < spawnTable.Length; j++)
+            {
+                spawnTable[j].InitEnemyData();
+            }
+        }
     }
 }

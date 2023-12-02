@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5049b797b38144a815d6c6fcb08c14, type: 3}
   m_Name: Goblin
   m_EditorClassIdentifier: 
+  <id>k__BackingField: 1001
   speed: 2
-  health: 20
+  damage: 0
   maxHealth: 20
   collPreset: {fileID: 2655988077585873504, guid: a9402776eb369fe4ba557d5bd8bea51f, type: 2}
   animController: {fileID: 9100000, guid: d4e9b1307eb14f641a552bf17a0866fc, type: 2}
