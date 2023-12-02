@@ -1261,7 +1261,7 @@ GameObject:
   - component: {fileID: 155837752}
   - component: {fileID: 155837751}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: State Upgrade Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1391,6 +1391,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ff63f56cba448e4085918adcd02ba8b, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1709,35 +1713,44 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83b7876a5727d3045b5783d1087db4e7, type: 2}
   enemyDataBase: []
   playerStates:
+    playerStates: []
     damageState:
+      upgradeData: {fileID: 0}
       level: 0
       increaseAmount: 1
       moreAmount: 1
     SpeedState:
+      upgradeData: {fileID: 0}
       level: 0
       increaseAmount: 1
       moreAmount: 1
     speedState:
+      upgradeData: {fileID: 0}
       level: 0
       increaseAmount: 1
       moreAmount: 1
     healthState:
+      upgradeData: {fileID: 0}
       level: 0
       increaseAmount: 1
       moreAmount: 1
     healthRegenState:
+      upgradeData: {fileID: 0}
       level: 0
       increaseAmount: 1
       moreAmount: 1
     defenseState:
+      upgradeData: {fileID: 0}
       level: 0
       increaseAmount: 1
       moreAmount: 1
     moveSpeedState:
+      upgradeData: {fileID: 0}
       level: 0
       increaseAmount: 1
       moreAmount: 1
     luckState:
+      upgradeData: {fileID: 0}
       level: 0
       increaseAmount: 1
       moreAmount: 1
@@ -1946,6 +1959,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ff63f56cba448e4085918adcd02ba8b, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2404,7 +2421,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 250, y: 250}
+  m_CellSize: {x: 250, y: 300}
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 6
@@ -2416,6 +2433,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ff63f56cba448e4085918adcd02ba8b, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3011,8 +3032,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1724431472}
   - {fileID: 996083116}
+  - {fileID: 1724431472}
   - {fileID: 505370869}
   m_Father: {fileID: 679685493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3072,7 +3093,7 @@ GameObject:
   - component: {fileID: 505370871}
   - component: {fileID: 505370870}
   m_Layer: 5
-  m_Name: Button
+  m_Name: State Upgrade Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3141,7 +3162,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 505370871}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1806829460}
+        m_TargetAssemblyTypeName: StateUpgradeUI, Assembly-CSharp
+        m_MethodName: UpgradeState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &505370871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3521,6 +3554,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: c22fc7682b43aa040924fede1453959e, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3633,6 +3670,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: c22fc7682b43aa040924fede1453959e, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3965,7 +4006,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: State Upgrtade
+  m_text: State Upgrade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec0bc5263643e664087a82e499a1f6e7, type: 2}
   m_sharedMaterial: {fileID: -3260381083852647476, guid: ec0bc5263643e664087a82e499a1f6e7, type: 2}
@@ -5135,7 +5176,7 @@ GameObject:
   - component: {fileID: 996083118}
   - component: {fileID: 996083117}
   m_Layer: 5
-  m_Name: Image
+  m_Name: State Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5544,6 +5585,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: c22fc7682b43aa040924fede1453959e, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5732,6 +5777,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ff63f56cba448e4085918adcd02ba8b, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6811,6 +6860,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ff63f56cba448e4085918adcd02ba8b, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8973,7 +9026,7 @@ GameObject:
   - component: {fileID: 1724431474}
   - component: {fileID: 1724431473}
   m_Layer: 5
-  m_Name: Desc Text
+  m_Name: State Desc Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9472,6 +9525,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  selectStateData: {fileID: 0}
+  stateIcon: {fileID: 996083117}
+  stateDescText: {fileID: 1724431473}
+  stateUpgradeButton: {fileID: 505370870}
+  stateUpgradeButtonText: {fileID: 155837751}
 --- !u!1 &1863307054
 GameObject:
   m_ObjectHideFlags: 0
@@ -9976,6 +10034,18 @@ MonoBehaviour:
     Ordinal: 39
     Priority: 0
     IconType: 158150
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 1668484012}
+    Ordinal: 40
+    Priority: 0
+    IconType: 106000
     IconTexture: {fileID: 0}
     IsIconRecursive: 0
     BackgroundType: 0
@@ -11083,6 +11153,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: c22fc7682b43aa040924fede1453959e, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12515,6 +12589,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 359042683}
     m_Modifications:
+    - target: {fileID: 778043481486699689, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: c22fc7682b43aa040924fede1453959e, type: 2}
     - target: {fileID: 1099074726705559901, guid: 09d76042e6a4cc749a75014c845a6b69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

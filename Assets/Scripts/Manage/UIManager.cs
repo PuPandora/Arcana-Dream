@@ -70,11 +70,6 @@ public class UIManager : MonoBehaviour
 
     public void UIManage(LobbyUI ui)
     {
-        if (ui == null)
-        {
-            throw new System.NullReferenceException();
-        }
-
         if (ui.isOpen)
         {
             ui.HideUI();
@@ -95,5 +90,5 @@ public class UIManager : MonoBehaviour
 
             curUI = ui;
         }
-    }
+    } 
 }

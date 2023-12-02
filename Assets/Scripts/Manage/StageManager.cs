@@ -26,7 +26,6 @@ public class StageManager : MonoBehaviour
     [Title("# Player Info")]
     public Player player;
     public float health;
-    public float maxHealth = 100f;
     public bool isLive { get; private set; } = true;
 
     [Title("# Game Objects")]
@@ -58,7 +57,8 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         isLive = true;
-        health = maxHealth;
+        health = GameManager.instance.playerStates.health;
+        hud.UpdateHealthSlider();
 
         spawner.Initialize();
         stageData.stageTable = enemyTables;
@@ -117,7 +117,8 @@ public class StageManager : MonoBehaviour
     {
         if (!isLive) return;
 
-        health -= value;
+        var damage = value - GameManager.instance.playerStates.defense;
+        health -= damage < Time.deltaTime ? Time.deltaTime : damage;
 
         if (health <= 0)
         {
@@ -132,9 +133,9 @@ public class StageManager : MonoBehaviour
     {
         health += value;
 
-        if (health >= maxHealth)
+        if (health >= GameManager.instance.playerStates.health)
         {
-            health = maxHealth;
+            health = GameManager.instance.playerStates.health;
         }
 
         OnHealthChanged?.Invoke();

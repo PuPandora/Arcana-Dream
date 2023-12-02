@@ -473,41 +473,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
   - {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
   playerStates:
-    damageState:
-      level: 0
-      increaseAmount: 0
-      moreAmount: 0
-    SpeedState:
-      level: 0
-      increaseAmount: 0
-      moreAmount: 0
-    speedState:
-      level: 0
-      increaseAmount: 0
-      moreAmount: 0
-    healthState:
-      level: 0
-      increaseAmount: 0
-      moreAmount: 0
-    healthRegenState:
-      level: 0
-      increaseAmount: 0
-      moreAmount: 0
-    defenseState:
-      level: 0
-      increaseAmount: 0
-      moreAmount: 0
-    moveSpeedState:
-      level: 0
-      increaseAmount: 0
-      moreAmount: 0
-    luckState:
-      level: 0
-      increaseAmount: 0
-      moreAmount: 0
-    startLevel: 0
-  gold: 0
-  position: {x: 0, y: 0, z: 0}
+    damageState: {fileID: 11400000, guid: c22fc7682b43aa040924fede1453959e, type: 2}
+    healthState: {fileID: 11400000, guid: 8ff63f56cba448e4085918adcd02ba8b, type: 2}
+    defenseState: {fileID: 11400000, guid: 693912ecd38c002448d53cc1479b76a6, type: 2}
   interactKey: 101
 --- !u!4 &164832694
 Transform:
@@ -1638,43 +1606,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveData:
     playerStateData:
-      damageState:
-        level: 0
-        increaseAmount: 1
-        moreAmount: 1
-      SpeedState:
-        level: 0
-        increaseAmount: 1
-        moreAmount: 1
-      speedState:
-        level: 0
-        increaseAmount: 1
-        moreAmount: 1
-      healthState:
-        level: 0
-        increaseAmount: 1
-        moreAmount: 1
-      healthRegenState:
-        level: 0
-        increaseAmount: 1
-        moreAmount: 1
-      defenseState:
-        level: 0
-        increaseAmount: 1
-        moreAmount: 1
-      moveSpeedState:
-        level: 0
-        increaseAmount: 1
-        moreAmount: 1
-      luckState:
-        level: 0
-        increaseAmount: 1
-        moreAmount: 1
-      startLevel: 0
+      damageState: {fileID: 0}
+      healthState: {fileID: 0}
+      defenseState: {fileID: 0}
     inventoryData:
       count: 30
       itemIds: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
       stacks: 000000000000000000000000000000000000000000000000000000000000
+    gold: 0
+    position: {x: 0, y: 0, z: 0}
+    playerSpriteFlip: 0
 --- !u!4 &1648585611
 Transform:
   m_ObjectHideFlags: 0

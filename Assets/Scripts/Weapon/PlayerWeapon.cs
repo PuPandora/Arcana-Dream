@@ -39,19 +39,13 @@ public class WeaponProperty
     }
 
     // Increase/More Damage Property
-    [field:SerializeField]
-    public float increaseDamage { get; set; } = 1;
-    [field: SerializeField]
-    public float increaseSpeed { get; set; } = 1;
-    [field: SerializeField]
-    public float increaseFireDelay { get; set; } = 1;
+    public float increaseDamage = 1;
+    public float increaseSpeed = 1;
+    public float increaseFireDelay = 1;
 
-    [field: SerializeField]
-    public float moreDamage { get; set; } = 1;
-    [field: SerializeField]
-    public float moreSpeed { get; set; } = 1;
-    [field: SerializeField]
-    public float moreFireDelay { get; set; } = 1;
+    public float moreDamage = 1;
+    public float moreSpeed = 1;
+    public float moreFireDelay = 1;
 
     // Total Damage
     public double totalDamage;
@@ -66,6 +60,8 @@ public abstract class PlayerWeapon : MonoBehaviour
     // 무기 초기화
     public virtual void InitSetting()
     {
+        var playerStates = GameManager.instance.playerStates;
+
         // transform Init
         transform.parent = GameManager.instance.player.transform;
         transform.localPosition = Vector3.zero;
@@ -94,6 +90,12 @@ public abstract class PlayerWeapon : MonoBehaviour
         property.baseDamage = data.baseDamage;
         property.baseSpeed = data.baseSpeed;
         property.penetrate = data.basepenetrate;
+
+        // Read Player States
+        property.increaseDamage += playerStates.damageState.totalIncreaseValue * 0.01f;
+        property.moreDamage += playerStates.damageState.totalMoreValue * 0.01f;
+        // + Speed
+        // + Fire Delay
 
         property.level++;
             

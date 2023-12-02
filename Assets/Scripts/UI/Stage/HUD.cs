@@ -115,7 +115,7 @@ public class HUD : MonoBehaviour
     public void UpdateHealthSlider()
     {
         float curHealth = stageManager.health;
-        float curMaxHealth = stageManager.maxHealth;
+        float curMaxHealth = GameManager.instance.playerStates.health; 
         healthSlider.value = curHealth / curMaxHealth;
     }
 
