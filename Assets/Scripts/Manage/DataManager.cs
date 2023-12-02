@@ -1,13 +1,14 @@
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class InventoryData
 {
     // Inventory
-    public byte count = Utils.INVENTORY_SLOT_COUNT;
+    [HideInInspector] public byte count = Utils.INVENTORY_SLOT_COUNT;
     public short[] itemIds = new short[Utils.INVENTORY_SLOT_COUNT];
     public byte[] stacks = new byte[Utils.INVENTORY_SLOT_COUNT];
     public bool[] isEmpty = new bool[Utils.INVENTORY_SLOT_COUNT];
@@ -40,11 +41,10 @@ public class InventoryData
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class SaveData
 {
-    public int testInt;
-    public float testFloat;
+    public PlayerStates playerStateData;
     public InventoryData inventoryData;
 }
 
@@ -54,9 +54,8 @@ public class DataManager : MonoBehaviour
     // GameManager 외 다른 클래스에서 접근을 막기 위한 싱글톤
     private static DataManager instance;
 
-    readonly string path = Application.dataPath + "/Data/SaveData/";
-    string mainPath;
-    string inventoryPath;
+    public byte saveSlotIndex { get; private set; } = 0;
+    public string path { get; private set; } = Application.dataPath + "/Data/SaveData/";
 
     GameManager gameManager;
     [SerializeField] private SaveData saveData;
@@ -66,23 +65,14 @@ public class DataManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-
-            // 게임매니저 자식이 아니라면
-            if (!GetComponentInParent<GameManager>())
-            {
-                DontDestroyOnLoad(gameObject);
-            }
+            DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
     }
 
     void Start()
     {
-        mainPath = Path.Combine(path, "MainData.json");
-        inventoryPath = Path.Combine(path, "InventoryData.json");
-        Debug.Log($"Save Data Path : {path}");
-
-        saveData = new SaveData();
+        path = Path.Combine(path, $"SaveData_{saveSlotIndex}.json");
 
         gameManager = GameManager.instance;
         gameManager.dataManager = this;
@@ -92,62 +82,27 @@ public class DataManager : MonoBehaviour
     [ContextMenu("Save Game")]
     public void SaveGame()
     {
-        Debug.Log("데이터 저장");
-        Debug.Log("Save Game");
-        saveData = new SaveData();
-
-        SaveInventoryData();
-        saveData.testInt = Random.Range(1, 100);
-        saveData.testFloat = Random.Range(1f, 10f);
+        saveData.inventoryData = GameManager.instance.inventory.GetInventoryData();
+        saveData.playerStateData = GameManager.instance.playerStates;
 
         string json = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(mainPath, json);
+        File.WriteAllText(path, json);
+
+        Debug.Log($"게임 데이터 저장 완료\n경로 : {path}");
     }
 
     [ContextMenu("Load Game")]
     public void LoadGame()
     {
-        Debug.Log("데이터 불러오기");
-        Debug.Log("Load Game");
-
-        if (!File.Exists(mainPath))
+        if (!File.Exists(path))
         {
             Debug.Log("데이터가 없습니다.");
             return;
         }
 
-        string loadJson = File.ReadAllText(mainPath);
+        string loadJson = File.ReadAllText(path);
         saveData = JsonUtility.FromJson<SaveData>(loadJson);
 
-        LoadInventoryData();
-        PrintTestVar();
-    }
-
-    private void SaveInventoryData()
-    {
-        saveData.inventoryData = gameManager.inventory.GetInventoryData();
-        string json = JsonUtility.ToJson(saveData.inventoryData, true);
-
-        File.WriteAllText(inventoryPath, json);
-    }
-
-    private void LoadInventoryData()
-    {
-        if (!File.Exists(inventoryPath))
-        {
-            Debug.Log("인벤토리 데이터가 없습니다.");
-            return;
-        }
-
-        string inventoryJson = File.ReadAllText(inventoryPath);
-        JsonUtility.FromJsonOverwrite(inventoryJson, saveData.inventoryData);
-
-        gameManager.inventory.ApplyData(saveData.inventoryData);
-    }
-
-    private void PrintTestVar()
-    {
-        Debug.Log(saveData.testInt);
-        Debug.Log(saveData.testFloat);
+        Debug.Log("게임 데이터 불러오기 완료");
     }
 }

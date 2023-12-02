@@ -1,19 +1,46 @@
 {
     "playerStateData": {
-        "increaseDamage": 1,
-        "increaseSpeed": 1,
-        "increaseFireDelay": 1,
-        "moreDamage": 1,
-        "moreSpeed": 1,
-        "moreFireDelay": 1,
-        "increaseHealth": 1,
-        "moreHealth": 1,
-        "increaseHealthRegen": 1,
-        "moreHealthRegen": 1,
-        "increaseMoveSpeed": 1,
-        "moremoveSpeed": 1,
-        "increaseLuck": 1,
-        "moreLuck": 1
+        "damageState": {
+            "level": 0,
+            "increaseAmount": 1.0,
+            "moreAmount": 1.0
+        },
+        "SpeedState": {
+            "level": 0,
+            "increaseAmount": 1.0,
+            "moreAmount": 1.0
+        },
+        "speedState": {
+            "level": 0,
+            "increaseAmount": 1.0,
+            "moreAmount": 1.0
+        },
+        "healthState": {
+            "level": 0,
+            "increaseAmount": 1.0,
+            "moreAmount": 1.0
+        },
+        "healthRegenState": {
+            "level": 0,
+            "increaseAmount": 1.0,
+            "moreAmount": 1.0
+        },
+        "defenseState": {
+            "level": 0,
+            "increaseAmount": 1.0,
+            "moreAmount": 1.0
+        },
+        "moveSpeedState": {
+            "level": 0,
+            "increaseAmount": 1.0,
+            "moreAmount": 1.0
+        },
+        "luckState": {
+            "level": 0,
+            "increaseAmount": 1.0,
+            "moreAmount": 1.0
+        },
+        "startLevel": 0
     },
     "inventoryData": {
         "count": 30,

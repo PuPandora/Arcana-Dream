@@ -10,6 +10,7 @@ public sealed class Utils : MonoBehaviour
     readonly public static WaitForSeconds delay0_25 = new WaitForSeconds(0.25f);
 
     public const byte INVENTORY_SLOT_COUNT = 30;
+    public const byte SAVE_DATA_SLOT_COUNT = 4;
 
     public static Vector2 GetRandomVector(float min, float max)
     {

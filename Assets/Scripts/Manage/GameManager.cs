@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     }
     [field: SerializeField]
     private int m_gold = 0;
+    public PlayerStates playerStates;
 
     [Title("# Key")]
     public KeyCode interactKey = KeyCode.E;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            playerStates = new PlayerStates();
         }
         else Destroy(gameObject);
     }
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
 
         // Test
         OnGoldChanged += PrintGoldAmount;
+
     }
 
     private void PrintGoldAmount()

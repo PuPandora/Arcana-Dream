@@ -1,26 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class PlayerStates : MonoBehaviour
+[Serializable]
+public class PlayerStates
 {
-    public static int increaseDamage;
-    public static int increaseSpeed;
-    public static int increaseFireDelay;
+    public PlayerState damageState = new PlayerState { level = 0, increaseAmount = 1f, moreAmount = 1f };
+    public PlayerState SpeedState = new PlayerState { level = 0, increaseAmount = 1f, moreAmount = 1f };
+    public PlayerState speedState = new PlayerState { level = 0, increaseAmount = 1f, moreAmount = 1f };
+    public PlayerState healthState = new PlayerState { level = 0, increaseAmount = 1f, moreAmount = 1f };
+    public PlayerState healthRegenState = new PlayerState { level = 0, increaseAmount = 1f, moreAmount = 1f };
+    public PlayerState defenseState = new PlayerState { level = 0, increaseAmount = 1f, moreAmount = 1f };
+    public PlayerState moveSpeedState = new PlayerState { level = 0, increaseAmount = 1f, moreAmount = 1f };
+    public PlayerState luckState  = new PlayerState { level = 0, increaseAmount = 1f, moreAmount = 1f };
 
-    public static int moreDamage;
-    public static int moreSpeed;
-    public static int moreFireDelay;
+    [Title("Start Level")]
+    public byte startLevel = 0;
 
-    public static int increaseHealth;
-    public static int moreHealth;
-
-    public static int increaseHealthRegen;
-    public static int moreHealthRegen;
-
-    public static int increaseMoveSpeed;
-    public static int moremoveSpeed;
-
-    public static int increaseLuck;
-    public static int moreLuck;
+    [Serializable]
+    public struct PlayerState
+    {
+        public byte level;
+        public float increaseAmount;
+        public float moreAmount;
+    }
 }
