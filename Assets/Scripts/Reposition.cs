@@ -6,7 +6,7 @@ public class Reposition : MonoBehaviour
 {
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("ViewArea")) return;
+        if (collision.transform != GameManager.instance.viewArea.transform || !StageManager.instance.isLive) return;
 
         Player player = GameManager.instance.player;
         Vector2 playerPos = player.transform.position;

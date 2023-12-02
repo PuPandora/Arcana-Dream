@@ -103,10 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 2
-  health: 10
-  maxHealth: 10
-  expItemData: {fileID: 0}
   dropItem: {fileID: 0}
 --- !u!114 &-7118228713494589534
 MonoBehaviour:
@@ -215,6 +211,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3e3fdbace16d444a2a347eac5e06e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <itemDropTable>k__BackingField:
-  - itemData: {fileID: 11400000, guid: dbaa0c516f1d6f249896c863d5210247, type: 2}
-    itemDropRate: 0.3
+  itemDropTable: []

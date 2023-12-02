@@ -84,11 +84,5 @@ public class Player : MonoBehaviour
         
         isLive = false;
         coll.enabled = false;
-
-        // 무기 해제
-        foreach (var weapon in weapons)
-        {
-            weapon.GetComponent<PlayerWeaponController>().weapon = null;
-        }
     }
 }

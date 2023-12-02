@@ -13,6 +13,8 @@ public class PlayerWeaponController : MonoBehaviour
 
     void Update()
     {
+        if (!StageManager.instance.isLive) return;
+
         weapon.Using();
     }
 }
