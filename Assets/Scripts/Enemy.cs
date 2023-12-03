@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public bool isLive { get; private set; } = true;
     private Vector2 dirVec;
 
+    private bool isDamaged;
+    Coroutine knockBackRoutine;
+
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
@@ -47,18 +50,25 @@ public class Enemy : MonoBehaviour
     {
         isLive = true;
         coll.enabled = true;
+        isDamaged = false;
+
+        if (target == null)
+        {
+            target = StageManager.instance.player.transform;
+        }
         StartCoroutine(CalculateDirectionRoutine());
     }
 
+
     void Update()
     {
-        if (dirVec.x == 0) return;
-
-        spriter.flipX = dirVec.normalized.x < 0 ? true : false;
+        if (!isLive) return;
     }
 
     void FixedUpdate()
     {
+        if (isDamaged) return;
+
         ChaseTarget();
     }
 
@@ -101,6 +111,27 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            if (knockBackRoutine != null)
+            {
+                StopCoroutine(knockBackRoutine);
+            }
+
+            knockBackRoutine = StartCoroutine(KnockBack());
+        }
+    }
+
+    private IEnumerator KnockBack()
+    {
+        isDamaged = true;
+        Vector2 dirVec = transform.position - target.position;
+        rigid.velocity = dirVec.normalized * 1f;
+
+        yield return new WaitForSeconds(0.15f);
+
+        rigid.velocity = Vector2.zero;
+        isDamaged = false;
     }
 
     public void Hit(float value)
@@ -129,6 +160,7 @@ public class Enemy : MonoBehaviour
     private void Die(bool addKillCount = true, bool dropExp = true, bool dropItem = true)
     {
         isLive = false;
+        isDamaged = false;
 
         if (addKillCount)
         {
@@ -178,6 +210,7 @@ public class Enemy : MonoBehaviour
         while (isLive && target)
         {
             dirVec = target.position - transform.position;
+            spriter.flipX = dirVec.normalized.x < 0 ? true : false;
             yield return Utils.delay0_25;
         }
     }

@@ -19,7 +19,7 @@ MonoBehaviour:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
       enemyId: 1001
       spawnWeight: 1
-    spawnDelay: 0.1
+    spawnDelay: 1.5
     nextTableTime: 30
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
@@ -28,7 +28,7 @@ MonoBehaviour:
     - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
       enemyId: 1002
       spawnWeight: 2
-    spawnDelay: 1
+    spawnDelay: 1.2
     nextTableTime: 60
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
@@ -37,7 +37,7 @@ MonoBehaviour:
     - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
       enemyId: 1002
       spawnWeight: 4
-    spawnDelay: 0.8
+    spawnDelay: 1
     nextTableTime: 90
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
@@ -49,7 +49,7 @@ MonoBehaviour:
     - enemyData: {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
       enemyId: 1003
       spawnWeight: 2
-    spawnDelay: 0.6
+    spawnDelay: 0.8
     nextTableTime: 120
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
@@ -61,5 +61,5 @@ MonoBehaviour:
     - enemyData: {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
       enemyId: 1003
       spawnWeight: 2
-    spawnDelay: 0.5
+    spawnDelay: 0.6
     nextTableTime: 180

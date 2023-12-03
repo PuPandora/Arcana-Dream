@@ -25654,7 +25654,7 @@ MonoBehaviour:
     GameObject: {fileID: 606590868}
     Ordinal: 21
     Priority: 0
-    IconType: 333000
+    IconType: 161000
     IconTexture: {fileID: 0}
     IsIconRecursive: 0
     BackgroundType: 0
@@ -26937,7 +26937,6 @@ MonoBehaviour:
   stageDataFile: {fileID: 4900000, guid: 5d926f42b0e90ac43a8ca78c2d1bda99, type: 3}
   player: {fileID: 0}
   health: 100
-  maxHealth: 100
   spawner: {fileID: 978560583}
   itemCollector: {fileID: 2001257311}
   hud: {fileID: 320833717}
