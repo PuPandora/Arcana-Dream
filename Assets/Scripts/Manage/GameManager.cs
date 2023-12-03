@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameState { Lobby, Stage, Pause }
-public enum PlayerState { None, Shop }
+public enum PlayerState { None, Shop, SelectMap }
 
 public class GameManager : MonoBehaviour
 {
@@ -67,15 +67,6 @@ public class GameManager : MonoBehaviour
         // Sort Item Data Base
         Array.Sort(itemDataBase, Utils.CompareDataId);
         Array.Sort(enemyDataBase, Utils.CompareDataId);
-
-        // Test
-        OnGoldChanged += PrintGoldAmount;
-
-    }
-
-    private void PrintGoldAmount()
-    {
-        Debug.Log(gold);
     }
 
     public void Stop()
@@ -88,10 +79,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void EnterStage(string sceneName)
+    public void EnterStage(byte stageIndex)
     {
         gameState = GameState.Stage;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene($"Stage{stageIndex}");
     }
 
     public void ExitStage()

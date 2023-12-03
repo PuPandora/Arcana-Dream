@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class QuestUI : LobbyUI
 {
-    void Start()
-    {
-        Initialize();
-    }
-
     protected override void Initialize()
     {
         UIManager.instance.questUI = this;

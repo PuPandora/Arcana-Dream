@@ -30,15 +30,13 @@ public class StateUpgradeUI : LobbyUI
         UIManager.instance.stateUpgradeUI = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        Initialize();
         foreach(var button in  stateSelectButtons)
         {
             button.Initialize();
         }
-        HideUI();
+        base.Start();
     }
 
     public override void ShowUI()

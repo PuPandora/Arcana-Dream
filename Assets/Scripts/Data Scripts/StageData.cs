@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewStageData", menuName = "Scriptable Object/Stage Data")]
 public class StageData : ScriptableObject
 {
+    public string stageName;
+    public byte stageIndex;
     public StageTable[] stageTable;
 }
 

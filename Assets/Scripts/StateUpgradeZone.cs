@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateUpgradeZone : Zone
 {
-    protected override void Enter()
+    public override void Enter()
     {
         Debug.Log("플레이어 훈련소 입장");
         if (UIManager.instance.stateUpgradeUI == null)
@@ -18,7 +18,7 @@ public class StateUpgradeZone : Zone
         GameManager.instance.playerState = PlayerState.Shop;
     }
 
-    protected override void Exit()
+    public override void Exit()
     {
         Debug.Log("플레이어 훈련소 퇴장");
         UIManager.instance.UIManage(UIManager.instance.stateUpgradeUI);

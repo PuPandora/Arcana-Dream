@@ -11,6 +11,12 @@ public abstract class LobbyUI : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
+    protected virtual void Start()
+    {
+        Initialize();
+        HideUI();
+    }
+
     public bool isOpen;
     protected abstract void Initialize();
 

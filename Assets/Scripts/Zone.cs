@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Zone : MonoBehaviour, IInteractable
 {
-    public bool isOpen;
+    public bool isOpen = true;
     protected bool isPlayerIn;
     protected bool isUsing;
 
@@ -21,9 +21,9 @@ public abstract class Zone : MonoBehaviour, IInteractable
         }
     }
 
-    protected abstract void Enter();
+    public abstract void Enter();
 
-    protected abstract void Exit();
+    public abstract void Exit();
 
     void Update()
     {

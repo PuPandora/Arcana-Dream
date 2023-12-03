@@ -24,10 +24,10 @@ public class InventoryUI : LobbyUI
         UpdateGoldText();
     }
 
-    void Start()
+    protected override void Start()
     {
         inventory = GameManager.instance.inventory;
-        Initialize();
+        base.Start();
     }
 
     protected override void Initialize()

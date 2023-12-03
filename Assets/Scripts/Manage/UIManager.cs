@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public PlayerStatesUI playerStateUI;
     public QuestUI questUI;
     public StateUpgradeUI stateUpgradeUI;
+    public StageSelectUI stageSelectUI;
 
     public LobbyUI curUI;
 

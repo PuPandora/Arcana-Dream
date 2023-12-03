@@ -16,12 +16,11 @@ public class DeveloperMenu : LobbyUI
         debugButtons = GetComponentsInChildren<Button>();
     }
 
-    void Start()
+    protected override void Start()
     {
         UIManager.instance.devMenu = this;
-
         InitializeButtons();
-        rect.gameObject.SetActive(false);
+        base.Start();
     }
 
     protected override void Initialize()

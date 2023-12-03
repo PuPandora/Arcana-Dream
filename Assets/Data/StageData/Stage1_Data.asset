@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 397b23a8b09308a469571887b3add654, type: 3}
-  m_Name: Stage0_Data
+  m_Name: Stage1_Data
   m_EditorClassIdentifier: 
+  stageName: "\uB204\uAD70\uAC00\uC758 \uAFC8\uC18D \uB358\uC804"
+  stageIndex: 1
   stageTable:
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
       enemyId: 1001
       spawnWeight: 1
-    spawnDelay: 1
+    spawnDelay: 0.1
     nextTableTime: 30
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
