@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [ReadOnly]
     public PlayerState playerState;
     public bool isAllowDevMenu;
+    public string targetScene;
 
     [Title("# Managers")]
     public PoolManager poolManager;
@@ -81,20 +82,20 @@ public class GameManager : MonoBehaviour
 
     public void EnterStage(byte stageIndex)
     {
-        gameState = GameState.Stage;
-        SceneManager.LoadScene($"Stage{stageIndex}");
+        SceneManager.LoadScene("Loading");
+        targetScene = $"Stage{stageIndex}";
     }
 
     public void ExitStage()
     {
-        gameState = GameState.Lobby;
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("Loading");
+        targetScene = "Lobby";
     }
 
     public void EnterLobby()
     {
-        gameState = GameState.Lobby;
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("Loading");
+        targetScene = "Lobby";
     }
 
     private void CheckScene(Scene scene, LoadSceneMode mode)
@@ -113,6 +114,10 @@ public class GameManager : MonoBehaviour
         else if (scene.name.Equals("Main"))
         {
             Debug.Log("메인 메뉴 진입");
+        }
+        else if (scene.name.Equals("Loading"))
+        {
+            Debug.Log("로딩 씬 진입");
         }
         else
         {
