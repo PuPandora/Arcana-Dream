@@ -114,6 +114,7 @@ public class DataManager : MonoBehaviour
         gameManager.inventory.ApplyData(saveData.inventoryData);
         gameManager.SetGold(saveData.gold);
         gameManager.player.transform.position = saveData.position;
+        gameManager.vCam.transform.position = saveData.position;
         gameManager.player.spriter.flipX = saveData.playerSpriteFlip;
 
         LoadStatesData();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     public BoxCollider2D viewArea;
     public GameObject levelUpUi;
     [HideInInspector] public Inventory inventory;
+    public CinemachineVirtualCamera vCam;
 
     [Title("# Weapons")]
     public PlayerWeaponController[] weapons;
