@@ -14,6 +14,8 @@ public class StateUpgradeUI : LobbyUI
     [Title("State Upgrade Info UI")]
     [SerializeField] Image stateIcon;
     [SerializeField] TextMeshProUGUI stateDescText;
+
+    [Title("State Upgrade Button")]
     [SerializeField] Button stateUpgradeButton;
     [SerializeField] TextMeshProUGUI stateUpgradeButtonText;
 
@@ -28,6 +30,13 @@ public class StateUpgradeUI : LobbyUI
     protected override void Initialize()
     {
         UIManager.instance.stateUpgradeUI = this;
+
+        // 스탯 버튼 레벨 업데이트
+        foreach (var button in stateSelectButtons)
+        {
+            button.UpdateLevel();
+            OnStateUpgrade += button.UpdateLevel;
+        }
     }
 
     protected override void Start()
@@ -41,16 +50,31 @@ public class StateUpgradeUI : LobbyUI
 
     public override void ShowUI()
     {
-        foreach (var button in stateSelectButtons)
-        {
-            button.UpdateLevel();
-            OnStateUpgrade += button.UpdateLevel;
-        }
+        UpdateInfo();
         base.ShowUI();
+    }
+
+    public override void HideUI()
+    {
+        selectStateData = null;
+        base.HideUI();
     }
 
     public void UpdateInfo()
     {
+        if (selectStateData == null)
+        {
+            stateIcon.enabled = false;
+            stateDescText.gameObject.SetActive(false);
+            return;
+        }
+        else
+        {
+            stateIcon.enabled = true;
+            stateDescText.enabled = true;
+            stateDescText.gameObject.SetActive(true);
+        }
+
         stateIcon.sprite = selectStateData.icon;
         stateUpgradeButtonText.text = string.Empty;
 
@@ -115,7 +139,6 @@ public class StateUpgradeUI : LobbyUI
             }
         }
     }
-
 
     public void UpgradeState()
     {
