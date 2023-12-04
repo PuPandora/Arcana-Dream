@@ -33,6 +33,8 @@ public class ItemTooltip : LobbyUI
 
     public void UpdateText()
     {
+        if (itemData == null) return;
+
         nameText.text = itemData.name;
         descriptionText.text = itemData.description;
     }

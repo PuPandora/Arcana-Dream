@@ -8,6 +8,7 @@ public class InventoryUI : LobbyUI
     private InventorySlotUI[] slots;
     private Inventory inventory;
     [SerializeField] private TextMeshProUGUI goldText;
+    public InventorySlotUI selectedSlot;
 
     protected override void Awake()
     {
@@ -45,17 +46,17 @@ public class InventoryUI : LobbyUI
         Debug.Log("Udate Inventory", gameObject);
         for (byte i = 0; i < slots.Length; i++)
         {
-            slots[i].ApplyInventoryData(inventory.inventory[i]);
+            slots[i].ApplyInventoryData();
         }
     }
 
     /// <summary>
-    /// 특정 위치의 인벤토리 슬롯을 업데이트합니다.
+    /// 특정 인덱스의 인벤토리 슬롯을 업데이트합니다.
     /// </summary>
     /// <param name="index"></param>
     public void UpdateInventory(byte index)
     {
-        slots[index].ApplyInventoryData(inventory.inventory[index]);
+        slots[index].ApplyInventoryData();
     }
 
     public override void ShowUI()

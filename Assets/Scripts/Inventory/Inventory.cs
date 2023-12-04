@@ -55,6 +55,7 @@ public class Inventory : MonoBehaviour
         if (index.HasValue)
         {
             inventory[index.Value].stack += amount;
+            UIManager.instance.inventoryUI.UpdateInventory(index.Value);
             return true;
         }
 
@@ -67,6 +68,13 @@ public class Inventory : MonoBehaviour
         inventory[index.Value].id = item.data.id;
         inventory[index.Value].isEmpty = false;
         inventory[index.Value].stack += amount;
+
+        // 인벤토리 UI가 있는 경우
+        // 만약 아이템이 추가되는 모든 씬에 UIManager와 인벤토리 UI가 있다면 스킵 가능
+        if (UIManager.instance && UIManager.instance.inventoryUI)
+        {
+            UIManager.instance.inventoryUI.UpdateInventory(index.Value);
+        }
 
         return true;
     }
