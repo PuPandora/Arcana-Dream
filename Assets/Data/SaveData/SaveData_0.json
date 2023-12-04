@@ -1,13 +1,13 @@
 {
     "playerStateData": {
         "damageState": {
-            "instanceID": -17912
+            "instanceID": 30836
         },
         "healthState": {
-            "instanceID": 55984
+            "instanceID": 30842
         },
         "defenseState": {
-            "instanceID": 71096
+            "instanceID": 30950
         },
         "damageLevel": 3,
         "healthLevel": 6,
@@ -16,8 +16,8 @@
     "inventoryData": {
         "count": 30,
         "itemIds": [
-            0,
-            0,
+            9001,
+            9002,
             0,
             0,
             0,
@@ -48,8 +48,8 @@
             0
         ],
         "stacks": [
-            0,
-            0,
+            3,
+            6,
             0,
             0,
             0,
@@ -80,10 +80,10 @@
             0
         ]
     },
-    "gold": -3,
+    "gold": 11140,
     "position": {
-        "x": -6.169191837310791,
-        "y": 2.0369837284088136,
+        "x": -5.157814979553223,
+        "y": -2.213564872741699,
         "z": 0.0
     },
     "playerSpriteFlip": false

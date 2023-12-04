@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public PlayerState playerState;
     public bool isAllowDevMenu;
     public string targetScene;
+    public bool isNeedLoad = true;
 
     [Title("# Managers")]
     public PoolManager poolManager;
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Loading");
         targetScene = "Lobby";
+        dataManager.SaveGame();
     }
 
     public void EnterLobby()
@@ -110,6 +112,10 @@ public class GameManager : MonoBehaviour
         {
             gameState = GameState.Lobby;
             Debug.Log("로비 진입");
+            if (isNeedLoad)
+            {
+                LoadGame();
+            }
         }
         else if (scene.name.Equals("Main"))
         {
