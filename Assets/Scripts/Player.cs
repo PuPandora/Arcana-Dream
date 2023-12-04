@@ -76,6 +76,8 @@ public class Player : MonoBehaviour
     public void Win()
     {
         anim.SetTrigger("Win");
+
+        isLive = false;
     }
 
     public void Die()
