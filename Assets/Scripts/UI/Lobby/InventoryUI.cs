@@ -66,6 +66,15 @@ public class InventoryUI : LobbyUI
         base.ShowUI();
     }
 
+    public override void HideUI()
+    {
+        if (UIManager.instance.itemTooltip)
+        {
+            UIManager.instance.itemTooltip.HideUI();
+        }
+        base.HideUI();
+    }
+
     private void UpdateGoldText()
     {
         goldText.text = $"GOLD : {GameManager.instance.gold.ToString():#,###}";

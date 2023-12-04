@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public QuestUI questUI;
     public StateUpgradeUI stateUpgradeUI;
     public StageSelectUI stageSelectUI;
+    public ItemTooltip itemTooltip;
 
     public LobbyUI curUI;
 

@@ -10,7 +10,6 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerEnte
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI stackText;
     public byte slotIndex;
-    private bool isOnMouse;
 
     public void ApplyInventoryData(InventorySlot slot)
     {
@@ -41,10 +40,15 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerEnte
     public void OnPointerEnter(PointerEventData eventData)
     {
         // 툴팁 띄우기
+        Debug.Log("포인터 들어옴");
+        UIManager.instance.itemTooltip.itemData = GameManager.instance.inventory.inventory[slotIndex].itemData;
+        UIManager.instance.itemTooltip.UpdateText();
+        UIManager.instance.itemTooltip.ShowUI();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         // 툴팁 닫기
+        UIManager.instance.itemTooltip.HideUI();
     }
 }
