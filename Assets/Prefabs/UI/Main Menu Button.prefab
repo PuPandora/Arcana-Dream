@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 1754817355159150935}
   - component: {fileID: 1247528222145385515}
   - component: {fileID: 5313436346212864964}
+  - component: {fileID: 775252140349820327}
   m_Layer: 5
   m_Name: Main Menu Button
   m_TagString: Untagged
@@ -257,7 +258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3643758499735829839}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 775252140349820327}
+        m_TargetAssemblyTypeName: SoundUI, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1754817355159150935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,3 +499,17 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &775252140349820327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369713819894060897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9721805e5a75dde40910d936bff5ed49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  sfxType: 0

@@ -39,8 +39,9 @@ public class InventoryData
 [Serializable]
 public class SaveData
 {
-    public PlayerStates playerStateData;
-    public InventoryData inventoryData;
+    public PlayerStates playerStateData = new PlayerStates();
+    public InventoryData inventoryData = new InventoryData();
+    public OptionData optionData = new OptionData();
 
     // Game Data
     public long gold;
@@ -57,8 +58,8 @@ public class DataManager : MonoBehaviour
     public byte saveSlotIndex { get; private set; } = 0;
     public string path { get; private set; } = Application.dataPath + "/Data/SaveData/";
 
+    public SaveData saveData = new SaveData();
     GameManager gameManager;
-    [SerializeField] private SaveData saveData;
 
     void Awake()
     {

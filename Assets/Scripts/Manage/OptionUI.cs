@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class OptionData
 {
     [Range(0f, 1f)]
-    public float SFXValue;
+    public float SFXValue = 0.5f;
     [Range(0f, 1f)]
-    public float BGMValue;
+    public float BGMValue = 0.5f;
 }
 
 public class OptionUI : MonoBehaviour
@@ -21,7 +21,7 @@ public class OptionUI : MonoBehaviour
     public Slider soundEffectSlider;
     public Slider backgroundMusicSlider;
 
-    void Start()
+    void Awake()
     {
         // DataManager 에게서 optionData 받아오기
         // 저장된 데이터가 없다면 DataManager가 기본 값(0.5)을 줌
@@ -29,6 +29,20 @@ public class OptionUI : MonoBehaviour
         // 데이터를 받아오고, 그 수치를 적용시킴
         soundEffectSlider.value = optionData.SFXValue;
         backgroundMusicSlider.value = optionData.BGMValue;
+        dataManager.saveData.optionData = optionData;
+    }
+
+    void Start()
+    {
+        foreach (var channel in AudioManager.instance.sfxChannels)
+        {
+            channel.volume = optionData.SFXValue;
+        }
+
+        foreach (var channel in AudioManager.instance.bgmChannels)
+        {
+            channel.volume = optionData.BGMValue;
+        }
     }
 
     public void ApplyOption()
