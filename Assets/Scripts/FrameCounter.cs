@@ -17,6 +17,7 @@ public class FrameCounter : MonoBehaviour
     void Start()
     {
         Debug.Log("Frame Counter가 있습니다.\n빌드할 떄 잊지말고 제거하세요.");
+        transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
     }
 

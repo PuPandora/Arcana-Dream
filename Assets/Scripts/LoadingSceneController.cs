@@ -26,20 +26,22 @@ public class LoadingSceneController : MonoBehaviour
 
     void Start()
     {
-        if (!GameManager.instance)
+        if (GameManager.instance)
+        {
+            loadingInfo.nextScene = GameManager.instance.targetScene;
+            GameManager.instance.targetScene = string.Empty;
+        }
+        else
         {
             Debug.LogWarning("GameManager가 없습니다.", gameObject);
-            return;
         }
 
-        loadingInfo.nextScene = GameManager.instance.targetScene;
         if (loadingInfo.nextScene == string.Empty)
         {
             Debug.LogError("이동할 씬 정보가 없습니다.", gameObject);
             return;
         }
 
-        GameManager.instance.targetScene = string.Empty;
         StartCoroutine(LoadSceneRoutine());
     }
 
