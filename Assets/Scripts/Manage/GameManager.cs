@@ -84,10 +84,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void EnterStage(byte stageIndex)
+    public void EnterStage()
     {
         SceneManager.LoadScene("Loading");
-        targetScene = $"Stage{stageIndex}";
+        targetScene = $"Stage";
     }
 
     public void ExitStage()

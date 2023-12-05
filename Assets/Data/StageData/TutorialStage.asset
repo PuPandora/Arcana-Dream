@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 397b23a8b09308a469571887b3add654, type: 3}
-  m_Name: Stage1_Data
+  m_Name: TutorialStage
   m_EditorClassIdentifier: 
-  stageName: "\uB204\uAD70\uAC00\uC758 \uAFC8\uC18D \uB358\uC804"
-  stageIndex: 1
+  stageName: ???
+  stageIndex: 0
   stageTable:
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
       enemyId: 1001
       spawnWeight: 1
-    spawnDelay: 1
-    nextTableTime: 30
+    spawnDelay: 1.2
+    nextTableTime: 20
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
       enemyId: 1001
@@ -28,6 +28,15 @@ MonoBehaviour:
     - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
       enemyId: 1002
       spawnWeight: 2
+    spawnDelay: 1
+    nextTableTime: 40
+  - spawnTable:
+    - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
+      enemyId: 1001
+      spawnWeight: 7
+    - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
+      enemyId: 1002
+      spawnWeight: 3
     spawnDelay: 0.8
     nextTableTime: 60
   - spawnTable:
@@ -36,30 +45,21 @@ MonoBehaviour:
       spawnWeight: 6
     - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
       enemyId: 1002
+      spawnWeight: 3
+    - enemyData: {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
+      enemyId: 1003
+      spawnWeight: 1
+    spawnDelay: 0.7
+    nextTableTime: 80
+  - spawnTable:
+    - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
+      enemyId: 1001
       spawnWeight: 4
+    - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
+      enemyId: 1002
+      spawnWeight: 4
+    - enemyData: {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
+      enemyId: 1003
+      spawnWeight: 2
     spawnDelay: 0.6
-    nextTableTime: 90
-  - spawnTable:
-    - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
-      enemyId: 1001
-      spawnWeight: 4
-    - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
-      enemyId: 1002
-      spawnWeight: 4
-    - enemyData: {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
-      enemyId: 1003
-      spawnWeight: 2
-    spawnDelay: 0.5
     nextTableTime: 120
-  - spawnTable:
-    - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
-      enemyId: 1001
-      spawnWeight: 2
-    - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
-      enemyId: 1002
-      spawnWeight: 6
-    - enemyData: {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
-      enemyId: 1003
-      spawnWeight: 2
-    spawnDelay: 0.4
-    nextTableTime: 180

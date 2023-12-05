@@ -22,7 +22,7 @@ public class StageSelectUI : LobbyUI
 
     public void EnterStage()
     {
-        GameManager.instance.EnterStage(selectedStage.stageIndex);
+        GameManager.instance.EnterStage();
     }
 
     void OnDisable()
