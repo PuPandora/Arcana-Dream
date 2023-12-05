@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Loading");
         targetScene = "Lobby";
-        dataManager.SaveGame();
     }
 
     public void EnterLobby()

@@ -86,15 +86,14 @@ public class StateUpgradeUI : LobbyUI
         var table = selectStateData.stateUpgradeTables[level];
         var cost = selectStateData.stateUpgradeTables[level].cost;
 
-        // 돈이 부족한 경우 비활성화
-        if (cost < GameManager.instance.gold)
+        // 돈이 부족한 경우
+        if (cost > GameManager.instance.gold)
         {
             stateUpgradeButtonText.text += $"스탯 업그레이드\n{cost}";
             stateUpgradeButton.enabled = false;
-            stateUpgradeButton.GetComponent<TextMeshProUGUI>().color = Color.red;
+            stateUpgradeButtonText.color = Color.red;
             return;
         }
-
         // 최대 레벨의 스탯의 경우
         else if (selectStateData.level >= selectStateData.maxLevel - 1)
         {
@@ -103,11 +102,11 @@ public class StateUpgradeUI : LobbyUI
             stateDescText.text = $"최대 레벨";
             stateUpgradeButton.enabled = false;
         }
-
         // 업그레이드가 가능한 경우
         else
         {
             UpdateDescription(table);
+            stateUpgradeButtonText.color = Color.black;
             stateUpgradeButtonText.text += $"스탯 업그레이드\n{cost}";
             stateUpgradeButton.enabled = true;
         }

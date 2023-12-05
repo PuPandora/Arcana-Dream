@@ -55,7 +55,10 @@ public class Inventory : MonoBehaviour
         if (index.HasValue)
         {
             inventory[index.Value].stack += amount;
-            UIManager.instance.inventoryUI.UpdateInventory(index.Value);
+            if (UIManager.instance.inventoryUI != null)
+            {
+                UIManager.instance.inventoryUI.UpdateInventory(index.Value);
+            }
             return true;
         }
 

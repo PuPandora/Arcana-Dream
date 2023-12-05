@@ -47,6 +47,8 @@ public class LoadingSceneController : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine()
     {
+        loadingSlider.value = 0;
+
         AsyncOperation aop = SceneManager.LoadSceneAsync(loadingInfo.nextScene);
         aop.allowSceneActivation = false;
 

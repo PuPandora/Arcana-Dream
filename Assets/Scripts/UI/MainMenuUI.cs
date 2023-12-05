@@ -40,7 +40,8 @@ public class MainMenuUI : MonoBehaviour
         {
             if (i == index) continue;
 
-            selectMemoryTweens[i].DOPlayById("Hide");
+            selectMemoryTweens[i].DOPause();
+            selectMemoryTweens[i].DORestartById("Hide");
         }
     }
 }
