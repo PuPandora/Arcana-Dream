@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,13 +21,53 @@ public struct LoadingInfo
     public float finalSpeed;
 }
 
-public class LoadingSceneController : MonoBehaviour
+public class LoadingManager : MonoBehaviour
 {
+    public static LoadingManager instance;
+
+    [Title("Important")]
     public LoadingInfo loadingInfo;
     [SerializeField] private Slider loadingSlider;
+    public bool allowLoading = true;
+
+    [Title("Character Sprites")]
+    public List<Sprite[]> sprites;
+    public Sprite[] walkSprites;
+    public Sprite[] runSprites;
+    public Sprite[] winSprites;
+
+    void Awake()
+    {
+        #region Singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance);
+        }
+        #endregion
+        print("List 초기화");
+        sprites = new List<Sprite[]>
+        {
+            walkSprites,
+            runSprites,
+            winSprites
+        };
+        foreach (var item in sprites)
+        {
+            foreach (var a in item)
+            {
+                print(a.name);
+            }
+        }
+    }
 
     void Start()
     {
+        if (!allowLoading) return;
+
         if (GameManager.instance)
         {
             loadingInfo.nextScene = GameManager.instance.targetScene;
@@ -55,7 +97,7 @@ public class LoadingSceneController : MonoBehaviour
         while (!aop.isDone)
         {
             // ~ 90% 속도 조절
-            if (loadingSlider.value <= (0.899f))
+            if (loadingSlider.value <= 0.895f)
             {
                 loadingSlider.value += Time.deltaTime * loadingInfo.speed;
                 if (loadingSlider.value > aop.progress)
