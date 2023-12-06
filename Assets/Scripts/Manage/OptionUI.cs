@@ -7,10 +7,16 @@ using UnityEngine.UI;
 [Serializable]
 public class OptionData
 {
+    // Volume
     [Range(0f, 1f)]
-    public float SFXValue = 0.5f;
+    public float sfxVolume = 0.5f;
     [Range(0f, 1f)]
-    public float BGMValue = 0.5f;
+    public float bgmVoulme = 0.5f;
+
+    // Screen
+    public bool isFullScreen = true;
+    public Resolution resolution = new Resolution();
+    public RefreshRate hz = new RefreshRate();
 }
 
 public class OptionUI : MonoBehaviour
@@ -20,48 +26,53 @@ public class OptionUI : MonoBehaviour
 
     public Slider soundEffectSlider;
     public Slider backgroundMusicSlider;
+    public Button applyButton;
 
-    void Awake()
-    {
-        // DataManager 에게서 optionData 받아오기
-        // 저장된 데이터가 없다면 DataManager가 기본 값(0.5)을 줌
-
-        // 데이터를 받아오고, 그 수치를 적용시킴
-        soundEffectSlider.value = optionData.SFXValue;
-        backgroundMusicSlider.value = optionData.BGMValue;
-        dataManager.saveData.optionData = optionData;
-    }
+    // Event
+    public event Action<float> OnSfxVolumeChanged;
+    public event Action<float> OnBgmVolumeChanged;
 
     void Start()
     {
-        foreach (var channel in AudioManager.instance.sfxChannels)
-        {
-            channel.volume = optionData.SFXValue;
-        }
+        // DataManager에서 옵션 정보 불러오기 + 적용
+        DataManager.instance.LoadOptionData();
+        optionData = DataManager.instance.optionData;
 
-        foreach (var channel in AudioManager.instance.bgmChannels)
-        {
-            channel.volume = optionData.BGMValue;
-        }
+        soundEffectSlider.value = optionData.sfxVolume;
+        backgroundMusicSlider.value = optionData.bgmVoulme;
+
+        // 볼륨 슬라이더 변동이 일어나면 AudioManager 볼륨 조절
+        OnSfxVolumeChanged += AudioManager.instance.ChangeSfxVolume;
+        OnBgmVolumeChanged += AudioManager.instance.ChangeBgmVolume;
+
+        // 적용 버튼
+        applyButton.onClick.AddListener(ApplyOption);
     }
 
     public void ApplyOption()
     {
-        optionData.SFXValue = soundEffectSlider.value;
-        optionData.BGMValue = backgroundMusicSlider.value;
-
-        // TO DO
-        // 이 값이 게임 동안 유지되어야 하기에
-        // OptionManager라는 매니저도 필요해 보임
-        // 각 Audio Source 컴포넌트들은 OptionManager의 옵션을 따라 소리 value 조절
-        // 그 외 해상도, 퀄리티도 같은 원리로 구현
+        optionData.sfxVolume = soundEffectSlider.value;
+        optionData.bgmVoulme = backgroundMusicSlider.value;
+        DataManager.instance.SaveOptionData();
     }
 
     public void Cancel()
     {
-        soundEffectSlider.value = optionData.SFXValue;
-        backgroundMusicSlider.value = optionData.BGMValue;
+        soundEffectSlider.value = optionData.sfxVolume;
+        backgroundMusicSlider.value = optionData.bgmVoulme;
 
         // DataManager에게 optionData 보내기
+    }
+
+    public void ApplySfxVolume(float value)
+    {
+        optionData.sfxVolume = value;
+        OnSfxVolumeChanged?.Invoke(value);
+    }
+
+    public void ApplyBgmVolume(float value)
+    {
+        optionData.bgmVoulme = value;
+        OnBgmVolumeChanged?.Invoke(value);
     }
 }

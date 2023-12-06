@@ -222,7 +222,19 @@ MonoBehaviour:
   m_Value: 0.363
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 230723398}
+        m_TargetAssemblyTypeName: OptionUI, Assembly-CSharp
+        m_MethodName: ApplyBgmVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &80260373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -560,10 +572,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataManager: {fileID: 1648585610}
   optionData:
-    SFXValue: 0.8
-    BGMValue: 0.8
+    sfxVolume: 0.5
+    bgmVoulme: 0.5
+    isFullScreen: 1
   soundEffectSlider: {fileID: 1173328905}
   backgroundMusicSlider: {fileID: 80260372}
+  applyButton: {fileID: 1456783078}
 --- !u!1 &234507801
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,7 +3716,19 @@ MonoBehaviour:
   m_Value: 0.363
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 230723398}
+        m_TargetAssemblyTypeName: OptionUI, Assembly-CSharp
+        m_MethodName: ApplySfxVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1187756092
 GameObject:
   m_ObjectHideFlags: 0
@@ -5097,19 +5123,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1456783079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 230723398}
-        m_TargetAssemblyTypeName: OptionManager, Assembly-CSharp
-        m_MethodName: ApplyOption
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1456783079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6028,6 +6042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5611ff291d5c36488f1212d207e0577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveSlotIndex: 0
+  saveFileName: SaveData.json
+  optionFileName: OptionData.json
   saveData:
     playerStateData:
       damageState: {fileID: 0}
@@ -6040,12 +6057,13 @@ MonoBehaviour:
       count: 30
       itemIds: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
       stacks: 000000000000000000000000000000000000000000000000000000000000
-    optionData:
-      SFXValue: 0.5
-      BGMValue: 0.5
     gold: 0
     position: {x: 0, y: 0, z: 0}
     playerSpriteFlip: 0
+  optionData:
+    sfxVolume: 0.5
+    bgmVoulme: 0.5
+    isFullScreen: 1
 --- !u!4 &1648585611
 Transform:
   m_ObjectHideFlags: 0

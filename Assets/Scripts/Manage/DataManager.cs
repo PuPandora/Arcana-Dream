@@ -41,7 +41,6 @@ public class SaveData
 {
     public PlayerStates playerStateData = new PlayerStates();
     public InventoryData inventoryData = new InventoryData();
-    public OptionData optionData = new OptionData();
 
     // Game Data
     public long gold;
@@ -51,15 +50,15 @@ public class SaveData
 
 public class DataManager : MonoBehaviour
 {
-    // 항상, 하나만 존재하며
-    // GameManager 외 다른 클래스에서 접근을 막기 위한 싱글톤
-    private static DataManager instance;
+    public static DataManager instance;
 
-    public byte saveSlotIndex { get; private set; } = 0;
+    public byte saveSlotIndex = 0;
     public string path { get; private set; } = Application.dataPath + "/Data/SaveData/";
+    public string saveFileName = "SaveData.json";
+    public string optionFileName = "OptionData.json";
 
     public SaveData saveData = new SaveData();
-    GameManager gameManager;
+    public OptionData optionData;
 
     void Awake()
     {
@@ -74,9 +73,6 @@ public class DataManager : MonoBehaviour
 
     void Start()
     {
-        path = Path.Combine(path, $"SaveData_{saveSlotIndex}.json");
-
-        gameManager = GameManager.instance;
         GameManager.instance.dataManager = this;
     }
 
@@ -84,19 +80,19 @@ public class DataManager : MonoBehaviour
     [ContextMenu("Save Game")]
     public void SaveGame()
     {
-        saveData.inventoryData = gameManager.inventory.GetInventoryData();
-        saveData.playerStateData = gameManager.playerStates;
+        saveData.inventoryData = GameManager.instance.inventory.GetInventoryData();
+        saveData.playerStateData = GameManager.instance.playerStates;
 
-        saveData.gold = gameManager.gold;
-        saveData.position = gameManager.player.transform.position;
-        saveData.playerSpriteFlip = gameManager.player.spriter.flipX;
+        saveData.gold = GameManager.instance.gold;
+        saveData.position = GameManager.instance.player.transform.position;
+        saveData.playerSpriteFlip = GameManager.instance.player.spriter.flipX;
 
-        saveData.playerStateData.damageLevel = gameManager.playerStates.damageState.level;
-        saveData.playerStateData.healthLevel = gameManager.playerStates.healthState.level;
-        saveData.playerStateData.defenseLevel = gameManager.playerStates.defenseState.level;
+        saveData.playerStateData.damageLevel = GameManager.instance.playerStates.damageState.level;
+        saveData.playerStateData.healthLevel = GameManager.instance.playerStates.healthState.level;
+        saveData.playerStateData.defenseLevel = GameManager.instance.playerStates.defenseState.level;
 
-    string json = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(path, json);
+        string json = JsonUtility.ToJson(saveData, true);
+        File.WriteAllText(path + saveFileName, json);
 
         Debug.Log($"게임 데이터 저장 완료\n경로 : {path}");
     }
@@ -104,20 +100,20 @@ public class DataManager : MonoBehaviour
     [ContextMenu("Load Game")]
     public void LoadGame()
     {
-        if (!File.Exists(path))
+        if (!File.Exists(path + saveFileName))
         {
             Debug.Log("데이터가 없습니다.");
             return;
         }
 
-        string loadJson = File.ReadAllText(path);
+        string loadJson = File.ReadAllText(path + saveFileName);
         JsonUtility.FromJsonOverwrite(loadJson, saveData);
 
-        gameManager.inventory.ApplyData(saveData.inventoryData);
-        gameManager.SetGold(saveData.gold);
-        gameManager.player.transform.position = saveData.position;
-        gameManager.vCam.transform.position = saveData.position;
-        gameManager.player.spriter.flipX = saveData.playerSpriteFlip;
+        GameManager.instance.inventory.ApplyData(saveData.inventoryData);
+        GameManager.instance.SetGold(saveData.gold);
+        GameManager.instance.player.transform.position = saveData.position;
+        GameManager.instance.vCam.transform.position = saveData.position;
+        GameManager.instance.player.spriter.flipX = saveData.playerSpriteFlip;
 
         LoadStatesData();
 
@@ -127,15 +123,15 @@ public class DataManager : MonoBehaviour
     private void LoadStatesData()
     {
         // 레벨 적용
-        gameManager.playerStates.damageState.level = saveData.playerStateData.damageLevel;
-        gameManager.playerStates.healthState.level = saveData.playerStateData.healthLevel;
-        gameManager.playerStates.defenseState.level = saveData.playerStateData.defenseLevel;
+        GameManager.instance.playerStates.damageState.level = saveData.playerStateData.damageLevel;
+        GameManager.instance.playerStates.healthState.level = saveData.playerStateData.healthLevel;
+        GameManager.instance.playerStates.defenseState.level = saveData.playerStateData.defenseLevel;
 
 
         StateUpgradeData[] statesData = new StateUpgradeData[] {
-            gameManager.playerStates.damageState,
-            gameManager.playerStates.healthState,
-            gameManager.playerStates.defenseState 
+            GameManager.instance.playerStates.damageState,
+            GameManager.instance.playerStates.healthState,
+            GameManager.instance.playerStates.defenseState 
         };
 
         // 레벨에 맞춰 스탯 적용
@@ -143,5 +139,24 @@ public class DataManager : MonoBehaviour
         {
             data.ApplyState(data.level);
         }
+    }
+
+    public void SaveOptionData()
+    {
+        string data = JsonUtility.ToJson(optionData, true);
+        File.WriteAllText(path + optionFileName, data);
+    }
+
+    public void LoadOptionData()
+    {
+        if (!File.Exists(path + optionFileName))
+        {
+            optionData = new OptionData();
+            return;
+        }
+
+        Debug.Log("옵션 데이터를 불러왔습니다.");
+        string data = File.ReadAllText(path + optionFileName);
+        optionData = JsonUtility.FromJson<OptionData>(data);
     }
 }
