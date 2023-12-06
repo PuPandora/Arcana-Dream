@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,11 @@ public class NPC : MonoBehaviour
     public Vector3 moveVec;
     public float speed = 5f;
     public bool isRunning;
+    public bool originalDirection;
 
     public Light2D backLight;
+    public TalkData talkData;
+    public CinemachineVirtualCamera zoomCam;
 
     Coroutine moveRoutine;
     Coroutine runRoutine;
@@ -20,12 +24,19 @@ public class NPC : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log($"NPC : {gameObject.name}", gameObject);
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         originalPos = transform.position;
 
         backLight.color = spriter.sharedMaterial.GetColor("_Color");
+        originalDirection = spriter.flipX;
+    }
+
+    void Start()
+    {
+        TalkManager.instance.OnTalkStart += LookAtTarget;
     }
 
     void Update()
@@ -115,5 +126,17 @@ public class NPC : MonoBehaviour
 
         isRunning = false;
         moveVec = Vector2.zero;
+    }
+
+    private void LookAtTarget()
+    {
+        Vector2 dirVec = GameManager.instance.player.transform.position - transform.position;
+        spriter.flipX = dirVec.x < 0f;
+    }
+
+    public IEnumerator ResetLook()
+    {
+        yield return Utils.delay1;
+        spriter.flipX = originalDirection;
     }
 }

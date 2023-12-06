@@ -5,9 +5,11 @@ using UnityEngine;
 
 public sealed class Utils : MonoBehaviour
 {
-    //public static WaitForFixedUpdate waitForFixedUpdate;
+    readonly public static WaitForSeconds delay0_05 = new WaitForSeconds(0.05f);
     readonly public static WaitForSeconds delay0_1 = new WaitForSeconds(0.1f);
     readonly public static WaitForSeconds delay0_25 = new WaitForSeconds(0.25f);
+    readonly public static WaitForSeconds delay1 = new WaitForSeconds(1f);
+    //readonly public static WaitForSeconds delay2 = new WaitForSeconds(2f);
     readonly public static WaitForFixedUpdate delayFixedUpdate;
 
     public const byte INVENTORY_SLOT_COUNT = 30;
@@ -23,6 +25,7 @@ public sealed class Utils : MonoBehaviour
         return new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 
+    #region 데이터 관련
     /// <summary>
     /// 아이템 데이터 베이스에서 id로 아이템이 있는지 탐색합니다.
     /// </summary>
@@ -85,6 +88,7 @@ public sealed class Utils : MonoBehaviour
     {
         return data1.id.CompareTo(data2.id);
     }
+    #endregion
 
     /// <summary>
     /// StageData를 JSON 파일로 저장합니다

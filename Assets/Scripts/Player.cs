@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
             StageManager.instance.OnGameClear += Win;
             StageManager.instance.OnGameOver += Die;
         }
+
+        if (TalkManager.instance != null)
+        {
+            TalkManager.instance.OnTalkStart += LookAtTarget;
+        }
     }
 
     void Update()
@@ -67,7 +72,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isLive) return;
+        if (!isLive || TalkManager.instance.isTalking) return;
 
         rigid.MovePosition(rigid.position + moveInput.normalized * speed * Time.fixedDeltaTime);
     }
@@ -91,5 +96,11 @@ public class Player : MonoBehaviour
         
         isLive = false;
         coll.enabled = false;
+    }
+
+    public void LookAtTarget()
+    {
+        Vector2 dirVec = TalkManager.instance.speakerPos - transform.position;
+        spriter.flipX = dirVec.x < 0;
     }
 }
