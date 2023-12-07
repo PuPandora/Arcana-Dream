@@ -14,7 +14,7 @@ public class TalkManager : MonoBehaviour
 
     [Title("Talk UI")]
     public GameObject talkPanelGroup;
-    public Image speakerPortrait;
+    public Portrait portrait;
     public TextMeshProUGUI speakerkName;
     public TextMeshProUGUI speakerDesc;
     public TextMeshProUGUI scriptText;
@@ -26,6 +26,9 @@ public class TalkManager : MonoBehaviour
     public bool isScriptEnd;
     public bool isPressKey;
     public Vector3 speakerPos;
+
+    [Title("Shader Mat")]
+    public Material npcMaterial;
 
     [Title("Tween")]
     [SerializeField] DOTweenAnimation panelTween;
@@ -62,9 +65,6 @@ public class TalkManager : MonoBehaviour
         // Tweening
         panelTween.DORestartById("Show");
 
-        // 임시 대화 상대 정보 불러오기 코드
-        speakerkName.text = talkData.talkSession0[0].speakerData.speakerName;
-        speakerDesc.text = talkData.talkSession0[0].speakerData.spearkDesc;
         //speakerPortrait.sprite = talkData.talkSession0[0].speakerData.portrait;
 
         StartCoroutine(Talk(talkData.talkSession0));
@@ -77,13 +77,28 @@ public class TalkManager : MonoBehaviour
     {
         isTalking = true;
         isAllowTalk = false;
+        short prevSpriteIndex = -1;
+        SpeakerData speaker = null;
         OnTalkStart?.Invoke();
 
         for (int i = 0; i < data.Length; i++)
         {
+            // 초기화
             scriptText.text = string.Empty;
             isScriptEnd = false;
             isPressKey = false;
+            speakerkName.text = data[i].speakerData.speakerName;
+            speakerDesc.text = data[i].speakerData.spearkDesc;
+
+            // 초상화 변경시 트윈
+            // Speaker가 다르거나, 스프라이트가 달라진다면
+            if (prevSpriteIndex != data[i].spriteIndex || data[i].speakerData != speaker)
+            {
+                portraitTween.DORestartById("0");
+                portrait.image.sprite = data[i].speakerData.portraits[data[i].spriteIndex];
+                speaker = data[i].speakerData;
+                prevSpriteIndex = data[i].spriteIndex;
+            }
 
             for (int j = 0; j < data[i].script.Length; j++)
             {
@@ -93,10 +108,6 @@ public class TalkManager : MonoBehaviour
             }
             isScriptEnd = true;
             yield return new WaitUntil(() => isPressKey);
-
-            // 임시 초상화 트윈 코드
-            if (i >= data.Length - 1) continue;
-            portraitTween.DORestartById("0");
         }
 
         panelTween.DORestartById("Hide");

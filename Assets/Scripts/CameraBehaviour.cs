@@ -10,10 +10,9 @@ public class CameraBehaviour : MonoBehaviour
         GameManager.instance.vCam = GetComponent<CinemachineVirtualCamera>();
     }
 
-    void FixedUpdate()
-    {
-        Debug.Log("카메라 위치 재적용");
-        var targetPos = GameManager.instance.player.transform.position;
-        transform.position = new Vector3(targetPos.x, targetPos.y, -10);
-    }
+    //void FixedUpdate()
+    //{
+    //    var targetPos = GameManager.instance.player.transform.position;
+    //    transform.position = new Vector3(targetPos.x, targetPos.y, -10);
+    //}
 }

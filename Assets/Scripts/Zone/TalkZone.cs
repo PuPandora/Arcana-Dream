@@ -25,7 +25,6 @@ public class TalkZone : MonoBehaviour
 
         if (Input.GetKey(GameManager.instance.interactKey) && TalkManager.instance.isAllowTalk)
         {
-            Debug.Log("E키 누름");
             if (npc.talkData == null)
             {
                 Debug.Log("Talk Data가 없습니다");
@@ -44,7 +43,10 @@ public class TalkZone : MonoBehaviour
             camPos = new Vector3(camPos.x, camPos.y, -10);
             npc.zoomCam.enabled = true;
 
-            // UI Manager 대화창 열기
+            // UI Manager 초기화, 대화창 열기
+            var bodyColor = npc.spriter.sharedMaterial.GetColor("_Color");
+            var eyeColor = npc.spriter.sharedMaterial.GetColor("_EyeColor");
+            TalkManager.instance.portrait.SetColor(bodyColor, eyeColor);
             TalkManager.instance.talkData = npc.talkData;
             TalkManager.instance.speakerPos = npc.transform.position;
             TalkManager.instance.ShowUI();

@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,8 +7,8 @@ using UnityEngine;
 [Serializable]
 public class ScriptData
 {
-    public byte Index;
-    public Speakerdata speakerData;
+    public byte spriteIndex;
+    public SpeakerData speakerData;
     [TextArea]
     public string script;
 }

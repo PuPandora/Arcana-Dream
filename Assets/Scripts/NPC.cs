@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour
     Coroutine moveRoutine;
     Coroutine runRoutine;
     Rigidbody2D rigid;
-    SpriteRenderer spriter;
+    public SpriteRenderer spriter { get; private set; }
     Animator anim;
 
     void Awake()
