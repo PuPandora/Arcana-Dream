@@ -401,10 +401,31 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PanelFull_0
+      name: PanelFull_2
       rect:
         serializedVersion: 2
         x: 34
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 5, z: 2, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d35d549ae142494fad9ff5a09c7793a
+      internalID: -1859042390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownButton
+      rect:
+        serializedVersion: 2
+        x: 68
         y: 0
         width: 16
         height: 16
@@ -415,8 +436,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d35d549ae142494fad9ff5a09c7793a
-      internalID: -1859042390
+      spriteID: 0311049c6699b8e44b8a3bb666efb953
+      internalID: -1068918332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PanelFull_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 3, z: 2, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bddfde96850e216459065265648ed389
+      internalID: 1172975088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PanelFull_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 4, z: 2, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ef19cff772f0f488784b7ac0dfbfc3
+      internalID: 1053292147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PanelFull_3
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 6, z: 2, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8655413818f4d40b6e0431b397eb36
+      internalID: -105387811
       vertices: []
       indices: 
       edges: []
@@ -432,12 +516,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Arrow0: -603376912
+      DownButto: -1644011360
+      DownButton: -1068918332
       DropdownPanel_0: -304627134
       FullPanel_0: 437119067
       Gauge_Back: -1626664850
       Gauge_Front0: 1768419978
       Gauge_Front1: 1384622482
-      PanelFull_0: -1859042390
+      PanelFull_0: 1172975088
+      PanelFull_1: 1053292147
+      PanelFull_2: -1859042390
+      PanelFull_3: -105387811
       Panel_0: -1897753696
       Panel_1: -599811934
       Panel_2: 1813409853
