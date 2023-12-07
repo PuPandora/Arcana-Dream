@@ -21,6 +21,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] Transform grid;
     private StageTable[] enemyTables;
     public StageData stageData;
+
 #if UNITY_EDITOR
     [Tooltip("불러올 StageData 파일 이름")]
     [SerializeField] private TextAsset stageDataFile;

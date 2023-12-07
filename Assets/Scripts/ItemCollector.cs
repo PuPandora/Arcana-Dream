@@ -16,7 +16,10 @@ public class ItemCollector : MonoBehaviour
     void Awake()
     {
         coll = GetComponent<CircleCollider2D>();
-        inventory = GameManager.instance.inventory;
+        if (GameManager.instance != null)
+        {
+            inventory = GameManager.instance.inventory;
+        }
     }
 
     void Start()
