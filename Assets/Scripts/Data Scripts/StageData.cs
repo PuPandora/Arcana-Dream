@@ -8,6 +8,7 @@ public class StageData : ScriptableObject
 {
     public string stageName;
     public byte stageIndex;
+    public float stageGlobalLightIntensity = 1f;
     public GameObject stageFloor;
     public StageTable[] stageTable;
 }

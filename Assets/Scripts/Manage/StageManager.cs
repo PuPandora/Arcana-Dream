@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class StageManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class StageManager : MonoBehaviour
     public int[] nextExp = { 10, 20, 40, 60, 100, 150, 200, 300, 400, 500, 700, 1000 };
     public short level;
     public float timer { get; private set; }
+    [SerializeField] private Light2D globalLight;
     [SerializeField] Transform grid;
     private StageTable[] enemyTables;
     public StageData stageData;
@@ -58,6 +60,7 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         SettingGrid();
+        globalLight.intensity = stageData.stageGlobalLightIntensity;
         isLive = true;
         health = GameManager.instance.playerStates.health;
         hud.UpdateHealthSlider();
