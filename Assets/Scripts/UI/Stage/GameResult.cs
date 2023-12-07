@@ -29,10 +29,7 @@ public class GameResult : MonoBehaviour
 
     private void InititalizePanelTween()
     {
-        var panelCloseTween = panel.GetComponents<DOTweenAnimation>()[1];
 
-        panelCloseTween.onComplete.AddListener(GameManager.instance.ExitStage);
-        panelCloseTween.onComplete.AddListener(GameManager.instance.Resume);
     }
 
     [ContextMenu("Show UI")]

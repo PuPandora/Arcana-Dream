@@ -36,6 +36,7 @@ public class StageManager : MonoBehaviour
     public ItemCollector itemCollector;
     public HUD hud;
     public GetItemUI[] getItemUis;
+    public Transition transition;
 
     public event Action OnKillCountChanged;
     public event Action OnExpChanged;
@@ -46,14 +47,17 @@ public class StageManager : MonoBehaviour
 
     void Awake()
     {
+        #region 싱글톤
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else Destroy(gameObject);
-
-        //LoadStageData();
+        else
+        {
+            Destroy(gameObject);
+        }
+        #endregion
         InitEnemyTables();
     }
 
@@ -67,6 +71,8 @@ public class StageManager : MonoBehaviour
 
         spawner.Initialize();
         stageData.stageTable = enemyTables;
+
+        transition.Open();
     }
 
     private void InitEnemyTables()
@@ -166,7 +172,6 @@ public class StageManager : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().Hit(999999999.0f);
         }
-        //GameManager.instance.Stop();
         
         OnGameClear?.Invoke();
     }

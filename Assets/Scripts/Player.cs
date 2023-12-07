@@ -33,8 +33,11 @@ public class Player : MonoBehaviour
 
         isLive = true;
 
-        GameManager.instance.player = this;
-        GameManager.instance.viewArea = viewArea;
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.player = this;
+            GameManager.instance.viewArea = viewArea;
+        }
     }
 
     void Start()

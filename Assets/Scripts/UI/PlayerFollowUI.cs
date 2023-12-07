@@ -15,6 +15,6 @@ public class PlayerFollowUI : MonoBehaviour
 
     void FixedUpdate()
     {
-        rect.position = mainCam.WorldToScreenPoint(StageManager.instance.player.transform.position);
+        rect.position = GameManager.instance.player.transform.position;
     }
 }
