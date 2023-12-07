@@ -71,19 +71,21 @@ public class Player : MonoBehaviour
     void LateUpdate()
     {
         if (!isLive) return;
-
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.0001f);
     }
 
     void FixedUpdate()
     {
-        if (!isLive || TalkManager.instance.isTalking) return;
+        if (!isLive) return;
 
         rigid.MovePosition(rigid.position + moveInput.normalized * speed * Time.fixedDeltaTime);
+        // 왜인지 모르겠으나 수직 이동 시 느려짐
+        //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
     private void OnMove(InputValue value)
     {
+        if (TalkManager.instance && TalkManager.instance.isTalking) return;
+
         moveInput = value.Get<Vector2>();
         anim.SetFloat("Speed", moveInput.magnitude);
     }
