@@ -67,7 +67,9 @@ public class Player : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+        if (!isLive) return;
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.0001f);
     }
 
     void FixedUpdate()
@@ -93,7 +95,9 @@ public class Player : MonoBehaviour
     public void Die()
     {
         anim.SetTrigger("Die");
-        
+
+        rigid.velocity = Vector3.zero;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 5f);
         isLive = false;
         coll.enabled = false;
     }

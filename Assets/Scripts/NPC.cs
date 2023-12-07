@@ -24,7 +24,6 @@ public class NPC : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log($"NPC : {gameObject.name}", gameObject);
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -51,7 +50,7 @@ public class NPC : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.0001f);
     }
 
     [ContextMenu("Move")]

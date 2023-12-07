@@ -8,6 +8,7 @@ public class StageData : ScriptableObject
 {
     public string stageName;
     public byte stageIndex;
+    public GameObject stageFloor;
     public StageTable[] stageTable;
 }
 

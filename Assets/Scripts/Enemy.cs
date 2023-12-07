@@ -77,6 +77,13 @@ public class Enemy : MonoBehaviour
         rigid.MovePosition(rigid.position + dirVec.normalized * data.speed * Time.fixedDeltaTime);
     }
 
+    void LateUpdate()
+    {
+        if (!isLive) return;
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.0001f);
+    }
+
     private void InvokeMoveAway()
     {
         anim.SetBool("IsChase", false);
@@ -89,6 +96,7 @@ public class Enemy : MonoBehaviour
     {
         anim.SetBool("IsChase", true);
         dirVec = (transform.position - StageManager.instance.player.transform.position).normalized;
+        spriter.flipX = dirVec.x < 0;
         GetComponent<Reposition>().enabled = false;
         Destroy(gameObject, 10f);
     }

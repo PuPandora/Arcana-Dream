@@ -16,6 +16,7 @@ public class StageManager : MonoBehaviour
     public int[] nextExp = { 10, 20, 40, 60, 100, 150, 200, 300, 400, 500, 700, 1000 };
     public short level;
     public float timer { get; private set; }
+    [SerializeField] Transform grid;
     private StageTable[] enemyTables;
     public StageData stageData;
 #if UNITY_EDITOR
@@ -56,6 +57,7 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
+        SettingGrid();
         isLive = true;
         health = GameManager.instance.playerStates.health;
         hud.UpdateHealthSlider();
@@ -182,5 +184,13 @@ public class StageManager : MonoBehaviour
         }
 
         Utils.LoadStageData(stageDataFile.ToString(), stageData);
+    }
+
+    private void SettingGrid()
+    {
+        Instantiate(stageData.stageFloor, new Vector3(-15, 15, 0), Quaternion.identity, grid);
+        Instantiate(stageData.stageFloor, new Vector3(15, 15, 0), Quaternion.identity, grid);
+        Instantiate(stageData.stageFloor, new Vector3(15, -15, 0), Quaternion.identity, grid);
+        Instantiate(stageData.stageFloor, new Vector3(-15, -15, 0), Quaternion.identity, grid);
     }
 }
