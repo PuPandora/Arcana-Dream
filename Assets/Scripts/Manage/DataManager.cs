@@ -46,6 +46,8 @@ public class SaveData
     public long gold;
     public Vector3 position;
     public bool playerSpriteFlip;
+    public int playedStageCount = 0;
+    public string lastPlayedDate = "";
 }
 
 public class DataManager : MonoBehaviour
@@ -54,7 +56,7 @@ public class DataManager : MonoBehaviour
 
     public byte saveSlotIndex = 0;
     public string path { get; private set; } = Application.dataPath + "/Data/SaveData/";
-    public string saveFileName = "SaveData.json";
+    public string saveFileName = "SaveData";
     public string optionFileName = "OptionData.json";
 
     public SaveData saveData = new SaveData();
@@ -69,11 +71,6 @@ public class DataManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
-    }
-
-    void Start()
-    {
-        GameManager.instance.dataManager = this;
     }
 
     // 추후 비동기 방식으로 구현 예정
@@ -92,7 +89,7 @@ public class DataManager : MonoBehaviour
         saveData.playerStateData.defenseLevel = GameManager.instance.playerStates.defenseState.level;
 
         string json = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(path + saveFileName, json);
+        File.WriteAllText(path + saveFileName + ".json", json);
 
         Debug.Log($"게임 데이터 저장 완료\n경로 : {path}");
     }
@@ -120,6 +117,18 @@ public class DataManager : MonoBehaviour
         Debug.Log("게임 데이터 불러오기 완료");
     }
 
+    /// <summary>
+    /// 세이브 슬롯용 데이터 불러오는 메소드
+    /// </summary>
+    public SaveData LoadSaveData(byte index)
+    {
+        SaveData data = new SaveData();
+        string loadJson = File.ReadAllText(path + saveFileName + index + ".json");
+        JsonUtility.FromJsonOverwrite(loadJson, data);
+
+        return data;
+    }
+
     private void LoadStatesData()
     {
         // 레벨 적용
@@ -144,7 +153,7 @@ public class DataManager : MonoBehaviour
     public void SaveOptionData()
     {
         string data = JsonUtility.ToJson(optionData, true);
-        File.WriteAllText(path + optionFileName, data);
+        File.WriteAllText(path + optionFileName + $".json", data);
     }
 
     public void LoadOptionData()

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Scanner scanner;
     public List<PlayerWeapon> weapons;
-    public bool canMove;
+    public bool canMove = true;
 
     public Vector2 moveInput { get; private set; }
 

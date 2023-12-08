@@ -10,8 +10,8 @@ public class StateUpgradeData : ScriptableObject
     [PreviewField(50, ObjectFieldAlignment.Left)]
     public Sprite icon;
     public string stateName;
-    public byte level;
-    public byte maxLevel;
+    public short level;
+    public short maxLevel;
     public short totalIncreaseValue;
     public short totalMoreValue;
     [InfoBox("n% 스탯 증가\nState * Increase * More")]
@@ -28,7 +28,7 @@ public class StateUpgradeData : ScriptableObject
     // 행운
     // 시작 레벨
 
-    public void ApplyState(byte level)
+    public void ApplyState(short level)
     {
         // 혹시나 스탯 값이 업데이트로 변경될 때를 대비해
         // 레벨을 기준으로 다시 적용시키는 방식

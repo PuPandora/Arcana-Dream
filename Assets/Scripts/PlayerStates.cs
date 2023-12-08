@@ -11,11 +11,29 @@ public class PlayerStates
     public StateUpgradeData healthState;
     public StateUpgradeData defenseState;
 
-    public byte damageLevel;
-    public byte healthLevel;
-    public byte defenseLevel;
+    public short damageLevel;
+    public short healthLevel;
+    public short defenseLevel;
 
     private float baseHealth = 100f;
+
+    public short averageLevel
+    {
+        get
+        {
+            // 스탯이 많아질 경우는 어떻게 개선할까?
+            short[] allStates = new short[] { damageLevel, healthLevel, defenseLevel };
+
+            float result = 0f;
+            foreach (short state in allStates)
+            {
+                result += state;
+            }
+            result = MathF.Round(result);
+
+            return (short)result;
+        }
+    }
 
     public float defense
     {

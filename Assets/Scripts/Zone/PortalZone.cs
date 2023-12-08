@@ -7,6 +7,9 @@ public class PortalZone : Zone
 {
     private PortalRunChar[] runChars;
 
+    public float glowDuration = 1f;
+    public Ease glowEase = Ease.Linear;
+
     void Awake()
     {
         runChars = GetComponentsInChildren<PortalRunChar>();

@@ -168,6 +168,16 @@ public class GameManager : MonoBehaviour
         OnGoldChanged?.Invoke();
     }
 
+    public void OnNewGameButton()
+    {
+        isNewGame = true;
+    }
+
+    public void OnContinueGameButton()
+    {
+        isNewGame = false;
+    }
+
     public void GameQuit()
     {
 #if UNITY_EDITOR

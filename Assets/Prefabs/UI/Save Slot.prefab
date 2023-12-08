@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 740678087522785542}
   - component: {fileID: 7571687838849168535}
   - component: {fileID: 192679263069726576}
+  - component: {fileID: 8794744520024149964}
   m_Layer: 5
   m_Name: Save Slot
   m_TagString: Untagged
@@ -279,6 +280,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
         m_MethodName: set_interactable
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8794744520024149964}
+        m_TargetAssemblyTypeName: SaveSlot, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -877,6 +890,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   sfxType: 0
+--- !u!114 &8794744520024149964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461908969385210866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a9587c5f12de84eb315920251cb1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotIndex: 0
+  isExistData: 0
+  existGroup: {fileID: 3264335797532894619}
+  positionText: {fileID: 2042788546621951950}
+  playedStageCountText: {fileID: 3922857062204252303}
+  averageLevelText: {fileID: 6082322235274978475}
+  lastestPlayedTimeText: {fileID: 6469038658786278928}
+  emptyGroup: {fileID: 2473414866006158681}
 --- !u!1 &2473414866006158681
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5504691391392253707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1388,8 +1421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: -20, y: 50}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: -10, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5649866707199557452
 CanvasRenderer:
@@ -1446,8 +1479,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

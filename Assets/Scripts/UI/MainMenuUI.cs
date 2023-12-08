@@ -9,6 +9,15 @@ public class MainMenuUI : MonoBehaviour
 {
     public DOTweenAnimation[] mainButtonTweens;
     public DOTweenAnimation[] selectMemoryTweens;
+    public Button newGameButton;
+    public Button continueButton;
+
+    void Start()
+    {
+        // 임시 새 게임, 불러오기 게임 매니저 함수 AddListener
+        newGameButton.onClick.AddListener(GameManager.instance.OnNewGameButton);
+        continueButton.onClick.AddListener(GameManager.instance.OnContinueGameButton);
+    }
 
     public void DoPlayMainButtonTweens(string id)
     {
