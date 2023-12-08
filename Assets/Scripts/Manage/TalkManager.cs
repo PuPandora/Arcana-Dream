@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using System;
@@ -27,8 +28,8 @@ public class TalkManager : MonoBehaviour
     public bool isPressKey;
     public Vector3 speakerPos;
 
-    [Title("Shader Mat")]
-    public Material npcMaterial;
+    [Title("Camera")]
+    public CinemachineVirtualCamera zoomCam;
 
     [Title("Tween")]
     [SerializeField] DOTweenAnimation panelTween;

@@ -32,32 +32,38 @@ public class TalkZone : MonoBehaviour
                 return;
             }
 
-            // 카메라 확대
-            Vector2 playerPos = GameManager.instance.player.transform.position;
-            Vector2 myPos = transform.position;
-
-            var camPos = npc.zoomCam.transform.position;
-            originalCamPos = camPos;
-
-            camPos = (playerPos + myPos) * 0.5f;
-            camPos = new Vector3(camPos.x, camPos.y, -10);
-            npc.zoomCam.enabled = true;
-
-            // UI Manager 초기화, 대화창 열기
-            var bodyColor = npc.spriter.sharedMaterial.GetColor("_Color");
-            var eyeColor = npc.spriter.sharedMaterial.GetColor("_EyeColor");
-            TalkManager.instance.portrait.SetColor(bodyColor, eyeColor);
-            TalkManager.instance.talkData = npc.talkData;
-            TalkManager.instance.speakerPos = npc.transform.position;
-            TalkManager.instance.ShowUI();
-            TalkManager.instance.OnTalkEnd += TalkEnd;
+            TalkStart();
         }
+    }
+
+    private void TalkStart()
+    {
+        // 카메라 확대
+        Vector2 playerPos = GameManager.instance.player.transform.position;
+        Vector2 myPos = transform.position;
+
+        var cam = TalkManager.instance.zoomCam.transform;
+
+        // 플레이어와 대화 NPC 사이
+        cam.position = (playerPos + myPos) * 0.5f;
+        // 위치 조정, 카메라가 약간 아래로 가게
+        cam.position = new Vector3(cam.position.x, cam.position.y - 1f, -10);
+        TalkManager.instance.zoomCam.enabled = true;
+
+        // UI Manager 초기화, 대화창 열기
+        var bodyColor = npc.spriter.sharedMaterial.GetColor("_Color");
+        var eyeColor = npc.spriter.sharedMaterial.GetColor("_EyeColor");
+        var darkColor = npc.spriter.sharedMaterial.GetFloat("_Dark");
+        TalkManager.instance.portrait.SetColor(bodyColor, darkColor, eyeColor);
+        TalkManager.instance.talkData = npc.talkData;
+        TalkManager.instance.speakerPos = npc.transform.position;
+        TalkManager.instance.ShowUI();
+        TalkManager.instance.OnTalkEnd += TalkEnd;
     }
 
     private void TalkEnd()
     {
-        npc.zoomCam.enabled = false;
-        npc.zoomCam.transform.position = originalCamPos;
+        TalkManager.instance.zoomCam.enabled = false;
         StartCoroutine(npc.ResetLook());
         TalkManager.instance.OnTalkEnd -= TalkEnd;
     }

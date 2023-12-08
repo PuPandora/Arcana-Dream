@@ -14,7 +14,6 @@ public class NPC : MonoBehaviour
 
     public Light2D backLight;
     public TalkData talkData;
-    public CinemachineVirtualCamera zoomCam;
 
     Coroutine moveRoutine;
     Coroutine runRoutine;

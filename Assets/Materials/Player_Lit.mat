@@ -56,6 +56,6 @@ Material:
     m_Floats:
     - _Dark: 0.5
     m_Colors:
-    - _Color: {r: 0.51063544, g: 0.8018868, b: 0.76140296, a: 1}
-    - _EyeColor: {r: 8.351365, g: 8.351365, b: 8.351365, a: 1}
+    - _Color: {r: 0.36050132, g: 0.11454255, b: 0.6226415, a: 1}
+    - _EyeColor: {r: 2.0600731, g: 0.66037726, b: 4, a: 1}
   m_BuildTextureStacks: []

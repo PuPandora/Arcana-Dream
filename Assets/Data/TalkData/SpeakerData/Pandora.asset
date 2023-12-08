@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b1ff0f5aafea6a4f852d3e0c438df08, type: 3}
-  m_Name: Ren
+  m_Name: Pandora
   m_EditorClassIdentifier: 
-  speakerName: "\uB80C"
+  speakerName: "\uD310\uB3C4\uB77C"
   spearkDesc: "\uC9C0\uB3C4\uC81C\uC791\uC790"
   portraits:
   - {fileID: 1443325478, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
