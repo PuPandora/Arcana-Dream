@@ -1272,7 +1272,7 @@ MonoBehaviour:
   tweenTargetIsTargetGO: 1
   delay: 1
   duration: 2
-  easeType: 14
+  easeType: 8
   easeCurve:
     serializedVersion: 2
     m_Curve:
@@ -17673,7 +17673,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Name: 
-    GameObject: {fileID: 1839822588}
+    GameObject: {fileID: 0}
     Ordinal: 82
     Priority: 0
     IconType: 310000
@@ -28852,7 +28852,6 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   - {fileID: 1340164629}
-  - {fileID: 1839822590}
   - {fileID: 1982482415}
   - {fileID: 512082526}
   - {fileID: 1302916383}
@@ -30796,171 +30795,6 @@ Transform:
   - {fileID: 487639792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1839822588
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1839822590}
-  - component: {fileID: 1839822589}
-  m_Layer: 0
-  m_Name: Inventory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1839822589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1839822588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ce12494b464d814e80249fa0842f2fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory:
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
-  - itemData: {fileID: 0}
-    id: 0
-    m_stack: 0
-    isEmpty: 0
---- !u!4 &1839822590
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1839822588}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1489071128}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1843057590
 GameObject:
   m_ObjectHideFlags: 0
@@ -31308,7 +31142,7 @@ MonoBehaviour:
   tweenTargetIsTargetGO: 1
   delay: 1
   duration: 2
-  easeType: 14
+  easeType: 8
   easeCurve:
     serializedVersion: 2
     m_Curve:
@@ -41382,7 +41216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45af25c308ed64f4abfbdc659a2391b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 1839822589}
+  inventory: {fileID: 0}
   radius: 0.5
 --- !u!58 &2001257312
 CircleCollider2D:

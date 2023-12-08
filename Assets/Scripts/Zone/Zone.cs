@@ -35,7 +35,7 @@ public abstract class Zone : MonoBehaviour, IInteractable
         }
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -43,7 +43,7 @@ public abstract class Zone : MonoBehaviour, IInteractable
         }
     }
 
-    protected void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {

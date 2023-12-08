@@ -1,9 +1,17 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PortalZone : Zone
 {
+    private PortalRunChar[] runChars;
+
+    void Awake()
+    {
+        runChars = GetComponentsInChildren<PortalRunChar>();
+    }
+
     public override void Enter()
     {
         Debug.Log("플레이어 맵 선택 장소 입장");
@@ -24,5 +32,31 @@ public class PortalZone : Zone
         UIManager.instance.UIManage(UIManager.instance.stageSelectUI);
         isUsing = false;
         GameManager.instance.playerState = PlayerState.None;
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isPlayerIn = true;
+
+            foreach (var run in runChars)
+            {
+                run.OnGlow();
+            }
+        }
+    }
+
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isPlayerIn = false;
+
+            foreach (var run in runChars)
+            {
+                run.OffGlow();
+            }
+        }
     }
 }
