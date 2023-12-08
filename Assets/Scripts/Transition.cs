@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Transition : MonoBehaviour
 {
-    [SerializeField] DOTweenAnimation transitionA;
-    [SerializeField] DOTweenAnimation transitionB;
+    [field: SerializeField]
+    public DOTweenAnimation transitionA { get; private set; }
+    [field: SerializeField]
+    public DOTweenAnimation transitionB { get; private set; }
 
     public void Open()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExpItem : MonoBehaviour
 {
-    SpriteRenderer spriter;
+    public SpriteRenderer spriter { get; private set; }
     public ExpItemData data { get; private set; }
 
     void Awake()

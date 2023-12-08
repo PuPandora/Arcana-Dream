@@ -15,19 +15,19 @@ MonoBehaviour:
   talkSession0:
   - spriteIndex: 0
     speakerData: {fileID: 0}
-    script: ... ... ... ... ...
+    script: '"... ... ... ... ..."'
   - spriteIndex: 0
     speakerData: {fileID: 0}
-    script: "... \uCC28\uAC11\uB2E4."
+    script: "\"... \uCC28\uAC11\uB2E4.\""
   - spriteIndex: 0
     speakerData: {fileID: 0}
-    script: "\uC5EC\uAE34... \uC5B4\uB514\uC9C0...? \uC644\uC804 \uC0C8\uAE4C\uB9E4."
+    script: "\"\uC5EC\uAE34... \uC5B4\uB514\uC9C0...?\n\uC644\uC804 \uC0C8\uAE4C\uB9E4.\""
   - spriteIndex: 0
     speakerData: {fileID: 0}
-    script: "... \uC544."
+    script: "\"... \uC544.\""
   - spriteIndex: 0
     speakerData: {fileID: 0}
-    script: "\uBC14\uB2E5\uC5D0 \uC5BC\uAD74\uC774 \uBC15\uD600\uC788\uB294\uAC70\uAD6C\uB098."
+    script: "\"\uBC14\uB2E5\uC5D0 \uC5BC\uAD74\uC744 \uBC15\uACE0\uC788\uAD6C\uB098.\""
   talkSession1: []
   talkSession2: []
   talkSession3: []

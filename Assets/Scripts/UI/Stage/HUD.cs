@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI killCountText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private DOTweenAnimation tween;
 
     void Awake()
     {
@@ -130,6 +132,11 @@ public class HUD : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void ShowTween()
+    {
+        tween.DOPlayAllById("Show");
     }
 
     void OnDestroy()

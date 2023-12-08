@@ -16,6 +16,6 @@ public class SpawnToggleDebugUI : MonoBehaviour
     // 스폰 토글 디버그 (임시 코드)
     public void ApplySpawnToggle(bool value)
     {
-        StageManager.instance.spawner.isPlaying = value;
+        StageManager.instance.isPlaying = value;
     }
 }

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Scanner scanner;
     public List<PlayerWeapon> weapons;
+    public bool canMove;
 
     public Vector2 moveInput { get; private set; }
 
@@ -84,7 +85,7 @@ public class Player : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
-        if (TalkManager.instance && TalkManager.instance.isTalking) return;
+        if (!canMove) return;
 
         moveInput = value.Get<Vector2>();
         anim.SetFloat("Speed", moveInput.magnitude);
@@ -107,9 +108,19 @@ public class Player : MonoBehaviour
         coll.enabled = false;
     }
 
+    public void AnimationDie()
+    {
+        anim.SetTrigger("Die");
+    }
+
     public void LookAtTarget()
     {
         Vector2 dirVec = TalkManager.instance.speakerPos - transform.position;
         spriter.flipX = dirVec.x < 0;
+    }
+
+    public void WakeUp()
+    {
+        anim.SetTrigger("WakeUp");
     }
 }

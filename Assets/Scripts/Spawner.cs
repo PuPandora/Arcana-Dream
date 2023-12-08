@@ -12,7 +12,6 @@ public class Spawner : MonoBehaviour
     [ReadOnly]
     [SerializeField]
     private float spawnTimer;
-    public bool isPlaying = true;
 
     public byte stageLevel;
 
@@ -31,7 +30,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (!isPlaying) return;
+        if (!StageManager.instance.isPlaying || !StageManager.instance.isLive) return;
 
         spawnTimer += Time.deltaTime;
         float delay = stageData.stageTable[stageLevel].spawnDelay;
@@ -148,6 +147,6 @@ public class Spawner : MonoBehaviour
 
     public void Stop()
     {
-        isPlaying = false;
+        StageManager.instance.isPlaying = false;
     }
 }

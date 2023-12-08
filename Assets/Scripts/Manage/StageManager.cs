@@ -17,6 +17,8 @@ public class StageManager : MonoBehaviour
     public int[] nextExp = { 10, 20, 40, 60, 100, 150, 200, 300, 400, 500, 700, 1000 };
     public short level;
     public float timer { get; private set; }
+    public bool isPlaying;
+    public bool isTutorial;
     [SerializeField] private Light2D globalLight;
     [SerializeField] Transform grid;
     private StageTable[] enemyTables;
@@ -73,7 +75,16 @@ public class StageManager : MonoBehaviour
         spawner.Initialize();
         stageData.stageTable = enemyTables;
 
-        transition.Open();
+        isTutorial = TutorialManager.instance.gameObject.activeSelf;
+        if (isTutorial)
+        {
+            isPlaying = false;
+        }
+        else
+        {
+            transition.Open();
+            isPlaying = true;
+        }
     }
 
     private void InitEnemyTables()
@@ -89,7 +100,7 @@ public class StageManager : MonoBehaviour
 
     void Update()
     {
-        if (!isLive) return;
+        if (!isLive || !isPlaying) return;
 
         timer += Time.deltaTime;
     }
@@ -157,7 +168,7 @@ public class StageManager : MonoBehaviour
     private void GameOver()
     {
         isLive = false;
-        spawner.isPlaying = false;
+        isPlaying = false;
         //GameManager.instance.Stop();
 
         OnGameOver?.Invoke();
@@ -167,7 +178,7 @@ public class StageManager : MonoBehaviour
     public void GameClear()
     {
         isLive = false;
-        spawner.isPlaying = false;
+        isPlaying = false;
         var enemyPool = GameManager.instance.poolManager.GetPool(PoolType.Enemy);
         foreach (var enemy in enemyPool)
         {

@@ -9,7 +9,7 @@ public sealed class Utils : MonoBehaviour
     readonly public static WaitForSeconds delay0_1 = new WaitForSeconds(0.1f);
     readonly public static WaitForSeconds delay0_25 = new WaitForSeconds(0.25f);
     readonly public static WaitForSeconds delay1 = new WaitForSeconds(1f);
-    //readonly public static WaitForSeconds delay2 = new WaitForSeconds(2f);
+    readonly public static WaitForSeconds delay2 = new WaitForSeconds(2f);
     readonly public static WaitForFixedUpdate delayFixedUpdate;
 
     public const byte INVENTORY_SLOT_COUNT = 30;
