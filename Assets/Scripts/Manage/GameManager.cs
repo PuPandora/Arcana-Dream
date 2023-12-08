@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public bool isAllowDevMenu;
     public string targetScene;
     public bool isNeedLoad = true;
+    public bool isNewGame = false;
 
     [Title("# Managers")]
     public PoolManager poolManager;
@@ -135,11 +136,23 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
+        if (dataManager == null)
+        {
+            Debug.LogError("데이터 매니저가 없습니다. 저장 실패");
+            return;
+        }
+
         dataManager.SaveGame();
     }
 
     public void LoadGame()
     {
+        if (dataManager == null)
+        {
+            Debug.LogError("데이터 매니저가 없습니다. 로드 실패");
+            return;
+        }
+
         dataManager.LoadGame();
     }
 

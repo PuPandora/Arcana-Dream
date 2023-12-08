@@ -83,6 +83,8 @@ public class StageManager : MonoBehaviour
         else
         {
             transition.Open();
+            hud.canvasGroup.alpha = 1;
+            hud.cameraCanvasGroup.alpha = 1;
             isPlaying = true;
         }
     }

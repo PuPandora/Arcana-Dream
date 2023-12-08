@@ -17,11 +17,21 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] DOTweenAnimation keyPanelTween;
     [SerializeField] Player player;
     [SerializeField] ExpItemData expItemData;
+    [SerializeField] StageData tutorialStageData;
 
     WaitUntil waitUntilPress;
 
     void Awake()
     {
+        if (!GameManager.instance.isNewGame)
+        {
+            // MEMO
+            // 새 게임이 아닌 경우 어느 쪽이 좋을까?
+            // 튜토리얼 오브젝트 생성? 혹은 스테이지에 이미 있고 끄기(파괴)하기?
+            firstPanelTween.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+
         #region 싱글톤
         if (instance == null)
         {
@@ -32,11 +42,14 @@ public class TutorialManager : MonoBehaviour
             Destroy(gameObject);
         }
         #endregion
+
+        waitUntilPress = new WaitUntil(() => isPressKey);
     }
 
     void Start()
     {
         StageManager.instance.player.canMove = false;
+
         StartCoroutine(TutorialRoutine());
         StartCoroutine(ShowHUDRoutine());
     }
@@ -62,6 +75,7 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator TutorialRoutine()
     {
+        player.canMove = false;
         tutorialText.text = string.Empty;
         player.AnimationDie();
 
@@ -86,7 +100,6 @@ public class TutorialManager : MonoBehaviour
         yield return Utils.delay2;
 
         Debug.Log("1. 튜토리얼 텍스트 시작");
-        waitUntilPress = new WaitUntil(() => isPressKey);
 
         for (byte i = 0; i < tutorialData.talkSession0.Length; i++)
         {

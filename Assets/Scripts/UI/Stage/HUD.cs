@@ -10,11 +10,20 @@ public class HUD : MonoBehaviour
 {
     private StageManager stageManager;
 
+    [Title("UI")]
     [SerializeField] private Slider expSlider;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI killCountText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI levelText;
+
+    [Title("Canvas Group")]
+    [field: SerializeField]
+    public CanvasGroup canvasGroup { get; private set; }
+    [field: SerializeField]
+    public CanvasGroup cameraCanvasGroup { get; private set; }
+
+    [Title("Tween")]
     [SerializeField] private DOTweenAnimation tween;
 
     void Awake()
