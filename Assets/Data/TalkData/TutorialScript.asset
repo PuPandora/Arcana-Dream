@@ -12,23 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63c88d14f2fa0243b38c5c576487fc7, type: 3}
   m_Name: TutorialScript
   m_EditorClassIdentifier: 
-  talkSession0:
-  - spriteIndex: 0
-    speakerData: {fileID: 0}
-    script: '"... ... ... ... ..."'
-  - spriteIndex: 0
-    speakerData: {fileID: 0}
-    script: "\"... \uCC28\uAC11\uB2E4.\""
-  - spriteIndex: 0
-    speakerData: {fileID: 0}
-    script: "\"\uC5EC\uAE34... \uC5B4\uB514\uC9C0...?\n\uC644\uC804 \uC0C8\uAE4C\uB9E4.\""
-  - spriteIndex: 0
-    speakerData: {fileID: 0}
-    script: "\"... \uC544.\""
-  - spriteIndex: 0
-    speakerData: {fileID: 0}
-    script: "\"\uBC14\uB2E5\uC5D0 \uC5BC\uAD74\uC744 \uBC15\uACE0\uC788\uAD6C\uB098.\""
-  talkSession1: []
-  talkSession2: []
-  talkSession3: []
-  talkSession4: []
+  scriptSession:
+  - scriptData:
+    - spriteIndex: 0
+      speakerData: {fileID: 0}
+      script: '"... ... ... ... ..."'
+    - spriteIndex: 0
+      speakerData: {fileID: 0}
+      script: "\"... \uCC28\uAC11\uB2E4.\""
+    - spriteIndex: 0
+      speakerData: {fileID: 0}
+      script: "\"\uC5EC\uAE34... \uC5B4\uB514\uC9C0...?\n\uC644\uC804 \uC0C8\uAE4C\uB9E4.\""
+    - spriteIndex: 0
+      speakerData: {fileID: 0}
+      script: "\"... \uC544.\""
+    - spriteIndex: 0
+      speakerData: {fileID: 0}
+      script: "\"\uBC14\uB2E5\uC5D0 \uC5BC\uAD74\uC744 \uBC15\uACE0\uC788\uAD6C\uB098.\""

@@ -28,6 +28,10 @@ public class TalkManager : MonoBehaviour
     public bool isPressKey;
     public Vector3 speakerPos;
 
+    [Title("Talk Info")]
+    public byte curTalkSession;
+    public byte curTalkIndex;
+
     [Title("Camera")]
     public CinemachineVirtualCamera zoomCam;
 
@@ -58,57 +62,59 @@ public class TalkManager : MonoBehaviour
         OnTalkEnd += (() => GameManager.instance.ChangePlayerState(PlayerState.None));
     }
 
-    public void ShowUI()
+    public void StartTalk(byte talkSessionId = 0)
     {
         // Tweening
         panelTween.DORestartById("Show");
+        GameManager.instance.player.canMove = false;
 
-        //speakerPortrait.sprite = talkData.talkSession0[0].speakerData.portrait;
-
-        StartCoroutine(Talk(talkData.talkSession0));
+        StartCoroutine(Talk(talkSessionId));
     }
 
     // To do
     // 대화 출력 중 상호작용 키를 누르면 해당 스크립트 한 번에 출력
-    // 대화 소리 SFX 추가
-    public IEnumerator Talk(ScriptData[] data)
+    public IEnumerator Talk(byte talkSessionId)
     {
         isTalking = true;
         isAllowTalk = false;
-        short prevSpriteIndex = -1;
-        SpeakerData speaker = null;
+        curTalkSession = talkSessionId;
+        curTalkIndex = 0;
         OnTalkStart?.Invoke();
 
-        for (int i = 0; i < data.Length; i++)
+        for (int i = 0; i < talkData.scriptSession.Length; i++)
         {
             // 초기화
             scriptText.text = string.Empty;
             isScriptEnd = false;
             isPressKey = false;
-            speakerkName.text = data[i].speakerData.speakerName;
-            speakerDesc.text = data[i].speakerData.spearkDesc;
 
-            // 초상화 변경시 트윈
-            // Speaker가 다르거나, 스프라이트가 달라진다면
-            if (prevSpriteIndex != data[i].spriteIndex || data[i].speakerData != speaker)
-            {
-                portraitTween.DORestartById("0");
-                portrait.image.sprite = data[i].speakerData.portraits[data[i].spriteIndex];
-                speaker = data[i].speakerData;
-                prevSpriteIndex = data[i].spriteIndex;
-            }
+            // Talk Data 불러오기
+            ScriptData scriptData = talkData.GetScriptData(curTalkSession, curTalkIndex);
+            speakerkName.text = scriptData.speakerData.speakerName;
+            speakerDesc.text = scriptData.speakerData.spearkDesc;
+            string talKScript = scriptData.script;
+
+            // 초상화 트윈
+            portraitTween.DORestartById("0");
+            portrait.image.sprite = scriptData.speakerData.portraits[scriptData.spriteIndex];
 
             // 스크립트 한 글자씩 출력
-            for (int j = 0; j < data[i].script.Length; j++)
+            for (int j = 0; j < talKScript.Length; j++)
             {
-                scriptText.text += data[i].script[j];
-                Debug.Log(data[i].script[j]);
+                // 대화 스킵
+                if (isPressKey)
+                {
+                    scriptText.text = talKScript;
+                    break;
+                }
+                scriptText.text += talKScript[j];
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Talk);
                 yield return Utils.delay0_05;
             }
 
             isScriptEnd = true;
             isPressKey = false;
+            curTalkIndex++;
             yield return Utils.delay0_25;
 
             yield return waitUntilPress;

@@ -49,7 +49,9 @@ public class InventorySlotUI : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         // 툴팁 띄우기
-        Debug.Log("포인터 들어옴");
+        if (GameManager.instance.inventory.inventory[slotIndex].itemData == null)
+            return;
+
         UIManager.instance.itemTooltip.itemData = GameManager.instance.inventory.inventory[slotIndex].itemData;
         UIManager.instance.itemTooltip.UpdateText();
         UIManager.instance.itemTooltip.ShowUI();
@@ -57,6 +59,9 @@ public class InventorySlotUI : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!UIManager.instance.itemTooltip.isOpen)
+            return;
+
         // 툴팁 닫기
         UIManager.instance.itemTooltip.HideUI();
     }

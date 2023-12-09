@@ -1,4 +1,5 @@
 using Cinemachine;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,23 @@ using UnityEngine.Rendering.Universal;
 
 public class NPC : MonoBehaviour
 {
+    [Title("Move")]
     public Vector3 originalPos;
     public Vector3 moveVec;
     public float speed = 5f;
     public bool isRunning;
     public bool originalDirection;
 
-    public Light2D backLight;
+    [Title("Info")]
     public TalkData talkData;
+    [SerializeField]
+    TalkZone talkZone;
+    public bool canTalk = true;
+    public bool isShopNpc;
+    public LobbyUI shopUI;
 
+    [Title("Components")]
+    public Light2D backLight;
     Coroutine moveRoutine;
     Coroutine runRoutine;
     Rigidbody2D rigid;
@@ -136,5 +145,11 @@ public class NPC : MonoBehaviour
     {
         yield return Utils.delay1;
         spriter.flipX = originalDirection;
+    }
+
+    public void SetCanTalk(bool canTalk)
+    {
+        this.canTalk = canTalk;
+        talkZone.zone.enabled = canTalk;
     }
 }

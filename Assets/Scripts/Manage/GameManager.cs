@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public long gold { get; private set; }
 
     [Title("# Input")]
-    public KeyCode interactKey = KeyCode.E;
+    public bool isInputInteract;
 
     // Event
     public event Action OnGoldChanged;
@@ -189,23 +189,38 @@ public class GameManager : MonoBehaviour
 
     private void OnSubmit(InputValue value)
     {
+        Debug.Log("Submit 키 누름");
+
         switch (playerState)
         {
             case PlayerState.None:
+                StartCoroutine(InteractRoutine());
                 break;
             case PlayerState.Shop:
                 break;
             case PlayerState.Talk:
-                // To do
-                // 아직 안 끝났다면 스크립트 전부 출력
-                if (!TalkManager.instance.isScriptEnd) break;
-
                 TalkManager.instance.isPressKey = true;
                 break;
             case PlayerState.Tutorial:
                 TutorialManager.instance.isPressKey = true;
                 break;
         }
+    }
+
+    private void OnCancel(InputValue value)
+    {
+        Debug.Log("ESC 키, 취소 키");
+
+        UIManager.instance.CloseCurrentUI();
+    }
+
+    private IEnumerator InteractRoutine()
+    {
+        isInputInteract = true;
+
+        yield return null;
+
+        isInputInteract = false;
     }
 
     public void ChangePlayerState(PlayerState state)

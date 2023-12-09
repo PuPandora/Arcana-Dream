@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_Lit
+  m_Name: Bell
   m_Shader: {fileID: -6465566751694194690, guid: f51c7bf6701f5a049b4751285d2cab11, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -54,8 +54,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Dark: 0.5
+    - _Dark: 0.6
     m_Colors:
-    - _Color: {r: 0.36050132, g: 0.11454255, b: 0.6226415, a: 1}
-    - _EyeColor: {r: 2.0600731, g: 0.66037726, b: 4, a: 1}
+    - _Color: {r: 0.8018868, g: 0.08699717, b: 0.30551425, a: 1}
+    - _EyeColor: {r: 3.9999998, g: 3.2057898, b: 0.28301883, a: 1}
   m_BuildTextureStacks: []

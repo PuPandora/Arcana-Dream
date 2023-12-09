@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -7,11 +8,14 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }
 
-    [Title("Key")]
-    [SerializeField] KeyCode devMenuKey = KeyCode.Escape;
-    [SerializeField] KeyCode inventoryKey = KeyCode.I;
-    [SerializeField] KeyCode playerStatesKey = KeyCode.C;
-    [SerializeField] KeyCode questKey = KeyCode.J;
+    // TO DO
+    // Change to New Input System
+
+    //[Title("Key")]
+    //[SerializeField] KeyCode devMenuKey = KeyCode.Escape;
+    //[SerializeField] KeyCode inventoryKey = KeyCode.I;
+    //[SerializeField] KeyCode playerStatesKey = KeyCode.C;
+    //[SerializeField] KeyCode questKey = KeyCode.J;
 
     [Title("UI")]
     public DeveloperMenu devMenu;
@@ -23,6 +27,8 @@ public class UIManager : MonoBehaviour
     public ItemTooltip itemTooltip;
 
     public LobbyUI curUI;
+
+    public event Action OnCurrentUIClosed;
 
     void Awake()
     {
@@ -37,37 +43,11 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance.isAllowDevMenu)
         {
-            UIManage(devMenuKey, devMenu);
+            //UIManage(devMenuKey, devMenu);
         }
-        UIManage(inventoryKey, inventoryUI);
-        UIManage(playerStatesKey, playerStateUI);
-        UIManage(questKey, questUI);
-    }
-
-    private void UIManage(KeyCode key, LobbyUI ui)
-    {
-        if (!Input.GetKeyDown(key)) return;
-
-        if (ui.isOpen)
-        {
-            ui.HideUI();
-
-            if (curUI == ui)
-            {
-                curUI = null;
-            }
-        }
-        else
-        {
-            ui.ShowUI();
-
-            if (curUI != null)
-            {
-                curUI.HideUI();
-            }
-
-            curUI = ui;
-        }
+        //UIManage(inventoryKey, inventoryUI);
+        //UIManage(playerStatesKey, playerStateUI);
+        //UIManage(questKey, questUI);
     }
 
     public void UIManage(LobbyUI ui)
@@ -79,6 +59,7 @@ public class UIManager : MonoBehaviour
             if (curUI == ui)
             {
                 curUI = null;
+                GameManager.instance.playerState = PlayerState.None;
             }
         }
         else
@@ -93,4 +74,14 @@ public class UIManager : MonoBehaviour
             curUI = ui;
         }
     } 
+
+    public void CloseCurrentUI()
+    {
+        if (curUI == null) return;
+
+        curUI.HideUI();
+        curUI = null;
+
+        OnCurrentUIClosed?.Invoke();
+    }
 }

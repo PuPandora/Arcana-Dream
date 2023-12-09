@@ -109,22 +109,24 @@ public class TutorialManager : MonoBehaviour
 
         Debug.Log("1. 튜토리얼 텍스트 시작");
 
-        for (byte i = 0; i < tutorialData.talkSession0.Length; i++)
+        for (byte i = 0; i < tutorialData.scriptSession[0].scriptData.Length; i++)
         {
             // 초기화
             tutorialText.text = string.Empty;
-            string script = tutorialData.talkSession0[i].script;
+            string script = tutorialData.scriptSession[0].scriptData[i].script;
 
             // 스크립트 출력
-            for (short j = 0; j < tutorialData.talkSession0[i].script.Length; j++)
+            for (short j = 0; j < tutorialData.scriptSession[0].scriptData[i].script.Length; j++)
             {
-                tutorialText.text += tutorialData.talkSession0[i].script[j];
+                tutorialText.text += tutorialData.scriptSession[0].scriptData[i].script[j];
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Talk);
                 yield return Utils.delay0_05;
             }
 
             // 키입력 대기
             isPressKey = false;
+            yield return Utils.delay0_25;
+
             yield return waitUntilPress;
         }
 

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public bool canMove = true;
 
     public Vector2 moveInput { get; private set; }
-    private Vector2 lastMoveInput;
+    public Zone currentZone;
 
     Rigidbody2D rigid;
     Collider2D coll;
@@ -90,6 +90,13 @@ public class Player : MonoBehaviour
 
         moveInput = value.Get<Vector2>();
         anim.SetFloat("Speed", moveInput.magnitude);
+    }
+
+    private void OnInteract(InputValue value)
+    {
+        if (currentZone == null) return;
+
+        currentZone.Interact();
     }
 
     public void Win()

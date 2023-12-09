@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class StateUpgradeZone : Zone
 {
-    public override void Enter()
+    public override void Interact()
     {
-        Debug.Log("플레이어 훈련소 입장");
         if (UIManager.instance.stateUpgradeUI == null)
         {
             Debug.LogError($"UI Manager에 stateUpgradeUI가 없습니다.");
@@ -14,15 +13,6 @@ public class StateUpgradeZone : Zone
         }
 
         UIManager.instance.UIManage(UIManager.instance.stateUpgradeUI);
-        isUsing = true;
         GameManager.instance.playerState = PlayerState.Shop;
-    }
-
-    public override void Exit()
-    {
-        Debug.Log("플레이어 훈련소 퇴장");
-        UIManager.instance.UIManage(UIManager.instance.stateUpgradeUI);
-        isUsing = false;
-        GameManager.instance.playerState = PlayerState.None;
     }
 }
