@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -12,7 +12,7 @@ public class TutorialManager : MonoBehaviour
     public static TutorialManager instance;
     [SerializeField] TalkData tutorialData;
     [SerializeField] TextMeshProUGUI tutorialText;
-    [SerializeField] private bool isPressKey;
+    public bool isPressKey;
     [SerializeField] DOTweenAnimation firstPanelTween;
     [SerializeField] DOTweenAnimation keyPanelTween;
     [SerializeField] Player player;
@@ -20,10 +20,15 @@ public class TutorialManager : MonoBehaviour
     [field: SerializeField]
     public StageData tutorialStageData { get; private set; }
 
+    // Event
+    public event Action OnTutorialStart;
+    public event Action OnTutorialEnd;
+
     WaitUntil waitUntilPress;
 
     void Awake()
     {
+        // 새 게임이 아닌 경우 비활성화
         if (!GameManager.instance.isNewGame)
         {
             // MEMO
@@ -44,6 +49,9 @@ public class TutorialManager : MonoBehaviour
         }
         #endregion
 
+        OnTutorialStart += (() => GameManager.instance.ChangePlayerState(PlayerState.Tutorial));
+        OnTutorialEnd += (() => GameManager.instance.ChangePlayerState(PlayerState.None));
+
         waitUntilPress = new WaitUntil(() => isPressKey);
     }
 
@@ -52,7 +60,7 @@ public class TutorialManager : MonoBehaviour
         StageManager.instance.player.canMove = false;
         AudioManager.instance.PlayBgm(AudioManager.Bgm.WhiteNoise);
 
-        StartCoroutine(TutorialRoutine());
+        StartCoroutine(FirstTutorialRoutine());
         StartCoroutine(ShowHUDRoutine());
     }
 
@@ -67,16 +75,12 @@ public class TutorialManager : MonoBehaviour
     // 검은 화면
     // 텍스트만 출력됨 (Tutorial Talk Data)
 
-    void Update()
+    /// <summary>
+    /// 새 게임 첫 스테이지 시작 루틴
+    /// </summary>
+    private IEnumerator FirstTutorialRoutine()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            isPressKey = true;
-        }
-    }
-
-    private IEnumerator TutorialRoutine()
-    {
+        OnTutorialStart?.Invoke();
         player.canMove = false;
         tutorialText.text = string.Empty;
         player.AnimationDie();
@@ -94,6 +98,8 @@ public class TutorialManager : MonoBehaviour
 
         // 보석을 먹어 레벨업 튜토리얼 루틴
         // 투척 카드 하나만 선택 가능
+
+        OnTutorialEnd?.Invoke();
     }
 
     private IEnumerator EnterTutorial()

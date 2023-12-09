@@ -61,9 +61,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"canMove : {canMove}");
-        Debug.Log($"moveInput : {moveInput}");
-
         if (!isLive) return;
 
         // 플레이어가 최근 이동항 방향을 바라봄

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2103703733948597998}
   - component: {fileID: 5658979530586138575}
   - component: {fileID: 1491314603938455285}
+  - component: {fileID: 6099299447981761439}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -50,12 +51,14 @@ MonoBehaviour:
   isAllowDevMenu: 1
   targetScene: 
   isNeedLoad: 1
+  isNewGame: 0
   poolManager: {fileID: 0}
   dataManager: {fileID: 0}
   player: {fileID: 0}
   viewArea: {fileID: 0}
   levelUpUi: {fileID: 0}
   inventory: {fileID: 0}
+  vCam: {fileID: 0}
   weapons:
   - {fileID: 0}
   - {fileID: 0}
@@ -208,3 +211,33 @@ MonoBehaviour:
     id: 0
     m_stack: 0
     isEmpty: 1
+--- !u!114 &6099299447981761439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366143493008336871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 316dc47f91d53d843ba7979bd4bf5716, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: UI
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

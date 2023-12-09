@@ -39,6 +39,8 @@ public class TalkManager : MonoBehaviour
     public event Action OnTalkStart;
     public event Action OnTalkEnd;
 
+    WaitUntil waitUntilPress;
+
     void Awake()
     {
         #region 싱글톤
@@ -51,14 +53,9 @@ public class TalkManager : MonoBehaviour
             Destroy(gameObject);
         }
         #endregion
-    }
-
-    public void Update()
-    {
-        if (isTalking && !isPressKey && isScriptEnd && Input.GetKeyDown(GameManager.instance.interactKey))
-        {
-            isPressKey = true;
-        }
+        waitUntilPress = new WaitUntil(() => isPressKey);
+        OnTalkStart += (() => GameManager.instance.ChangePlayerState(PlayerState.Talk));
+        OnTalkEnd += (() => GameManager.instance.ChangePlayerState(PlayerState.None));
     }
 
     public void ShowUI()
@@ -111,7 +108,10 @@ public class TalkManager : MonoBehaviour
             }
 
             isScriptEnd = true;
-            yield return new WaitUntil(() => isPressKey);
+            isPressKey = false;
+            yield return Utils.delay0_25;
+
+            yield return waitUntilPress;
         }
 
         panelTween.DORestartById("Hide");

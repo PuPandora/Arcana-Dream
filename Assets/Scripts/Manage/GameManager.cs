@@ -5,11 +5,12 @@ using Cinemachine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameState { Lobby, Stage, Pause }
-public enum PlayerState { None, Shop, SelectMap }
+public enum PlayerState { None, Shop, SelectMap, Talk, Tutorial }
 
 public class GameManager : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public long gold { get; private set; }
 
-    [Title("# Key")]
+    [Title("# Input")]
     public KeyCode interactKey = KeyCode.E;
 
     // Event
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        #region 싱글톤
         if (instance == null)
         {
             instance = this;
@@ -61,18 +63,14 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
-    }
+        #endregion
 
-    void Start()
-    {
         SceneManager.sceneLoaded += CheckScene;
-        weapons = new PlayerWeaponController[16];
-
         inventory = GetComponent<Inventory>();
-
         // Sort Item Data Base
         Array.Sort(itemDataBase, Utils.CompareDataId);
         Array.Sort(enemyDataBase, Utils.CompareDataId);
+        weapons = new PlayerWeaponController[16];
     }
 
     public void Stop()
@@ -187,5 +185,31 @@ public class GameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    private void OnSubmit(InputValue value)
+    {
+        switch (playerState)
+        {
+            case PlayerState.None:
+                break;
+            case PlayerState.Shop:
+                break;
+            case PlayerState.Talk:
+                // To do
+                // 아직 안 끝났다면 스크립트 전부 출력
+                if (!TalkManager.instance.isScriptEnd) break;
+
+                TalkManager.instance.isPressKey = true;
+                break;
+            case PlayerState.Tutorial:
+                TutorialManager.instance.isPressKey = true;
+                break;
+        }
+    }
+
+    public void ChangePlayerState(PlayerState state)
+    {
+        playerState = state;
     }
 }
