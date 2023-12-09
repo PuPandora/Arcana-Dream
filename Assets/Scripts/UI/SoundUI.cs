@@ -16,6 +16,6 @@ public class SoundUI : MonoBehaviour
 
     public void OnClick()
     {
-        AudioManager.instance.PlaySfx(sfxType);
+        AudioManager.instance.PlaySfx(sfxType, 1.2f, 1.5f);
     }
 }

@@ -7,7 +7,6 @@ using static StageTable;
 public class Spawner : MonoBehaviour
 {
     Transform[] spawnPoints;
-    public StageData stageData;
 
     [ReadOnly]
     [SerializeField]
@@ -24,8 +23,6 @@ public class Spawner : MonoBehaviour
     public void Initialize()
     {
         StageManager.instance.OnGameClear += Stop;
-
-        stageData = StageManager.instance.stageData;
     }
 
     void Update()
@@ -33,25 +30,28 @@ public class Spawner : MonoBehaviour
         if (!StageManager.instance.isPlaying || !StageManager.instance.isLive) return;
 
         spawnTimer += Time.deltaTime;
-        float delay = stageData.stageTable[stageLevel].spawnDelay;
+        float delay = StageManager.instance.stageData.stageTable[stageLevel].spawnDelay;
 
         // 스폰 테이블에 따라 적 스폰
         if (delay < spawnTimer)
         {
-            var table = stageData.stageTable[stageLevel].spawnTable;
+            var table = StageManager.instance.stageData.stageTable[stageLevel].spawnTable;
             var enemyData = CalculateSpawnRate(table);
 
             Spawn(enemyData);
         }
             
-        float nextTableTime = stageData.stageTable[stageLevel].nextTableTime;
+        float nextTableTime = StageManager.instance.stageData.stageTable[stageLevel].nextTableTime;
 
         // 다음 테이블로 넘어갈 시간이 되면
         if (nextTableTime < StageManager.instance.timer)
         {
             stageLevel++;
+            Debug.Log($"Stage Data : {StageManager.instance.stageData.name}");
+            Debug.Log($"Stage Level Length : {StageManager.instance.stageData.stageTable.Length}");
+            Debug.Log($"Stage Next Table Time : {nextTableTime}");
             // 읽을 다음 테이블이 없다면
-            if (stageLevel >= stageData.stageTable.Length)
+            if (stageLevel >= StageManager.instance.stageData.stageTable.Length)
             {
                 StageManager.instance.hud.UpdateTimerText();
                 StageManager.instance.GameClear();

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public sealed class Utils : MonoBehaviour
 {
+    //readonly public static WaitForSeconds delay0_01 = new WaitForSeconds(0.01f);
     readonly public static WaitForSeconds delay0_05 = new WaitForSeconds(0.05f);
     readonly public static WaitForSeconds delay0_1 = new WaitForSeconds(0.1f);
     readonly public static WaitForSeconds delay0_25 = new WaitForSeconds(0.25f);

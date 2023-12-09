@@ -6,6 +6,11 @@ MonoImporter:
   defaultReferences:
   - tutorialData: {fileID: 11400000, guid: c9d347683f34a3940b39905ab35d8d1b, type: 2}
   - tutorialText: {instanceID: 0}
+  - firstPanelTween: {instanceID: 0}
+  - keyPanelTween: {instanceID: 0}
+  - player: {instanceID: 0}
+  - expItemData: {fileID: 11400000, guid: d33d5b6b4351f4b49b9821b2084eb3cd, type: 2}
+  - <tutorialStageData>k__BackingField: {fileID: 11400000, guid: 46e850813f8b2654bbeb530276ea3aeb, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

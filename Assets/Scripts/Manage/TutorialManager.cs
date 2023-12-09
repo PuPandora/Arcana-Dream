@@ -17,7 +17,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] DOTweenAnimation keyPanelTween;
     [SerializeField] Player player;
     [SerializeField] ExpItemData expItemData;
-    [SerializeField] StageData tutorialStageData;
+    [field: SerializeField]
+    public StageData tutorialStageData { get; private set; }
 
     WaitUntil waitUntilPress;
 
@@ -49,6 +50,7 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         StageManager.instance.player.canMove = false;
+        AudioManager.instance.PlayBgm(AudioManager.Bgm.WhiteNoise);
 
         StartCoroutine(TutorialRoutine());
         StartCoroutine(ShowHUDRoutine());
@@ -79,13 +81,13 @@ public class TutorialManager : MonoBehaviour
         tutorialText.text = string.Empty;
         player.AnimationDie();
 
-        yield return StartCoroutine(EnterTutorial());
+        yield return EnterTutorial();
         yield return Utils.delay2;
 
-        yield return StartCoroutine(KeyInputTutorial());
+        yield return KeyInputTutorial();
         yield return Utils.delay2;
 
-        yield return StartCoroutine(LevelUpTutorial());
+        yield return LevelUpTutorial();
         yield return Utils.delay2;
 
         Debug.Log("튜토리얼 끝");
@@ -104,7 +106,6 @@ public class TutorialManager : MonoBehaviour
         for (byte i = 0; i < tutorialData.talkSession0.Length; i++)
         {
             // 초기화
-            isPressKey = false;
             tutorialText.text = string.Empty;
             string script = tutorialData.talkSession0[i].script;
 
@@ -112,10 +113,12 @@ public class TutorialManager : MonoBehaviour
             for (short j = 0; j < tutorialData.talkSession0[i].script.Length; j++)
             {
                 tutorialText.text += tutorialData.talkSession0[i].script[j];
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Talk);
                 yield return Utils.delay0_05;
             }
 
             // 키입력 대기
+            isPressKey = false;
             yield return waitUntilPress;
         }
 
@@ -124,6 +127,10 @@ public class TutorialManager : MonoBehaviour
 
         // 독백 대화창 페이드 대기
         yield return new WaitForSeconds(firstPanelTween.duration);
+
+        // 브금 변경
+        StartCoroutine(AudioManager.instance.ChangeBgmFade(tutorialStageData.bgm));
+        Debug.Log("브금 체인지");
 
         firstPanelTween.GetComponent<Image>().raycastTarget = false;
         StageManager.instance.transition.Open();
@@ -197,13 +204,14 @@ public class TutorialManager : MonoBehaviour
     private IEnumerator LevelUpTutorial()
     {
         #region 아이템 소환 (임시)
+        Vector3 playerPos = StageManager.instance.player.transform.position;
         List<ExpItem> expItems = new List<ExpItem>();
         for (int i = 0; i < 30; i++)
         {
             float angle = i * Mathf.PI * 2 / 30;
 
-            float x = Mathf.Cos(angle) * 5;
-            float y = Mathf.Sin(angle) * 5;
+            float x = Mathf.Cos(angle) * 5 + playerPos.x;
+            float y = Mathf.Sin(angle) * 5 + playerPos.y;
 
             var item = GameManager.instance.poolManager.Get(PoolType.ExpItem);
             var expItem = item.GetComponent<ExpItem>();
@@ -221,11 +229,11 @@ public class TutorialManager : MonoBehaviour
             item.spriter.DOFade(1, 1f)
                 .SetEase(Ease.OutCubic);
 
-            //yield return Utils.delay0_05;
+            yield return Utils.delay0_05;
         }
         #endregion
 
-        // 아이템을 먹어 1레벨 이상이 됐을 때
+        // 아이템을 먹어 1레벨 이상이 됐을 때까지 대기
         yield return new WaitUntil(() => StageManager.instance.level >= 1);
 
         StageManager.instance.isPlaying = true;

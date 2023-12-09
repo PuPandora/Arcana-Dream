@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
+    public float speed = 3f;
     [HideInInspector]
     public Scanner scanner;
     public List<PlayerWeapon> weapons;
     public bool canMove = true;
 
     public Vector2 moveInput { get; private set; }
+    private Vector2 lastMoveInput;
 
     Rigidbody2D rigid;
     Collider2D coll;
@@ -60,6 +61,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Debug.Log($"canMove : {canMove}");
+        Debug.Log($"moveInput : {moveInput}");
+
         if (!isLive) return;
 
         // 플레이어가 최근 이동항 방향을 바라봄

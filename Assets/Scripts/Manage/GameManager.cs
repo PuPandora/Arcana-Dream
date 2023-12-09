@@ -88,12 +88,14 @@ public class GameManager : MonoBehaviour
     public void EnterStage()
     {
         SceneManager.LoadScene("Loading");
+        AudioManager.instance.StopBgm();
         targetScene = $"Stage";
     }
 
     public void ExitStage()
     {
         SceneManager.LoadScene("Loading");
+        AudioManager.instance.StopBgm();
         targetScene = "Lobby";
     }
 

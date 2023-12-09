@@ -55,13 +55,6 @@ public class LoadingManager : MonoBehaviour
             runSprites,
             winSprites
         };
-        foreach (var item in sprites)
-        {
-            foreach (var a in item)
-            {
-                print(a.name);
-            }
-        }
     }
 
     void Start()

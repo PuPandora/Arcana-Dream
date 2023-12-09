@@ -56,14 +56,15 @@ public class DataManager : MonoBehaviour
 
     public byte saveSlotIndex = 0;
     public string path { get; private set; } = Application.dataPath + "/Data/SaveData/";
-    public string saveFileName = "SaveData";
-    public string optionFileName = "OptionData.json";
+    public string saveFileName { get; private set; } = "SaveData";
+    public string optionFileName { get; private set; } = "OptionData";
 
     public SaveData saveData = new SaveData();
     public OptionData optionData;
 
     void Awake()
     {
+        #region 싱글톤
         if (instance == null)
         {
             instance = this;
@@ -71,6 +72,7 @@ public class DataManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
+        #endregion
     }
 
     // 추후 비동기 방식으로 구현 예정
@@ -153,19 +155,38 @@ public class DataManager : MonoBehaviour
     public void SaveOptionData()
     {
         string data = JsonUtility.ToJson(optionData, true);
-        File.WriteAllText(path + optionFileName + $".json", data);
+        SaveJsonData(path + optionFileName, data);
+        Debug.Log($"저장한 옵션 저장 파일 경로 및 이름 : {path + optionFileName + ".json"}");
     }
 
     public void LoadOptionData()
     {
-        if (!File.Exists(path + optionFileName))
+        if (!CheckJsonFileExist(path + optionFileName))
         {
             optionData = new OptionData();
+            SaveOptionData();
             return;
         }
 
         Debug.Log("옵션 데이터를 불러왔습니다.");
-        string data = File.ReadAllText(path + optionFileName);
+        Debug.Log($"파일 경로 (.json 제외 : {path + optionFileName}");
+        string data = LoadJsonData(path + optionFileName);
         optionData = JsonUtility.FromJson<OptionData>(data);
+        Debug.Log($"불러온 옵션 저장 파일 경로 및 이름 : {path + optionFileName + ".json"}");
+    }
+
+    private bool CheckJsonFileExist(string path)
+    {
+        return File.Exists(path + ".json");
+    }
+
+    private void SaveJsonData(string path, string data)
+    {
+        File.WriteAllText(path + ".json", data);
+    }
+
+    private string LoadJsonData(string path)
+    {
+        return File.ReadAllText(path + ".json");
     }
 }

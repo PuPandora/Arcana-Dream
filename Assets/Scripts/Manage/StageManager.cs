@@ -66,19 +66,24 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
+        // 기본 초기화
         SettingGrid();
         globalLight.intensity = stageData.stageGlobalLightIntensity;
         isLive = true;
         health = GameManager.instance.playerStates.health;
         hud.UpdateHealthSlider();
 
+        // 스폰 정보 초기화
         spawner.Initialize();
         stageData.stageTable = enemyTables;
+
+        // BGM
 
         isTutorial = TutorialManager.instance.gameObject.activeSelf;
         if (isTutorial)
         {
             isPlaying = false;
+            stageData =  TutorialManager.instance.tutorialStageData;
         }
         else
         {

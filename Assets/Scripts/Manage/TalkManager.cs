@@ -101,12 +101,15 @@ public class TalkManager : MonoBehaviour
                 prevSpriteIndex = data[i].spriteIndex;
             }
 
+            // 스크립트 한 글자씩 출력
             for (int j = 0; j < data[i].script.Length; j++)
             {
                 scriptText.text += data[i].script[j];
                 Debug.Log(data[i].script[j]);
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Talk);
                 yield return Utils.delay0_05;
             }
+
             isScriptEnd = true;
             yield return new WaitUntil(() => isPressKey);
         }

@@ -1,7 +1,11 @@
+using DG.Tweening;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,13 +15,16 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] sfxClips;
     public AudioSource[] sfxChannels;
     public byte sfxChannelCount = 16;
-    public enum Sfx : short { Click, }
+    public enum Sfx : short { Click, Talk = 2 }
 
     [Title("BGM")]
     public AudioClip[] BGMclips;
-    public AudioSource[] bgmChannels;
-    public byte bgmChannelCount = 2;
-    public enum Bgm : short { Main, Lobby, Stage }
+    public AudioSource bgmChannel;
+    public enum Bgm : short { Main, Lobby, Stage, WhiteNoise }
+
+    // Event
+    public event Action OnStopBgmFadeComplete;
+    public event Action OnPlayBgmFadeComplete;
 
     void Awake()
     {
@@ -46,14 +53,10 @@ public class AudioManager : MonoBehaviour
 
         var bgm = new GameObject("BGM Channel");
         bgm.transform.SetParent(transform);
-        bgmChannels = new AudioSource[bgmChannelCount];
 
-        for (int i = 0; i < bgmChannelCount; i++)
-        {
-            bgmChannels[i] = bgm.AddComponent<AudioSource>();
-            bgmChannels[i].playOnAwake = false;
-            bgmChannels[i].loop = true;
-        }
+        bgmChannel = bgm.AddComponent<AudioSource>();
+        bgmChannel.playOnAwake = false;
+        bgmChannel.loop = true;
         #endregion
     }
 
@@ -64,41 +67,78 @@ public class AudioManager : MonoBehaviour
         {
             channel.volume = DataManager.instance.optionData.sfxVolume;
         }
-        foreach (var channel in bgmChannels)
-        {
-            channel.volume = DataManager.instance.optionData.bgmVoulme;
-        }
+        bgmChannel.volume = DataManager.instance.optionData.sfxVolume;
         #endregion
     }
 
-    public void PlayBgm(Bgm bgm, bool isPlay)
+    public void PlayBgm(int index)
     {
-        if (isPlay)
-        {
-            foreach (var channel in bgmChannels)
-            {
-                if (channel.isPlaying) continue;
-
-                Debug.Log("사용 가능한 BGM 채널 찾음");
-                channel.clip = BGMclips[(short)bgm];
-                channel.Play();
-                break;
-            }
-        }
-        else
-        {
-            foreach (var channel in bgmChannels)
-            {
-                if (!channel.isPlaying) continue;
-
-                if (channel.clip != BGMclips[(int)bgm]) continue;
-
-                channel.Stop();
-            }
-        }
+        PlayBgm((Bgm)index);
     }
 
-    public void PlaySfx(Sfx sfx)
+    public void PlayBgm(AudioClip clip)
+    {
+        bgmChannel.clip = clip;
+        bgmChannel.Play();
+    }
+
+    public void PlayBgm(Bgm bgm)
+    {
+        bgmChannel.clip = BGMclips[(short)bgm];
+        bgmChannel.Play();
+    }
+
+    public void StopBgm()
+    {
+        bgmChannel.Stop();
+    }
+
+    public IEnumerator StopBgmFade()
+    {
+        yield return bgmChannel.DOFade(0, 2f).WaitForCompletion();
+
+        OnStopBgmFadeComplete?.Invoke();
+    }
+
+    public IEnumerator PlayBgmFade(Bgm bgm)
+    {
+        bgmChannel.clip = BGMclips[(short)bgm];
+        bgmChannel.volume = 0f;
+        bgmChannel.Play();
+        yield return bgmChannel.DOFade(DataManager.instance.optionData.bgmVoulme, 2f).WaitForCompletion();
+
+        OnPlayBgmFadeComplete?.Invoke();
+    }
+
+    public IEnumerator PlayBgmFade(AudioClip clip)
+    {
+        bgmChannel.clip = clip;
+        bgmChannel.volume = 0f;
+        bgmChannel.Play();
+        yield return bgmChannel.DOFade(DataManager.instance.optionData.bgmVoulme, 2f).WaitForCompletion();
+
+        OnPlayBgmFadeComplete?.Invoke();
+    }
+
+    public IEnumerator ChangeBgmFade(Bgm bgm)
+    {
+        yield return StopBgmFade();
+
+        yield return PlayBgmFade(bgm);
+
+        Debug.Log("브금 체인지 완료");
+    }
+
+    public IEnumerator ChangeBgmFade(AudioClip clip)
+    {
+        yield return StopBgmFade();
+
+        yield return PlayBgmFade(clip);
+
+        Debug.Log("브금 체인지 완료");
+    }
+
+    public void PlaySfx(Sfx sfx, float minPitch = 1, float maxPitch = 1)
     {
         // 사용 가능한 채널을 찾아 재생
         foreach (var channel in sfxChannels)
@@ -106,12 +146,26 @@ public class AudioManager : MonoBehaviour
             if (channel.isPlaying) continue;
 
             byte randIndex = 0;
+
+            // Pitch 변경
+            if (Mathf.Approximately(minPitch, 1) && Mathf.Approximately(maxPitch, 1))
+            {
+                channel.pitch = 1;
+            }
+            else
+            {
+                channel.pitch = Random.Range(minPitch, maxPitch);
+            }
+
             // 같은 사운드가 여러개의 바리에이션이 있다면
             // (많아지면 함수 분리 예정 + 랜덤이 아닌 규칙도 추가할 예정)
-            if (sfx == Sfx.Click)
+            switch (sfx)
             {
-                randIndex = (byte)Random.Range(0, 2);
-                channel.pitch = Random.Range(1.3f, 1.6f);
+                case Sfx.Click:
+                    randIndex = (byte)Random.Range(0, 2);
+                    break;
+                case Sfx.Talk:
+                    break;
             }
             channel.clip = sfxClips[(short)sfx + randIndex];
             channel.Play();
@@ -129,9 +183,6 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeBgmVolume(float value)
     {
-        foreach (var channel in bgmChannels)
-        {
-            channel.volume = value;
-        }
+        bgmChannel.volume = value;
     }
 }

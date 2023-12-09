@@ -4510,12 +4510,15 @@ MonoBehaviour:
   sfxClips:
   - {fileID: 8300000, guid: 88c1409d0ef6f564bb450683f0c24413, type: 3}
   - {fileID: 8300000, guid: 50767b6ce9fac5a49bfd5a1939217544, type: 3}
+  - {fileID: 8300000, guid: b8ffb6b3b2ab4d24ebbd1775f46c45a7, type: 3}
   sfxChannels: []
   sfxChannelCount: 16
   BGMclips:
+  - {fileID: 8300000, guid: 71d2a80cdc6ef498382c752076137c8c, type: 3}
+  - {fileID: 8300000, guid: 3a033a0fb87df48d78b663f02a2fab4a, type: 3}
   - {fileID: 8300000, guid: be4433a6219c34b499b974cb8f795cbb, type: 3}
-  bgmChannels: []
-  bgmChannelCount: 2
+  - {fileID: 8300000, guid: a53819cc521b1f24689b00c663d8fbb4, type: 3}
+  bgmChannel: {fileID: 0}
 --- !u!1 &1189771531
 GameObject:
   m_ObjectHideFlags: 0
@@ -6822,8 +6825,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveSlotIndex: 0
-  saveFileName: SaveData
-  optionFileName: OptionData.json
   saveData:
     playerStateData:
       damageState: {fileID: 0}

@@ -9,7 +9,7 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-        AudioManager.instance.PlayBgm(AudioManager.Bgm.Main, true);
+        AudioManager.instance.PlayBgm(AudioManager.Bgm.Main);
         Debug.Log("BGM 실행");
     }
 }
