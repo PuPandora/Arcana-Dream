@@ -5,35 +5,34 @@ using UnityEngine;
 // Memo
 // 차라리 Talk 가능한 NPC 전용 컴포넌트로 분리하는게 좋을지도?
 
-public class TalkZone : MonoBehaviour
+public class TalkZone : Zone
 {
-    [SerializeField] NPC npc;
-    private Vector3 originalCamPos;
+    [SerializeField]
+    NPC npc;
+
+    public Collider2D zone { get; private set; }
+
+    private static WaitUntil waitUntilcloseUI;
 
     void Awake()
     {
-        npc = GetComponentInParent<NPC>();
+        zone = GetComponent<Collider2D>();
+        zone.enabled = npc.canTalk;
+        waitUntilcloseUI = new WaitUntil(() => UIManager.instance.curUI == null);
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    public override void Interact()
     {
-        // 플레이어만
-        if (collision.transform != GameManager.instance.player.transform)
+        // 대화 기능이 없는 NPC
+        if (npc.talkData == null)
         {
+            Debug.Log("Talk Data가 없습니다");
             return;
         }
 
-        if (Input.GetKey(GameManager.instance.interactKey) && TalkManager.instance.isAllowTalk)
-        {
-            if (npc.talkData == null)
-            {
-                Debug.Log("Talk Data가 없습니다");
-                // 대화 기능이 없는 NPC
-                return;
-            }
+        zone.enabled = false;
 
-            TalkStart();
-        }
+        TalkStart();
     }
 
     private void TalkStart()
@@ -50,20 +49,44 @@ public class TalkZone : MonoBehaviour
         cam.position = new Vector3(cam.position.x, cam.position.y - 1f, -10);
         TalkManager.instance.zoomCam.enabled = true;
 
-        // UI Manager 초기화, 대화창 열기
+        // Portarit 셰이더 초기화
         var bodyColor = npc.spriter.sharedMaterial.GetColor("_Color");
         var eyeColor = npc.spriter.sharedMaterial.GetColor("_EyeColor");
         var darkColor = npc.spriter.sharedMaterial.GetFloat("_Dark");
         TalkManager.instance.portrait.SetColor(bodyColor, darkColor, eyeColor);
+
+        // TalkManager 초기화
         TalkManager.instance.talkData = npc.talkData;
         TalkManager.instance.speakerPos = npc.transform.position;
-        TalkManager.instance.ShowUI();
+        TalkManager.instance.StartTalk();
         TalkManager.instance.OnTalkEnd += TalkEnd;
     }
 
     private void TalkEnd()
     {
+        if (npc.isShopNpc)
+        {
+            StartCoroutine(ShopRoutine());
+        }
+        else
+        {
+            TalkManager.instance.zoomCam.enabled = false;
+            zone.enabled = true;
+            StartCoroutine(npc.ResetLook());
+            TalkManager.instance.OnTalkEnd -= TalkEnd;
+        }
+    }
+
+    private IEnumerator ShopRoutine()
+    {
+        GameManager.instance.player.canMove = false;
+        UIManager.instance.UIManage(npc.shopUI);
+
+        yield return waitUntilcloseUI;
+
+        GameManager.instance.player.canMove = true;
         TalkManager.instance.zoomCam.enabled = false;
+        zone.enabled = true;
         StartCoroutine(npc.ResetLook());
         TalkManager.instance.OnTalkEnd -= TalkEnd;
     }

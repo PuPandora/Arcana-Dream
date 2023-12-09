@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSellZone : Zone
 {
-    public override void Enter()
+    public override void Interact()
     {
         Debug.Log("플레이어 상점 입장");
         if (UIManager.instance.inventoryUI == null)
@@ -16,13 +16,5 @@ public class ItemSellZone : Zone
         UIManager.instance.UIManage(UIManager.instance.inventoryUI);
         isUsing = true;
         GameManager.instance.playerState = PlayerState.Shop;
-    }
-
-    public override void Exit()
-    {
-        Debug.Log("플레이어 상점 퇴장");
-        UIManager.instance.UIManage(UIManager.instance.inventoryUI);
-        isUsing = false;
-        GameManager.instance.playerState = PlayerState.None;
     }
 }

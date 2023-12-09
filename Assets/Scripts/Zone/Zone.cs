@@ -9,30 +9,16 @@ public abstract class Zone : MonoBehaviour, IInteractable
     protected bool isPlayerIn;
     protected bool isUsing;
 
-    public void Interact()
+    public abstract void Interact();
+
+    public void Enter()
     {
-        if (!isUsing)
-        {
-            Enter();
-        }
-        else
-        {
-            Exit();
-        }
+        GameManager.instance.player.currentZone = this;
     }
 
-    public abstract void Enter();
-
-    public abstract void Exit();
-
-    void Update()
+    public void Exit()
     {
-        if (!isPlayerIn) return;
-
-        if (Input.GetKeyDown(GameManager.instance.interactKey) && isOpen)
-        {
-            Interact();
-        }
+        GameManager.instance.player.currentZone = null;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -40,6 +26,7 @@ public abstract class Zone : MonoBehaviour, IInteractable
         if (collision.CompareTag("Player"))
         {
             isPlayerIn = true;
+            Enter();
         }
     }
 
@@ -48,10 +35,7 @@ public abstract class Zone : MonoBehaviour, IInteractable
         if (collision.CompareTag("Player"))
         {
             isPlayerIn = false;
-            if (isUsing)
-            {
-                Exit();
-            }
+            Exit();
         }
     }
 }
