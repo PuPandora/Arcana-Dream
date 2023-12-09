@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageName: "\uB204\uAD70\uAC00\uC758 \uAFC8\uC18D \uB358\uC804"
   stageIndex: 1
+  stageGlobalLightIntensity: 1
+  bgm: {fileID: 8300000, guid: d45a2f517cf0a4443b55f4ea1cfd0abb, type: 3}
+  bossBgm: {fileID: 0}
   stageFloor: {fileID: 2591039278397018305, guid: bd04036bb30c13b4da8210ffa2cbb39d, type: 3}
   stageTable:
   - spawnTable:

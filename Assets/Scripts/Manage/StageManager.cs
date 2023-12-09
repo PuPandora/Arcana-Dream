@@ -78,6 +78,14 @@ public class StageManager : MonoBehaviour
         stageData.stageTable = enemyTables;
 
         // BGM
+        if (stageData.bgm != null)
+        {
+            AudioManager.instance.PlayBgmFade(stageData.bgm);
+        }
+        else
+        {
+            Debug.LogError($"Stage Data에 등록된 BGM이 없습니다.\n데이터 이름 : {stageData.name}", gameObject);
+        }
 
         isTutorial = TutorialManager.instance.gameObject.activeSelf;
         if (isTutorial)

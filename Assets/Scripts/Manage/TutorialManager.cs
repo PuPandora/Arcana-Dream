@@ -129,8 +129,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(firstPanelTween.duration);
 
         // 브금 변경
-        StartCoroutine(AudioManager.instance.ChangeBgmFade(tutorialStageData.bgm));
-        Debug.Log("브금 체인지");
+        AudioManager.instance.ChangeBgmFade(tutorialStageData.bgm, 2f);
 
         firstPanelTween.GetComponent<Image>().raycastTarget = false;
         StageManager.instance.transition.Open();
@@ -205,13 +204,18 @@ public class TutorialManager : MonoBehaviour
     {
         #region 아이템 소환 (임시)
         Vector3 playerPos = StageManager.instance.player.transform.position;
-        List<ExpItem> expItems = new List<ExpItem>();
-        for (int i = 0; i < 30; i++)
-        {
-            float angle = i * Mathf.PI * 2 / 30;
+        byte itemCount = 30;
+        byte radius = 5;
+        // 0.5초 동안 모든 아이템 등장
+        WaitForSeconds delay = new WaitForSeconds(0.5f / itemCount);
 
-            float x = Mathf.Cos(angle) * 5 + playerPos.x;
-            float y = Mathf.Sin(angle) * 5 + playerPos.y;
+        List<ExpItem> expItems = new List<ExpItem>();
+        for (int i = 0; i < itemCount; i++)
+        {
+            float angle = i * Mathf.PI * 2 / itemCount;
+
+            float x = Mathf.Cos(angle) * radius + playerPos.x;
+            float y = Mathf.Sin(angle) * radius + playerPos.y;
 
             var item = GameManager.instance.poolManager.Get(PoolType.ExpItem);
             var expItem = item.GetComponent<ExpItem>();
@@ -229,7 +233,7 @@ public class TutorialManager : MonoBehaviour
             item.spriter.DOFade(1, 1f)
                 .SetEase(Ease.OutCubic);
 
-            yield return Utils.delay0_05;
+            yield return delay;
         }
         #endregion
 

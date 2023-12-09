@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static AudioManager;
 using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
@@ -25,6 +26,7 @@ public class AudioManager : MonoBehaviour
     // Event
     public event Action OnStopBgmFadeComplete;
     public event Action OnPlayBgmFadeComplete;
+    public event Action OnBgmFadeChangeComplete;
 
     void Awake()
     {
@@ -71,11 +73,26 @@ public class AudioManager : MonoBehaviour
         #endregion
     }
 
-    public void PlayBgm(int index)
+    #region BGM 중단
+    public void StopBgm()
     {
-        PlayBgm((Bgm)index);
+        bgmChannel.Stop();
     }
 
+    public void StopBgmFade(float duration = 1f)
+    {
+        StartCoroutine(StopBgmFadeRoutine(duration));
+    }
+
+    public IEnumerator StopBgmFadeRoutine(float duration)
+    {
+        yield return bgmChannel.DOFade(0, duration).WaitForCompletion();
+
+        OnStopBgmFadeComplete?.Invoke();
+    }
+    #endregion
+
+    #region BGM 재생 
     public void PlayBgm(AudioClip clip)
     {
         bgmChannel.clip = clip;
@@ -88,55 +105,54 @@ public class AudioManager : MonoBehaviour
         bgmChannel.Play();
     }
 
-    public void StopBgm()
-    {
-        bgmChannel.Stop();
-    }
-
-    public IEnumerator StopBgmFade()
-    {
-        yield return bgmChannel.DOFade(0, 2f).WaitForCompletion();
-
-        OnStopBgmFadeComplete?.Invoke();
-    }
-
-    public IEnumerator PlayBgmFade(Bgm bgm)
+    public void PlayBgmFade(Bgm bgm, float duration = 1f)
     {
         bgmChannel.clip = BGMclips[(short)bgm];
-        bgmChannel.volume = 0f;
-        bgmChannel.Play();
-        yield return bgmChannel.DOFade(DataManager.instance.optionData.bgmVoulme, 2f).WaitForCompletion();
-
-        OnPlayBgmFadeComplete?.Invoke();
+        StartCoroutine(PlayBgmFadeRoutine(duration));
     }
 
-    public IEnumerator PlayBgmFade(AudioClip clip)
+    public void PlayBgmFade(AudioClip clip, float duration = 1f)
     {
         bgmChannel.clip = clip;
-        bgmChannel.volume = 0f;
-        bgmChannel.Play();
-        yield return bgmChannel.DOFade(DataManager.instance.optionData.bgmVoulme, 2f).WaitForCompletion();
+
+        StartCoroutine(PlayBgmFadeRoutine(duration));
 
         OnPlayBgmFadeComplete?.Invoke();
     }
 
-    public IEnumerator ChangeBgmFade(Bgm bgm)
+    private IEnumerator PlayBgmFadeRoutine(float duration)
     {
-        yield return StopBgmFade();
+        bgmChannel.volume = 0f;
+        bgmChannel.Play();
 
-        yield return PlayBgmFade(bgm);
+        yield return bgmChannel.DOFade(DataManager.instance.optionData.bgmVoulme, duration).WaitForCompletion();
 
-        Debug.Log("브금 체인지 완료");
+        OnPlayBgmFadeComplete?.Invoke();
+    }
+    #endregion
+
+    #region BGM Fade 전환
+    public void ChangeBgmFade(Bgm bgm, float duration = 1f)
+    {
+        bgmChannel.clip = BGMclips[(short)bgm];
+        StartCoroutine(ChangeBgmFadeRoutine(duration));
     }
 
-    public IEnumerator ChangeBgmFade(AudioClip clip)
+    public void ChangeBgmFade(AudioClip clip, float duration = 1f)
     {
-        yield return StopBgmFade();
-
-        yield return PlayBgmFade(clip);
-
-        Debug.Log("브금 체인지 완료");
+        bgmChannel.clip = clip;
+        StartCoroutine(ChangeBgmFadeRoutine(duration));
     }
+
+    private IEnumerator ChangeBgmFadeRoutine(float duration)
+    {
+        yield return StopBgmFadeRoutine(duration);
+
+        yield return PlayBgmFadeRoutine(duration);
+
+        OnBgmFadeChangeComplete?.Invoke();
+    }
+    #endregion
 
     public void PlaySfx(Sfx sfx, float minPitch = 1, float maxPitch = 1)
     {

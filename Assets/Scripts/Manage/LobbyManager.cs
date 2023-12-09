@@ -21,6 +21,6 @@ public class LobbyManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(AudioManager.instance.PlayBgmFade(AudioManager.Bgm.Lobby));
+        AudioManager.instance.PlayBgmFade(AudioManager.Bgm.Lobby);
     }
 }
