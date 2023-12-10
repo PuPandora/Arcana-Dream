@@ -42,12 +42,9 @@ public class SaveSlot : MonoBehaviour
             existGroup.SetActive(false);
             emptyGroup.SetActive(true);
         }
-
-        // 임시 코드
-        GetComponent<Button>().onClick.AddListener(OnClick);
     }
 
-    public void OnClick()
+    public void StartGame()
     {
         // To do
         // 새 게임을 누른 상태에서 데이터가 있는 세이브 슬롯을 누르면 삭제 확인 뜨게 하기

@@ -162,6 +162,11 @@ public class StageManager : MonoBehaviour
 
         if (health <= 0)
         {
+            if (isTutorial)
+            {
+                health = GameManager.instance.playerStates.health;
+                return;
+            }
             health = 0;
             GameOver();
         }

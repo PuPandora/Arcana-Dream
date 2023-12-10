@@ -22,6 +22,8 @@ public class PortalZone : Zone
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!isOpen) return;
+
         if (collision.CompareTag("Player"))
         {
             isPlayerIn = true;
@@ -36,6 +38,8 @@ public class PortalZone : Zone
 
     protected override void OnTriggerExit2D(Collider2D collision)
     {
+        if (!isOpen) return;
+
         if (collision.CompareTag("Player"))
         {
             isPlayerIn = false;

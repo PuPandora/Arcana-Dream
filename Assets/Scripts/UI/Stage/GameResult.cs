@@ -10,6 +10,7 @@ public class GameResult : MonoBehaviour
     RectTransform rect;
     StageManager stageManager;
     [SerializeField] private Button stageExitButton;
+    [SerializeField] private TextMeshProUGUI stageNameText;
     [SerializeField] private TextMeshProUGUI resultText;
     [SerializeField] private DOTweenAnimation dimTween;
     [SerializeField] private GameObject panel;
@@ -42,6 +43,8 @@ public class GameResult : MonoBehaviour
 
     private void SetResulText()
     {
+        stageNameText.text = stageManager.stageData.stageName;
+
         int min = Mathf.FloorToInt(stageManager.timer / 60);
         int sec = Mathf.FloorToInt(stageManager.timer % 60);
         string survivedTime = $"{min:D2}:{sec:D2}";

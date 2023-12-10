@@ -17,6 +17,14 @@ public class LobbyManager : MonoBehaviour
     public PortalZone portal;
     public CinemachineVirtualCamera placeZoomCam;
 
+    [Title("UI")]
+    public KeyInputGuide keyInputGuide;
+
+    [Title("Talk Data")]
+    public TalkData pandora0;
+    public TalkData bell0;
+    public TalkData kara0;
+
     void Awake()
     {
         if (instance == null)
@@ -40,6 +48,7 @@ public class LobbyManager : MonoBehaviour
         if (GameManager.instance.isNewGame)
         {
             TutorialManager.instance.StartTutorial(TutorialManager.TutorialType.FirstLobby);
+            portal.isOpen = false;
         }
 
         // 스테이지에서 나온거라면

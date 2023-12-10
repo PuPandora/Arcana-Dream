@@ -47,7 +47,6 @@ public class OptionUI : MonoBehaviour
 
         // 적용 버튼
         applyButton.onClick.AddListener(ApplyOption);
-        Debug.Log("Apply 버튼에 ApplyOption를 AddListener 했습니다.");
     }
 
     public void ApplyOption()
@@ -55,7 +54,6 @@ public class OptionUI : MonoBehaviour
         optionData.sfxVolume = soundEffectSlider.value;
         optionData.bgmVoulme = backgroundMusicSlider.value;
         DataManager.instance.SaveOptionData();
-        Debug.Log("OptionUI 에서 옵션 저장 데이터를 DataManager에게 저장하라고 호출했습니다");
     }
 
     public void Cancel()

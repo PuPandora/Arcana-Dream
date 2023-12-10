@@ -13,6 +13,11 @@ public class PlayerFollowUI : MonoBehaviour
         mainCam = Camera.main;
     }
 
+    void OnEnable()
+    {
+        rect.position = GameManager.instance.player.transform.position;
+    }
+
     void FixedUpdate()
     {
         rect.position = GameManager.instance.player.transform.position;

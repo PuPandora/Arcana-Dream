@@ -145,7 +145,7 @@ public class HUD : MonoBehaviour
 
     public void ShowTween()
     {
-        tween.DOPlayAllById("Show");
+        tween.DOPlayById("Show");
     }
 
     void OnDestroy()

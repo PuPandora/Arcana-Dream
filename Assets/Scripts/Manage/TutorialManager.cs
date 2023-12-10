@@ -26,11 +26,13 @@ public class TutorialManager : MonoBehaviour
     public Transform target;
 
     [Title("First Tutorial")]
+    public GameObject stageTutorialGroup;
     [SerializeField] TalkData tutorialData;
     [SerializeField] TextMeshProUGUI tutorialText;
     public bool isPressKey;
     [SerializeField] DOTweenAnimation firstPanelTween;
     [SerializeField] DOTweenAnimation keyPanelTween;
+    public Image[] moveKeyImages;
     [SerializeField] ExpItemData expItemData;
     public StageData tutorialStageData;
 
@@ -72,6 +74,12 @@ public class TutorialManager : MonoBehaviour
         OnTutorialEnd += (() => GameManager.instance.ChangePlayerState(PlayerState.None));
 
         waitUntilPress = new WaitUntil(() => isPressKey);
+
+        if (GameManager.instance.gameState == GameState.Stage)
+        {
+            stageTutorialGroup.SetActive(true);
+            stageTutorialGroup.GetComponent<RectTransform>().localScale = Vector3.one;
+        }
     }
 
     public void StartTutorial(TutorialType type)
@@ -198,29 +206,35 @@ public class TutorialManager : MonoBehaviour
 
         // WASD키를 모두 한 번씩 누를 때 까지
         // 플레이어 움직임이 있을 때 WASD 입력 감지
+        Color keyPressedColor = new Color(0.55f, 0.55f, 0.55f, 0.6f);
+
         while (!isPressAllMoveKey)
         {
             if (!Mathf.Approximately(player.moveInput.magnitude, 0))
             {
-                // A키
-                if (player.moveInput.x > 0f)
-                {
-                    moveKeyInputs[0] = true;
-                }
-                // D키
-                else if (player.moveInput.x < 0f)
-                {
-                    moveKeyInputs[1] = true;
-                }
                 // W키
                 if (player.moveInput.y > 0f)
                 {
-                    moveKeyInputs[2] = true;
+                    moveKeyInputs[0] = true;
+                    moveKeyImages[0].color = keyPressedColor;
+                }
+                // A키
+                else if (player.moveInput.x < 0f)
+                {
+                    moveKeyInputs[1] = true;
+                    moveKeyImages[1].color = keyPressedColor;
                 }
                 // S키
-                else if (player.moveInput.y < 0f)
+                if (player.moveInput.y < 0f)
+                {
+                    moveKeyInputs[2] = true;
+                    moveKeyImages[2].color = keyPressedColor;
+                }
+                // D키
+                else if (player.moveInput.x > 0f)
                 {
                     moveKeyInputs[3] = true;
+                    moveKeyImages[3].color = keyPressedColor;
                 }
             }
 

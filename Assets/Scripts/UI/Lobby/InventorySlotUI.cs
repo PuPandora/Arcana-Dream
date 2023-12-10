@@ -40,9 +40,16 @@ public class InventorySlotUI : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // 상점이 아니면 X
+        if (GameManager.instance.playerState != PlayerState.Shop) return;
+
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             GameManager.instance.inventory.SellItem(slotIndex);
+            if (GameManager.instance.inventory.inventory[slotIndex].itemData == null)
+            {
+                UIManager.instance.itemTooltip.HideUI();
+            }
         }
     }
 
