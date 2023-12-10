@@ -87,11 +87,13 @@ public class StageManager : MonoBehaviour
             Debug.LogError($"Stage Data에 등록된 BGM이 없습니다.\n데이터 이름 : {stageData.name}", gameObject);
         }
 
+        // 튜토리얼
         isTutorial = TutorialManager.instance.gameObject.activeSelf;
         if (isTutorial)
         {
             isPlaying = false;
             stageData =  TutorialManager.instance.tutorialStageData;
+            StartCoroutine(TutorialManager.instance.FirstTutorialRoutine());
         }
         else
         {

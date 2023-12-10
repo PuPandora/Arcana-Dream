@@ -30,6 +30,9 @@ public class TalkZone : Zone
             return;
         }
 
+        if (!TalkManager.instance.isAllowTalk)
+            return;
+
         zone.enabled = false;
 
         TalkStart();

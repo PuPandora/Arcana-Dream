@@ -131,4 +131,15 @@ public class Player : MonoBehaviour
     {
         anim.SetTrigger("WakeUp");
     }
+
+    public void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+
+        if (!canMove)
+        {
+            moveInput = Vector2.zero;
+            anim.SetFloat("Speed", 0);
+        }
+    }
 }

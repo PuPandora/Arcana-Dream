@@ -60,13 +60,15 @@ public class TalkManager : MonoBehaviour
         waitUntilPress = new WaitUntil(() => isPressKey);
         OnTalkStart += (() => GameManager.instance.ChangePlayerState(PlayerState.Talk));
         OnTalkEnd += (() => GameManager.instance.ChangePlayerState(PlayerState.None));
+
+        OnTalkStart += (() => GameManager.instance.player.SetCanMove(false));
+        OnTalkEnd += (() => GameManager.instance.player.SetCanMove(true));
     }
 
     public void StartTalk(byte talkSessionId = 0)
     {
         // Tweening
         panelTween.DORestartById("Show");
-        GameManager.instance.player.canMove = false;
 
         StartCoroutine(Talk(talkSessionId));
     }
@@ -81,7 +83,7 @@ public class TalkManager : MonoBehaviour
         curTalkIndex = 0;
         OnTalkStart?.Invoke();
 
-        for (int i = 0; i < talkData.scriptSession.Length; i++)
+        for (int i = 0; i < talkData.scriptSession[curTalkSession].scriptData.Length; i++)
         {
             // 초기화
             scriptText.text = string.Empty;

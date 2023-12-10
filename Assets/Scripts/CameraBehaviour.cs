@@ -7,7 +7,7 @@ public class CameraBehaviour : MonoBehaviour
 {
     void Awake()
     {
-        GameManager.instance.vCam = GetComponent<CinemachineVirtualCamera>();
+        GameManager.instance.playerCam = GetComponent<CinemachineVirtualCamera>();
     }
 
     //void FixedUpdate()

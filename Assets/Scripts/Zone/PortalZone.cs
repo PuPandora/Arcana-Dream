@@ -25,6 +25,7 @@ public class PortalZone : Zone
         if (collision.CompareTag("Player"))
         {
             isPlayerIn = true;
+            Enter();
 
             foreach (var run in runChars)
             {
@@ -38,6 +39,7 @@ public class PortalZone : Zone
         if (collision.CompareTag("Player"))
         {
             isPlayerIn = false;
+            Exit();
 
             foreach (var run in runChars)
             {

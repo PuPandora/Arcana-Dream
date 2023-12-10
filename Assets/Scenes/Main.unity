@@ -7045,7 +7045,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Arcana
 
-    Dungeon'
+    Dream'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3c7060f56f9f945468cfe7f5ae869ffe, type: 2}
   m_sharedMaterial: {fileID: 1921747362273768876, guid: 3c7060f56f9f945468cfe7f5ae869ffe, type: 2}
@@ -7072,8 +7072,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

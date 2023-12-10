@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public string targetScene;
     public bool isNeedLoad = true;
     public bool isNewGame = false;
+    public bool isExitStage;
 
     [Title("# Managers")]
     public PoolManager poolManager;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
     public BoxCollider2D viewArea;
     public GameObject levelUpUi;
     [HideInInspector] public Inventory inventory;
-    public CinemachineVirtualCamera vCam;
+    public CinemachineVirtualCamera playerCam;
 
     [Title("# Weapons")]
     public PlayerWeaponController[] weapons;
@@ -92,6 +93,8 @@ public class GameManager : MonoBehaviour
 
     public void ExitStage()
     {
+        isExitStage = true;
+
         SceneManager.LoadScene("Loading");
         AudioManager.instance.StopBgm();
         targetScene = "Lobby";

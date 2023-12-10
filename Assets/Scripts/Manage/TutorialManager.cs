@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,15 +11,26 @@ using UnityEngine.UI;
 public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager instance;
+    public enum TutorialType : byte { FirstStage, FirstLobby }
+
+    [ReadOnly]
+    private TutorialType type;
+
+    [Title("Actor")]
+    [SerializeField] Player player;
+    [SerializeField] NPC Pandora;
+    [SerializeField] NPC Bell;
+
+    [Title("First Tutorial")]
     [SerializeField] TalkData tutorialData;
     [SerializeField] TextMeshProUGUI tutorialText;
     public bool isPressKey;
     [SerializeField] DOTweenAnimation firstPanelTween;
     [SerializeField] DOTweenAnimation keyPanelTween;
-    [SerializeField] Player player;
     [SerializeField] ExpItemData expItemData;
-    [field: SerializeField]
-    public StageData tutorialStageData { get; private set; }
+    public StageData tutorialStageData;
+
+    [Title("Second Tutorial")]
 
     // Event
     public event Action OnTutorialStart;
@@ -55,13 +67,19 @@ public class TutorialManager : MonoBehaviour
         waitUntilPress = new WaitUntil(() => isPressKey);
     }
 
-    void Start()
+    public void StartTutorial(TutorialType type)
     {
-        StageManager.instance.player.canMove = false;
-        AudioManager.instance.PlayBgm(AudioManager.Bgm.WhiteNoise);
+        this.type = type;
 
-        StartCoroutine(FirstTutorialRoutine());
-        StartCoroutine(ShowHUDRoutine());
+        switch (type)
+        {
+            case TutorialType.FirstStage:
+                StartCoroutine(FirstTutorialRoutine());
+                break;
+            case TutorialType.FirstLobby:
+                StartCoroutine(FirstLobbyRoutine());
+                break;
+        }
     }
 
     private IEnumerator ShowHUDRoutine()
@@ -75,12 +93,17 @@ public class TutorialManager : MonoBehaviour
     // 검은 화면
     // 텍스트만 출력됨 (Tutorial Talk Data)
 
+    #region 첫 튜토리얼 - 스테이지
     /// <summary>
     /// 새 게임 첫 스테이지 시작 루틴
     /// </summary>
-    private IEnumerator FirstTutorialRoutine()
+    public IEnumerator FirstTutorialRoutine()
     {
         OnTutorialStart?.Invoke();
+
+        AudioManager.instance.PlayBgm(AudioManager.Bgm.WhiteNoise);
+        StartCoroutine(ShowHUDRoutine());
+
         player.canMove = false;
         tutorialText.text = string.Empty;
         player.AnimationDie();
@@ -94,12 +117,15 @@ public class TutorialManager : MonoBehaviour
         yield return LevelUpTutorial();
         yield return Utils.delay2;
 
-        Debug.Log("튜토리얼 끝");
+        Debug.Log("스테이지 튜토리얼 끝");
+        OnTutorialEnd?.Invoke();
+
+        // 2. 로비 튜토리얼
+        yield return new WaitUntil(() => GameManager.instance.gameState == GameState.Lobby);
 
         // 보석을 먹어 레벨업 튜토리얼 루틴
         // 투척 카드 하나만 선택 가능
 
-        OnTutorialEnd?.Invoke();
     }
 
     private IEnumerator EnterTutorial()
@@ -250,4 +276,18 @@ public class TutorialManager : MonoBehaviour
 
         StageManager.instance.isPlaying = true;
     }
+    #endregion
+
+    #region 로비 튜토리얼 - 첫 만남
+    private IEnumerator FirstLobbyRoutine()
+    {
+        yield return MeetPandoraRoutine();
+    }
+
+    private IEnumerator MeetPandoraRoutine()
+    {
+        //Pandora.move
+        yield return null;
+    }
+    #endregion
 }
