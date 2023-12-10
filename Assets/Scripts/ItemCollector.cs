@@ -41,6 +41,7 @@ public class ItemCollector : MonoBehaviour
     {
         if (collision.CompareTag("Exp"))
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.expItem);
             var item = collision.GetComponent<ExpItem>();
             StageManager.instance.GetExp(item.data.value);
             collision.gameObject.SetActive(false);
@@ -58,6 +59,7 @@ public class ItemCollector : MonoBehaviour
             // 아이템을 인벤토리에 넣을 수 없는 경우
             if (!isGet) return;
 
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.expItem);
             OnGetItem?.Invoke(item.data);
             collision.gameObject.SetActive(false);
         }

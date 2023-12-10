@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] sfxClips;
     public AudioSource[] sfxChannels;
     public byte sfxChannelCount = 16;
-    public enum Sfx : short { Click, Talk = 2 }
+    public enum Sfx : short { Click, Talk = 2, expItem, Hit, Dead = 6, Coin, Step = 11 }
 
     public AudioSource talkSfxChannel;
 
@@ -174,14 +174,7 @@ public class AudioManager : MonoBehaviour
             byte randIndex = 0;
 
             // Pitch 변경
-            if (Mathf.Approximately(minPitch, 1) && Mathf.Approximately(maxPitch, 1))
-            {
-                channel.pitch = 1;
-            }
-            else
-            {
-                channel.pitch = Random.Range(minPitch, maxPitch);
-            }
+            channel.pitch = Random.Range(minPitch, maxPitch);
 
             // 같은 사운드가 여러개의 바리에이션이 있다면
             // (많아지면 함수 분리 예정 + 랜덤이 아닌 규칙도 추가할 예정)
@@ -192,7 +185,23 @@ public class AudioManager : MonoBehaviour
                     break;
                 case Sfx.Talk:
                     break;
+                case Sfx.Hit:
+                    randIndex = (byte)Random.Range(0, 2);
+                    channel.pitch = Random.Range(1f, 1.1f);
+                    break;
+                case Sfx.Coin:
+                    randIndex = (byte)Random.Range(0, 4);
+                    channel.pitch = Random.Range(1f, 1.1f);
+                    break;
+                case Sfx.Step:
+                    randIndex = (byte)Random.Range(0, 3);
+                    Debug.Log($"랜덤 숫지 : {randIndex}");
+                    channel.pitch = Random.Range(0.7f, 0.9f);
+                    break;
             }
+            Debug.Log(sfx);
+            Debug.Log((byte)sfx + randIndex);
+            Debug.Log(randIndex);
             channel.clip = sfxClips[(short)sfx + randIndex];
             channel.Play();
             break;

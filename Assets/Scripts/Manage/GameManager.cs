@@ -148,8 +148,10 @@ public class GameManager : MonoBehaviour
         dataManager.SaveGame();
     }
 
+    [ContextMenu("Load Game")]
     public void LoadGame()
     {
+        Debug.Log(dataManager == null);
         if (dataManager == null)
         {
             Debug.LogError("데이터 매니저가 없습니다. 로드 실패");

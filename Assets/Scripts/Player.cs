@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     public Vector2 moveInput { get; private set; }
     public Zone currentZone;
 
+    public float stepInterval = 0.3f;
+    public float nextStepTime = 0;
+
     Rigidbody2D rigid;
     Collider2D coll;
     public SpriteRenderer spriter { get; private set; }
@@ -62,6 +65,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (!isLive) return;
+
+        if (moveInput.magnitude != 0)
+        {
+            nextStepTime += Time.deltaTime;
+            if (nextStepTime > stepInterval)
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Step);
+                nextStepTime = 0f;
+            }
+        }
+        else
+        {
+            nextStepTime = 0;
+        }
 
         // 플레이어가 최근 이동항 방향을 바라봄
         if (moveInput.x != 0)

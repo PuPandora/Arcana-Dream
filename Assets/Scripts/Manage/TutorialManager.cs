@@ -12,6 +12,7 @@ public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager instance;
     public enum TutorialType : byte { FirstStage, FirstLobby }
+    public byte tutorialIndex = 0;
 
     [ReadOnly]
     private TutorialType type;
@@ -75,7 +76,7 @@ public class TutorialManager : MonoBehaviour
 
         waitUntilPress = new WaitUntil(() => isPressKey);
 
-        if (GameManager.instance.gameState == GameState.Stage)
+        if (tutorialIndex == 0)
         {
             stageTutorialGroup.SetActive(true);
             stageTutorialGroup.GetComponent<RectTransform>().localScale = Vector3.one;
@@ -302,6 +303,8 @@ public class TutorialManager : MonoBehaviour
     #region 로비 튜토리얼 - 첫 만남
     private IEnumerator FirstLobbyRoutine()
     {
+        tutorialIndex++;
+
         yield return MeetPandoraRoutine();
 
         yield return MeetBellRoutine();
@@ -356,12 +359,14 @@ public class TutorialManager : MonoBehaviour
 
         // 인벤토리 열기
         UIManager.instance.UIManage(UIManager.instance.inventoryUI);
+        GameManager.instance.playerState = PlayerState.Shop;
 
         // 아이템 판매 튜토리얼
         Debug.Log("~ 이렇게 저렇게 아이템을 판매할 수 있습니다.");
 
         // 인벤토리 닫기
         yield return new WaitWhile(() => UIManager.instance.curUI == UIManager.instance.inventoryUI);
+        GameManager.instance.playerState = PlayerState.None;
     }
 
     private IEnumerator MeetKaraRoutine()

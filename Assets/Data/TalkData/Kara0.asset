@@ -20,3 +20,8 @@ MonoBehaviour:
     - spriteIndex: 3
       speakerData: {fileID: 11400000, guid: 60bd7f84ed37f6a48af5a529865917e3, type: 2}
       script: "\uC774\uBC88\uC5D4 \uC5B4\uB5A4 \uD6C8\uB828\uC744 \uBC1B\uC744 \uAC70\uC9C0?"
+  - scriptData:
+    - spriteIndex: 3
+      speakerData: {fileID: 11400000, guid: 60bd7f84ed37f6a48af5a529865917e3, type: 2}
+      script: "\uD6C8\uB828\uC7A5\uC740 \uD56D\uC0C1 \uC5F4\uB824\uC788\uC73C\uB2C8
+        \uD544\uC694\uD558\uB2E4\uBA74 \uC5B8\uC81C\uB4E0 \uC624\uB3C4\uB85D."

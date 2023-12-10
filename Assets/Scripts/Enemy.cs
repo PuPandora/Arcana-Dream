@@ -121,6 +121,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
+
             if (knockBackRoutine != null)
             {
                 StopCoroutine(knockBackRoutine);
@@ -167,6 +169,8 @@ public class Enemy : MonoBehaviour
 
     private void Die(bool addKillCount = true, bool dropExp = true, bool dropItem = true)
     {
+        if (!isLive) return;
+
         isLive = false;
         isDamaged = false;
 
@@ -181,6 +185,11 @@ public class Enemy : MonoBehaviour
         if (dropItem)
         {
             DropItem();
+        }
+
+        if (StageManager.instance.isPlaying)
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
         }
 
         coll.enabled = false;

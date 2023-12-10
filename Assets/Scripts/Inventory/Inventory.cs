@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour
         if (index.HasValue)
         {
             inventory[index.Value].stack += amount;
-            if (UIManager.instance.inventoryUI != null)
+            if (UIManager.instance != null)
             {
                 UIManager.instance.inventoryUI.UpdateInventory(index.Value);
             }
@@ -205,6 +205,7 @@ public class Inventory : MonoBehaviour
         Debug.Log($"{inventory[index].itemData.name} 아이템 판매.\n" +
             $"얻은 골드 : {inventory[index].itemData.value}");
         RemoveItem(index);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
 
         UIManager.instance.inventoryUI.UpdateInventory(index);
     }

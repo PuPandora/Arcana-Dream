@@ -77,6 +77,8 @@ public class NPC : MonoBehaviour
         moveVec = (pos - transform.position).normalized;
         bool isGoal = false;
 
+        FootStepSoundRoutine();
+
         Debug.Log("NPC 출발");
         while (!isGoal)
         {
@@ -95,6 +97,15 @@ public class NPC : MonoBehaviour
         isMoving = false;
         anim.SetBool("IsMove", false);
         moveVec = Vector2.zero;
+    }
+
+    private IEnumerator FootStepSoundRoutine()
+    {
+        while (isMoving)
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Step);
+            yield return Utils.delay0_25;
+        }
     }
 
     private IEnumerator RunRoutine()

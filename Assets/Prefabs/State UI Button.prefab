@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2565652285637540886}
   - component: {fileID: 4740991441112525419}
   - component: {fileID: 778043481486699689}
+  - component: {fileID: -7088998889691557031}
   m_Layer: 5
   m_Name: State UI Button
   m_TagString: Untagged
@@ -152,6 +153,20 @@ MonoBehaviour:
   nameText: {fileID: 7001323645476403142}
   levelText: {fileID: 8268025643959216923}
   icon: {fileID: 1820948778589835893}
+--- !u!114 &-7088998889691557031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196432208360039589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9721805e5a75dde40910d936bff5ed49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  sfxType: 0
 --- !u!1 &3599535369747688700
 GameObject:
   m_ObjectHideFlags: 0

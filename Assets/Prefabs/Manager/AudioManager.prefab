@@ -48,8 +48,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 88c1409d0ef6f564bb450683f0c24413, type: 3}
   - {fileID: 8300000, guid: 50767b6ce9fac5a49bfd5a1939217544, type: 3}
   - {fileID: 8300000, guid: b8ffb6b3b2ab4d24ebbd1775f46c45a7, type: 3}
+  - {fileID: 8300000, guid: cb20ae1d22a7e4cf58a126036aa6eeb7, type: 3}
+  - {fileID: 8300000, guid: 0bddcb411d826e14bb26d40ae45d8e22, type: 3}
+  - {fileID: 8300000, guid: 6b7eaf4532a2f614595ad58d2b86efc4, type: 3}
+  - {fileID: 8300000, guid: 291608b8d286e2a4580ff36324455ce2, type: 3}
+  - {fileID: 8300000, guid: a081820354c7edd45bceca9af147e5da, type: 3}
+  - {fileID: 8300000, guid: 43e4ac95556335149b4f73254be9aa78, type: 3}
+  - {fileID: 8300000, guid: 5e088c87de55a2a45a9fcc9e56797629, type: 3}
+  - {fileID: 8300000, guid: 9d0812ef1318f8643ace44e92ce1fd93, type: 3}
+  - {fileID: 8300000, guid: 4d11813f5983ce047873c94858e6a6c1, type: 3}
+  - {fileID: 8300000, guid: 6154d2d90f91ac743a30a16a58f9fa32, type: 3}
+  - {fileID: 8300000, guid: 4544cd1f9b0d00a498e3602ecfffcacc, type: 3}
   sfxChannels: []
   sfxChannelCount: 16
+  talkSfxChannel: {fileID: 0}
   BGMclips:
   - {fileID: 8300000, guid: 71d2a80cdc6ef498382c752076137c8c, type: 3}
   - {fileID: 8300000, guid: 3a033a0fb87df48d78b663f02a2fab4a, type: 3}

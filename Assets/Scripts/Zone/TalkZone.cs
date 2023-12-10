@@ -30,7 +30,7 @@ public class TalkZone : Zone
             return;
         }
 
-        if (!TalkManager.instance.isAllowTalk)
+        if (!TalkManager.instance.isAllowTalk || !npc.canTalk)
             return;
 
         zone.enabled = false;
@@ -40,6 +40,7 @@ public class TalkZone : Zone
 
     public void TalkStart(byte talkSessionId = 0)
     {
+        npc.canTalk = false;
         npc.LookAtTarget();
 
         // 카메라 확대
@@ -72,21 +73,35 @@ public class TalkZone : Zone
             TalkManager.instance.zoomCam.enabled = false;
             zone.enabled = true;
             StartCoroutine(npc.ResetLook());
-            TalkManager.instance.OnTalkEnd -= TalkEnd;
         }
+
+        TalkManager.instance.OnTalkEnd -= TalkEnd;
+        LobbyManager.instance.player.currentZone = null;
     }
 
     private IEnumerator ShopRoutine()
     {
-        GameManager.instance.player.canMove = false;
         UIManager.instance.UIManage(npc.shopUI);
+        GameManager.instance.playerState = PlayerState.Shop;
 
         yield return waitUntilcloseUI;
 
+        if (npc.talkData.scriptSession[1] != null)
+        {
+            TalkManager.instance.StartTalk(1);
+        }
+
+        yield return new WaitWhile(() => TalkManager.instance.isTalking);
+
+        GameManager.instance.playerState = PlayerState.None;
         GameManager.instance.player.canMove = true;
         TalkManager.instance.zoomCam.enabled = false;
         zone.enabled = true;
         StartCoroutine(npc.ResetLook());
         TalkManager.instance.OnTalkEnd -= TalkEnd;
+
+        yield return Utils.delay1;
+
+        npc.canTalk = true;
     }
 }
