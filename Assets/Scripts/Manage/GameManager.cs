@@ -192,8 +192,6 @@ public class GameManager : MonoBehaviour
 
     private void OnSubmit(InputValue value)
     {
-        Debug.Log("Submit 키 누름");
-
         switch (playerState)
         {
             case PlayerState.None:

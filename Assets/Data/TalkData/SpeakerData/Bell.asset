@@ -21,3 +21,9 @@ MonoBehaviour:
   - {fileID: -1677031195, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
   - {fileID: 638422637, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
   - {fileID: -1828737601, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
+  baseColor: {r: 0.8018868, g: 0.08699713, b: 0.30551422, a: 1}
+  eyeColor: {r: 3.9999998, g: 3.2057898, b: 0.28301883, a: 1}
+  dark: 0.6
+  talkSfx: {fileID: 8300000, guid: 0994c12e202f342459a4212e7287f7e8, type: 3}
+  volumeIntensity: 0.85
+  pitch: {x: 1.1, y: 1.3}

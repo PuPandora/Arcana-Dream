@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Zone : MonoBehaviour, IInteractable
 {
     public bool isOpen = true;
-    protected bool isPlayerIn;
+    public bool isPlayerIn;
     protected bool isUsing;
 
     public abstract void Interact();

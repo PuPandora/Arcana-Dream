@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class LobbyManager : MonoBehaviour
 
     [Title("GameObject")]
     public PortalZone portal;
+    public CinemachineVirtualCamera placeZoomCam;
 
     void Awake()
     {
@@ -30,7 +32,15 @@ public class LobbyManager : MonoBehaviour
 
     void Start()
     {
-        AudioManager.instance.PlayBgmFade(AudioManager.Bgm.Lobby);
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayBgmFade(AudioManager.Bgm.Lobby);
+        }
+
+        if (GameManager.instance.isNewGame)
+        {
+            TutorialManager.instance.StartTutorial(TutorialManager.TutorialType.FirstLobby);
+        }
 
         // 스테이지에서 나온거라면
         if (GameManager.instance.isExitStage)

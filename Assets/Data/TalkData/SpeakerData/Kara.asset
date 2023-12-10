@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b1ff0f5aafea6a4f852d3e0c438df08, type: 3}
-  m_Name: Pandora
+  m_Name: Kara
   m_EditorClassIdentifier: 
-  speakerName: "\uD310\uB3C4\uB77C"
-  spearkDesc: "\uC9C0\uB3C4\uC81C\uC791\uC790"
+  speakerName: "\uCE74\uB77C"
+  spearkDesc: "\uAD50\uAD00"
   portraits:
   - {fileID: 1443325478, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
   - {fileID: 1896962944, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
@@ -21,9 +21,9 @@ MonoBehaviour:
   - {fileID: -1677031195, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
   - {fileID: 638422637, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
   - {fileID: -1828737601, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
-  baseColor: {r: 0.4531067, g: 0.05740472, b: 0.8113207, a: 1}
-  eyeColor: {r: 0.50983584, g: 0.34006718, b: 2.670157, a: 1}
+  baseColor: {r: 0.24764147, g: 0.5, b: 0.34705546, a: 1}
+  eyeColor: {r: 2.9960783, g: 0, b: 0.11852296, a: 1}
   dark: 0.5
-  talkSfx: {fileID: 8300000, guid: 8cf4c754282a455409eab6a93d8475b3, type: 3}
+  talkSfx: {fileID: 8300000, guid: c6e9f1b0389120845b44262511d7fd7b, type: 3}
   volumeIntensity: 0.9
-  pitch: {x: 1.2, y: 1.4}
+  pitch: {x: 0.7, y: 0.8}

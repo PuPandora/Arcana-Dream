@@ -1,23 +1,24 @@
-using Cinemachine;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class NPC : MonoBehaviour
 {
     [Title("Move")]
-    public Vector3 originalPos;
     public Vector3 moveVec;
     public float speed = 5f;
+    public bool isMoving;
     public bool isRunning;
     public bool originalDirection;
 
     [Title("Info")]
     public TalkData talkData;
+    public SpeakerData speakerData;
     [SerializeField]
-    TalkZone talkZone;
+    public TalkZone talkZone;
     public bool canTalk = true;
     public bool isShopNpc;
     public LobbyUI shopUI;
@@ -35,21 +36,17 @@ public class NPC : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        originalPos = transform.position;
 
         backLight.color = spriter.sharedMaterial.GetColor("_Color");
         originalDirection = spriter.flipX;
-    }
 
-    void Start()
-    {
-        TalkManager.instance.OnTalkStart += LookAtTarget;
+        speakerData.baseColor = spriter.sharedMaterial.GetColor("_Color");
+        speakerData.eyeColor = spriter.sharedMaterial.GetColor("_EyeColor");
+        speakerData.dark = spriter.sharedMaterial.GetFloat("_Dark");
     }
 
     void Update()
     {
-        anim.SetFloat("Speed", moveVec.magnitude);
-        anim.SetBool("IsRunning", isRunning);
         if (moveVec.magnitude != 0)
         {
             spriter.flipX = moveVec.x < 0;
@@ -62,50 +59,41 @@ public class NPC : MonoBehaviour
     }
 
     [ContextMenu("Move")]
-    public void Move()
+    public void Move(Vector3 pos)
     {
-        if (moveRoutine != null)
-        {
-            StopCoroutine(moveRoutine);
-            transform.position = originalPos;
-        }
-
-        moveRoutine = StartCoroutine(MoveRoutine());
+        moveRoutine = StartCoroutine(MoveRoutine(pos));
     }
 
     [ContextMenu("Run")]
     public void Run()
     {
-        if (runRoutine != null)
-        {
-            StopCoroutine(runRoutine);
-            transform.position = originalPos;
-        }
-
         runRoutine = StartCoroutine(RunRoutine());
     }
 
-    private IEnumerator MoveRoutine()
+    private IEnumerator MoveRoutine(Vector3 pos)
     {
-        float leftDistance = 0f;
-        float rightDistance = 0f;
-        
+        isMoving = true;
+        anim.SetBool("IsMove", true);
+        moveVec = (pos - transform.position).normalized;
+        bool isGoal = false;
 
-        while (leftDistance < 3f)
+        Debug.Log("NPC 출발");
+        while (!isGoal)
         {
-            rigid.MovePosition(rigid.position + Vector2.left * speed * Time.fixedDeltaTime);
-            moveVec = Vector2.left;
-            leftDistance += Vector2.left.x * Time.fixedDeltaTime * -1;
+            Vector2 dirVec = (pos - transform.position).normalized;
+            rigid.MovePosition(rigid.position + dirVec * speed * Time.fixedDeltaTime);
+
+            if (Vector3.Distance(transform.position, pos) < 0.2f)
+            {
+                isGoal = true;
+                Debug.Log("NPC 도착");
+            }
+
             yield return Utils.delayFixedUpdate;
         }
-        while (rightDistance < 3f)
-        {
-            rigid.MovePosition(rigid.position + Vector2.right * speed * Time.fixedDeltaTime);
-            moveVec = Vector2.right;
-            rightDistance += Vector2.right.x * Time.fixedDeltaTime;
-            yield return Utils.delayFixedUpdate;
-        }
 
+        isMoving = false;
+        anim.SetBool("IsMove", false);
         moveVec = Vector2.zero;
     }
 
@@ -135,7 +123,7 @@ public class NPC : MonoBehaviour
         moveVec = Vector2.zero;
     }
 
-    private void LookAtTarget()
+    public void LookAtTarget()
     {
         Vector2 dirVec = GameManager.instance.player.transform.position - transform.position;
         spriter.flipX = dirVec.x < 0f;

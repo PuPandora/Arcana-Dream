@@ -10,4 +10,17 @@ public class SpeakerData : ScriptableObject
     public string spearkDesc;
     [PreviewField(50, ObjectFieldAlignment.Left)]
     public Sprite[] portraits;
+
+    [Title("Color for Portrait Shader")]
+    [ColorUsage(true, true)]
+    public Color baseColor;
+    [ColorUsage(true, true)]
+    public Color eyeColor;
+    public float dark;
+
+    [Title("SFX")]
+    public AudioClip talkSfx;
+    [Range(0f, 2f)]
+    public float volumeIntensity = 1f;
+    public Vector2 pitch = Vector2.one;
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63c88d14f2fa0243b38c5c576487fc7, type: 3}
+  m_Name: Kara0
+  m_EditorClassIdentifier: 
+  scriptSession:
+  - scriptData:
+    - spriteIndex: 2
+      speakerData: {fileID: 11400000, guid: 60bd7f84ed37f6a48af5a529865917e3, type: 2}
+      script: "NPC \uB300\uC0AC \uC0AC\uC6B4\uB4DC \uD14C\uC2A4\uD2B8 NPC \uB300\uC0AC
+        \uC0AC\uC6B4\uB4DC \uD14C\uC2A4\uD2B8 NPC \uB300\uC0AC \uC0AC\uC6B4\uB4DC
+        \uD14C\uC2A4\uD2B8 \nNPC \uB300\uC0AC \uC0AC\uC6B4\uB4DC \uD14C\uC2A4\uD2B8
+        NPC \uB300\uC0AC \uC0AC\uC6B4\uB4DC \uD14C\uC2A4\uD2B8 "

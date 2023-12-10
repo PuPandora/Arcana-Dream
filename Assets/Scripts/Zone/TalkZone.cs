@@ -38,8 +38,10 @@ public class TalkZone : Zone
         TalkStart();
     }
 
-    private void TalkStart()
+    public void TalkStart(byte talkSessionId = 0)
     {
+        npc.LookAtTarget();
+
         // 카메라 확대
         Vector2 playerPos = GameManager.instance.player.transform.position;
         Vector2 myPos = transform.position;
@@ -52,16 +54,10 @@ public class TalkZone : Zone
         cam.position = new Vector3(cam.position.x, cam.position.y - 1f, -10);
         TalkManager.instance.zoomCam.enabled = true;
 
-        // Portarit 셰이더 초기화
-        var bodyColor = npc.spriter.sharedMaterial.GetColor("_Color");
-        var eyeColor = npc.spriter.sharedMaterial.GetColor("_EyeColor");
-        var darkColor = npc.spriter.sharedMaterial.GetFloat("_Dark");
-        TalkManager.instance.portrait.SetColor(bodyColor, darkColor, eyeColor);
-
         // TalkManager 초기화
         TalkManager.instance.talkData = npc.talkData;
         TalkManager.instance.speakerPos = npc.transform.position;
-        TalkManager.instance.StartTalk();
+        TalkManager.instance.StartTalk(talkSessionId);
         TalkManager.instance.OnTalkEnd += TalkEnd;
     }
 

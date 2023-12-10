@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     public byte sfxChannelCount = 16;
     public enum Sfx : short { Click, Talk = 2 }
 
+    public AudioSource talkSfxChannel;
+
     [Title("BGM")]
     public AudioClip[] BGMclips;
     public AudioSource bgmChannel;
@@ -59,6 +61,12 @@ public class AudioManager : MonoBehaviour
         bgmChannel = bgm.AddComponent<AudioSource>();
         bgmChannel.playOnAwake = false;
         bgmChannel.loop = true;
+
+        var talkSfx = new GameObject("Talk SFX Channel");
+        talkSfx.transform.SetParent(transform);
+
+        talkSfxChannel = talkSfx.AddComponent<AudioSource>();
+        talkSfxChannel.playOnAwake = false;
         #endregion
     }
 
@@ -69,6 +77,8 @@ public class AudioManager : MonoBehaviour
         {
             channel.volume = DataManager.instance.optionData.sfxVolume;
         }
+        talkSfxChannel.volume = DataManager.instance.optionData.sfxVolume;
+
         bgmChannel.volume = DataManager.instance.optionData.sfxVolume;
         #endregion
     }
@@ -195,6 +205,19 @@ public class AudioManager : MonoBehaviour
         {
             channel.volume = value;
         }
+
+        talkSfxChannel.volume = value;
+    }
+
+    public void PlayTalkSfx(SpeakerData data)
+    {
+        if (talkSfxChannel.isPlaying) return;
+
+        talkSfxChannel.clip = data.talkSfx;
+        talkSfxChannel.volume = DataManager.instance.optionData.sfxVolume * data.volumeIntensity;
+        talkSfxChannel.pitch = Random.Range(data.pitch.x, data.pitch.y);
+
+        talkSfxChannel.Play();
     }
 
     public void ChangeBgmVolume(float value)

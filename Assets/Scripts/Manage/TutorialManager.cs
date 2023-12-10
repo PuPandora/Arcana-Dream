@@ -18,8 +18,12 @@ public class TutorialManager : MonoBehaviour
 
     [Title("Actor")]
     [SerializeField] Player player;
-    [SerializeField] NPC Pandora;
-    [SerializeField] NPC Bell;
+    [SerializeField] NPC pandora;
+    [SerializeField] NPC bell;
+    [SerializeField] NPC kara;
+
+    [Title("Public")]
+    public Transform target;
 
     [Title("First Tutorial")]
     [SerializeField] TalkData tutorialData;
@@ -31,6 +35,9 @@ public class TutorialManager : MonoBehaviour
     public StageData tutorialStageData;
 
     [Title("Second Tutorial")]
+    public Transform[] lobbyPoints;
+    public Transform[] placeZoomPoints;
+    public TalkData tutorialPandoraTalkData;
 
     // Event
     public event Action OnTutorialStart;
@@ -282,11 +289,100 @@ public class TutorialManager : MonoBehaviour
     private IEnumerator FirstLobbyRoutine()
     {
         yield return MeetPandoraRoutine();
+
+        yield return MeetBellRoutine();
+
+        yield return MeetKaraRoutine();
+
+        yield return IntroduceEnterStageRoutine();
     }
 
     private IEnumerator MeetPandoraRoutine()
     {
-        //Pandora.move
+        pandora.talkData = tutorialPandoraTalkData;
+        pandora.SetCanTalk(false);
+
+        // 판도라 이동
+        pandora.Move(lobbyPoints[0].position);
+
+        // 판도라 도착
+        yield return new WaitWhile(() => pandora.isMoving);
+
+        // 첫 대화, 안내
+        pandora.talkZone.TalkStart();
+
+        // 벨 상점 포커스
+        yield return new WaitUntil(() => TalkManager.instance.curTalkIndex == 8);
+        LobbyManager.instance.placeZoomCam.transform.position = placeZoomPoints[0].position;
+        LobbyManager.instance.placeZoomCam.enabled = true;
+
+        // 포커스 해제
+        yield return new WaitWhile(() => TalkManager.instance.curTalkIndex == 8);
+        LobbyManager.instance.placeZoomCam.enabled = false;
+
+        // 대화창 닫을 때 까지 대기
+        yield return new WaitWhile(() => TalkManager.instance.isTalking);
+
+        // 판도라 벨의 상점으로 이동
+        pandora.Move(lobbyPoints[1].position);
+        Debug.Log("판도라 이동");
+
+        // 판도라 도착까지 대기
+        yield return new WaitWhile(() => pandora.isMoving);
+    }
+
+    private IEnumerator MeetBellRoutine()
+    {
+        // 플레이어 벨의 상점 도착까지 대기
+        yield return new WaitUntil(() => bell.talkZone.isPlayerIn);
+
+        // 벨 소개 튜토리얼
+        pandora.talkZone.TalkStart(1);
+        yield return new WaitWhile(() => TalkManager.instance.isTalking);
+
+        // 인벤토리 열기
+        UIManager.instance.UIManage(UIManager.instance.inventoryUI);
+
+        // 아이템 판매 튜토리얼
+        Debug.Log("~ 이렇게 저렇게 아이템을 판매할 수 있습니다.");
+
+        // 인벤토리 닫기
+        yield return new WaitWhile(() => UIManager.instance.curUI == UIManager.instance.inventoryUI);
+    }
+
+    private IEnumerator MeetKaraRoutine()
+    {
+        // 스탯 업그레이드 튜토리얼
+        pandora.talkZone.TalkStart(2);
+
+        // 카메라 포커스
+        yield return new WaitUntil(() => TalkManager.instance.curTalkIndex == 2);
+        LobbyManager.instance.placeZoomCam.transform.position = placeZoomPoints[1].position;
+        LobbyManager.instance.placeZoomCam.enabled = true;
+
+        yield return new WaitUntil(() => TalkManager.instance.curTalkIndex != 2);
+        LobbyManager.instance.placeZoomCam.enabled = false;
+
+        // 대화 종료 대기
+        yield return new WaitWhile(() => TalkManager.instance.isTalking);
+
+        // 판도라 이동
+        pandora.Move(lobbyPoints[2].position);
+
+        yield return new WaitUntil(() => !pandora.isMoving && kara.talkZone.isPlayerIn);
+
+        pandora.talkZone.TalkStart(3);
+
+        yield return new WaitWhile(() => TalkManager.instance.isTalking);
+
+        UIManager.instance.UIManage(UIManager.instance.stateUpgradeUI);
+    }
+
+    private IEnumerator IntroduceEnterStageRoutine()
+    {
+        // 스테이지 진입 방법 설명
+        // 판도라에게 말을 걸어 스테이지 입장 가능
+
         yield return null;
     }
     #endregion

@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3763363794317444898
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pandora
+  m_Name: Kara
   m_Shader: {fileID: -6465566751694194690, guid: f51c7bf6701f5a049b4751285d2cab11, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -43,19 +56,6 @@ Material:
     m_Floats:
     - _Dark: 0.5
     m_Colors:
-    - _Color: {r: 0.45310676, g: 0.05740474, b: 0.8113207, a: 1}
-    - _EyeColor: {r: 0.50983584, g: 0.34006718, b: 2.670157, a: 1}
+    - _Color: {r: 0.2476415, g: 0.5, b: 0.3470555, a: 1}
+    - _EyeColor: {r: 2.9960783, g: 0, b: 0.11852296, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1402431510529286492
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7

@@ -31,9 +31,12 @@ public class TalkManager : MonoBehaviour
     [Title("Talk Info")]
     public byte curTalkSession;
     public byte curTalkIndex;
+    // 다른 스크립트에서 대화를 제어할 때
+    public bool isWait;
 
     [Title("Camera")]
     public CinemachineVirtualCamera zoomCam;
+    public CinemachineVirtualCamera changeCam;
 
     [Title("Tween")]
     [SerializeField] DOTweenAnimation panelTween;
@@ -43,7 +46,7 @@ public class TalkManager : MonoBehaviour
     public event Action OnTalkStart;
     public event Action OnTalkEnd;
 
-    WaitUntil waitUntilPress;
+    WaitUntil untilPressKey;
 
     void Awake()
     {
@@ -57,7 +60,8 @@ public class TalkManager : MonoBehaviour
             Destroy(gameObject);
         }
         #endregion
-        waitUntilPress = new WaitUntil(() => isPressKey);
+        untilPressKey = new WaitUntil(() => isPressKey);
+
         OnTalkStart += (() => GameManager.instance.ChangePlayerState(PlayerState.Talk));
         OnTalkEnd += (() => GameManager.instance.ChangePlayerState(PlayerState.None));
 
@@ -83,12 +87,15 @@ public class TalkManager : MonoBehaviour
         curTalkIndex = 0;
         OnTalkStart?.Invoke();
 
+        SpeakerData prevSpeaker = null;
+
         for (int i = 0; i < talkData.scriptSession[curTalkSession].scriptData.Length; i++)
         {
             // 초기화
             scriptText.text = string.Empty;
             isScriptEnd = false;
             isPressKey = false;
+            isWait = false;
 
             // Talk Data 불러오기
             ScriptData scriptData = talkData.GetScriptData(curTalkSession, curTalkIndex);
@@ -98,7 +105,25 @@ public class TalkManager : MonoBehaviour
 
             // 초상화 트윈
             portraitTween.DORestartById("0");
-            portrait.image.sprite = scriptData.speakerData.portraits[scriptData.spriteIndex];
+            if (scriptData.speakerData.portraits.Length == 0)
+            {
+                portrait.image.color = Color.clear;
+            }
+            else
+            {
+                portrait.image.color = Color.white;
+                portrait.image.sprite = scriptData.speakerData.portraits[scriptData.spriteIndex];
+            }
+
+            // Speaker가 달라지면
+            if (scriptData.speakerData != prevSpeaker)
+            {
+                prevSpeaker = scriptData.speakerData;
+                var bodyColor = scriptData.speakerData.baseColor;
+                var dark = scriptData.speakerData.dark;
+                var eyeColor = scriptData.speakerData.eyeColor;
+                portrait.SetColor(bodyColor, dark, eyeColor);
+            }
 
             // 스크립트 한 글자씩 출력
             for (int j = 0; j < talKScript.Length; j++)
@@ -106,20 +131,27 @@ public class TalkManager : MonoBehaviour
                 // 대화 스킵
                 if (isPressKey)
                 {
+                    isPressKey = false;
                     scriptText.text = talKScript;
+                    if (scriptData.speakerData.talkSfx != null)
+                    {
+                        AudioManager.instance.PlayTalkSfx(scriptData.speakerData);
+                    }
                     break;
                 }
                 scriptText.text += talKScript[j];
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.Talk);
+                if (scriptData.speakerData.talkSfx != null)
+                {
+                    AudioManager.instance.PlayTalkSfx(scriptData.speakerData);
+                }
                 yield return Utils.delay0_05;
             }
 
             isScriptEnd = true;
-            isPressKey = false;
-            curTalkIndex++;
             yield return Utils.delay0_25;
 
-            yield return waitUntilPress;
+            yield return untilPressKey;
+            curTalkIndex++;
         }
 
         panelTween.DORestartById("Hide");
@@ -128,5 +160,15 @@ public class TalkManager : MonoBehaviour
 
         yield return Utils.delay1;
         isAllowTalk = true;
+    }
+
+    public void SetWait()
+    {
+        isWait = true;
+    }
+
+    public void NextTalk()
+    {
+        isWait = false;
     }
 }
