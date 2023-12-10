@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397b23a8b09308a469571887b3add654, type: 3}
   m_Name: TutorialStage
   m_EditorClassIdentifier: 
-  stageName: ???
+  stageName: "\uC54C \uC218 \uC5C6\uB294 \uACF3"
   stageIndex: 0
   stageGlobalLightIntensity: 1
   bgm: {fileID: 8300000, guid: d45a2f517cf0a4443b55f4ea1cfd0abb, type: 3}

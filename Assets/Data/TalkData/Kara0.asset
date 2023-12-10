@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptSession:
   - scriptData:
-    - spriteIndex: 2
+    - spriteIndex: 3
       speakerData: {fileID: 11400000, guid: 60bd7f84ed37f6a48af5a529865917e3, type: 2}
       script: "\uC544\uC9C1 \uC0B4\uC544\uC788\uAD70... \uC544\uC9C1\uC740."
-    - spriteIndex: 2
+    - spriteIndex: 3
       speakerData: {fileID: 11400000, guid: 60bd7f84ed37f6a48af5a529865917e3, type: 2}
       script: "\uC774\uBC88\uC5D4 \uC5B4\uB5A4 \uD6C8\uB828\uC744 \uBC1B\uC744 \uAC70\uC9C0?"
