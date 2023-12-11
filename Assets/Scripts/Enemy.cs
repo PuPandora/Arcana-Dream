@@ -21,14 +21,14 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
-    Collider2D coll;
+    CapsuleCollider2D coll;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        coll = GetComponent<Collider2D>();
+        coll = GetComponent<CapsuleCollider2D>();
         dropItem = GetComponent<DropItem>();
 
         anim.SetBool("IsChase", true);
@@ -41,7 +41,9 @@ public class Enemy : MonoBehaviour
         health = data.maxHealth;
 
         anim.runtimeAnimatorController = data.animController;
-        data.collPreset.ApplyTo(coll);
+        coll.offset = data.collOffset;
+        coll.direction = data.collDirection;
+        coll.size = data.collSize;
 
         anim.SetBool("IsChase", true);
     }

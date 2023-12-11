@@ -230,6 +230,7 @@ public class StageManager : MonoBehaviour
         Utils.SaveStageData(stageData);
     }
 
+#if UNITY_EDITOR
     [ContextMenu("Load Stage Data from Json")]
     private void LoadStageData()
     {
@@ -241,6 +242,7 @@ public class StageManager : MonoBehaviour
 
         Utils.LoadStageData(stageDataFile.ToString(), stageData);
     }
+#endif
 
     private void SettingGrid()
     {

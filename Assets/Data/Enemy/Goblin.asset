@@ -16,7 +16,9 @@ MonoBehaviour:
   speed: 2
   damage: 15
   maxHealth: 20
-  collPreset: {fileID: 2655988077585873504, guid: a9402776eb369fe4ba557d5bd8bea51f, type: 2}
+  collDirection: 0
+  collOffset: {x: 0, y: -0.025}
+  collSize: {x: 0.3, y: 0.45}
   animController: {fileID: 9100000, guid: d4e9b1307eb14f641a552bf17a0866fc, type: 2}
   expItemData: {fileID: 11400000, guid: 2bc2d306ee232244fac44c3e2b9cf613, type: 2}
   itemDropTable:

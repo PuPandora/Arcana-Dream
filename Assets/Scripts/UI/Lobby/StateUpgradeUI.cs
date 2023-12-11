@@ -52,6 +52,9 @@ public class StateUpgradeUI : LobbyUI
     {
         UpdateInfo();
         base.ShowUI();
+
+        stateUpgradeButtonText.color = Color.black;
+        stateUpgradeButtonText.text = string.Empty;
     }
 
     public override void HideUI()
