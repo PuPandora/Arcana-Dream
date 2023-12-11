@@ -80,6 +80,10 @@ MonoBehaviour:
       script: "\uC774\uBC88 \uC2E0\uC785\uC740 \uBB58 \uB4E4\uACE0 \uC654\uB294\uC9C0
         \uD55C \uBC88 \uBCFC\uAE4C?"
   - scriptData:
+    - spriteIndex: 5
+      speakerData: {fileID: 11400000, guid: 2b1271cdf5b164e418ef7696746d597b, type: 2}
+      script: "\uB09C \uD56D\uC0C1 \uC5EC\uAE30\uC788\uC73C\uB2C8\uAE4C \uBB54\uAC00
+        \uD314\uAC8C \uC788\uB2E4\uBA74 \uC5B8\uC81C\uB4E0 \uC640!!"
     - spriteIndex: 0
       speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
       script: "\uD760\uD760..."
@@ -115,11 +119,169 @@ MonoBehaviour:
         \uBAA8\uB974\uACA0\uC9C0\uB9CC."
     - spriteIndex: 3
       speakerData: {fileID: 11400000, guid: 60bd7f84ed37f6a48af5a529865917e3, type: 2}
-      script: "\uC5EC\uAE30\uC5D0 \uC654\uB2E4\uBA74 \uC774\uC720\uB294 \uD558\uB098\uACA0\uC9C0.\n\uC5B4\uB5BB\uAC8C
-        \uAC15\uD574\uC9C8\uB798?"
+      script: "\uC5EC\uAE30\uC5D0 \uC654\uB2E4\uBA74 \uC774\uC720\uB294 \uD558\uB098\uACA0\uC9C0.\n\uBB34\uC5C7\uC744,
+        \uC5BC\uB9C8\uB9CC\uD07C \uAC15\uD574\uC9C0\uACE0 \uC2F6\uB098?"
   - scriptData:
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "'\uD604\uC7AC' \uC788\uB294 \uC2DC\uC124\uC740 \uC804\uBD80 \uC18C\uAC1C\uB4DC\uB9B0
+        \uAC70 \uAC19\uB124\uC694."
     - spriteIndex: 0
       speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
       script: "\uC774\uC81C \uAFC8 \uD0D0\uD5D8\uACFC \uC774\uACF3\uC5D0 \uB300\uD574
         \uC54C\uB824\uB4DC\uB9B4\uAC8C\uC694.\n\uC800\uC640 \uCC98\uC74C \uB9CC\uB09C
         \uD3EC\uD0C8 \uC55E\uC5D0\uC11C \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC744\uAC8C\uC694."
+  - scriptData:
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uD6C4\uC6B0..."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uB2E4\uC2DC \uC18C\uAC1C\uB4DC\uB824\uC694.\n\uC800\uB294 \uD310\uB3C4\uB77C,
+        \uAFC8\uC18D\uC744 \uD0D0\uD5D8\uD560 \uC218 \uC788\uB294 \uC9C0\uB3C4\uB97C
+        \uB9CC\uB4DC\uB294 \uC0AC\uB78C\uC774\uC5D0\uC694."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uADF8\uB9AC\uACE0 \uC774\uACF3\uC740 '\uC544\uB974\uCE74\uB098 \uB4DC\uB9BC'\n\uC5EC\uB7EC
+        \uCC28\uC6D0\uC758 \uC874\uC7AC\uB4E4\uC758 \uAFC8\uC744 \uAD00\uB9AC\uD558\uACE0
+        \uD0D0\uD5D8\uD560 \uC218 \uC788\uB294 \uC7A5\uC18C\uC774\uC8E0."
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uBCF4\uB2E4\uC2F6\uC774 \uACF5\uAC04\uC740 \uB113\uC9C0\uB9CC \uC778\uAD6C\uC640
+        \uC2DC\uC124\uC774 \uB9E4\uC6B0 \uC801\uC740 \uD3B8\uC774\uC5D0\uC694.\n\uCD5C\uADFC\uC5D0
+        \uC880... \uC548 \uC88B\uC740 \uC0AC\uAC74\uC774 \uC788\uC5C8\uAC70\uB4E0\uC694.\n"
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uB9D0\uD558\uC790\uBA74 \uAE34 \uC774\uC57C\uAE30\uC778\uB370...\n\uC9E7\uAC8C
+        \uC774\uC57C\uAE30 \uD558\uC790\uBA74 \uC5B4\uB290 \uAFC8\uC5D0\uC11C \uC774\uC0C1\uD604\uC0C1\uC774
+        \uBC1C\uC0DD\uD574 \uB9CE\uC740 \uD0D0\uD5D8\uAC00 \uBD84\uB4E4\uC774 \uD30C\uACAC\uB418\uC5C8\uC5B4\uC694."
+    - spriteIndex: 2
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uD558\uC9C0\uB9CC \uAD6C\uCD9C\uD300\uB4E4\uB3C4 \uB3CC\uC544\uC624\uC9C0
+        \uBABB\uD588\uC8E0."
+    - spriteIndex: 2
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC0AC\uC2E4\uC0C1 \uD0D0\uD5D8\uAC00\uACB8 \uC0C1\uC778\uC744 \uACB8\uC9C1\uD558\uC2DC\uB358
+        \uBD84\uB4E4\uB3C4 \uB9CE\uC544\uC11C \uC8FC\uC778\uC5C6\uB294 \uAC00\uAC8C\uAC00
+        \uC810\uC810 \uB298\uC5B4\uB0AC\uC8E0."
+    - spriteIndex: 2
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uADF8 \uAFC8\uC5D0 \uBB34\uC2A8 \uC77C\uC774 \uBC1C\uC0DD\uD55C \uAC83\uC778\uC9C0
+        \uD655\uC778\uB9CC\uC774\uB77C\uB3C4 \uD558\uC790\uBA70 \uB2E4\uC2DC \uD300\uC744
+        \uAFB8\uB824 \uAC14\uC9C0\uB9CC-"
+    - spriteIndex: 2
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uACB0\uACFC\uB294 \uB611\uAC19\uC558\uC5B4\uC694. \uBD84\uBA85 5\uBD84
+        \uC815\uB3C4\uB9CC \uD0D0\uC0C9\uD558\uACE0 \uB3CC\uC544\uC624\uACA0\uB2E4\uACE0
+        \uD588\uC5C8\uB294\uB370. \uC804\uBD80 \uC2E4\uC885\uB418\uC5B4\uBC84\uB838\uC5B4\uC694."
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uAC8C\uB2E4\uAC00 \uADF8 \uC0AC\uAC74 \uC774\uD6C4\uB85C \uC774\uC0C1\uD558\uAC8C
+        \uC0C8\uB85C\uC6B4 \uD0D0\uD5D8\uAC00\uBD84\uB4E4\uC774 \uC624\uC2DC\uC9C8
+        \uC54A\uC558\uC8E0."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uD558\uC9C0\uB9CC \uBC29\uAE08, \uC0C8\uB85C\uC6B4 \uC2E0\uD638\uAC00
+        \uC7A1\uD788\uACE0 \uD55C \uAFC8\uC774 \uD65C\uC131\uD654\uB418\uC5C8\uC5B4\uC694.\n\uB124,
+        \uBC14\uB85C \uADF8 \uAFC8\uC774 \uB2F9\uC2E0\uC774 \uCC98\uC74C \uB208\uC744
+        \uB72C \uAFC8\uC774\uC5D0\uC694."
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC6D0\uB798\uB77C\uBA74 \uD655\uC778\uB418\uB294 \uB300\uB85C \uAD6C\uCD9C\uC744
+        \uD558\uB7EC \uAC00\uC9C0\uB9CC..."
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uD604\uC7AC \uAC00\uC6A9 \uC778\uC6D0\uC774 \uC5C6\uB294 \uC0C1\uD669\uC774\uB77C
+        \uC5B4\uCA54 \uC218 \uC5C6\uC5C8\uC5B4\uC694. "
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uD558\uC9C0\uB9CC \uB180\uB790\uC5B4\uC694.\n\uB208\uC744 \uB728\uC790\uB9C8\uC790
+        \uB2A5\uB825\uC744 \uBC1C\uC0B0\uD558\uC2E4 \uC218 \uC788\uB294 \uBD84\uC740
+        \uCC98\uC74C\uC774\uC5C8\uAC70\uB4E0\uC694."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC800\uB294 \uB2F9\uC2E0\uC774 \uC774 \uC0C1\uD669\uC744 \uD574\uACB0\uD560
+        \uC218 \uC788\uC744\uC9C0\uB3C4 \uBAA8\uB978\uB2E4\uACE0 \uC0DD\uAC01\uD574\uC694. "
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uADF8\uB9AC\uACE0 \uB9CC\uC57D \uB2F9\uC2E0\uC774 \uAFC8\uC18D\uC5D0
+        \uAC07\uD78C \uC0DD\uC874\uC790\uB4E4\uC744 \uAD6C\uCD9C\uD55C\uB2E4\uBA74
+        \uC774\uD6C4 \uD0D0\uD5D8\uC5D0\uB3C4 \uD070 \uB3C4\uC6C0\uC774 \uB420\uAC70\uC5D0\uC694."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uBCA8\uCC98\uB7FC \uC0C1\uC810\uC744 \uC6B4\uC601\uD558\uAC70\uB098,
+        \uCE74\uB77C\uCC98\uB7FC \uB2F9\uC2E0\uC758 \uB2A5\uB825\uC744 \uD0A4\uC6CC\uC904
+        \uC218 \uC788\uC744\uAC70\uC5D0\uC694."
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uADF8\uB9AC\uACE0 \uC5B4\uCA4C\uBA74... ..."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uB2F9\uC2E0\uC774 \uC774 \uC7A5\uC18C\uC758 \uC218\uC218\uAED8\uB07C\uB97C
+        \uD480 \uC218 \uC788\uC744\uC9C0\uB3C4 \uBAA8\uB974\uACA0\uC8E0."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC774\uACF3\uC5D0 \uC628 \uBAA8\uB4E0 \uC0AC\uB78C\uB4E4\uC740 \uCC98\uC74C
+        \uB208\uC744 \uB728\uAE30 \uC804 \uAE30\uC5B5\uC744 \uC783\uC5B4\uBC84\uB824\uC694.
+        \uC544\uB9C8 \uB2F9\uC2E0\uB3C4 \uADF8\uB807\uACA0\uC8E0."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC5EC\uAE30 \uBAA8\uB4E0 \uC774\uB4E4\uC758 \uC758\uBB38\uC774\uC5D0\uC694.
+        \uC790\uC2E0\uC740 \uB204\uAD6C\uC600\uB294\uC9C0, \uC5B4\uC9F8\uC11C \uC5EC\uAE30\uB85C
+        \uC654\uB294\uC9C0."
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC81C \uC0DD\uAC01\uC5D0 \uBD88\uACFC\uD558\uC9C0\uB9CC..."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uADF8 \uAFC8\uC5D0\uC11C \uBC1C\uC0DD\uD55C \uC774\uC0C1 \uD604\uC0C1\uC744
+        \uC870\uC0AC\uD558\uBA74 \uC774 \uC7A5\uC18C\uC5D0 \uB300\uD55C, \uC6B0\uB9AC\uB4E4\uC5D0
+        \uB300\uD55C \uC758\uBB38\uC744 \uD480\uAC8C\uB420\uC9C0\uB3C4 \uBAA8\uB978\uB2E4\uACE0
+        \uC0DD\uAC01\uD574\uC694."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: ... ... ... ... ...
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC544\uCC28! \uAFC8 \uD0D0\uD5D8 \uBC29\uBC95\uC744 \uC54C\uB824\uB4DC\uB838\uC5B4\uC57C
+        \uD588\uB294\uB370 \uC774\uC57C\uAE30\uAC00 \uAE38\uC5C8\uB124\uC694."
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uB4E4\uC744 \uC900\uBE44\uAC00 \uB418\uC2DC\uBA74 \uB2E4\uC2DC \uB9D0\uC744
+        \uAC78\uC5B4\uC8FC\uC138\uC694.\n\uC800\uB3C4 \uC124\uBA85\uD560 \uB0B4\uC6A9\uC744
+        \uD55C \uBC88 \uB354 \uC815\uB9AC\uD560\uAC8C\uC694. \uD558\uD558..."
+  - scriptData:
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uAFC8\uC18D\uC5D0 \uB4E4\uC5B4\uAC08 \uC218 \uC788\uB294 \uD3EC\uD0C8\uC5D0
+        \uB300\uD574 \uC124\uBA85\uD574\uB4DC\uB9B4\uAC8C\uC694."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC81C \uC704\uCABD\uC5D0 \uC788\uB294 \uD3EC\uD0C8\uC704\uC5D0 \uC11C\uC11C
+        \uC0C1\uD638\uC791\uC6A9\uC744 \uD558\uC2DC\uBA74 \uAC08 \uC218 \uC788\uB294
+        \uAFC8\uB4E4\uC774 \uBA38\uB9AC \uC18D\uC5D0\uC11C \uC2A4\uCCD0\uC9C0\uB098\uAC08
+        \uAC70\uC5D0\uC694."
+    - spriteIndex: 1
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uAD49\uC7A5\uD788 \uB290\uB08C\uC801\uC778 \uB290\uB08C\uC774\uACE0...
+        \uC0AC\uB78C\uB9C8\uB2E4 \uB290\uB07C\uB294\uAC8C \uB2EC\uB77C\uC11C \uD655\uC2E4\uD558\uAC8C
+        \uB9D0\uC500\uB4DC\uB9AC\uAE30 \uC5B4\uB835\uAE34 \uD55C\uB370..."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uADF8\uB798\uB3C4 \uB9C9\uD788\uAC70\uB098 \uC5B4\uB824\uC6CC\uD558\uB294
+        \uC0AC\uB78C\uB4E4\uC740 \uC5C6\uC5C8\uC73C\uB2C8 \uAD1C\uCC2E\uC744 \uAC70\uC5D0\uC694."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uCC38, \uCE58\uBA85\uC801\uC778 \uD53C\uD574\uB97C \uC785\uB354\uB77C\uB3C4
+        \uAD1C\uCC2E\uC544\uC694.\n\uD0D0\uD5D8\uD558\uBA70 \uC5BB\uC740 \uC804\uB9AC\uD488\uC744
+        \uB9CE\uC774 \uC783\uC9C0\uB9CC, \uC6D0\uB9AC\uB294 \uBAB0\uB77C\uB3C4 \uB2E4\uC2DC
+        \uC774 \uD3EC\uD0C8\uB85C \uB418\uB3CC\uC544\uC624\uC2DC\uB354\uB77C\uACE0\uC694."
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC774\uC815\uB3C4\uBA74 \uCDA9\uBD84\uD788 \uC124\uBA85\uB4DC\uB9B0
+        \uAC83 \uAC19\uB124\uC694."
+    - spriteIndex: 5
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uB9CC\uC57D \uAFC8 \uD0D0\uD5D8\uC5D0 \uAD00\uB828\uD574\uC11C \uAD81\uAE08\uD55C
+        \uC810\uC774 \uC788\uB2E4\uBA74 \uC5B8\uC81C\uB4E0 \uC808 \uCC3E\uC544\uC624\uC138\uC694.\n\uADF8
+        \uBD84\uC57C \uB9CC\uD07C\uC740 \uC815\uB9D0 \uC790\uC2E0 \uC788\uAC70\uB4E0\uC694!"

@@ -57,7 +57,7 @@ public class DataManager : MonoBehaviour
     public static DataManager instance;
 
     public byte saveSlotIndex = 0;
-    public string path { get; private set; } = Application.persistentDataPath;
+    public string path { get; private set; }
     public string saveFileName { get; private set; } = "SaveData";
     public string optionFileName { get; private set; } = "OptionData";
 
@@ -75,6 +75,7 @@ public class DataManager : MonoBehaviour
         }
         else Destroy(gameObject);
         #endregion
+        path = Application.persistentDataPath;
     }
 
     // 추후 비동기 방식으로 구현 예정

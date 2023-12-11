@@ -8,6 +8,8 @@ public class StageData : ScriptableObject
 {
     public string stageName;
     public byte stageIndex;
+    public string stageGoal;
+    public int recommendLevel;
     public float stageGlobalLightIntensity = 1f;
     public AudioClip bgm;
     public AudioClip bossBgm;

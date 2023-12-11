@@ -39,7 +39,10 @@ public class TutorialManager : MonoBehaviour
     public Button skipButton;
 
     [Title("Second Tutorial")]
-    public Transform[] lobbyPoints;
+    public Transform[] pandoraFirstPath;
+    public Transform[] BellStorePath;
+    public Transform[] KaraTraningPath;
+    public Transform[] pandoraBackPath;
     public Transform[] placeZoomPoints;
     public TalkData tutorialPandoraTalkData;
 
@@ -311,6 +314,13 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialIndex++;
         GameManager.instance.isNewGame = false;
+        player.canMove = false;
+
+        pandora.talkZone.zone.enabled = false;
+        bell.talkZone.zone.enabled = false;
+        bell.canTalk = false;
+        kara.talkZone.zone.enabled = false;
+        kara.canTalk = false;
 
         yield return MeetPandoraRoutine();
 
@@ -327,7 +337,7 @@ public class TutorialManager : MonoBehaviour
         pandora.SetCanTalk(false);
 
         // 판도라 이동
-        pandora.Move(lobbyPoints[0].position);
+        pandora.Move(pandoraFirstPath[0].position);
 
         // 판도라 도착
         yield return new WaitWhile(() => pandora.isMoving);
@@ -346,23 +356,30 @@ public class TutorialManager : MonoBehaviour
 
         // 대화창 닫을 때 까지 대기
         yield return new WaitWhile(() => TalkManager.instance.isTalking);
+        pandora.talkZone.zone.enabled = false;
 
         // 판도라 벨의 상점으로 이동
-        pandora.Move(lobbyPoints[1].position);
-        Debug.Log("판도라 이동");
-
-        // 판도라 도착까지 대기
+        player.canMove = true;
+        pandora.Move(BellStorePath[0].position);
         yield return new WaitWhile(() => pandora.isMoving);
+
+        pandora.Move(BellStorePath[1].position);
+        yield return new WaitWhile(() => pandora.isMoving);
+
+        pandora.LookRight();
     }
 
     private IEnumerator MeetBellRoutine()
     {
-        // 플레이어 벨의 상점 도착까지 대기
-        yield return new WaitUntil(() => bell.talkZone.isPlayerIn);
+        // 플레이어가 벨의 상점에서 상호작용 할 때 까지 대기
+        bell.talkZone.zone.enabled = true;
+        yield return new WaitUntil(() => bell.talkZone.tryInteract);
+        bell.talkZone.zone.enabled = false;
 
         // 벨 소개 튜토리얼
         pandora.talkZone.TalkStart(1);
         yield return new WaitWhile(() => TalkManager.instance.isTalking);
+        pandora.talkZone.zone.enabled = false;
 
         // 인벤토리 열기
         UIManager.instance.UIManage(UIManager.instance.inventoryUI);
@@ -391,25 +408,81 @@ public class TutorialManager : MonoBehaviour
 
         // 대화 종료 대기
         yield return new WaitWhile(() => TalkManager.instance.isTalking);
+        pandora.talkZone.zone.enabled = false;
+
+        // 벨 상호작용 활성화
+        bell.canTalk = true;
+        bell.talkZone.zone.enabled = true;
+        bell.talkData = LobbyManager.instance.bell0;
 
         // 판도라 이동
-        pandora.Move(lobbyPoints[2].position);
+        pandora.Move(KaraTraningPath[0].position);
+        yield return new WaitWhile(() => pandora.isMoving);
 
-        yield return new WaitUntil(() => !pandora.isMoving && kara.talkZone.isPlayerIn);
+        pandora.Move(KaraTraningPath[1].position);
+        yield return new WaitWhile(() => pandora.isMoving);
+
+        pandora.LookRight();
+        yield return new WaitWhile(() => pandora.isMoving);
+        // 플레이어가 카라의 훈련장에서 상호작용 할 때 까지 대기
+        kara.talkZone.zone.enabled = true;
+        yield return new WaitUntil(() => kara.talkZone.tryInteract);
+        kara.talkZone.zone.enabled = false;
 
         pandora.talkZone.TalkStart(3);
 
         yield return new WaitWhile(() => TalkManager.instance.isTalking);
 
         UIManager.instance.UIManage(UIManager.instance.stateUpgradeUI);
+
+        yield return new WaitUntil(() => UIManager.instance.curUI == null);
     }
 
     private IEnumerator IntroduceEnterStageRoutine()
     {
-        // 스테이지 진입 방법 설명
-        // 판도라에게 말을 걸어 스테이지 입장 가능
+        // 소개를 마치고 포탈로 돌아가기로 함
+        pandora.talkZone.TalkStart(4);
+        yield return new WaitWhile(() => TalkManager.instance.isTalking);
+        pandora.talkZone.zone.enabled = false;
 
-        yield return null;
+        // 카라 상호작용 활성화
+        kara.talkZone.zone.enabled = true;
+        kara.canTalk = true;
+        kara.talkData = LobbyManager.instance.kara0;
+
+        // 판도라 원래 위치로 돌아감
+        pandora.Move(pandoraBackPath[0].position);
+        yield return new WaitWhile(() => pandora.isMoving);
+
+        pandora.Move(pandoraBackPath[1].position);
+        yield return new WaitWhile(() => pandora.isMoving);
+
+        pandora.LookLeft();
+        pandora.talkZone.zone.enabled = true;
+        pandora.canTalk = false;
+        yield return new WaitUntil(() => pandora.talkZone.tryInteract);
+
+        // 세계관 설명
+        pandora.talkZone.TalkStart(5);
+        pandora.talkZone.zone.enabled = false;
+        yield return new WaitWhile(() => TalkManager.instance.isTalking);
+
+        yield return Utils.delay1;
+
+        pandora.canTalk = false;
+        yield return new WaitUntil(() => pandora.talkZone.tryInteract);
+        // 포탈 사용 설명
+        pandora.talkZone.TalkStart(6);
+        pandora.talkZone.zone.enabled = false;
+        yield return new WaitWhile(() => TalkManager.instance.isTalking);
+
+        // 판도라 상호작용 활성화
+        pandora.talkZone.zone.enabled = true;
+        pandora.canTalk = true;
+        pandora.talkData = LobbyManager.instance.pandora0;
+
+        // 포탈 활성화
+        LobbyManager.instance.portal.isOpen = true;
     }
     #endregion
 }

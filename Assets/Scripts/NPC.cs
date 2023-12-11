@@ -38,8 +38,6 @@ public class NPC : MonoBehaviour
         anim = GetComponent<Animator>();
 
         backLight.color = spriter.sharedMaterial.GetColor("_Color");
-        originalDirection = spriter.flipX;
-
         speakerData.baseColor = spriter.sharedMaterial.GetColor("_Color");
         speakerData.eyeColor = spriter.sharedMaterial.GetColor("_EyeColor");
         speakerData.dark = spriter.sharedMaterial.GetFloat("_Dark");
@@ -150,5 +148,15 @@ public class NPC : MonoBehaviour
     {
         this.canTalk = canTalk;
         talkZone.zone.enabled = canTalk;
+    }
+
+    public void LookLeft()
+    {
+        spriter.flipX = true;
+    }
+
+    public void LookRight()
+    {
+        spriter.flipX = false;
     }
 }

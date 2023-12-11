@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageName: "\uC54C \uC218 \uC5C6\uB294 \uACF3"
   stageIndex: 0
+  stageGoal: "2\uBD84 \uC0DD\uC874"
+  recommendLevel: 0
   stageGlobalLightIntensity: 1
   bgm: {fileID: 8300000, guid: d45a2f517cf0a4443b55f4ea1cfd0abb, type: 3}
   bossBgm: {fileID: 0}

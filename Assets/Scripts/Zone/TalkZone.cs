@@ -10,8 +10,11 @@ public class TalkZone : Zone
     [SerializeField]
     NPC npc;
 
+    public bool tryInteract;
+
     public Collider2D zone { get; private set; }
 
+    private Coroutine tryInteractRoutine;
     private static WaitUntil waitUntilcloseUI;
 
     void Awake()
@@ -23,6 +26,13 @@ public class TalkZone : Zone
 
     public override void Interact()
     {
+        Debug.Log($"{npc.name}에게 상호작용");
+        if (tryInteractRoutine != null)
+        {
+            StopCoroutine(tryInteractRoutine);
+        }
+        tryInteractRoutine = StartCoroutine(TryInteractRoutine());
+
         // 대화 기능이 없는 NPC
         if (npc.talkData == null)
         {
@@ -38,9 +48,20 @@ public class TalkZone : Zone
         TalkStart();
     }
 
+    // 플레이어가 상호작용을 시도했는지 여부를 확인, 일정 시간 후 다시 되돌림
+    private IEnumerator TryInteractRoutine()
+    {
+        tryInteract = true;
+
+        yield return Utils.delay0_1;
+
+        tryInteract = false;
+    }
+
     public void TalkStart(byte talkSessionId = 0)
     {
         npc.canTalk = false;
+        npc.originalDirection = npc.spriter.flipX;
         npc.LookAtTarget();
 
         // 카메라 확대
@@ -72,11 +93,11 @@ public class TalkZone : Zone
         {
             TalkManager.instance.zoomCam.enabled = false;
             zone.enabled = true;
+            npc.canTalk = true;
             StartCoroutine(npc.ResetLook());
         }
 
         TalkManager.instance.OnTalkEnd -= TalkEnd;
-        LobbyManager.instance.player.currentZone = null;
     }
 
     private IEnumerator ShopRoutine()
