@@ -195,9 +195,8 @@ public class GameManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
 #endif
+        Application.Quit();
     }
 
     private void OnSubmit(InputValue value)
