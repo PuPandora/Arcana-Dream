@@ -11,9 +11,9 @@ public class PlayerStates
     public StateUpgradeData healthState;
     public StateUpgradeData defenseState;
 
-    public short damageLevel;
-    public short healthLevel;
-    public short defenseLevel;
+    public short damageLevel = 0;
+    public short healthLevel = 0;
+    public short defenseLevel = 0;
 
     private float baseHealth = 100f;
 
@@ -50,5 +50,12 @@ public class PlayerStates
         {
             return baseHealth * (healthState.totalIncreaseValue * 0.01f + 1) * (healthState.totalMoreValue * 0.01f + 1);
         }
+    }
+
+    public void Init()
+    {
+        damageState.level = damageLevel;
+        healthState.level = healthLevel;
+        defenseState.level = defenseLevel;
     }
 }

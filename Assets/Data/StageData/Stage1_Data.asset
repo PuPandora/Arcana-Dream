@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397b23a8b09308a469571887b3add654, type: 3}
   m_Name: Stage1_Data
   m_EditorClassIdentifier: 
-  stageName: "\uC791\uC740 \uC6A9\uC0AC\uC758 \uAFC8\uC18D\uC758 \uB358\uC804"
+  stageName: "\uC791\uC740 \uC6A9\uC0AC\uC758 \uAFC8"
   stageIndex: 1
   stageGoal: "3\uBD84 \uC0DD\uC874"
   recommendLevel: 1

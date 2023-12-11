@@ -144,10 +144,10 @@ public class DataManager : MonoBehaviour
     private void LoadStatesData()
     {
         // 레벨 적용
+        Debug.Log(saveData.playerStateData.damageLevel);
         GameManager.instance.playerStates.damageState.level = saveData.playerStateData.damageLevel;
         GameManager.instance.playerStates.healthState.level = saveData.playerStateData.healthLevel;
         GameManager.instance.playerStates.defenseState.level = saveData.playerStateData.defenseLevel;
-
 
         StateUpgradeData[] statesData = new StateUpgradeData[] {
             GameManager.instance.playerStates.damageState,
@@ -160,6 +160,8 @@ public class DataManager : MonoBehaviour
         {
             data.ApplyState(data.level);
         }
+
+        Debug.Log("스탯 불러오기 완료");
     }
 
     public void SaveOptionData()

@@ -89,6 +89,7 @@ public class StateUpgradeUI : LobbyUI
         // 돈이 부족한 경우
         if (cost > GameManager.instance.gold)
         {
+            UpdateDescription(table);
             stateUpgradeButtonText.text += $"스탯 업그레이드\n{cost}";
             stateUpgradeButton.enabled = false;
             stateUpgradeButtonText.color = Color.red;

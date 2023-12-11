@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using static TutorialManager;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class LobbyManager : MonoBehaviour
         if (GameManager.instance.isNeedLoad)
         {
             GameManager.instance.LoadGame();
+            GameManager.instance.playerStates.Init();
             GameManager.instance.isNeedLoad = false;
         }
 
@@ -58,6 +60,8 @@ public class LobbyManager : MonoBehaviour
             Vector3 portalPos = portal.transform.position + Vector3.up * 0.5f;
             player.transform.position = portalPos;
             portal.isOpen = false;
+            // 임시
+            TutorialManager.instance.StartTutorial(TutorialType.FirstLobby);
         }
         else
         {

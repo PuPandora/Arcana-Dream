@@ -64,29 +64,36 @@ public class TutorialManager : MonoBehaviour
         }
         #endregion
 
-        switch (GameManager.instance.gameState)
+        //Debug.Log(GameManager.instance.gameState);
+        //switch (GameManager.instance.gameState)
+        //{
+
+        //}
+        if (StageManager.instance != null)
         {
-            case GameState.Stage:
-                // 새 게임이 아닌 경우 비활성화
-                if (GameManager.instance.isNewGame)
-                {
-                    stageTutorialGroup.SetActive(true);
-                    stageTutorialGroup.GetComponent<RectTransform>().localScale = Vector3.one;
-                    skipButton.gameObject.SetActive(true);
-                    StartTutorial(TutorialType.FirstStage);
-                }
-                else
-                {
-                    // MEMO
-                    // 새 게임이 아닌 경우 어느 쪽이 좋을까?
-                    // 튜토리얼 오브젝트 생성? 혹은 스테이지에 이미 있고 끄기(파괴)하기?
-                    firstPanelTween.gameObject.SetActive(false);
-                    gameObject.SetActive(false);
-                }
-                break;
-            case GameState.Lobby:
-                StartTutorial(TutorialType.FirstLobby);
-                break;
+            // 새 게임이 아닌 경우 비활성화
+            if (GameManager.instance.isNewGame)
+            {
+                stageTutorialGroup.SetActive(true);
+                stageTutorialGroup.GetComponent<RectTransform>().localScale = Vector3.one;
+                skipButton.gameObject.SetActive(true);
+                GameManager.instance.playerState = PlayerState.Tutorial;
+                StartTutorial(TutorialType.FirstStage);
+            }
+            else
+            {
+                // MEMO
+                // 새 게임이 아닌 경우 어느 쪽이 좋을까?
+                // 튜토리얼 오브젝트 생성? 혹은 스테이지에 이미 있고 끄기(파괴)하기?
+                firstPanelTween.gameObject.SetActive(false);
+                gameObject.SetActive(false);
+            }
+        }
+
+        // 임시 왜인지 튜토리얼 스테이지 진입시 Lobby로 뜸
+        if (LobbyManager.instance != null && GameManager.instance.isNewGame)
+        {
+            //StartTutorial(TutorialType.FirstLobby);
         }
 
         OnTutorialStart += (() => GameManager.instance.ChangePlayerState(PlayerState.Tutorial));
@@ -486,6 +493,7 @@ public class TutorialManager : MonoBehaviour
         pandora.talkData = LobbyManager.instance.pandora0;
 
         // 첫 튜토리얼 종료, 자유행동 가능
+        GameManager.instance.playerState = PlayerState.None;
         GameManager.instance.isNewGame = false;
         LobbyManager.instance.portal.isOpen = true;
     }

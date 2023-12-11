@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public PlayerStates playerStates;
     public int playedStageCount;
 
-    public long gold { get; private set; }
+    public long gold;
 
     [Title("# Input")]
     public bool isInputInteract;

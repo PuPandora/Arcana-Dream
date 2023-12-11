@@ -122,6 +122,11 @@ MonoBehaviour:
       script: "\uC5EC\uAE30\uC5D0 \uC654\uB2E4\uBA74 \uC774\uC720\uB294 \uD558\uB098\uACA0\uC9C0.\n\uBB34\uC5C7\uC744,
         \uC5BC\uB9C8\uB9CC\uD07C \uAC15\uD574\uC9C0\uACE0 \uC2F6\uB098?"
   - scriptData:
+    - spriteIndex: 3
+      speakerData: {fileID: 11400000, guid: 60bd7f84ed37f6a48af5a529865917e3, type: 2}
+      script: "\uC9C0\uAE08 \uB124 \uC218\uC900\uC5D0\uC11C\uB294 \uC774\uC815\uB3C4\uC758
+        \uD6C8\uB828\uB9CC \uAC00\uB2A5\uD558\uACA0\uAD70.\n\uB098\uC911\uC5D0 \uB354
+        \uAC15\uD574\uC9C0\uBA74 \uB354 \uB9CE\uC740 \uCF54\uC2A4\uB97C \uC900\uBE44\uD574\uC8FC\uC9C0."
     - spriteIndex: 0
       speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
       script: "'\uD604\uC7AC' \uC788\uB294 \uC2DC\uC124\uC740 \uC804\uBD80 \uC18C\uAC1C\uB4DC\uB9B0

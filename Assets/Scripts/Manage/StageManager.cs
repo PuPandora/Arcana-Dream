@@ -93,7 +93,14 @@ public class StageManager : MonoBehaviour
         {
             isPlaying = false;
             stageData =  TutorialManager.instance.tutorialStageData;
-            StartCoroutine(TutorialManager.instance.FirstTutorialRoutine());
+
+            // 임시, 스탯 초기화 (스크립터블 오브젝트 이슈)
+            GameManager.instance.playerStates.healthState.level = 0;
+            GameManager.instance.playerStates.healthState.ApplyState(0);
+            GameManager.instance.playerStates.damageState.level = 0;
+            GameManager.instance.playerStates.damageState.ApplyState(0);
+            GameManager.instance.playerStates.defenseState.level = 0;
+            GameManager.instance.playerStates.defenseState.ApplyState(0);
         }
         else
         {

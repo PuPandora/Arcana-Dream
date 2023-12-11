@@ -36,7 +36,7 @@ public class Item : MonoBehaviour
         while (true)
         {
             Vector2 dirVec = StageManager.instance.player.transform.position - transform.position;
-            transform.Translate(dirVec.normalized * 0.5f * Time.fixedDeltaTime);
+            transform.Translate(dirVec.normalized * 2f * Time.fixedDeltaTime);
             yield return Utils.delayFixedUpdate;
         }
     }
