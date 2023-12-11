@@ -57,7 +57,7 @@ public class DataManager : MonoBehaviour
     public static DataManager instance;
 
     public byte saveSlotIndex = 0;
-    public string path { get; private set; } = Application.dataPath + "/Data/SaveData/";
+    public string path { get; private set; } = Application.persistentDataPath;
     public string saveFileName { get; private set; } = "SaveData";
     public string optionFileName { get; private set; } = "OptionData";
 
