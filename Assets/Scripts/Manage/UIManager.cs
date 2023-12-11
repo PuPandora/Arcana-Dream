@@ -76,6 +76,10 @@ public class UIManager : MonoBehaviour
     {
         if (curUI == null) return;
 
+        if (curUI == menuUI)
+        {
+            GameManager.instance.Resume();
+        }
         curUI.HideUI();
         curUI = null;
 

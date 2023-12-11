@@ -19,5 +19,6 @@ public class MenuUI : LobbyUI
         gameSave.onClick.AddListener(GameManager.instance.SaveGame);
         //gameOption
         mainMenu.onClick.AddListener(GameManager.instance.EnterMainMenu);
+        mainMenu.onClick.AddListener(GameManager.instance.Resume);
     }
 }

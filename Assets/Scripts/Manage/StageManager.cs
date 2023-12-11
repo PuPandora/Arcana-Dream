@@ -88,7 +88,7 @@ public class StageManager : MonoBehaviour
         }
 
         // 튜토리얼
-        isTutorial = TutorialManager.instance.tutorialIndex == 0;
+        isTutorial = GameManager.instance.isNewGame;
         if (isTutorial)
         {
             isPlaying = false;
@@ -165,6 +165,7 @@ public class StageManager : MonoBehaviour
             if (isTutorial)
             {
                 health = GameManager.instance.playerStates.health;
+                hud.UpdateHealthSlider();
                 return;
             }
             health = 0;

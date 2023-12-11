@@ -75,7 +75,7 @@ public class DataManager : MonoBehaviour
         }
         else Destroy(gameObject);
         #endregion
-        path = Application.persistentDataPath;
+        path = Application.persistentDataPath + "/";
     }
 
     // 추후 비동기 방식으로 구현 예정
@@ -94,11 +94,10 @@ public class DataManager : MonoBehaviour
         saveData.playerStateData.defenseLevel = GameManager.instance.playerStates.defenseState.level;
 
         saveData.playedStageCount = GameManager.instance.playedStageCount;
-        saveData.tutorialIndex = TutorialManager.instance.tutorialIndex;
         saveData.isNewGame = GameManager.instance.isNewGame;
 
         string json = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(path + saveFileName + ".json", json);
+        File.WriteAllText(path + saveFileName + saveSlotIndex + ".json", json);
 
         Debug.Log($"게임 데이터 저장 완료\n경로 : {path}");
     }
@@ -106,13 +105,14 @@ public class DataManager : MonoBehaviour
     [ContextMenu("Load Game")]
     public void LoadGame()
     {
-        if (!File.Exists(path + saveFileName))
+        var saveFilePath = path + saveFileName + saveSlotIndex + ".json";
+        if (!File.Exists(saveFilePath))
         {
             Debug.Log("데이터가 없습니다.");
             return;
         }
 
-        string loadJson = File.ReadAllText(path + saveFileName);
+        string loadJson = File.ReadAllText(saveFilePath);
         JsonUtility.FromJsonOverwrite(loadJson, saveData);
 
         GameManager.instance.inventory.ApplyData(saveData.inventoryData);
@@ -122,7 +122,6 @@ public class DataManager : MonoBehaviour
         GameManager.instance.player.spriter.flipX = saveData.playerSpriteFlip;
 
         GameManager.instance.playedStageCount = saveData.playedStageCount;
-        TutorialManager.instance.tutorialIndex = saveData.tutorialIndex;
         GameManager.instance.isNewGame = saveData.isNewGame;
 
         LoadStatesData();

@@ -15,7 +15,10 @@ public class PlayerFollowUI : MonoBehaviour
 
     void OnEnable()
     {
-        rect.position = GameManager.instance.player.transform.position;
+        if (GameManager.instance.player != null)
+        {
+            rect.position = GameManager.instance.player.transform.position;
+        }
     }
 
     void FixedUpdate()

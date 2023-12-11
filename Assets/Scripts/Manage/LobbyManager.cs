@@ -38,30 +38,30 @@ public class LobbyManager : MonoBehaviour
             Debug.LogError("LobbyManage가 2개 이상입니다.");
             Destroy(gameObject);
         }
+    }
 
+    void Start()
+    {
         if (GameManager.instance.isNeedLoad)
         {
             GameManager.instance.LoadGame();
             GameManager.instance.isNeedLoad = false;
         }
 
-        if (TutorialManager.instance.tutorialIndex != 1)
-        {
-            pandora.transform.position = defaultPandoraPos.position;
-        }
-    }
-
-    void Start()
-    {
         if (AudioManager.instance != null)
         {
             AudioManager.instance.PlayBgmFade(AudioManager.Bgm.Lobby);
         }
 
-        if (TutorialManager.instance.tutorialIndex == 1)
+        if (GameManager.instance.isNewGame)
         {
-            TutorialManager.instance.StartTutorial(TutorialManager.TutorialType.FirstLobby);
+            Vector3 portalPos = portal.transform.position + Vector3.up * 0.5f;
+            player.transform.position = portalPos;
             portal.isOpen = false;
+        }
+        else
+        {
+            pandora.transform.position = defaultPandoraPos.position;
         }
 
         if (GameManager.instance.isNeedSave)

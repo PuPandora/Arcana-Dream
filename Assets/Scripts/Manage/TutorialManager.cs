@@ -12,7 +12,6 @@ public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager instance;
     public enum TutorialType : byte { FirstStage, FirstLobby }
-    public byte tutorialIndex = 0;
 
     [ReadOnly]
     private TutorialType type;
@@ -54,16 +53,6 @@ public class TutorialManager : MonoBehaviour
 
     void Awake()
     {
-        // 새 게임이 아닌 경우 비활성화
-        if (!GameManager.instance.isNewGame)
-        {
-            // MEMO
-            // 새 게임이 아닌 경우 어느 쪽이 좋을까?
-            // 튜토리얼 오브젝트 생성? 혹은 스테이지에 이미 있고 끄기(파괴)하기?
-            firstPanelTween.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-        }
-
         #region 싱글톤
         if (instance == null)
         {
@@ -75,18 +64,35 @@ public class TutorialManager : MonoBehaviour
         }
         #endregion
 
+        switch (GameManager.instance.gameState)
+        {
+            case GameState.Stage:
+                // 새 게임이 아닌 경우 비활성화
+                if (GameManager.instance.isNewGame)
+                {
+                    stageTutorialGroup.SetActive(true);
+                    stageTutorialGroup.GetComponent<RectTransform>().localScale = Vector3.one;
+                    skipButton.gameObject.SetActive(true);
+                    StartTutorial(TutorialType.FirstStage);
+                }
+                else
+                {
+                    // MEMO
+                    // 새 게임이 아닌 경우 어느 쪽이 좋을까?
+                    // 튜토리얼 오브젝트 생성? 혹은 스테이지에 이미 있고 끄기(파괴)하기?
+                    firstPanelTween.gameObject.SetActive(false);
+                    gameObject.SetActive(false);
+                }
+                break;
+            case GameState.Lobby:
+                StartTutorial(TutorialType.FirstLobby);
+                break;
+        }
+
         OnTutorialStart += (() => GameManager.instance.ChangePlayerState(PlayerState.Tutorial));
         OnTutorialEnd += (() => GameManager.instance.ChangePlayerState(PlayerState.None));
 
         waitUntilPress = new WaitUntil(() => isPressKey);
-
-        if (tutorialIndex == 0)
-        {
-            stageTutorialGroup.SetActive(true);
-            stageTutorialGroup.GetComponent<RectTransform>().localScale = Vector3.one;
-        }
-
-        skipButton.gameObject.SetActive(true);
     }
 
     public void StartTutorial(TutorialType type)
@@ -312,8 +318,6 @@ public class TutorialManager : MonoBehaviour
     #region 로비 튜토리얼 - 첫 만남
     private IEnumerator FirstLobbyRoutine()
     {
-        tutorialIndex++;
-        GameManager.instance.isNewGame = false;
         player.canMove = false;
 
         pandora.talkZone.zone.enabled = false;
@@ -481,7 +485,8 @@ public class TutorialManager : MonoBehaviour
         pandora.canTalk = true;
         pandora.talkData = LobbyManager.instance.pandora0;
 
-        // 포탈 활성화
+        // 첫 튜토리얼 종료, 자유행동 가능
+        GameManager.instance.isNewGame = false;
         LobbyManager.instance.portal.isOpen = true;
     }
     #endregion
