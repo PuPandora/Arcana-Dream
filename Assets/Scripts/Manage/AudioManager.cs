@@ -195,13 +195,9 @@ public class AudioManager : MonoBehaviour
                     break;
                 case Sfx.Step:
                     randIndex = (byte)Random.Range(0, 3);
-                    Debug.Log($"랜덤 숫지 : {randIndex}");
                     channel.pitch = Random.Range(0.7f, 0.9f);
                     break;
             }
-            Debug.Log(sfx);
-            Debug.Log((byte)sfx + randIndex);
-            Debug.Log(randIndex);
             channel.clip = sfxClips[(short)sfx + randIndex];
             channel.Play();
             break;

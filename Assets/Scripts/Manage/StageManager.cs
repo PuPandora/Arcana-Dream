@@ -88,7 +88,7 @@ public class StageManager : MonoBehaviour
         }
 
         // 튜토리얼
-        isTutorial = TutorialManager.instance.gameObject.activeSelf;
+        isTutorial = TutorialManager.instance.tutorialIndex == 0;
         if (isTutorial)
         {
             isPlaying = false;
@@ -201,12 +201,18 @@ public class StageManager : MonoBehaviour
     {
         isLive = false;
         isPlaying = false;
+
         var enemyPool = GameManager.instance.poolManager.GetPool(PoolType.Enemy);
         foreach (var enemy in enemyPool)
         {
             enemy.GetComponent<Enemy>().Hit(999999999.0f);
         }
-        
+
+        foreach (var item in GameManager.instance.poolManager.GetPool(PoolType.DropItem))
+        {
+            StartCoroutine(item.GetComponent<Item>().MoveToPlayerRoutine());
+        }
+
         OnGameClear?.Invoke();
     }
 

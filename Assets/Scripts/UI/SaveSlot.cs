@@ -29,7 +29,7 @@ public class SaveSlot : MonoBehaviour
         if (isExistData)
         {
             SaveData data = DataManager.instance.LoadSaveData(slotIndex);
-            positionText.text = $"위치 : {data.position}";
+            positionText.text = $"위치 : 아르카나 드림";
             playedStageCountText.text = $"꿈 탐색 횟수 : {data.playedStageCount}";
             averageLevelText.text = $"평균 레벨 : {data.playerStateData.averageLevel}";
             lastestPlayedTimeText.text = $"마지막 플레이 : {data.lastPlayedDate}";

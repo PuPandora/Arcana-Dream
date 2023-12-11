@@ -43,11 +43,13 @@ public class SaveData
     public InventoryData inventoryData = new InventoryData();
 
     // Game Data
-    public long gold;
+    public long gold = 0;
     public Vector3 position;
     public bool playerSpriteFlip;
     public int playedStageCount = 0;
     public string lastPlayedDate = "";
+    public byte tutorialIndex = 0;
+    public bool isNewGame = true;
 }
 
 public class DataManager : MonoBehaviour
@@ -90,6 +92,10 @@ public class DataManager : MonoBehaviour
         saveData.playerStateData.healthLevel = GameManager.instance.playerStates.healthState.level;
         saveData.playerStateData.defenseLevel = GameManager.instance.playerStates.defenseState.level;
 
+        saveData.playedStageCount = GameManager.instance.playedStageCount;
+        saveData.tutorialIndex = TutorialManager.instance.tutorialIndex;
+        saveData.isNewGame = GameManager.instance.isNewGame;
+
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(path + saveFileName + ".json", json);
 
@@ -113,6 +119,10 @@ public class DataManager : MonoBehaviour
         GameManager.instance.player.transform.position = saveData.position;
         GameManager.instance.playerCam.transform.position = saveData.position;
         GameManager.instance.player.spriter.flipX = saveData.playerSpriteFlip;
+
+        GameManager.instance.playedStageCount = saveData.playedStageCount;
+        TutorialManager.instance.tutorialIndex = saveData.tutorialIndex;
+        GameManager.instance.isNewGame = saveData.isNewGame;
 
         LoadStatesData();
 
@@ -156,7 +166,6 @@ public class DataManager : MonoBehaviour
     {
         string data = JsonUtility.ToJson(optionData, true);
         SaveJsonData(path + optionFileName, data);
-        Debug.Log($"저장한 옵션 저장 파일 경로 및 이름 : {path + optionFileName + ".json"}");
     }
 
     public void LoadOptionData()
@@ -168,11 +177,8 @@ public class DataManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("옵션 데이터를 불러왔습니다.");
-        Debug.Log($"파일 경로 (.json 제외 : {path + optionFileName}");
         string data = LoadJsonData(path + optionFileName);
         optionData = JsonUtility.FromJson<OptionData>(data);
-        Debug.Log($"불러온 옵션 저장 파일 경로 및 이름 : {path + optionFileName + ".json"}");
     }
 
     private bool CheckJsonFileExist(string path)

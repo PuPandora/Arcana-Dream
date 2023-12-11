@@ -29,6 +29,7 @@ public class PlayerStates
             {
                 result += state;
             }
+            result /= allStates.Length;
             result = MathF.Round(result);
 
             return (short)result;

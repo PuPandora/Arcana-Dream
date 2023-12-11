@@ -1,0 +1,94 @@
+{
+    "playerStateData": {
+        "damageState": {
+            "instanceID": 32914
+        },
+        "healthState": {
+            "instanceID": 32916
+        },
+        "defenseState": {
+            "instanceID": 32918
+        },
+        "damageLevel": 3,
+        "healthLevel": 6,
+        "defenseLevel": 0
+    },
+    "inventoryData": {
+        "count": 30,
+        "itemIds": [
+            9003,
+            9001,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "stacks": [
+            3,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "gold": 0,
+    "position": {
+        "x": 0.14000000059604646,
+        "y": 5.079999923706055,
+        "z": 0.0
+    },
+    "playerSpriteFlip": false,
+    "playedStageCount": 1,
+    "lastPlayedDate": "",
+    "tutorialIndex": 3,
+    "isNewGame": true
+}

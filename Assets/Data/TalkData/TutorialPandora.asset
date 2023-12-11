@@ -117,3 +117,9 @@ MonoBehaviour:
       speakerData: {fileID: 11400000, guid: 60bd7f84ed37f6a48af5a529865917e3, type: 2}
       script: "\uC5EC\uAE30\uC5D0 \uC654\uB2E4\uBA74 \uC774\uC720\uB294 \uD558\uB098\uACA0\uC9C0.\n\uC5B4\uB5BB\uAC8C
         \uAC15\uD574\uC9C8\uB798?"
+  - scriptData:
+    - spriteIndex: 0
+      speakerData: {fileID: 11400000, guid: 919bf59e399ca92489ff173ecf463907, type: 2}
+      script: "\uC774\uC81C \uAFC8 \uD0D0\uD5D8\uACFC \uC774\uACF3\uC5D0 \uB300\uD574
+        \uC54C\uB824\uB4DC\uB9B4\uAC8C\uC694.\n\uC800\uC640 \uCC98\uC74C \uB9CC\uB09C
+        \uD3EC\uD0C8 \uC55E\uC5D0\uC11C \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC744\uAC8C\uC694."

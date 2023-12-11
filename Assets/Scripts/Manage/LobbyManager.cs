@@ -12,10 +12,12 @@ public class LobbyManager : MonoBehaviour
     [Title("NPC")]
     public NPC pandora;
     public NPC bell;
+    public NPC kara;
 
     [Title("GameObject")]
     public PortalZone portal;
     public CinemachineVirtualCamera placeZoomCam;
+    public Transform defaultPandoraPos;
 
     [Title("UI")]
     public KeyInputGuide keyInputGuide;
@@ -36,6 +38,17 @@ public class LobbyManager : MonoBehaviour
             Debug.LogError("LobbyManage가 2개 이상입니다.");
             Destroy(gameObject);
         }
+
+        if (GameManager.instance.isNeedLoad)
+        {
+            GameManager.instance.LoadGame();
+            GameManager.instance.isNeedLoad = false;
+        }
+
+        if (TutorialManager.instance.tutorialIndex != 1)
+        {
+            pandora.transform.position = defaultPandoraPos.position;
+        }
     }
 
     void Start()
@@ -45,10 +58,15 @@ public class LobbyManager : MonoBehaviour
             AudioManager.instance.PlayBgmFade(AudioManager.Bgm.Lobby);
         }
 
-        if (GameManager.instance.isNewGame)
+        if (TutorialManager.instance.tutorialIndex == 1)
         {
             TutorialManager.instance.StartTutorial(TutorialManager.TutorialType.FirstLobby);
             portal.isOpen = false;
+        }
+
+        if (GameManager.instance.isNeedSave)
+        {
+            GameManager.instance.SaveGame();
         }
 
         // 스테이지에서 나온거라면

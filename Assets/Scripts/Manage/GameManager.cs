@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public bool isAllowDevMenu;
     public string targetScene;
     public bool isNeedLoad = true;
+    public bool isNeedSave = false;
     public bool isNewGame = false;
     public bool isExitStage;
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     public ItemData[] itemDataBase { get; private set; }
     public EnemyData[] enemyDataBase;
     public PlayerStates playerStates;
+    public int playedStageCount;
 
     public long gold { get; private set; }
 
@@ -87,6 +89,7 @@ public class GameManager : MonoBehaviour
     public void EnterStage()
     {
         SceneManager.LoadScene("Loading");
+        playedStageCount++;
         AudioManager.instance.StopBgm();
         targetScene = $"Stage";
     }
@@ -94,6 +97,7 @@ public class GameManager : MonoBehaviour
     public void ExitStage()
     {
         isExitStage = true;
+        isNeedSave = true;
 
         SceneManager.LoadScene("Loading");
         AudioManager.instance.StopBgm();
@@ -103,7 +107,15 @@ public class GameManager : MonoBehaviour
     public void EnterLobby()
     {
         SceneManager.LoadScene("Loading");
+        AudioManager.instance.StopBgm();
         targetScene = "Lobby";
+    }
+
+    public void EnterMainMenu()
+    {
+        SceneManager.LoadScene("Loading");
+        AudioManager.instance.StopBgm();
+        targetScene = "Main";
     }
 
     private void CheckScene(Scene scene, LoadSceneMode mode)
@@ -118,10 +130,6 @@ public class GameManager : MonoBehaviour
         {
             gameState = GameState.Lobby;
             Debug.Log("로비 진입");
-            if (isNeedLoad)
-            {
-                LoadGame();
-            }
         }
         else if (scene.name.Equals("Main"))
         {
@@ -214,7 +222,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("ESC 키, 취소 키");
 
-        UIManager.instance.CloseCurrentUI();
+        if (UIManager.instance.curUI != null)
+        {
+            UIManager.instance.CloseCurrentUI();
+        }
+        else
+        {
+            UIManager.instance.UIManage(UIManager.instance.menuUI);
+            Time.timeScale = 0;
+        }
     }
 
     private IEnumerator InteractRoutine()

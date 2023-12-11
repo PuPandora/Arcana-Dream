@@ -36,6 +36,7 @@ public class TutorialManager : MonoBehaviour
     public Image[] moveKeyImages;
     [SerializeField] ExpItemData expItemData;
     public StageData tutorialStageData;
+    public Button skipButton;
 
     [Title("Second Tutorial")]
     public Transform[] lobbyPoints;
@@ -81,6 +82,8 @@ public class TutorialManager : MonoBehaviour
             stageTutorialGroup.SetActive(true);
             stageTutorialGroup.GetComponent<RectTransform>().localScale = Vector3.one;
         }
+
+        skipButton.gameObject.SetActive(true);
     }
 
     public void StartTutorial(TutorialType type)
@@ -100,6 +103,9 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator ShowHUDRoutine()
     {
+        StageManager.instance.hud.canvasGroup.alpha = 0;
+        StageManager.instance.hud.cameraCanvasGroup.alpha = 0;
+
         // EXP 아이템을 먹었을 때
         yield return new WaitUntil(() => StageManager.instance.curExp != 0);
 
@@ -304,6 +310,7 @@ public class TutorialManager : MonoBehaviour
     private IEnumerator FirstLobbyRoutine()
     {
         tutorialIndex++;
+        GameManager.instance.isNewGame = false;
 
         yield return MeetPandoraRoutine();
 

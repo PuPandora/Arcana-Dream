@@ -29,6 +29,15 @@ public class Item : MonoBehaviour
 
         // 추후 2 이상 스택 드랍도 가능하도록 기능 추가 예정
         stack = amount;
+    }
 
+    public IEnumerator MoveToPlayerRoutine()
+    {
+        while (true)
+        {
+            Vector2 dirVec = StageManager.instance.player.transform.position - transform.position;
+            transform.Translate(dirVec.normalized * 15f * Time.fixedDeltaTime);
+            yield return Utils.delayFixedUpdate;
+        }
     }
 }

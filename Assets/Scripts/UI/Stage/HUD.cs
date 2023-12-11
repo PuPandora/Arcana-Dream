@@ -24,11 +24,12 @@ public class HUD : MonoBehaviour
     public CanvasGroup cameraCanvasGroup { get; private set; }
 
     [Title("Tween")]
-    [SerializeField] private DOTweenAnimation tween;
+    [SerializeField] private DOTweenAnimation[] tween;
 
     void Awake()
     {
         AssignUIObjects();
+        tween = GetComponents<DOTweenAnimation>();
     }
 
     // 예외 처리 : 할당되지 않은 UI 할당 메소드
@@ -145,7 +146,8 @@ public class HUD : MonoBehaviour
 
     public void ShowTween()
     {
-        tween.DOPlayById("Show");
+        tween[0].DOPlayById("Show");
+        tween[1].DOPlayById("Show");
     }
 
     void OnDestroy()

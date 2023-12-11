@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 
     [Title("UI")]
     public DeveloperMenu devMenu;
+    public MenuUI menuUI;
     public InventoryUI inventoryUI;
     public PlayerStatesUI playerStateUI;
     public QuestUI questUI;
@@ -41,10 +42,6 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.isAllowDevMenu)
-        {
-            //UIManage(devMenuKey, devMenu);
-        }
         //UIManage(inventoryKey, inventoryUI);
         //UIManage(playerStatesKey, playerStateUI);
         //UIManage(questKey, questUI);
