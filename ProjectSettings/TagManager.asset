@@ -59,3 +59,9 @@ TagManager:
   - name: Foreground
     uniqueID: 2925236397
     locked: 0
+  - name: ForeWeapon
+    uniqueID: 1372153091
+    locked: 0
+  - name: CameraUI
+    uniqueID: 3705926709
+    locked: 0

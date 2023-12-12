@@ -88,8 +88,8 @@ public class InventorySlotUI : MonoBehaviour,
         UIManager.instance.inventoryUI.selectedSlot = this;
         stackText.gameObject.SetActive(false);
 
-        itemIcon.transform.SetParent(UIManager.instance.inventoryUI.transform.root);
-        Debug.Log(UIManager.instance.inventoryUI.transform.root);
+        itemIcon.transform.SetParent(UIManager.instance.inventoryUI.transform);
+        Debug.Log(UIManager.instance.inventoryUI.transform);
     }
 
     public void OnEndDrag(PointerEventData eventData)

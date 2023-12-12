@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
     {
         if (!isLive) return;
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.0001f);
+        spriter.sortingOrder = Mathf.RoundToInt(transform.position.y * -10f);
     }
 
     private void InvokeMoveAway()

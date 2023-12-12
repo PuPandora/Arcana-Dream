@@ -80,6 +80,8 @@ public class StageManager : MonoBehaviour
         // BGM
         if (stageData.bgm != null)
         {
+            if (GameManager.instance.isNewGame) return;
+
             AudioManager.instance.PlayBgmFade(stageData.bgm);
         }
         else

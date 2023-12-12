@@ -232,6 +232,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnInventory(InputValue value)
+    {
+        Debug.Log("인벤토리 키");
+
+        if (gameState == GameState.Lobby)
+        {
+            UIManager.instance.UIManage(UIManager.instance.inventoryUI);
+        }
+    }
+
     private IEnumerator InteractRoutine()
     {
         isInputInteract = true;

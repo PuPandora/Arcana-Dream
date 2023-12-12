@@ -53,7 +53,7 @@ public class NPC : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.0001f);
+        spriter.sortingOrder = Mathf.RoundToInt(transform.position.y * -10f);
     }
 
     [ContextMenu("Move")]

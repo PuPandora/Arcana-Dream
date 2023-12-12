@@ -113,6 +113,7 @@ public class AudioManager : MonoBehaviour
     {
         bgmChannel.clip = BGMclips[(short)bgm];
         bgmChannel.Play();
+        Debug.Log($"현재 재생되는 BGM : {bgmChannel.clip.name}");
     }
 
     public void PlayBgmFade(Bgm bgm, float duration = 1f)
@@ -134,6 +135,7 @@ public class AudioManager : MonoBehaviour
     {
         bgmChannel.volume = 0f;
         bgmChannel.Play();
+        Debug.Log($"현재 재생되는 BGM : {bgmChannel.clip.name}");
 
         yield return bgmChannel.DOFade(DataManager.instance.optionData.bgmVoulme, duration).WaitForCompletion();
 

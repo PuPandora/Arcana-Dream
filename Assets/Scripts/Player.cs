@@ -90,6 +90,10 @@ public class Player : MonoBehaviour
     void LateUpdate()
     {
         if (!isLive) return;
+
+        // 왜인지 모르겠으나 수직 이동 시 느려짐
+        //transform.position = new Vector3(rigid.position.x, rigid.position.y, rigid.position.y * 0.0001f);
+        spriter.sortingOrder = Mathf.RoundToInt(transform.position.y * -10f);
     }
 
     void FixedUpdate()
@@ -97,8 +101,7 @@ public class Player : MonoBehaviour
         if (!isLive) return;
 
         rigid.MovePosition(rigid.position + moveInput.normalized * speed * Time.fixedDeltaTime);
-        // 왜인지 모르겠으나 수직 이동 시 느려짐
-        //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+
     }
 
     private void OnMove(InputValue value)

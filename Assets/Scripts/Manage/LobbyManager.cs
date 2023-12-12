@@ -8,7 +8,10 @@ using static TutorialManager;
 public class LobbyManager : MonoBehaviour
 {
     public static LobbyManager instance;
+
+    [Title("Player")]
     public Player player;
+    public CinemachineVirtualCamera playerCam;
 
     [Title("NPC")]
     public NPC pandora;
@@ -65,6 +68,8 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
+            player.transform.position = DataManager.instance.saveData.position;
+            playerCam.transform.position = DataManager.instance.saveData.position;
             pandora.transform.position = defaultPandoraPos.position;
         }
 

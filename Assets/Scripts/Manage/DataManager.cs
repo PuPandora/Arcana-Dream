@@ -118,7 +118,6 @@ public class DataManager : MonoBehaviour
         GameManager.instance.inventory.ApplyData(saveData.inventoryData);
         GameManager.instance.SetGold(saveData.gold);
         GameManager.instance.player.transform.position = saveData.position;
-        GameManager.instance.playerCam.transform.position = saveData.position;
         GameManager.instance.player.spriter.flipX = saveData.playerSpriteFlip;
 
         GameManager.instance.playedStageCount = saveData.playedStageCount;
