@@ -19,7 +19,7 @@ MonoBehaviour:
   stageGlobalLightIntensity: 1
   bgm: {fileID: 8300000, guid: d45a2f517cf0a4443b55f4ea1cfd0abb, type: 3}
   bossBgm: {fileID: 0}
-  stageFloor: {fileID: 0}
+  stageFloor: {fileID: 11400000, guid: 09da75908eb9e174f9831fd108716255, type: 2}
   stageTable:
   - spawnTable:
     - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}

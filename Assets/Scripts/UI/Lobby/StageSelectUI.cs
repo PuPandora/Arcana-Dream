@@ -22,6 +22,7 @@ public class StageSelectUI : LobbyUI
 
     public void EnterStage()
     {
+        GameManager.instance.selectStageData = selectedStage;
         GameManager.instance.EnterStage();
     }
 

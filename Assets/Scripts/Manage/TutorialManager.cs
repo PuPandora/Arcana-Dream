@@ -298,7 +298,7 @@ public class TutorialManager : MonoBehaviour
             var item = GameManager.instance.poolManager.Get(PoolType.ExpItem);
             var expItem = item.GetComponent<ExpItem>();
 
-            expItem.Initalize(expItemData);
+            expItem.Initialize(expItemData);
             expItem.transform.position = new Vector3(x, y, 0);
             expItem.transform.rotation = Quaternion.identity;
             expItem.spriter.color = new Color(1, 1, 1, 0);

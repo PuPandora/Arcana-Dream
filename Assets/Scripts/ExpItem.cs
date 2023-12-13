@@ -12,7 +12,7 @@ public class ExpItem : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
     }
 
-    public void Initalize(ExpItemData data)
+    public void Initialize(ExpItemData data)
     {
         this.data = data;
         spriter.sprite = data.sprite;

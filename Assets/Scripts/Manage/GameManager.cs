@@ -46,8 +46,9 @@ public class GameManager : MonoBehaviour
     public ItemData[] itemDataBase { get; private set; }
     public EnemyData[] enemyDataBase;
     public PlayerStates playerStates;
-    public int playedStageCount;
 
+    public StageData selectStageData;
+    public int playedStageCount;
     public long gold;
 
     [Title("# Input")]
@@ -197,6 +198,7 @@ public class GameManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
+        Debug.Log("게임을 종료합니다");
     }
 
     private void OnSubmit(InputValue value)

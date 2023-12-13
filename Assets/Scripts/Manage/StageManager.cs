@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -38,8 +39,12 @@ public class StageManager : MonoBehaviour
     public Spawner spawner;
     public ItemCollector itemCollector;
     public HUD hud;
+    [SerializeField]
+    TextMeshProUGUI stageNameText;
     public GetItemUI[] getItemUis;
     public Transition transition;
+    [SerializeField]
+    StageFloor stageFloor;
 
     public event Action OnKillCountChanged;
     public event Action OnExpChanged;
@@ -67,7 +72,15 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         // 기본 초기화
-        SettingGrid();
+        if (GameManager.instance.selectStageData != null)
+        {
+            stageData = GameManager.instance.selectStageData;
+        } 
+        else
+        {
+            Debug.LogError("GameManager에 StageData가 없습니다.");
+        }
+        stageNameText.text = stageData.stageName;
         globalLight.intensity = stageData.stageGlobalLightIntensity;
         isLive = true;
         health = GameManager.instance.playerStates.health;
@@ -82,7 +95,10 @@ public class StageManager : MonoBehaviour
         {
             if (GameManager.instance.isNewGame) return;
 
-            AudioManager.instance.PlayBgmFade(stageData.bgm);
+            if (AudioManager.instance)
+            {
+                AudioManager.instance.PlayBgmFade(stageData.bgm);
+            }
         }
         else
         {
@@ -245,12 +261,4 @@ public class StageManager : MonoBehaviour
         Utils.LoadStageData(stageDataFile.ToString(), stageData);
     }
 #endif
-
-    private void SettingGrid()
-    {
-        Instantiate(stageData.stageFloor, new Vector3(-15, 15, 0), Quaternion.identity, grid);
-        Instantiate(stageData.stageFloor, new Vector3(15, 15, 0), Quaternion.identity, grid);
-        Instantiate(stageData.stageFloor, new Vector3(15, -15, 0), Quaternion.identity, grid);
-        Instantiate(stageData.stageFloor, new Vector3(-15, -15, 0), Quaternion.identity, grid);
-    }
 }
