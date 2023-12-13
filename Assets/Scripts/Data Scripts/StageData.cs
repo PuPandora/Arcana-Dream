@@ -1,15 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewStageData", menuName = "Scriptable Object/Stage Data")]
 public class StageData : ScriptableObject
 {
-    public string stageName;
+    [Title("Info")]
+    [PreviewField(100, ObjectFieldAlignment.Left, FilterMode = FilterMode.Point)]
+    public Sprite stageThumbnail;
     public byte stageIndex;
-    public string stageGoal;
+    public string stageName;
     public int recommendLevel;
+    public string stageGoal;
+    public bool isShow;
+    public string stageUnlockCondition;
+    public bool isOpen = true;
+
+    [Title("Data")]
     public float stageGlobalLightIntensity = 1f;
     public AudioClip bgm;
     public AudioClip bossBgm;

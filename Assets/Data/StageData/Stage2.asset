@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397b23a8b09308a469571887b3add654, type: 3}
   m_Name: Stage2
   m_EditorClassIdentifier: 
-  stageName: "\uD669\uBB34\uC9C0"
+  stageThumbnail: {fileID: 2054710758, guid: 0c9146d0c3182634aaa94777c4c5cb27, type: 3}
   stageIndex: 0
-  stageGoal: "\uB2E8\uC11C \uCC3E\uAE30"
+  stageName: "\uD669\uBB34\uC9C0"
   recommendLevel: 3
+  stageGoal: "\uB2E8\uC11C \uCC3E\uAE30"
+  isShow: 1
+  stageUnlockCondition: 
+  isOpen: 0
   stageGlobalLightIntensity: 1
   bgm: {fileID: 0}
   bossBgm: {fileID: 0}
@@ -27,45 +31,3 @@ MonoBehaviour:
       spawnWeight: 1
     spawnDelay: 1
     nextTableTime: 30
-  - spawnTable:
-    - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
-      enemyId: 1001
-      spawnWeight: 8
-    - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
-      enemyId: 1002
-      spawnWeight: 2
-    spawnDelay: 0.8
-    nextTableTime: 60
-  - spawnTable:
-    - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
-      enemyId: 1001
-      spawnWeight: 6
-    - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
-      enemyId: 1002
-      spawnWeight: 4
-    spawnDelay: 0.6
-    nextTableTime: 90
-  - spawnTable:
-    - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
-      enemyId: 1001
-      spawnWeight: 4
-    - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
-      enemyId: 1002
-      spawnWeight: 4
-    - enemyData: {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
-      enemyId: 1003
-      spawnWeight: 2
-    spawnDelay: 0.5
-    nextTableTime: 120
-  - spawnTable:
-    - enemyData: {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
-      enemyId: 1001
-      spawnWeight: 2
-    - enemyData: {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
-      enemyId: 1002
-      spawnWeight: 6
-    - enemyData: {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
-      enemyId: 1003
-      spawnWeight: 2
-    spawnDelay: 0.4
-    nextTableTime: 180

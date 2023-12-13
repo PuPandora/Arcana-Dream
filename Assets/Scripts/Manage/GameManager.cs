@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField]
     public ItemData[] itemDataBase { get; private set; }
     public EnemyData[] enemyDataBase;
+    public StageData[] stageDataBase;
     public PlayerStates playerStates;
 
     public StageData selectStageData;

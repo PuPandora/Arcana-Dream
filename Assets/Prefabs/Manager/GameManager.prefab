@@ -51,14 +51,16 @@ MonoBehaviour:
   isAllowDevMenu: 1
   targetScene: 
   isNeedLoad: 1
+  isNeedSave: 0
   isNewGame: 0
+  isExitStage: 0
   poolManager: {fileID: 0}
   dataManager: {fileID: 0}
   player: {fileID: 0}
   viewArea: {fileID: 0}
   levelUpUi: {fileID: 0}
   inventory: {fileID: 0}
-  vCam: {fileID: 0}
+  playerCam: {fileID: 0}
   weapons:
   - {fileID: 0}
   - {fileID: 0}
@@ -70,6 +72,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ace16501629987c4e9b77a65b56151a1, type: 2}
   - {fileID: 11400000, guid: 87923cc5a0dd29a49994f6c14da65e2b, type: 2}
   - {fileID: 11400000, guid: 2572c44fa11e9a84ea35ce6b62b39d04, type: 2}
+  stageDataBase:
+  - {fileID: 11400000, guid: 30d7ea9387b94e948b0372165d6c5162, type: 2}
+  - {fileID: 11400000, guid: e57344d19e8a5cf478e83cfe483c9d11, type: 2}
   playerStates:
     damageState: {fileID: 11400000, guid: c22fc7682b43aa040924fede1453959e, type: 2}
     healthState: {fileID: 11400000, guid: 8ff63f56cba448e4085918adcd02ba8b, type: 2}
@@ -77,7 +82,10 @@ MonoBehaviour:
     damageLevel: 0
     healthLevel: 0
     defenseLevel: 0
-  interactKey: 101
+  selectStageData: {fileID: 0}
+  playedStageCount: 0
+  gold: 0
+  isInputInteract: 0
 --- !u!114 &1491314603938455285
 MonoBehaviour:
   m_ObjectHideFlags: 0
