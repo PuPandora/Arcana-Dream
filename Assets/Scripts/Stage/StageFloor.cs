@@ -9,7 +9,7 @@ public class StageFloor : MonoBehaviour
     public Tilemap[] tiles;
     public RuleTile ruleTile;
 
-    void Start()
+    public void Initialize()
     {
         if (StageManager.instance.stageData.stageFloor == null)
         {
@@ -24,8 +24,6 @@ public class StageFloor : MonoBehaviour
         {
             tile.CompressBounds();
             BoundsInt bounds = tile.cellBounds;
-            print($"bound : {bounds}, bound.xMax : {bounds.xMax}, bound.yMax : {bounds.yMax}");
-
 
             for (int x = bounds.xMin; x < bounds.xMax; x++)
             {

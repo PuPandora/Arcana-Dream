@@ -76,6 +76,7 @@ public class LobbyManager : MonoBehaviour
         if (GameManager.instance.isNeedSave)
         {
             GameManager.instance.SaveGame();
+            GameManager.instance.isNeedSave = false;
         }
 
         // 스테이지에서 나온거라면
@@ -85,6 +86,8 @@ public class LobbyManager : MonoBehaviour
 
             player.transform.position = portalPos;
             GameManager.instance.playerCam.transform.position = portalPos;
+
+            GameManager.instance.isExitStage = false;
         }
     }
 }

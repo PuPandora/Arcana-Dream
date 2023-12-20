@@ -28,7 +28,7 @@ public class InventorySlot
     [SerializeField] private byte m_stack;
     public bool isEmpty = true;
 
-    private void Clear()
+    public void Clear()
     {
         itemData = null;
         id = 0;
@@ -147,11 +147,10 @@ public class Inventory : MonoBehaviour
     public void ClearInventory()
     {
         Debug.Log("인벤토리 초기화", gameObject);
-        inventory = new InventorySlot[30];
 
-        for (int i = 0; i < inventory.Length; i++)
+        foreach (var slot in inventory)
         {
-            inventory[i] = new InventorySlot();
+            slot.Clear();
         }
     }
 

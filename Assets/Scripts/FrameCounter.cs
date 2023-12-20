@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FrameCounter : MonoBehaviour
 {
+    private static FrameCounter instance;
     private float deltaTime;
 
     [SerializeField]
@@ -13,6 +14,18 @@ public class FrameCounter : MonoBehaviour
     private Color color = Color.green;
 
     public bool isShow;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {

@@ -61,7 +61,9 @@ public class SaveSlot : MonoBehaviour
             // 데이터가 있다면
             if (isExistData)
             {
+                GameManager.instance.isNeedLoad = true;
                 GameManager.instance.EnterLobby();
+                Debug.Log("있는 데이터 게임 불러오기");
                 // + 해당 슬롯 데이터 불러오기
             }
             // 없다면 새 게임
@@ -69,6 +71,7 @@ public class SaveSlot : MonoBehaviour
             {
                 GameManager.instance.EnterStage();
                 GameManager.instance.isNewGame = true;
+                DataManager.instance.saveData = new SaveData();
             }
         }
     }

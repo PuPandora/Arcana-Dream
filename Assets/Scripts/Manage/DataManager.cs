@@ -115,6 +115,7 @@ public class DataManager : MonoBehaviour
         string loadJson = File.ReadAllText(saveFilePath);
         JsonUtility.FromJsonOverwrite(loadJson, saveData);
 
+        GameManager.instance.inventory.ClearInventory();
         GameManager.instance.inventory.ApplyData(saveData.inventoryData);
         GameManager.instance.SetGold(saveData.gold);
         GameManager.instance.player.transform.position = saveData.position;

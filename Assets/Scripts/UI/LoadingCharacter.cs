@@ -22,7 +22,6 @@ public class LoadingCharacter : MonoBehaviour
             case SpriteType.Random:
                 var sprites = LoadingManager.instance.sprites;
                 int randNum = Random.Range(0, sprites.Count);
-                print(randNum);
                 StartCoroutine(
                     PlayAnimationRoutine(sprites[randNum])
                     );

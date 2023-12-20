@@ -66,7 +66,6 @@ public class StageManager : MonoBehaviour
             Destroy(gameObject);
         }
         #endregion
-        InitEnemyTables();
     }
 
     void Start()
@@ -78,32 +77,42 @@ public class StageManager : MonoBehaviour
         } 
         else
         {
-            Debug.LogError("GameManager에 StageData가 없습니다.");
+            Debug.LogError("GameManager에 StageData가 없습니다.", GameManager.instance.gameObject);
         }
-        stageNameText.text = stageData.stageName;
-        globalLight.intensity = stageData.stageGlobalLightIntensity;
-        isLive = true;
-        health = GameManager.instance.playerStates.health;
-        hud.UpdateHealthSlider();
 
-        // 스폰 정보 초기화
-        spawner.Initialize();
-        stageData.stageTable = enemyTables;
-
-        // BGM
-        if (stageData.bgm != null)
+        if (stageData != null)
         {
-            if (GameManager.instance.isNewGame) return;
+            stageNameText.text = stageData.stageName;
+            globalLight.intensity = stageData.stageGlobalLightIntensity;
 
-            if (AudioManager.instance)
+            // 스폰 정보 초기화
+            spawner.Initialize();
+
+            // 스테이지 타일 초기화
+            stageFloor.Initialize();
+
+            // BGM
+            if (stageData.bgm != null)
             {
-                AudioManager.instance.PlayBgmFade(stageData.bgm);
+                if (GameManager.instance.isNewGame) return;
+
+                if (AudioManager.instance)
+                {
+                    AudioManager.instance.PlayBgmFade(stageData.bgm);
+                }
+            }
+            else
+            {
+                Debug.LogError($"Stage Data에 등록된 BGM이 없습니다.\n데이터 이름 : {stageData.name}", gameObject);
             }
         }
         else
         {
-            Debug.LogError($"Stage Data에 등록된 BGM이 없습니다.\n데이터 이름 : {stageData.name}", gameObject);
+            Debug.LogError("Stage Data가 없습니다.", gameObject);
         }
+        isLive = true;
+        health = GameManager.instance.playerStates.health;
+        hud.UpdateHealthSlider();
 
         // 튜토리얼
         isTutorial = GameManager.instance.isNewGame;
@@ -119,6 +128,22 @@ public class StageManager : MonoBehaviour
             GameManager.instance.playerStates.damageState.ApplyState(0);
             GameManager.instance.playerStates.defenseState.level = 0;
             GameManager.instance.playerStates.defenseState.ApplyState(0);
+
+            if (stageData != null)
+            {
+                stageNameText.text = stageData.stageName;
+                globalLight.intensity = stageData.stageGlobalLightIntensity;
+
+                // 스폰 정보 초기화
+                spawner.Initialize();
+
+                // 스테이지 타일 초기화
+                stageFloor.Initialize();
+            }
+            else
+            {
+                Debug.LogError("Tutorial Stage Data가 없습니다.", gameObject);
+            }
         }
         else
         {
@@ -127,6 +152,7 @@ public class StageManager : MonoBehaviour
             hud.cameraCanvasGroup.alpha = 1;
             isPlaying = true;
         }
+        Debug.Log("StageManager Start 실행 완료");
     }
 
     private void InitEnemyTables()
@@ -245,6 +271,7 @@ public class StageManager : MonoBehaviour
     [ContextMenu("Save Stage Data to Json")]
     private void SaveStageData()
     {
+        InitEnemyTables();
         Utils.SaveStageData(stageData);
     }
 
